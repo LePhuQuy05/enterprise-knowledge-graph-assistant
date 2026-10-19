@@ -1,0 +1,211 @@
+{
+  "$defs": {
+    "Citation": {
+      "additionalProperties": false,
+      "properties": {
+        "citation_id": {
+          "minLength": 1,
+          "title": "Citation Id",
+          "type": "string"
+        },
+        "chunk_id": {
+          "minLength": 1,
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "document_version_id": {
+          "minLength": 1,
+          "title": "Document Version Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "source_uri": {
+          "minLength": 1,
+          "title": "Source Uri",
+          "type": "string"
+        },
+        "section_path": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Section Path",
+          "type": "array"
+        },
+        "quote": {
+          "maxLength": 600,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "citation_id",
+        "chunk_id",
+        "document_version_id",
+        "title",
+        "source_uri",
+        "section_path",
+        "quote"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "citation_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Citation Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claim_id",
+        "text",
+        "citation_ids"
+      ],
+      "title": "Claim",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "answer": {
+      "minLength": 1,
+      "title": "Answer",
+      "type": "string"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "citations": {
+      "items": {
+        "$ref": "#/$defs/Citation"
+      },
+      "title": "Citations",
+      "type": "array"
+    },
+    "answer_status": {
+      "enum": [
+        "ANSWERED",
+        "PARTIAL",
+        "ABSTAINED"
+      ],
+      "title": "Answer Status",
+      "type": "string"
+    },
+    "mode_requested": {
+      "enum": [
+        "vector",
+        "hybrid",
+        "graph_1hop",
+        "graph_2hop"
+      ],
+      "title": "Mode Requested",
+      "type": "string"
+    },
+    "mode_used": {
+      "enum": [
+        "vector",
+        "hybrid",
+        "graph_1hop",
+        "graph_2hop"
+      ],
+      "title": "Mode Used",
+      "type": "string"
+    },
+    "used_graph": {
+      "title": "Used Graph",
+      "type": "boolean"
+    },
+    "retrieval_backend": {
+      "default": "snapshot_numpy_adjacency",
+      "enum": [
+        "snapshot_numpy_adjacency",
+        "aws_knowledge_mcp"
+      ],
+      "title": "Retrieval Backend",
+      "type": "string"
+    },
+    "snapshot_version": {
+      "minLength": 1,
+      "title": "Snapshot Version",
+      "type": "string"
+    },
+    "warnings": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "answer_language": {
+      "default": "en",
+      "enum": [
+        "en",
+        "vi"
+      ],
+      "title": "Answer Language",
+      "type": "string"
+    },
+    "evidence_bundle_sha256": {
+      "anyOf": [
+        {
+          "maxLength": 64,
+          "minLength": 64,
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Evidence Bundle Sha256"
+    }
+  },
+  "required": [
+    "request_id",
+    "answer",
+    "claims",
+    "citations",
+    "answer_status",
+    "mode_requested",
+    "mode_used",
+    "used_graph",
+    "snapshot_version"
+  ],
+  "title": "QueryResponse",
+  "type": "object"
+}

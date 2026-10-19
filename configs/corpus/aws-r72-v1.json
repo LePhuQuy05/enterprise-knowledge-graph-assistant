@@ -1,0 +1,235 @@
+{
+  "version": "aws-r72-corpus-v1",
+  "language": "en",
+  "sources": [
+    {
+      "source_id": "lambda-s3-events",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html",
+      "expected_title": "Process Amazon S3 event notifications with Lambda",
+      "evidence_intent": [
+        "E1",
+        "E2"
+      ],
+      "selection_reason": "Separate S3 invocation permission from the function execution role.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "s3-destination-permissions",
+      "service": "S3",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/grant-destinations-permissions-to-s3.html",
+      "expected_title": "Granting permissions to publish event notification messages",
+      "evidence_intent": [
+        "E1"
+      ],
+      "selection_reason": "Resource-policy conditions for S3 notification destinations.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "kms-cross-account",
+      "service": "KMS",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+      "expected_title": "Allowing users in other accounts to use a KMS key",
+      "evidence_intent": [
+        "E3"
+      ],
+      "selection_reason": "Two-account policy requirements and supported cross-account KMS operations.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "iam-cross-account-evaluation",
+      "service": "IAM",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic-cross-account.html",
+      "expected_title": "Cross-account policy evaluation logic",
+      "evidence_intent": [
+        "E2",
+        "E3"
+      ],
+      "selection_reason": "Explain trust and permission checks across two accounts.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "s3-sse-kms",
+      "service": "S3",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
+      "expected_title": "Using server-side encryption with AWS KMS keys (SSE-KMS)",
+      "evidence_intent": [
+        "E3"
+      ],
+      "selection_reason": "Decrypt permissions, customer-managed keys and AWS-managed-key limitations.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "lambda-execution-role",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html",
+      "expected_title": "Lambda execution role",
+      "evidence_intent": [
+        "E2"
+      ],
+      "selection_reason": "Identify the principal used by function code to access AWS resources.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "lambda-resource-policy",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html",
+      "expected_title": "Using resource-based policies for Lambda",
+      "evidence_intent": [
+        "E1"
+      ],
+      "selection_reason": "Invocation permission is attached to the Lambda resource.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "lambda-service-invoke",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-services.html",
+      "expected_title": "Granting Lambda function access to AWS services",
+      "evidence_intent": [
+        "E1"
+      ],
+      "selection_reason": "Service principals and permission constraints.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "lambda-async-errors",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-error-handling.html",
+      "expected_title": "How Lambda handles errors and retries with asynchronous invocation",
+      "evidence_intent": [
+        "GENERAL"
+      ],
+      "selection_reason": "Distinguish delivery retries from application read or decrypt failure.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "s3-event-destinations",
+      "service": "S3",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-event-types-and-destinations.html",
+      "expected_title": "Supported event types and event destinations",
+      "evidence_intent": [
+        "E1"
+      ],
+      "selection_reason": "Notification destination and region constraints.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "s3-bucket-policies",
+      "service": "S3",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html",
+      "expected_title": "Examples of Amazon S3 bucket policies",
+      "evidence_intent": [
+        "E2"
+      ],
+      "selection_reason": "Resource policies and conditions for object access.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "s3-object-ownership",
+      "service": "S3",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html",
+      "expected_title": "Controlling ownership of objects and disabling ACLs",
+      "evidence_intent": [
+        "E2"
+      ],
+      "selection_reason": "Document ownership assumptions and policy-based access.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "iam-policy-evaluation",
+      "service": "IAM",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
+      "expected_title": "Policy evaluation logic",
+      "evidence_intent": [
+        "E2",
+        "E3"
+      ],
+      "selection_reason": "Explicit denies and combination of policy types.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "iam-principal",
+      "service": "IAM",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html",
+      "expected_title": "AWS JSON policy elements: Principal",
+      "evidence_intent": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "selection_reason": "Distinguish role, account and service principals.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "iam-condition",
+      "service": "IAM",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html",
+      "expected_title": "AWS JSON policy elements: Condition",
+      "evidence_intent": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "selection_reason": "Policy conditions qualify assertions instead of creating unconditional facts.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "iam-identity-resource",
+      "service": "IAM",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
+      "expected_title": "Identity-based policies and resource-based policies",
+      "evidence_intent": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "selection_reason": "Contrast the two places permissions can be granted.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "kms-key-policies",
+      "service": "KMS",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html",
+      "expected_title": "Key policies in AWS KMS",
+      "evidence_intent": [
+        "E3"
+      ],
+      "selection_reason": "A key policy controls access to the KMS key.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "kms-iam-policies",
+      "service": "KMS",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html",
+      "expected_title": "IAM policies in AWS KMS",
+      "evidence_intent": [
+        "E3"
+      ],
+      "selection_reason": "Identity permissions interact with key policies.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "kms-conditions",
+      "service": "KMS",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html",
+      "expected_title": "AWS KMS condition keys",
+      "evidence_intent": [
+        "E3"
+      ],
+      "selection_reason": "Conditions can restrict decryption even when an action appears allowed.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    },
+    {
+      "source_id": "kms-concepts",
+      "service": "KMS",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
+      "expected_title": "AWS KMS concepts",
+      "evidence_intent": [
+        "E3"
+      ],
+      "selection_reason": "Key types, key identifiers and envelope encryption terminology.",
+      "usage_note": "Public AWS documentation. Preserve attribution and original bytes locally. Intent labels are unreviewed, not benchmark gold. Redistribution of the raw corpus has not been assessed."
+    }
+  ]
+}

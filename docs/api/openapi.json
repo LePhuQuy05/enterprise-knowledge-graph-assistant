@@ -1,0 +1,662 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AWS Evidence Assistant API",
+    "version": "1.0.0",
+    "description": "Authenticated bounded snapshot serving. Graph answer modes are not quality-approved. History 30 days; idempotency 7 days; TTL enforced in code. 300 admitted queries per project UTC month, not per user. API envelope is QueryRecord; completed record contains QueryResponse."
+  },
+  "servers": [
+    {
+      "url": "https://cyg0uvml94.execute-api.us-east-1.amazonaws.com"
+    }
+  ],
+  "paths": {
+    "/v1/queries": {
+      "post": {
+        "summary": "Ask a document question; requires kg/query",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. FAILED records are terminal and never trigger automatic model retry.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryRecord"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "401": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "403": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "404": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "409": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "429": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "502": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "503": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "504": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Single-use lowercase canonical UUID. Reuse only for the same request; records retained 7 days. Expired keys must not be reused."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRequest"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "List own history; requires kg/read",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. FAILED records are terminal and never trigger automatic model retry.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "next_cursor": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "401": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "403": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "404": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "409": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "429": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "502": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "503": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "504": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 10
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          }
+        ]
+      }
+    },
+    "/v1/queries/{request_id}": {
+      "get": {
+        "summary": "Read own request only; requires kg/read",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. FAILED records are terminal and never trigger automatic model retry.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryRecord"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "401": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "403": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "404": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "409": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "429": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "502": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "503": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "504": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          }
+        },
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^q_[0-9a-f]{64}$"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/sources/{chunk_id}": {
+      "get": {
+        "summary": "Read only a cited source from your own valid request/release; requires kg/read",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. FAILED records are terminal and never trigger automatic model retry.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "401": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "403": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "404": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "409": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "429": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "502": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "503": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "504": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          }
+        },
+        "parameters": [
+          {
+            "name": "chunk_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^chk_[0-9a-f]{64}$"
+            }
+          },
+          {
+            "name": "request_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^q_[0-9a-f]{64}$"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/status": {
+      "get": {
+        "summary": "Serving release and global query quota; requires kg/read",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. FAILED records are terminal and never trigger automatic model retry.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "401": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "403": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "404": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "409": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "429": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "502": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "503": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "504": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Citation": {
+        "additionalProperties": false,
+        "properties": {
+          "citation_id": {
+            "minLength": 1,
+            "title": "Citation Id",
+            "type": "string"
+          },
+          "chunk_id": {
+            "minLength": 1,
+            "title": "Chunk Id",
+            "type": "string"
+          },
+          "document_version_id": {
+            "minLength": 1,
+            "title": "Document Version Id",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "source_uri": {
+            "minLength": 1,
+            "title": "Source Uri",
+            "type": "string"
+          },
+          "section_path": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Section Path",
+            "type": "array"
+          },
+          "quote": {
+            "maxLength": 600,
+            "minLength": 1,
+            "title": "Quote",
+            "type": "string"
+          }
+        },
+        "required": [
+          "citation_id",
+          "chunk_id",
+          "document_version_id",
+          "title",
+          "source_uri",
+          "section_path",
+          "quote"
+        ],
+        "title": "Citation",
+        "type": "object"
+      },
+      "Claim": {
+        "additionalProperties": false,
+        "properties": {
+          "claim_id": {
+            "minLength": 1,
+            "title": "Claim Id",
+            "type": "string"
+          },
+          "text": {
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          },
+          "citation_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Citation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "claim_id",
+          "text",
+          "citation_ids"
+        ],
+        "title": "Claim",
+        "type": "object"
+      },
+      "QueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "minLength": 1,
+            "title": "Request Id",
+            "type": "string"
+          },
+          "answer": {
+            "minLength": 1,
+            "title": "Answer",
+            "type": "string"
+          },
+          "claims": {
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            },
+            "title": "Claims",
+            "type": "array"
+          },
+          "citations": {
+            "items": {
+              "$ref": "#/components/schemas/Citation"
+            },
+            "title": "Citations",
+            "type": "array"
+          },
+          "answer_status": {
+            "enum": [
+              "ANSWERED",
+              "PARTIAL",
+              "ABSTAINED"
+            ],
+            "title": "Answer Status",
+            "type": "string"
+          },
+          "mode_requested": {
+            "enum": [
+              "vector",
+              "hybrid",
+              "graph_1hop",
+              "graph_2hop"
+            ],
+            "title": "Mode Requested",
+            "type": "string"
+          },
+          "mode_used": {
+            "enum": [
+              "vector",
+              "hybrid",
+              "graph_1hop",
+              "graph_2hop"
+            ],
+            "title": "Mode Used",
+            "type": "string"
+          },
+          "used_graph": {
+            "title": "Used Graph",
+            "type": "boolean"
+          },
+          "retrieval_backend": {
+            "default": "snapshot_numpy_adjacency",
+            "enum": [
+              "snapshot_numpy_adjacency",
+              "aws_knowledge_mcp"
+            ],
+            "title": "Retrieval Backend",
+            "type": "string"
+          },
+          "snapshot_version": {
+            "minLength": 1,
+            "title": "Snapshot Version",
+            "type": "string"
+          },
+          "warnings": {
+            "default": [],
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          },
+          "answer_language": {
+            "default": "en",
+            "enum": [
+              "en",
+              "vi"
+            ],
+            "title": "Answer Language",
+            "type": "string"
+          },
+          "evidence_bundle_sha256": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "minLength": 64,
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Evidence Bundle Sha256"
+          }
+        },
+        "required": [
+          "request_id",
+          "answer",
+          "claims",
+          "citations",
+          "answer_status",
+          "mode_requested",
+          "mode_used",
+          "used_graph",
+          "snapshot_version"
+        ],
+        "title": "QueryResponse",
+        "type": "object"
+      },
+      "QueryRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "question": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Question",
+            "type": "string"
+          },
+          "mode": {
+            "anyOf": [
+              {
+                "enum": [
+                  "vector",
+                  "hybrid",
+                  "graph_1hop",
+                  "graph_2hop"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Mode"
+          },
+          "corpus_scope": {
+            "default": "snapshot",
+            "enum": [
+              "snapshot",
+              "aws_official"
+            ],
+            "title": "Corpus Scope",
+            "type": "string"
+          },
+          "answer_language": {
+            "default": "auto",
+            "enum": [
+              "auto",
+              "en",
+              "vi"
+            ],
+            "title": "Answer Language",
+            "type": "string"
+          }
+        },
+        "required": [
+          "question"
+        ],
+        "title": "QueryRequest",
+        "type": "object"
+      },
+      "QueryRecord": {
+        "type": "object",
+        "required": [
+          "request_id",
+          "status"
+        ],
+        "properties": {
+          "request_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PROCESSING",
+              "COMPLETED",
+              "FAILED"
+            ]
+          },
+          "question": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "vector",
+              "hybrid"
+            ]
+          },
+          "snapshot_version": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idempotent_replay": {
+            "type": "boolean"
+          },
+          "response": {
+            "$ref": "#/components/schemas/QueryResponse"
+          },
+          "error": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

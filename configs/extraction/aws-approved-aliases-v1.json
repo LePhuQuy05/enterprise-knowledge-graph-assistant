@@ -1,0 +1,11 @@
+{
+  "version": "aws-approved-aliases-v1",
+  "entries": [
+    {"canonical_key": "aws/s3", "canonical_name": "Amazon S3", "entity_type": "AWS_SERVICE", "aliases": ["Amazon S3", "S3", "AWS S3", "Amazon Simple Storage Service"]},
+    {"canonical_key": "aws/lambda", "canonical_name": "AWS Lambda", "entity_type": "AWS_SERVICE", "aliases": ["AWS Lambda", "Lambda"]},
+    {"canonical_key": "aws/iam", "canonical_name": "AWS Identity and Access Management", "entity_type": "AWS_SERVICE", "aliases": ["AWS Identity and Access Management", "IAM", "AWS IAM"]},
+    {"canonical_key": "aws/kms", "canonical_name": "AWS Key Management Service", "entity_type": "AWS_SERVICE", "aliases": ["AWS Key Management Service", "AWS KMS", "KMS"]},
+    {"canonical_key": "aws/bedrock", "canonical_name": "Amazon Bedrock", "entity_type": "AWS_SERVICE", "aliases": ["Amazon Bedrock", "Bedrock"]},
+    {"canonical_key": "aws/dynamodb", "canonical_name": "Amazon DynamoDB", "entity_type": "AWS_SERVICE", "aliases": ["Amazon DynamoDB", "DynamoDB"]}
+  ]
+}

@@ -1,0 +1,38 @@
+[project]
+name = "enterprise-knowledge-graph-assistant"
+version = "0.1.0"
+description = "Evidence-grounded AWS documentation assistant with local graph ingestion and snapshot retrieval."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "boto3>=1.41,<2",
+    "numpy>=2,<3",
+    "onnxruntime>=1.23,<2",
+    "pydantic>=2.10,<3",
+    "rank-bm25>=0.2.2,<0.3",
+    "tiktoken>=0.8,<1",
+    "tokenizers>=0.22,<1",
+]
+
+[dependency-groups]
+dev = [
+    "aws-cdk-lib==2.273.0",
+    "beautifulsoup4>=4.14,<5",
+    "boto3[crt]>=1.41,<2",
+    "constructs==10.8.1",
+    "neo4j>=5.28,<6",
+    "pytest>=8,<10",
+    "ruff>=0.12,<1",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]

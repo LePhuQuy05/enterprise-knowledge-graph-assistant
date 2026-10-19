@@ -1,0 +1,60 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+*.p12
+
+# Python and JavaScript generated files
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+node_modules/
+dist/
+cdk.out/
+
+# Local corpus, model artifacts and database volumes
+/data/
+/artifacts/
+/volumes/
+/.neo4j/
+/results/
+
+# Temporary machine output
+*.log
+.DS_Store
+Thumbs.db
+
+# Local planning and learning material (preserved on disk)
+/.scratch/
+/AGENTS.md
+/GLOSSARY.md
+/docs/*
+!/docs/architecture.md
+!/docs/development.md
+!/docs/evaluation.md
+!/docs/security-overview.md
+!/docs/api/
+*.md
+!/README.md
+!/NOTICE.md
+!/docs/architecture.md
+!/docs/development.md
+!/docs/evaluation.md
+!/docs/security-overview.md
+
+# Historical one-off research and owner-only evidence exports
+/scripts/review_reference_chrome.mjs
+/scripts/review_frontend_chrome.mjs
+/scripts/review_frontend_design.mjs
+/scripts/chrome_devtools_client.mjs
+/scripts/build_chatbot_recruiter_packet.py
+/scripts/audit_release.py
+/configs/security/release-scan-triage-v1.json

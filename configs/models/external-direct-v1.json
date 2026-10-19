@@ -1,0 +1,18 @@
+{
+  "version": "external-direct-v1",
+  "source_region": "external-default",
+  "generation_model_id": "deepseek-flash",
+  "generation_invocation_id": "deepseek-flash",
+  "generation_context_ceiling": 1048576,
+  "generation_endpoint": "https://api.deepseek.com/chat/completions",
+  "generation_protocol": "CHAT_COMPLETIONS_TEXT_JSON_NONTHINKING_V1",
+  "account_model_metadata_sha256": "0d0bac43d197ce1290285a274c31fc1ef6fd54d52f254417de47e6988df78bee",
+  "embedding_model_id": "voyage-4-lite",
+  "embedding_invocation_id": "voyage-4-lite",
+  "embedding_endpoint": "https://api.voyageai.com/v1/embeddings",
+  "embedding_context_ceiling": 32000,
+  "embedding_dimension": 1024,
+  "embedding_normalized": true,
+  "live_inference_enabled": false,
+  "live_inference_gate": "ACCOUNT_RATES_FUNDING_AND_TESTS_REQUIRED"
+}

@@ -1,0 +1,89 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "deepseek-grounded-answer-v1",
+      "default": "deepseek-grounded-answer-v1",
+      "title": "Version",
+      "type": "string"
+    },
+    "model_id": {
+      "const": "deepseek-flash",
+      "default": "deepseek-flash",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "invocation_id": {
+      "const": "deepseek-flash",
+      "default": "deepseek-flash",
+      "title": "Invocation Id",
+      "type": "string"
+    },
+    "source_region": {
+      "const": "external-default",
+      "default": "external-default",
+      "title": "Source Region",
+      "type": "string"
+    },
+    "model_metadata_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Model Metadata Sha256",
+      "type": "string"
+    },
+    "prompt_version": {
+      "const": "grounded-claims-quotes-v1",
+      "default": "grounded-claims-quotes-v1",
+      "title": "Prompt Version",
+      "type": "string"
+    },
+    "output_schema_version": {
+      "const": "generated-answer-v1",
+      "default": "generated-answer-v1",
+      "title": "Output Schema Version",
+      "type": "string"
+    },
+    "temperature": {
+      "const": 0,
+      "default": 0,
+      "title": "Temperature",
+      "type": "integer"
+    },
+    "max_output_tokens": {
+      "const": 800,
+      "default": 800,
+      "title": "Max Output Tokens",
+      "type": "integer"
+    },
+    "thinking": {
+      "const": "disabled",
+      "default": "disabled",
+      "title": "Thinking",
+      "type": "string"
+    },
+    "citation_quote_limit": {
+      "const": 600,
+      "default": 600,
+      "title": "Citation Quote Limit",
+      "type": "integer"
+    },
+    "max_claims": {
+      "const": 4,
+      "default": 4,
+      "title": "Max Claims",
+      "type": "integer"
+    },
+    "context_proxy_tokens": {
+      "const": 4096,
+      "default": 4096,
+      "title": "Context Proxy Tokens",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "model_metadata_sha256"
+  ],
+  "title": "GenerationRecipe",
+  "type": "object"
+}

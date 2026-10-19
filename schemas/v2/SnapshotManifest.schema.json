@@ -1,0 +1,565 @@
+{
+  "$defs": {
+    "EmbeddingRecipe": {
+      "additionalProperties": false,
+      "properties": {
+        "dimension": {
+          "default": 1024,
+          "maximum": 1024,
+          "minimum": 1024,
+          "title": "Dimension",
+          "type": "integer"
+        },
+        "input_recipe_version": {
+          "const": "title-section-text-v1",
+          "default": "title-section-text-v1",
+          "title": "Input Recipe Version",
+          "type": "string"
+        },
+        "invocation_id": {
+          "minLength": 1,
+          "title": "Invocation Id",
+          "type": "string"
+        },
+        "model_id": {
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "normalized": {
+          "default": true,
+          "title": "Normalized",
+          "type": "boolean"
+        },
+        "source_region": {
+          "minLength": 1,
+          "title": "Source Region",
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "model_id",
+        "invocation_id",
+        "source_region"
+      ],
+      "title": "EmbeddingRecipe",
+      "type": "object"
+    },
+    "ExternalEmbeddingRecipe": {
+      "additionalProperties": false,
+      "description": "Versioned role-aware branch; legacy recipes acquire no new default fields.",
+      "properties": {
+        "dimension": {
+          "default": 1024,
+          "maximum": 1024,
+          "minimum": 1024,
+          "title": "Dimension",
+          "type": "integer"
+        },
+        "endpoint": {
+          "const": "https://api.voyageai.com/v1/embeddings",
+          "default": "https://api.voyageai.com/v1/embeddings",
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "input_recipe_version": {
+          "enum": [
+            "title-section-text-v1",
+            "question-text-v1"
+          ],
+          "title": "Input Recipe Version",
+          "type": "string"
+        },
+        "input_role": {
+          "enum": [
+            "document",
+            "query"
+          ],
+          "title": "Input Role",
+          "type": "string"
+        },
+        "invocation_id": {
+          "const": "voyage-4-lite",
+          "default": "voyage-4-lite",
+          "title": "Invocation Id",
+          "type": "string"
+        },
+        "model_id": {
+          "const": "voyage-4-lite",
+          "default": "voyage-4-lite",
+          "title": "Model Id",
+          "type": "string"
+        },
+        "normalization_version": {
+          "const": "local-float32-l2-v1",
+          "default": "local-float32-l2-v1",
+          "title": "Normalization Version",
+          "type": "string"
+        },
+        "normalized": {
+          "default": true,
+          "title": "Normalized",
+          "type": "boolean"
+        },
+        "output_dtype": {
+          "const": "float",
+          "default": "float",
+          "title": "Output Dtype",
+          "type": "string"
+        },
+        "provider": {
+          "const": "VOYAGE",
+          "default": "VOYAGE",
+          "title": "Provider",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_region": {
+          "const": "external-default",
+          "default": "external-default",
+          "title": "Source Region",
+          "type": "string"
+        },
+        "truncation": {
+          "const": false,
+          "default": false,
+          "title": "Truncation",
+          "type": "boolean"
+        },
+        "version": {
+          "const": "voyage-role-aware-v1",
+          "default": "voyage-role-aware-v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input_recipe_version",
+        "input_role"
+      ],
+      "title": "ExternalEmbeddingRecipe",
+      "type": "object"
+    },
+    "ExtractionRecipe": {
+      "additionalProperties": false,
+      "properties": {
+        "canonicalization_version": {
+          "minLength": 1,
+          "title": "Canonicalization Version",
+          "type": "string"
+        },
+        "invocation_id": {
+          "minLength": 1,
+          "title": "Invocation Id",
+          "type": "string"
+        },
+        "model_id": {
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "ontology_version": {
+          "minLength": 1,
+          "title": "Ontology Version",
+          "type": "string"
+        },
+        "output_schema_version": {
+          "minLength": 1,
+          "title": "Output Schema Version",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Parameters",
+          "type": "object"
+        },
+        "prompt_version": {
+          "minLength": 1,
+          "title": "Prompt Version",
+          "type": "string"
+        },
+        "source_region": {
+          "minLength": 1,
+          "title": "Source Region",
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "model_id",
+        "invocation_id",
+        "source_region",
+        "parameters",
+        "prompt_version",
+        "output_schema_version",
+        "ontology_version",
+        "canonicalization_version"
+      ],
+      "title": "ExtractionRecipe",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "LocalBgeRecipe": {
+      "additionalProperties": false,
+      "description": "Explicit local-encoder variant; existing 1024-dimensional recipes stay unchanged.",
+      "properties": {
+        "artifact_manifest_sha256": {
+          "maxLength": 64,
+          "minLength": 64,
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Artifact Manifest Sha256",
+          "type": "string"
+        },
+        "dimension": {
+          "const": 384,
+          "default": 384,
+          "title": "Dimension",
+          "type": "integer"
+        },
+        "input_recipe_version": {
+          "enum": [
+            "title-section-text-v1",
+            "question-text-v1"
+          ],
+          "title": "Input Recipe Version",
+          "type": "string"
+        },
+        "input_role": {
+          "enum": [
+            "document",
+            "query"
+          ],
+          "title": "Input Role",
+          "type": "string"
+        },
+        "invocation_id": {
+          "const": "bge-small-en-v1.5-onnx-fp32",
+          "default": "bge-small-en-v1.5-onnx-fp32",
+          "title": "Invocation Id",
+          "type": "string"
+        },
+        "max_tokens": {
+          "const": 512,
+          "default": 512,
+          "title": "Max Tokens",
+          "type": "integer"
+        },
+        "model_id": {
+          "const": "BAAI/bge-small-en-v1.5",
+          "default": "BAAI/bge-small-en-v1.5",
+          "title": "Model Id",
+          "type": "string"
+        },
+        "model_revision": {
+          "const": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "default": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "title": "Model Revision",
+          "type": "string"
+        },
+        "normalization_version": {
+          "const": "float32-l2-v1",
+          "default": "float32-l2-v1",
+          "title": "Normalization Version",
+          "type": "string"
+        },
+        "normalized": {
+          "default": true,
+          "title": "Normalized",
+          "type": "boolean"
+        },
+        "onnxruntime_version": {
+          "minLength": 1,
+          "title": "Onnxruntime Version",
+          "type": "string"
+        },
+        "pooling": {
+          "const": "CLS",
+          "default": "CLS",
+          "title": "Pooling",
+          "type": "string"
+        },
+        "provider": {
+          "const": "LOCAL",
+          "default": "LOCAL",
+          "title": "Provider",
+          "type": "string"
+        },
+        "query_prefix": {
+          "const": "Represent this sentence for searching relevant passages: ",
+          "default": "Represent this sentence for searching relevant passages: ",
+          "title": "Query Prefix",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 3,
+          "default": 3,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_region": {
+          "const": "local-cpu",
+          "default": "local-cpu",
+          "title": "Source Region",
+          "type": "string"
+        },
+        "tokenizers_version": {
+          "minLength": 1,
+          "title": "Tokenizers Version",
+          "type": "string"
+        },
+        "truncation": {
+          "const": false,
+          "default": false,
+          "title": "Truncation",
+          "type": "boolean"
+        },
+        "version": {
+          "const": "bge-onnx-cls-v1",
+          "default": "bge-onnx-cls-v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input_recipe_version",
+        "artifact_manifest_sha256",
+        "onnxruntime_version",
+        "tokenizers_version",
+        "input_role"
+      ],
+      "title": "LocalBgeRecipe",
+      "type": "object"
+    },
+    "SnapshotCounts": {
+      "additionalProperties": false,
+      "properties": {
+        "assertions": {
+          "maximum": 150000,
+          "minimum": 0,
+          "title": "Assertions",
+          "type": "integer"
+        },
+        "chunks": {
+          "maximum": 5000,
+          "minimum": 1,
+          "title": "Chunks",
+          "type": "integer"
+        },
+        "documents": {
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Documents",
+          "type": "integer"
+        },
+        "entities": {
+          "maximum": 100000,
+          "minimum": 0,
+          "title": "Entities",
+          "type": "integer"
+        },
+        "mentions": {
+          "maximum": 100000,
+          "minimum": 0,
+          "title": "Mentions",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "documents",
+        "chunks",
+        "entities",
+        "mentions",
+        "assertions"
+      ],
+      "title": "SnapshotCounts",
+      "type": "object"
+    },
+    "SnapshotFile": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_size": {
+          "maximum": 104857600,
+          "minimum": 0,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "name": {
+          "enum": [
+            "documents.jsonl",
+            "chunks.jsonl",
+            "entities.jsonl",
+            "mentions.jsonl",
+            "assertions.jsonl",
+            "vectors.npz"
+          ],
+          "title": "Name",
+          "type": "string"
+        },
+        "record_count": {
+          "minimum": 0,
+          "title": "Record Count",
+          "type": "integer"
+        },
+        "sha256": {
+          "maxLength": 64,
+          "minLength": 64,
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uncompressed_size": {
+          "maximum": 104857600,
+          "minimum": 0,
+          "title": "Uncompressed Size",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "sha256",
+        "byte_size",
+        "uncompressed_size",
+        "record_count"
+      ],
+      "title": "SnapshotFile",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "chunking_version": {
+      "minLength": 1,
+      "title": "Chunking Version",
+      "type": "string"
+    },
+    "corpus_version": {
+      "minLength": 1,
+      "title": "Corpus Version",
+      "type": "string"
+    },
+    "counts": {
+      "$ref": "#/$defs/SnapshotCounts"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "embedding_recipe": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EmbeddingRecipe"
+        },
+        {
+          "$ref": "#/$defs/ExternalEmbeddingRecipe"
+        },
+        {
+          "$ref": "#/$defs/LocalBgeRecipe"
+        }
+      ],
+      "title": "Embedding Recipe"
+    },
+    "extraction_recipe": {
+      "$ref": "#/$defs/ExtractionRecipe"
+    },
+    "files": {
+      "items": {
+        "$ref": "#/$defs/SnapshotFile"
+      },
+      "title": "Files",
+      "type": "array"
+    },
+    "git_commit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Git Commit"
+    },
+    "git_dirty": {
+      "title": "Git Dirty",
+      "type": "boolean"
+    },
+    "identity_recipe": {
+      "const": "identity-v2",
+      "default": "identity-v2",
+      "title": "Identity Recipe",
+      "type": "string"
+    },
+    "normalizer_version": {
+      "minLength": 1,
+      "title": "Normalizer Version",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "FIXTURE",
+        "DEMO"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": 2,
+      "maximum": 2,
+      "minimum": 2,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "snapshot_version": {
+      "minLength": 1,
+      "title": "Snapshot Version",
+      "type": "string"
+    },
+    "tenant_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "tokenizer_version": {
+      "minLength": 1,
+      "title": "Tokenizer Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "snapshot_version",
+    "tenant_id",
+    "purpose",
+    "created_at",
+    "git_commit",
+    "git_dirty",
+    "corpus_version",
+    "normalizer_version",
+    "chunking_version",
+    "tokenizer_version",
+    "extraction_recipe",
+    "embedding_recipe",
+    "counts",
+    "files"
+  ],
+  "title": "SnapshotManifest",
+  "type": "object"
+}

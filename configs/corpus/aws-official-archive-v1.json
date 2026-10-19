@@ -1,0 +1,19 @@
+{
+  "version": "aws-official-archive-v1",
+  "root_sitemap": "https://docs.aws.amazon.com/sitemap_index.xml",
+  "languages": ["en"],
+  "formats": ["html", "markdown", "text", "pdf"],
+  "follow_document_links": true,
+  "max_storage_bytes": 8589934592,
+  "min_free_disk_bytes": 2147483648,
+  "priority_sitemaps": [
+    "https://docs.aws.amazon.com/AmazonS3/latest/userguide/sitemap.xml",
+    "https://docs.aws.amazon.com/IAM/latest/UserGuide/sitemap.xml",
+    "https://docs.aws.amazon.com/lambda/latest/dg/sitemap.xml",
+    "https://docs.aws.amazon.com/kms/latest/developerguide/sitemap.xml",
+    "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sitemap.xml",
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/sitemap.xml",
+    "https://docs.aws.amazon.com/eks/latest/userguide/sitemap.xml",
+    "https://docs.aws.amazon.com/wellarchitected/latest/framework/sitemap.xml"
+  ]
+}

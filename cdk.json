@@ -1,0 +1,6 @@
+{
+  "app": "uv run --frozen --offline python -m infra.app",
+  "output": "cdk.out",
+  "versionReporting": false,
+  "pathMetadata": false
+}

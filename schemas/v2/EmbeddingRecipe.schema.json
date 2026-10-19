@@ -1,0 +1,51 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "dimension": {
+      "default": 1024,
+      "maximum": 1024,
+      "minimum": 1024,
+      "title": "Dimension",
+      "type": "integer"
+    },
+    "input_recipe_version": {
+      "const": "title-section-text-v1",
+      "default": "title-section-text-v1",
+      "title": "Input Recipe Version",
+      "type": "string"
+    },
+    "invocation_id": {
+      "minLength": 1,
+      "title": "Invocation Id",
+      "type": "string"
+    },
+    "model_id": {
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "normalized": {
+      "default": true,
+      "title": "Normalized",
+      "type": "boolean"
+    },
+    "source_region": {
+      "minLength": 1,
+      "title": "Source Region",
+      "type": "string"
+    },
+    "version": {
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "model_id",
+    "invocation_id",
+    "source_region"
+  ],
+  "title": "EmbeddingRecipe",
+  "type": "object"
+}

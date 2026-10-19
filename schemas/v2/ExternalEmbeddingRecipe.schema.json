@@ -1,0 +1,100 @@
+{
+  "additionalProperties": false,
+  "description": "Versioned role-aware branch; legacy recipes acquire no new default fields.",
+  "properties": {
+    "dimension": {
+      "default": 1024,
+      "maximum": 1024,
+      "minimum": 1024,
+      "title": "Dimension",
+      "type": "integer"
+    },
+    "endpoint": {
+      "const": "https://api.voyageai.com/v1/embeddings",
+      "default": "https://api.voyageai.com/v1/embeddings",
+      "title": "Endpoint",
+      "type": "string"
+    },
+    "input_recipe_version": {
+      "enum": [
+        "title-section-text-v1",
+        "question-text-v1"
+      ],
+      "title": "Input Recipe Version",
+      "type": "string"
+    },
+    "input_role": {
+      "enum": [
+        "document",
+        "query"
+      ],
+      "title": "Input Role",
+      "type": "string"
+    },
+    "invocation_id": {
+      "const": "voyage-4-lite",
+      "default": "voyage-4-lite",
+      "title": "Invocation Id",
+      "type": "string"
+    },
+    "model_id": {
+      "const": "voyage-4-lite",
+      "default": "voyage-4-lite",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "normalization_version": {
+      "const": "local-float32-l2-v1",
+      "default": "local-float32-l2-v1",
+      "title": "Normalization Version",
+      "type": "string"
+    },
+    "normalized": {
+      "default": true,
+      "title": "Normalized",
+      "type": "boolean"
+    },
+    "output_dtype": {
+      "const": "float",
+      "default": "float",
+      "title": "Output Dtype",
+      "type": "string"
+    },
+    "provider": {
+      "const": "VOYAGE",
+      "default": "VOYAGE",
+      "title": "Provider",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 2,
+      "default": 2,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "source_region": {
+      "const": "external-default",
+      "default": "external-default",
+      "title": "Source Region",
+      "type": "string"
+    },
+    "truncation": {
+      "const": false,
+      "default": false,
+      "title": "Truncation",
+      "type": "boolean"
+    },
+    "version": {
+      "const": "voyage-role-aware-v1",
+      "default": "voyage-role-aware-v1",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "input_recipe_version",
+    "input_role"
+  ],
+  "title": "ExternalEmbeddingRecipe",
+  "type": "object"
+}

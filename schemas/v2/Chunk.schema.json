@@ -1,0 +1,86 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "chunk_id": {
+      "minLength": 1,
+      "title": "Chunk Id",
+      "type": "string"
+    },
+    "chunking_version": {
+      "minLength": 1,
+      "title": "Chunking Version",
+      "type": "string"
+    },
+    "document_version_id": {
+      "minLength": 1,
+      "title": "Document Version Id",
+      "type": "string"
+    },
+    "end_char": {
+      "exclusiveMinimum": 0,
+      "title": "End Char",
+      "type": "integer"
+    },
+    "position": {
+      "minimum": 0,
+      "title": "Position",
+      "type": "integer"
+    },
+    "section_path": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Section Path",
+      "type": "array"
+    },
+    "start_char": {
+      "minimum": 0,
+      "title": "Start Char",
+      "type": "integer"
+    },
+    "tenant_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "text": {
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    },
+    "text_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Text Sha256",
+      "type": "string"
+    },
+    "token_count": {
+      "exclusiveMinimum": 0,
+      "title": "Token Count",
+      "type": "integer"
+    },
+    "tokenizer_version": {
+      "minLength": 1,
+      "title": "Tokenizer Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "chunk_id",
+    "tenant_id",
+    "document_version_id",
+    "chunking_version",
+    "section_path",
+    "position",
+    "start_char",
+    "end_char",
+    "text",
+    "text_sha256",
+    "token_count",
+    "tokenizer_version"
+  ],
+  "title": "Chunk",
+  "type": "object"
+}

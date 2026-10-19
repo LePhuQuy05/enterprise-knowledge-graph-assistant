@@ -1,0 +1,15 @@
+{
+  "version": "r72-bge-deepseek-v1",
+  "embedding_provider": "LOCAL",
+  "embedding_model_id": "BAAI/bge-small-en-v1.5",
+  "embedding_dimension": 384,
+  "embedding_artifact_manifest": "configs/models/bge-small-en-v1.5-onnx.json",
+  "generation_provider": "DEEPSEEK",
+  "generation_model_id": "deepseek-flash",
+  "generation_route_reference": "configs/models/external-direct-v1.json",
+  "deployment_region": "us-east-1",
+  "embedding_api_enabled": false,
+  "cloud_document_answers_enabled": true,
+  "cloud_model_delivery": "S3_IMMUTABLE_MODEL_TO_TMP",
+  "cloud_model_prefix": "models/bge-small-en-v1.5/f2daa82f0d44a8e27854cd7e53d428d2484c9bcbba80213ff663a370989998a0/"
+}

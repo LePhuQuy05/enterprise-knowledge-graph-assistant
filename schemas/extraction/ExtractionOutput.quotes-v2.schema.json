@@ -1,0 +1,161 @@
+{
+  "$defs": {
+    "Qualifier": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "REGION",
+            "CONFIGURATION",
+            "VERSION",
+            "LIMITATION",
+            "OTHER"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ],
+      "title": "Qualifier",
+      "type": "object"
+    },
+    "QuoteEntity": {
+      "additionalProperties": false,
+      "properties": {
+        "local_id": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Local Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "entity_type": {
+          "enum": [
+            "AWS_SERVICE",
+            "FEATURE",
+            "PROTOCOL",
+            "RESOURCE",
+            "CONCEPT"
+          ],
+          "title": "Entity Type",
+          "type": "string"
+        },
+        "mention_contexts": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "title": "Mention Contexts",
+          "type": "array"
+        }
+      },
+      "required": [
+        "local_id",
+        "name",
+        "entity_type"
+      ],
+      "title": "QuoteEntity",
+      "type": "object"
+    },
+    "QuoteRelationship": {
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Subject",
+          "type": "string"
+        },
+        "predicate": {
+          "enum": [
+            "INTEGRATES_WITH",
+            "DEPENDS_ON",
+            "PART_OF",
+            "SUPPORTS",
+            "USES",
+            "REPLACES"
+          ],
+          "title": "Predicate",
+          "type": "string"
+        },
+        "object": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Object",
+          "type": "string"
+        },
+        "evidence_quote": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Evidence Quote",
+          "type": "string"
+        },
+        "polarity": {
+          "enum": [
+            "POSITIVE",
+            "NEGATIVE"
+          ],
+          "title": "Polarity",
+          "type": "string"
+        },
+        "qualifiers": {
+          "items": {
+            "$ref": "#/$defs/Qualifier"
+          },
+          "maxItems": 8,
+          "title": "Qualifiers",
+          "type": "array"
+        }
+      },
+      "required": [
+        "subject",
+        "predicate",
+        "object",
+        "evidence_quote",
+        "polarity",
+        "qualifiers"
+      ],
+      "title": "QuoteRelationship",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "entities": {
+      "items": {
+        "$ref": "#/$defs/QuoteEntity"
+      },
+      "maxItems": 20,
+      "title": "Entities",
+      "type": "array"
+    },
+    "relationships": {
+      "items": {
+        "$ref": "#/$defs/QuoteRelationship"
+      },
+      "maxItems": 30,
+      "title": "Relationships",
+      "type": "array"
+    }
+  },
+  "required": [
+    "entities",
+    "relationships"
+  ],
+  "title": "QuoteExtractionOutput",
+  "type": "object"
+}

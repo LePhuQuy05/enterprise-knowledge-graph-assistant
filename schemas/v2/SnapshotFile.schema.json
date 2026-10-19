@@ -1,0 +1,50 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "byte_size": {
+      "maximum": 104857600,
+      "minimum": 0,
+      "title": "Byte Size",
+      "type": "integer"
+    },
+    "name": {
+      "enum": [
+        "documents.jsonl",
+        "chunks.jsonl",
+        "entities.jsonl",
+        "mentions.jsonl",
+        "assertions.jsonl",
+        "vectors.npz"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "record_count": {
+      "minimum": 0,
+      "title": "Record Count",
+      "type": "integer"
+    },
+    "sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Sha256",
+      "type": "string"
+    },
+    "uncompressed_size": {
+      "maximum": 104857600,
+      "minimum": 0,
+      "title": "Uncompressed Size",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "name",
+    "sha256",
+    "byte_size",
+    "uncompressed_size",
+    "record_count"
+  ],
+  "title": "SnapshotFile",
+  "type": "object"
+}

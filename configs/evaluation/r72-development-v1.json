@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "dataset_id": "aws-r72-development-v1",
+  "split": "DEVELOPMENT",
+  "language": "en",
+  "source_snapshot_version": "snap_d71f93932e435b1cff5c1e43269ec736d16ab02e499bdc33db548cee5cdb4edd",
+  "source_manifest_sha256": "8765e8bd7ef8b0e03b9d76feb2153de67b0e64e6881e437103313d124a4cf9cf",
+  "annotation_policy": "SOURCE_FIRST_AI_DRAFT_REQUIRES_HUMAN_REVIEW_V1",
+  "items": [
+    {
+      "question_id": "dev-01",
+      "intent_group_id": "async-delivery-retries",
+      "category": "FACTUAL",
+      "question": "What is the default retry schedule when an asynchronously invoked Lambda function returns an error?",
+      "answerable": true,
+      "reference_answer": "Lambda makes two additional attempts by default, waiting one minute between the first two attempts and two minutes between the second and third.",
+      "evidence_groups": [
+        {
+          "group_id": "retry-schedule",
+          "required_fact": "Default function-error retries are two additional attempts with waits of one and two minutes.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 68,
+              "end_char": 487,
+              "quote": "Lambda manages your function's asynchronous event queue and attempts to retry on errors. If the function returns an error, by default Lambda attempts to run it two more times, with a one-minute wait between the first two attempts, and two minutes between the second and third attempts. Event Function errors include errors returned by the function's code and errors returned by the function's runtime, such as timeouts."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-02",
+      "intent_group_id": "region-placement",
+      "category": "FACTUAL",
+      "question": "For SSE-KMS encryption of an S3 bucket, where must its KMS key be located?",
+      "answerable": true,
+      "reference_answer": "The KMS key must be in the same AWS Region as the S3 bucket.",
+      "evidence_groups": [
+        {
+          "group_id": "key-region",
+          "required_fact": "The SSE-KMS key and bucket must share a Region.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2235,
+              "end_char": 2344,
+              "quote": "When you use SSE-KMS encryption with an S3 bucket, the AWS KMS keys must be in the same Region as the bucket."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-03",
+      "intent_group_id": "ownership-sharing",
+      "category": "FACTUAL",
+      "question": "Under S3 Bucket owner enforced Object Ownership, do ACLs still grant access to objects?",
+      "answerable": true,
+      "reference_answer": "ACLs are disabled and no longer affect access; the bucket uses policies for access control.",
+      "evidence_groups": [
+        {
+          "group_id": "acl-disabled",
+          "required_fact": "Bucket owner enforced disables ACL-based permissions and uses policies.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_2d3b13e4e6df29795eaca0e8b2b901d730aa477517b988931eaedda40ef509bb",
+              "start_char": 1026,
+              "end_char": 1283,
+              "quote": "Bucket owner enforced (default) – ACLs are disabled, and the bucket owner automatically owns and has full control over every object in the bucket. ACLs no longer affect permissions to data in the S3 bucket. The bucket uses policies to define access control."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-04",
+      "intent_group_id": "permission-layers",
+      "category": "FACTUAL",
+      "question": "Which KMS permission is required to download an S3 object encrypted with an AWS KMS key?",
+      "answerable": true,
+      "reference_answer": "The caller needs kms:Decrypt permission on the key; this is not a claim that this permission alone grants all S3 access.",
+      "evidence_groups": [
+        {
+          "group_id": "decrypt",
+          "required_fact": "Downloading an SSE-KMS object needs kms:Decrypt permission on its key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2929,
+              "end_char": 3027,
+              "quote": "To download an object encrypted with an AWS KMS key, you need kms:Decrypt permissions for the key."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-05",
+      "intent_group_id": "execution-role-trust",
+      "category": "ENTITY_RELATION",
+      "question": "Which service principal must the trust policy of a Lambda execution role trust, and why?",
+      "answerable": true,
+      "reference_answer": "It must trust lambda.amazonaws.com so that Lambda can assume the execution role.",
+      "evidence_groups": [
+        {
+          "group_id": "lambda-trust",
+          "required_fact": "The role trust policy must trust the Lambda service principal for role assumption.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_ae92acca2a733b0bf58971836c1c5bddba3c79d188fed1c4bf3b0b5831575fe5",
+              "start_char": 924,
+              "end_char": 1094,
+              "quote": "In order for Lambda to properly assume your execution role, the role's trust policy must specify the Lambda service principal (lambda.amazonaws.com) as a trusted service."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-06",
+      "intent_group_id": "permission-layers",
+      "category": "ENTITY_RELATION",
+      "question": "Is a KMS key policy alone enough to permit cross-account use of a KMS key?",
+      "answerable": true,
+      "reference_answer": "No. Cross-account use requires both the key policy and an IAM policy; neither policy alone is sufficient.",
+      "evidence_groups": [
+        {
+          "group_id": "two-policies",
+          "required_fact": "Cross-account KMS use needs permissions in both key and IAM policies.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+              "start_char": 2192,
+              "end_char": 2400,
+              "quote": "The key policy determines who can have access to the KMS key. The IAM policy determines who does have access to the KMS key. Neither the key policy nor the IAM policy alone is sufficient—you must change both."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-07",
+      "intent_group_id": "permission-layers",
+      "category": "ENTITY_RELATION",
+      "question": "For an S3-triggered Lambda function, where are permissions to invoke the function and permissions for its SDK calls to S3 configured?",
+      "answerable": true,
+      "reference_answer": "S3 invocation is permitted by the function resource-based policy; SDK access to S3 needs S3 permissions in the function execution role.",
+      "evidence_groups": [
+        {
+          "group_id": "invoke-policy",
+          "required_fact": "S3 needs invocation permission in the Lambda resource-based policy.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2177,
+              "end_char": 2271,
+              "quote": "To invoke your function, Amazon S3 needs permission from the function's resource-based policy."
+            }
+          ]
+        },
+        {
+          "group_id": "s3-role",
+          "required_fact": "Function SDK access to S3 needs S3 permissions in its execution role.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2677,
+              "end_char": 2800,
+              "quote": "If your function uses the AWS SDK to manage Amazon S3 resources, it also needs Amazon S3 permissions in its execution role."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-08",
+      "intent_group_id": "permission-layers",
+      "category": "ENTITY_RELATION",
+      "question": "What must a KMS key policy enable before IAM policies can control access to that key?",
+      "answerable": true,
+      "reference_answer": "The key policy must give the account permission to use IAM policies, through the statement that enables IAM policies.",
+      "evidence_groups": [
+        {
+          "group_id": "iam-enabled",
+          "required_fact": "The key policy must enable account use of IAM policies for the key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_3393a1dd297598d763435372edabd5cd5e9b24b0004ac1a03c6bd13a3e9728b8",
+              "start_char": 558,
+              "end_char": 849,
+              "quote": "All KMS keys must have a key policy. IAM policies are optional. To use an IAM policy to control access to a KMS key, the key policy for the KMS key must give the account permission to use IAM policies. Specifically, the key policy must include the policy statement that enables IAM policies."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-09",
+      "intent_group_id": "async-delivery-retries",
+      "category": "MULTI_HOP",
+      "question": "How does S3 deliver an object notification to Lambda, and what default retry schedule applies if the function returns an error?",
+      "answerable": true,
+      "reference_answer": "S3 invokes Lambda asynchronously. For a function error, Lambda retries two more times by default, with waits of one minute and two minutes.",
+      "evidence_groups": [
+        {
+          "group_id": "delivery",
+          "required_fact": "S3 invokes the function asynchronously.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 796,
+              "end_char": 1006,
+              "quote": "Amazon S3 invokes your function asynchronously with an event that contains details about the object. The following example shows an event that Amazon S3 sent when a deployment package was uploaded to Amazon S3."
+            }
+          ]
+        },
+        {
+          "group_id": "retry",
+          "required_fact": "Asynchronous function errors have two additional default attempts with one-minute and two-minute waits.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 68,
+              "end_char": 487,
+              "quote": "Lambda manages your function's asynchronous event queue and attempts to retry on errors. If the function returns an error, by default Lambda attempts to run it two more times, with a one-minute wait between the first two attempts, and two minutes between the second and third attempts. Event Function errors include errors returned by the function's code and errors returned by the function's runtime, such as timeouts."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "The S3 integration source establishes asynchronous invocation; the asynchronous error-handling source supplies the retry schedule. Both facts are needed. Human review must verify no single document suffices and confirm this deserves the multi-hop label.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-10",
+      "intent_group_id": "permission-layers",
+      "category": "MULTI_HOP",
+      "question": "Why does successful S3 invocation of Lambda not by itself prove the function can read an SSE-KMS object using a KMS key from another account?",
+      "answerable": true,
+      "reference_answer": "Invocation permission is in the Lambda resource policy. Function SDK access needs S3 execution-role permissions; encrypted-object download also needs kms:Decrypt. Cross-account KMS use requires both key and IAM policy permission. These are necessary layers, not a complete real-account policy diagnosis.",
+      "evidence_groups": [
+        {
+          "group_id": "invoke",
+          "required_fact": "S3 invocation requires the function resource-based permission.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2177,
+              "end_char": 2271,
+              "quote": "To invoke your function, Amazon S3 needs permission from the function's resource-based policy."
+            }
+          ]
+        },
+        {
+          "group_id": "runtime",
+          "required_fact": "SDK access to S3 requires S3 execution-role permissions.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2677,
+              "end_char": 2800,
+              "quote": "If your function uses the AWS SDK to manage Amazon S3 resources, it also needs Amazon S3 permissions in its execution role."
+            }
+          ]
+        },
+        {
+          "group_id": "decrypt",
+          "required_fact": "SSE-KMS download needs kms:Decrypt on the key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2929,
+              "end_char": 3027,
+              "quote": "To download an object encrypted with an AWS KMS key, you need kms:Decrypt permissions for the key."
+            }
+          ]
+        },
+        {
+          "group_id": "cross-key",
+          "required_fact": "Cross-account key use needs key-policy and IAM-policy permission.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+              "start_char": 2192,
+              "end_char": 2400,
+              "quote": "The key policy determines who can have access to the KMS key. The IAM policy determines who does have access to the KMS key. Neither the key policy nor the IAM policy alone is sufficient—you must change both."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "This combines the S3/Lambda invocation-vs-runtime distinction with SSE-KMS decryption and cross-account key permissions from three source documents. Granting invocation permission does not grant those other permissions. It does not establish all bucket/SCP/session/KMS conditions.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-11",
+      "intent_group_id": "ownership-sharing",
+      "category": "MULTI_HOP",
+      "question": "For a Bucket owner enforced S3 bucket sharing SSE-KMS objects across accounts, should access depend on object ACLs, and which KMS key type supports the sharing?",
+      "answerable": true,
+      "reference_answer": "Bucket owner enforced disables ACL permissions, so use policies for S3 access. AWS-managed SSE-KMS keys cannot share the encrypted objects cross-account; use a customer managed KMS key and appropriate permissions.",
+      "evidence_groups": [
+        {
+          "group_id": "policy-access",
+          "required_fact": "Bucket owner enforced uses policies with ACLs disabled.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_2d3b13e4e6df29795eaca0e8b2b901d730aa477517b988931eaedda40ef509bb",
+              "start_char": 1026,
+              "end_char": 1283,
+              "quote": "Bucket owner enforced (default) – ACLs are disabled, and the bucket owner automatically owns and has full control over every object in the bucket. ACLs no longer affect permissions to data in the S3 bucket. The bucket uses policies to define access control."
+            }
+          ]
+        },
+        {
+          "group_id": "cmk-sharing",
+          "required_fact": "Cross-account sharing of SSE-KMS objects requires a customer managed key rather than an AWS managed key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 4729,
+              "end_char": 4912,
+              "quote": "Objects encrypted using SSE-KMS with AWS managed keys can't be shared cross-account. If you need to share SSE-KMS data cross-account, you must use a customer managed key from AWS KMS."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "Ownership documentation establishes the ACL/policy mechanism; SSE-KMS documentation establishes the key-type restriction. Both are necessary to describe the proposed sharing configuration; human necessity/alternative-source review is pending.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-12",
+      "intent_group_id": "region-placement",
+      "category": "MULTI_HOP",
+      "question": "For direct S3 event notifications to Lambda with objects protected by SSE-KMS, what Region constraints apply to the Lambda function and the encryption key?",
+      "answerable": true,
+      "reference_answer": "For the direct notification destination, the Lambda function must be in the bucket Region. For SSE-KMS, the KMS key must also be in the bucket Region.",
+      "evidence_groups": [
+        {
+          "group_id": "function-region",
+          "required_fact": "The direct Lambda notification destination must share the bucket Region.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_9a4a2f1a526ff7ba126602e8160527dbfc0cf0d7177e2dba9dbde1b358853339",
+              "start_char": 4444,
+              "end_char": 4509,
+              "quote": "The Lambda function must be in the same Region as your S3 bucket."
+            }
+          ]
+        },
+        {
+          "group_id": "key-region",
+          "required_fact": "The SSE-KMS key must share the bucket Region.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2235,
+              "end_char": 2344,
+              "quote": "When you use SSE-KMS encryption with an S3 bucket, the AWS KMS keys must be in the same Region as the bucket."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "The notification-destination source and SSE-KMS source supply distinct constraints on the function and key, joined through the same bucket. Neither approved source span states the other constraint. Human review must check wider alternatives and semantic necessity.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-13",
+      "intent_group_id": "private-runtime-records",
+      "category": "UNANSWERABLE",
+      "question": "What is the actual production customer-managed KMS key ID used by this portfolio project?",
+      "answerable": false,
+      "reference_answer": "The public-document corpus cannot identify this private project value. Do not substitute an example key ID.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The fixed corpus contains public AWS manuals, not private project configuration, request logs or billing records. Example values in manuals cannot identify the actual project value."
+    },
+    {
+      "question_id": "dev-14",
+      "intent_group_id": "private-runtime-records",
+      "category": "UNANSWERABLE",
+      "question": "What was the request ID of the most recent failed invocation of my production Lambda function?",
+      "answerable": false,
+      "reference_answer": "The corpus does not contain the production invocation logs needed to identify that request ID.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The fixed corpus contains public AWS manuals, not private project configuration, request logs or billing records. Example values in manuals cannot identify the actual project value."
+    },
+    {
+      "question_id": "dev-15",
+      "intent_group_id": "private-runtime-records",
+      "category": "UNANSWERABLE",
+      "question": "What is the actual finalized AWS bill for this portfolio project this month?",
+      "answerable": false,
+      "reference_answer": "The corpus has AWS documentation, not this project account invoice. It cannot supply the actual finalized bill.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The fixed corpus contains public AWS manuals, not private project configuration, request logs or billing records. Example values in manuals cannot identify the actual project value."
+    }
+  ]
+}

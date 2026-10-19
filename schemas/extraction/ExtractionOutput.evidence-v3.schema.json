@@ -1,0 +1,174 @@
+{
+  "$defs": {
+    "Endpoint": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "entity_type": {
+          "enum": [
+            "AWS_SERVICE",
+            "FEATURE",
+            "PROTOCOL",
+            "RESOURCE",
+            "CONCEPT"
+          ],
+          "title": "Entity Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "entity_type"
+      ],
+      "title": "Endpoint",
+      "type": "object"
+    },
+    "EvidenceMention": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "entity_type": {
+          "enum": [
+            "AWS_SERVICE",
+            "FEATURE",
+            "PROTOCOL",
+            "RESOURCE",
+            "CONCEPT"
+          ],
+          "title": "Entity Type",
+          "type": "string"
+        },
+        "context_quote": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Context Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "entity_type",
+        "context_quote"
+      ],
+      "title": "EvidenceMention",
+      "type": "object"
+    },
+    "EvidenceRelation": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_quote": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Evidence Quote",
+          "type": "string"
+        },
+        "subject": {
+          "$ref": "#/$defs/Endpoint"
+        },
+        "predicate": {
+          "enum": [
+            "INTEGRATES_WITH",
+            "DEPENDS_ON",
+            "PART_OF",
+            "SUPPORTS",
+            "USES",
+            "REPLACES"
+          ],
+          "title": "Predicate",
+          "type": "string"
+        },
+        "object": {
+          "$ref": "#/$defs/Endpoint"
+        },
+        "polarity": {
+          "enum": [
+            "POSITIVE",
+            "NEGATIVE"
+          ],
+          "title": "Polarity",
+          "type": "string"
+        },
+        "qualifiers": {
+          "items": {
+            "$ref": "#/$defs/Qualifier"
+          },
+          "maxItems": 8,
+          "title": "Qualifiers",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_quote",
+        "subject",
+        "predicate",
+        "object",
+        "polarity",
+        "qualifiers"
+      ],
+      "title": "EvidenceRelation",
+      "type": "object"
+    },
+    "Qualifier": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "REGION",
+            "CONFIGURATION",
+            "VERSION",
+            "LIMITATION",
+            "OTHER"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ],
+      "title": "Qualifier",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "relationships": {
+      "items": {
+        "$ref": "#/$defs/EvidenceRelation"
+      },
+      "maxItems": 6,
+      "title": "Relationships",
+      "type": "array"
+    },
+    "standalone_entities": {
+      "items": {
+        "$ref": "#/$defs/EvidenceMention"
+      },
+      "maxItems": 8,
+      "title": "Standalone Entities",
+      "type": "array"
+    }
+  },
+  "required": [
+    "relationships",
+    "standalone_entities"
+  ],
+  "title": "EvidenceExtractionOutput",
+  "type": "object"
+}

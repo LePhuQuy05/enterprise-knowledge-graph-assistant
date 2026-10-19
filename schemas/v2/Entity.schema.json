@@ -1,0 +1,60 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "aliases": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Aliases",
+      "type": "array"
+    },
+    "canonical_key": {
+      "minLength": 1,
+      "title": "Canonical Key",
+      "type": "string"
+    },
+    "canonical_name": {
+      "minLength": 1,
+      "title": "Canonical Name",
+      "type": "string"
+    },
+    "canonicalization_version": {
+      "minLength": 1,
+      "title": "Canonicalization Version",
+      "type": "string"
+    },
+    "entity_id": {
+      "minLength": 1,
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "entity_type": {
+      "enum": [
+        "AWS_SERVICE",
+        "FEATURE",
+        "PROTOCOL",
+        "RESOURCE",
+        "CONCEPT"
+      ],
+      "title": "Entity Type",
+      "type": "string"
+    },
+    "tenant_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
+      "title": "Tenant Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "entity_id",
+    "tenant_id",
+    "canonical_key",
+    "canonical_name",
+    "entity_type",
+    "aliases",
+    "canonicalization_version"
+  ],
+  "title": "Entity",
+  "type": "object"
+}

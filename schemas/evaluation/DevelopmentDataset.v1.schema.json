@@ -1,0 +1,231 @@
+{
+  "$defs": {
+    "EvalItem": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "minLength": 1,
+          "title": "Question Id",
+          "type": "string"
+        },
+        "intent_group_id": {
+          "minLength": 1,
+          "title": "Intent Group Id",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "FACTUAL",
+            "ENTITY_RELATION",
+            "MULTI_HOP",
+            "UNANSWERABLE"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "question": {
+          "maxLength": 2000,
+          "minLength": 5,
+          "title": "Question",
+          "type": "string"
+        },
+        "answerable": {
+          "title": "Answerable",
+          "type": "boolean"
+        },
+        "reference_answer": {
+          "minLength": 1,
+          "title": "Reference Answer",
+          "type": "string"
+        },
+        "evidence_groups": {
+          "items": {
+            "$ref": "#/$defs/EvidenceGroup"
+          },
+          "maxItems": 12,
+          "title": "Evidence Groups",
+          "type": "array"
+        },
+        "review_status": {
+          "enum": [
+            "AI_DRAFT",
+            "HUMAN_APPROVED",
+            "REJECTED"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "review_note": {
+          "minLength": 1,
+          "title": "Review Note",
+          "type": "string"
+        },
+        "multi_hop_rationale": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Multi Hop Rationale"
+        },
+        "unanswerable_reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unanswerable Reason"
+        }
+      },
+      "required": [
+        "question_id",
+        "intent_group_id",
+        "category",
+        "question",
+        "answerable",
+        "reference_answer",
+        "evidence_groups",
+        "review_status",
+        "review_note"
+      ],
+      "title": "EvalItem",
+      "type": "object"
+    },
+    "EvidenceGroup": {
+      "additionalProperties": false,
+      "properties": {
+        "group_id": {
+          "minLength": 1,
+          "title": "Group Id",
+          "type": "string"
+        },
+        "required_fact": {
+          "minLength": 1,
+          "title": "Required Fact",
+          "type": "string"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/GoldSpan"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "required": [
+        "group_id",
+        "required_fact",
+        "alternatives"
+      ],
+      "title": "EvidenceGroup",
+      "type": "object"
+    },
+    "GoldSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "document_version_id": {
+          "minLength": 1,
+          "title": "Document Version Id",
+          "type": "string"
+        },
+        "start_char": {
+          "minimum": 0,
+          "title": "Start Char",
+          "type": "integer"
+        },
+        "end_char": {
+          "exclusiveMinimum": 0,
+          "title": "End Char",
+          "type": "integer"
+        },
+        "quote": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "document_version_id",
+        "start_char",
+        "end_char",
+        "quote"
+      ],
+      "title": "GoldSpan",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dataset_id": {
+      "minLength": 1,
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "split": {
+      "const": "DEVELOPMENT",
+      "title": "Split",
+      "type": "string"
+    },
+    "language": {
+      "const": "en",
+      "title": "Language",
+      "type": "string"
+    },
+    "source_snapshot_version": {
+      "minLength": 1,
+      "title": "Source Snapshot Version",
+      "type": "string"
+    },
+    "source_manifest_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Manifest Sha256",
+      "type": "string"
+    },
+    "annotation_policy": {
+      "const": "SOURCE_FIRST_AI_DRAFT_REQUIRES_HUMAN_REVIEW_V1",
+      "title": "Annotation Policy",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/EvalItem"
+      },
+      "maxItems": 50,
+      "minItems": 1,
+      "title": "Items",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "split",
+    "language",
+    "source_snapshot_version",
+    "source_manifest_sha256",
+    "annotation_policy",
+    "items"
+  ],
+  "title": "DevelopmentDataset",
+  "type": "object"
+}

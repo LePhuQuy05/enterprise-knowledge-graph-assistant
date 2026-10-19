@@ -1,0 +1,184 @@
+{
+  "$defs": {
+    "Qualifier": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "REGION",
+            "CONFIGURATION",
+            "VERSION",
+            "LIMITATION",
+            "OTHER"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ],
+      "title": "Qualifier",
+      "type": "object"
+    },
+    "RawEntity": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_type": {
+          "enum": [
+            "AWS_SERVICE",
+            "FEATURE",
+            "PROTOCOL",
+            "RESOURCE",
+            "CONCEPT"
+          ],
+          "title": "Entity Type",
+          "type": "string"
+        },
+        "local_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,31}$",
+          "title": "Local Id",
+          "type": "string"
+        },
+        "mentions": {
+          "items": {
+            "$ref": "#/$defs/RawSpan"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Mentions",
+          "type": "array"
+        },
+        "name": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "local_id",
+        "name",
+        "entity_type",
+        "mentions"
+      ],
+      "title": "RawEntity",
+      "type": "object"
+    },
+    "RawRelationship": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "$ref": "#/$defs/RawSpan"
+        },
+        "object": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,31}$",
+          "title": "Object",
+          "type": "string"
+        },
+        "polarity": {
+          "enum": [
+            "POSITIVE",
+            "NEGATIVE"
+          ],
+          "title": "Polarity",
+          "type": "string"
+        },
+        "predicate": {
+          "enum": [
+            "INTEGRATES_WITH",
+            "DEPENDS_ON",
+            "PART_OF",
+            "SUPPORTS",
+            "USES",
+            "REPLACES"
+          ],
+          "title": "Predicate",
+          "type": "string"
+        },
+        "qualifiers": {
+          "items": {
+            "$ref": "#/$defs/Qualifier"
+          },
+          "maxItems": 8,
+          "title": "Qualifiers",
+          "type": "array"
+        },
+        "subject": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,31}$",
+          "title": "Subject",
+          "type": "string"
+        }
+      },
+      "required": [
+        "subject",
+        "predicate",
+        "object",
+        "evidence",
+        "polarity",
+        "qualifiers"
+      ],
+      "title": "RawRelationship",
+      "type": "object"
+    },
+    "RawSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "end_char": {
+          "exclusiveMinimum": 0,
+          "title": "End Char",
+          "type": "integer"
+        },
+        "quote": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "start_char": {
+          "minimum": 0,
+          "title": "Start Char",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start_char",
+        "end_char",
+        "quote"
+      ],
+      "title": "RawSpan",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "entities": {
+      "items": {
+        "$ref": "#/$defs/RawEntity"
+      },
+      "maxItems": 20,
+      "title": "Entities",
+      "type": "array"
+    },
+    "relationships": {
+      "items": {
+        "$ref": "#/$defs/RawRelationship"
+      },
+      "maxItems": 30,
+      "title": "Relationships",
+      "type": "array"
+    }
+  },
+  "required": [
+    "entities",
+    "relationships"
+  ],
+  "title": "ExtractionOutput",
+  "type": "object"
+}

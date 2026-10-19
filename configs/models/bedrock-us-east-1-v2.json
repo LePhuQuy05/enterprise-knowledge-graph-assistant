@@ -1,0 +1,17 @@
+{
+  "version": "bedrock-us-east-1-v2",
+  "source_region": "us-east-1",
+  "generation_model_id": "anthropic.claude-haiku-4-5-20251001-v1:0",
+  "generation_invocation_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "generation_destination_regions": ["us-east-1", "us-east-2", "us-west-2"],
+  "embedding_model_id": "amazon.titan-embed-text-v2:0",
+  "embedding_invocation_id": "amazon.titan-embed-text-v2:0",
+  "embedding_dimension": 1024,
+  "embedding_normalized": true,
+  "performance_tier": "standard",
+  "prompt_caching_enabled": false,
+  "token_count_model_id": "anthropic.claude-haiku-4-5-20251001-v1:0",
+  "token_count_api": "BEDROCK_RUNTIME_COUNT_TOKENS",
+  "live_inference_enabled": false,
+  "live_inference_gate": "Managed ledger, scoped runtime IAM and account credit applicability remain separate checks"
+}

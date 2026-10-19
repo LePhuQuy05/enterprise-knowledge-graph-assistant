@@ -1,0 +1,27 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "end_char": {
+      "exclusiveMinimum": 0,
+      "title": "End Char",
+      "type": "integer"
+    },
+    "quote": {
+      "minLength": 1,
+      "title": "Quote",
+      "type": "string"
+    },
+    "start_char": {
+      "minimum": 0,
+      "title": "Start Char",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "start_char",
+    "end_char",
+    "quote"
+  ],
+  "title": "EvidenceSpan",
+  "type": "object"
+}

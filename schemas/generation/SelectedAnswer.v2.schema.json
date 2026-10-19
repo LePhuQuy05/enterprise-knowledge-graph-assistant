@@ -1,0 +1,88 @@
+{
+  "$defs": {
+    "SelectedClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "maxLength": 1200,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/SelectedEvidence"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "evidence"
+      ],
+      "title": "SelectedClaim",
+      "type": "object"
+    },
+    "SelectedEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "pattern": "^s[1-8]$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "span_id": {
+          "pattern": "^s[1-8]p[1-9][0-9]?$",
+          "title": "Span Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "span_id"
+      ],
+      "title": "SelectedEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "answer_status": {
+      "enum": [
+        "ANSWERED",
+        "PARTIAL",
+        "ABSTAINED"
+      ],
+      "title": "Answer Status",
+      "type": "string"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/SelectedClaim"
+      },
+      "maxItems": 4,
+      "title": "Claims",
+      "type": "array"
+    },
+    "reason": {
+      "enum": [
+        "NONE",
+        "INSUFFICIENT_EVIDENCE",
+        "CONFLICTING_EVIDENCE",
+        "OUT_OF_SCOPE"
+      ],
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "answer_status",
+    "claims",
+    "reason"
+  ],
+  "title": "SelectedAnswer",
+  "type": "object"
+}

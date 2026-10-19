@@ -1,0 +1,68 @@
+{
+  "$defs": {
+    "JsonValue": {}
+  },
+  "additionalProperties": false,
+  "properties": {
+    "canonicalization_version": {
+      "minLength": 1,
+      "title": "Canonicalization Version",
+      "type": "string"
+    },
+    "invocation_id": {
+      "minLength": 1,
+      "title": "Invocation Id",
+      "type": "string"
+    },
+    "model_id": {
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "ontology_version": {
+      "minLength": 1,
+      "title": "Ontology Version",
+      "type": "string"
+    },
+    "output_schema_version": {
+      "minLength": 1,
+      "title": "Output Schema Version",
+      "type": "string"
+    },
+    "parameters": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Parameters",
+      "type": "object"
+    },
+    "prompt_version": {
+      "minLength": 1,
+      "title": "Prompt Version",
+      "type": "string"
+    },
+    "source_region": {
+      "minLength": 1,
+      "title": "Source Region",
+      "type": "string"
+    },
+    "version": {
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "model_id",
+    "invocation_id",
+    "source_region",
+    "parameters",
+    "prompt_version",
+    "output_schema_version",
+    "ontology_version",
+    "canonicalization_version"
+  ],
+  "title": "ExtractionRecipe",
+  "type": "object"
+}

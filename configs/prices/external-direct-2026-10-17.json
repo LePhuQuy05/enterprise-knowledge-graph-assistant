@@ -1,0 +1,55 @@
+{
+  "version": "external-direct-2026-10-17-v1",
+  "checked_at": "2026-10-17T08:53:29.982995Z",
+  "expires_at": "2026-10-24T08:53:29.982995Z",
+  "currency": "USD",
+  "purpose": "LIVE",
+  "sources": [
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "sha256": "900a0320b14b23cd4253f2e702895023bf97c16da02b92ef229e600e31b80f8d",
+      "published_at": null
+    },
+    {
+      "url": "https://docs.voyageai.com/docs/pricing",
+      "sha256": "2d5ae13446d1fad65f10d929bc59edb4792ccc88d40b8dc7de3a725428a004e9",
+      "published_at": null
+    },
+    {
+      "url": "https://docs.voyageai.com/docs/embeddings",
+      "sha256": "c7d19e0752dabaa4c54eafdf008d9580cb619011ed71b5aa2202d29d2daffe06",
+      "published_at": null
+    }
+  ],
+  "rates": [
+    {
+      "model_id": "deepseek-flash",
+      "invocation_id": "deepseek-flash",
+      "source_region": "external-default",
+      "kind": "GENERATION",
+      "performance_tier": "standard",
+      "tokens_per_unit": 1000000,
+      "input_micro_usd_per_unit": 300000,
+      "output_micro_usd_per_unit": 1200000,
+      "input_rate_code": "PUBLISHED_PEAK_INPUT_CACHE_MISS",
+      "output_rate_code": "PUBLISHED_PEAK_OUTPUT",
+      "provider": "DEEPSEEK",
+      "billing_source": "DIRECT_API"
+    },
+    {
+      "model_id": "voyage-4-lite",
+      "invocation_id": "voyage-4-lite",
+      "source_region": "external-default",
+      "kind": "EMBEDDING",
+      "performance_tier": "standard",
+      "tokens_per_unit": 1000000,
+      "input_micro_usd_per_unit": 20000,
+      "output_micro_usd_per_unit": 0,
+      "input_rate_code": "PUBLISHED_PAID_INPUT_NO_ALLOWANCE",
+      "output_rate_code": null,
+      "provider": "VOYAGE",
+      "billing_source": "DIRECT_API"
+    }
+  ],
+  "cost_basis": "PUBLISHED_PEAK_NO_ALLOWANCE_UPPER_BOUND"
+}

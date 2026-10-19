@@ -1,0 +1,8 @@
+{
+  "version": "external-r72-v1",
+  "external_cap_micro_usd": 2000000,
+  "initial_smoke_run_id": "external-initial-smoke-r72-v1",
+  "initial_smoke_cap_micro_usd": 500000,
+  "authorized_max_external_micro_usd": 10000000,
+  "note": "Example aggregate and per-run accounting caps. Initialize your own durable budget state before explicitly executing paid commands; these values are not an invoice or a cloud-wide spending limit."
+}

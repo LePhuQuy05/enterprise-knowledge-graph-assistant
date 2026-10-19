@@ -1,0 +1,44 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "assertions": {
+      "maximum": 150000,
+      "minimum": 0,
+      "title": "Assertions",
+      "type": "integer"
+    },
+    "chunks": {
+      "maximum": 5000,
+      "minimum": 1,
+      "title": "Chunks",
+      "type": "integer"
+    },
+    "documents": {
+      "maximum": 100,
+      "minimum": 1,
+      "title": "Documents",
+      "type": "integer"
+    },
+    "entities": {
+      "maximum": 100000,
+      "minimum": 0,
+      "title": "Entities",
+      "type": "integer"
+    },
+    "mentions": {
+      "maximum": 100000,
+      "minimum": 0,
+      "title": "Mentions",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "documents",
+    "chunks",
+    "entities",
+    "mentions",
+    "assertions"
+  ],
+  "title": "SnapshotCounts",
+  "type": "object"
+}

@@ -1,0 +1,11 @@
+{
+  "neo4j": "neo4j@sha256:f1e52d4dc6da122468c4a3c1050a4f5e117f6d3268625237c34d49166f0d6082",
+  "lambda_python": "public.ecr.aws/lambda/python@sha256:3856536f53e945debf4c90d0ff301cbaa837c07a4ab9b0e2c102c6e54ceb9762",
+  "lambda_platform": "linux/amd64",
+  "observed_tags": {
+    "neo4j": "5.26-community",
+    "lambda_python": "3.12",
+    "dynamodb_local": "latest (resolved to pinned digest for execution)"
+  },
+  "dynamodb_local": "amazon/dynamodb-local@sha256:6ada631ec7aa5fc83446855eb17233e3dad184fec47477e8140c6c569cfe0c86"
+}

@@ -1,0 +1,90 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "document_id": {
+      "minLength": 1,
+      "title": "Document Id",
+      "type": "string"
+    },
+    "document_version_id": {
+      "minLength": 1,
+      "title": "Document Version Id",
+      "type": "string"
+    },
+    "fetched_at": {
+      "format": "date-time",
+      "title": "Fetched At",
+      "type": "string"
+    },
+    "normalized_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Normalized Sha256",
+      "type": "string"
+    },
+    "normalized_text": {
+      "maxLength": 1000000,
+      "minLength": 1,
+      "title": "Normalized Text",
+      "type": "string"
+    },
+    "normalized_text_path": {
+      "minLength": 1,
+      "title": "Normalized Text Path",
+      "type": "string"
+    },
+    "normalizer_version": {
+      "minLength": 1,
+      "title": "Normalizer Version",
+      "type": "string"
+    },
+    "raw_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Raw Sha256",
+      "type": "string"
+    },
+    "source_kind": {
+      "enum": [
+        "HTML",
+        "MARKDOWN",
+        "TEXT"
+      ],
+      "title": "Source Kind",
+      "type": "string"
+    },
+    "source_uri": {
+      "minLength": 1,
+      "title": "Source Uri",
+      "type": "string"
+    },
+    "tenant_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "tenant_id",
+    "document_id",
+    "document_version_id",
+    "source_uri",
+    "title",
+    "fetched_at",
+    "raw_sha256",
+    "normalized_sha256",
+    "normalizer_version",
+    "normalized_text_path",
+    "normalized_text",
+    "source_kind"
+  ],
+  "title": "DocumentVersion",
+  "type": "object"
+}

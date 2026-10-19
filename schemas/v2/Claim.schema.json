@@ -1,0 +1,32 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "citation_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 8,
+      "minItems": 1,
+      "title": "Citation Ids",
+      "type": "array"
+    },
+    "claim_id": {
+      "minLength": 1,
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "text": {
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "text",
+    "citation_ids"
+  ],
+  "title": "Claim",
+  "type": "object"
+}

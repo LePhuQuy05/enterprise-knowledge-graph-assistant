@@ -1,0 +1,27 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "enum": [
+        "REGION",
+        "CONFIGURATION",
+        "VERSION",
+        "LIMITATION",
+        "OTHER"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "text": {
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "text"
+  ],
+  "title": "Qualifier",
+  "type": "object"
+}

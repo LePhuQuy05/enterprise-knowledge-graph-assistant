@@ -1,0 +1,55 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "chunk_id": {
+      "minLength": 1,
+      "title": "Chunk Id",
+      "type": "string"
+    },
+    "citation_id": {
+      "minLength": 1,
+      "title": "Citation Id",
+      "type": "string"
+    },
+    "document_version_id": {
+      "minLength": 1,
+      "title": "Document Version Id",
+      "type": "string"
+    },
+    "quote": {
+      "maxLength": 600,
+      "minLength": 1,
+      "title": "Quote",
+      "type": "string"
+    },
+    "section_path": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Section Path",
+      "type": "array"
+    },
+    "source_uri": {
+      "minLength": 1,
+      "title": "Source Uri",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "citation_id",
+    "chunk_id",
+    "document_version_id",
+    "title",
+    "source_uri",
+    "section_path",
+    "quote"
+  ],
+  "title": "Citation",
+  "type": "object"
+}

@@ -1,0 +1,53 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "question": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Question",
+      "type": "string"
+    },
+    "mode": {
+      "anyOf": [
+        {
+          "enum": [
+            "vector",
+            "hybrid",
+            "graph_1hop",
+            "graph_2hop"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Mode"
+    },
+    "corpus_scope": {
+      "default": "snapshot",
+      "enum": [
+        "snapshot",
+        "aws_official"
+      ],
+      "title": "Corpus Scope",
+      "type": "string"
+    },
+    "answer_language": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "en",
+        "vi"
+      ],
+      "title": "Answer Language",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question"
+  ],
+  "title": "QueryRequest",
+  "type": "object"
+}

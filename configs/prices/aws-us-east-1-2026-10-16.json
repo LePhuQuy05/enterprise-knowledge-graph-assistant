@@ -1,0 +1,50 @@
+{
+  "version": "aws-us-east-1-2026-10-16-v1",
+  "checked_at": "2026-10-16T16:09:30.834768+00:00",
+  "expires_at": "2026-10-23T16:09:30.834768+00:00",
+  "currency": "USD",
+  "purpose": "LIVE",
+  "sources": [
+    {
+      "url": "https://aws.amazon.com/bedrock/pricing/",
+      "sha256": "db328c1df7171bd3de3e1b4d70dac85c41ed14ba7ec1b357a780adce378560e5",
+      "published_at": null
+    },
+    {
+      "url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/bedrockfoundationmodels/USD/current/bedrockfoundationmodels.json",
+      "sha256": "34e18bca755ac86f7920bb121b85dc17fd72fb64799acd27c1787a958bf847a3",
+      "published_at": "2026-10-12T08:40:08Z"
+    },
+    {
+      "url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-1/index.json",
+      "sha256": "57d61b316d3bdbd5b7d71fd41d53ef853a20f0bc0ad80c1024f63294235d3a6c",
+      "published_at": "2026-10-14T03:30:16Z"
+    }
+  ],
+  "rates": [
+    {
+      "model_id": "anthropic.claude-haiku-4-5-20251001-v1:0",
+      "invocation_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "source_region": "us-east-1",
+      "kind": "GENERATION",
+      "performance_tier": "standard",
+      "tokens_per_unit": 1000000,
+      "input_micro_usd_per_unit": 1100000,
+      "output_micro_usd_per_unit": 5500000,
+      "input_rate_code": "JQDUC8Q4K8C6GSGH.4799GE89SK.6YS6EN2CT7",
+      "output_rate_code": "X629GDA2GXAP6R54.4799GE89SK.6YS6EN2CT7"
+    },
+    {
+      "model_id": "amazon.titan-embed-text-v2:0",
+      "invocation_id": "amazon.titan-embed-text-v2:0",
+      "source_region": "us-east-1",
+      "kind": "EMBEDDING",
+      "performance_tier": "standard",
+      "tokens_per_unit": 1000000,
+      "input_micro_usd_per_unit": 20000,
+      "output_micro_usd_per_unit": 0,
+      "input_rate_code": "EDNQYEHQ3XQ8N7EY.JRTCKXETXF.6YS6EN2CT7",
+      "output_rate_code": null
+    }
+  ]
+}

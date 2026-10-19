@@ -1,0 +1,56 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "chunk_id": {
+      "minLength": 1,
+      "title": "Chunk Id",
+      "type": "string"
+    },
+    "dimension": {
+      "enum": [
+        384,
+        1024
+      ],
+      "title": "Dimension",
+      "type": "integer"
+    },
+    "embedding_input_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Embedding Input Sha256",
+      "type": "string"
+    },
+    "embedding_recipe_version": {
+      "minLength": 1,
+      "title": "Embedding Recipe Version",
+      "type": "string"
+    },
+    "model_id": {
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "normalized": {
+      "const": true,
+      "title": "Normalized",
+      "type": "boolean"
+    },
+    "vector_row": {
+      "minimum": 0,
+      "title": "Vector Row",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "chunk_id",
+    "embedding_input_sha256",
+    "model_id",
+    "dimension",
+    "normalized",
+    "embedding_recipe_version",
+    "vector_row"
+  ],
+  "title": "EmbeddingRecord",
+  "type": "object"
+}

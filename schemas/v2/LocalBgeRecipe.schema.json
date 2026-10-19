@@ -1,0 +1,131 @@
+{
+  "additionalProperties": false,
+  "description": "Explicit local-encoder variant; existing 1024-dimensional recipes stay unchanged.",
+  "properties": {
+    "artifact_manifest_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Artifact Manifest Sha256",
+      "type": "string"
+    },
+    "dimension": {
+      "const": 384,
+      "default": 384,
+      "title": "Dimension",
+      "type": "integer"
+    },
+    "input_recipe_version": {
+      "enum": [
+        "title-section-text-v1",
+        "question-text-v1"
+      ],
+      "title": "Input Recipe Version",
+      "type": "string"
+    },
+    "input_role": {
+      "enum": [
+        "document",
+        "query"
+      ],
+      "title": "Input Role",
+      "type": "string"
+    },
+    "invocation_id": {
+      "const": "bge-small-en-v1.5-onnx-fp32",
+      "default": "bge-small-en-v1.5-onnx-fp32",
+      "title": "Invocation Id",
+      "type": "string"
+    },
+    "max_tokens": {
+      "const": 512,
+      "default": 512,
+      "title": "Max Tokens",
+      "type": "integer"
+    },
+    "model_id": {
+      "const": "BAAI/bge-small-en-v1.5",
+      "default": "BAAI/bge-small-en-v1.5",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "model_revision": {
+      "const": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "default": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "title": "Model Revision",
+      "type": "string"
+    },
+    "normalization_version": {
+      "const": "float32-l2-v1",
+      "default": "float32-l2-v1",
+      "title": "Normalization Version",
+      "type": "string"
+    },
+    "normalized": {
+      "default": true,
+      "title": "Normalized",
+      "type": "boolean"
+    },
+    "onnxruntime_version": {
+      "minLength": 1,
+      "title": "Onnxruntime Version",
+      "type": "string"
+    },
+    "pooling": {
+      "const": "CLS",
+      "default": "CLS",
+      "title": "Pooling",
+      "type": "string"
+    },
+    "provider": {
+      "const": "LOCAL",
+      "default": "LOCAL",
+      "title": "Provider",
+      "type": "string"
+    },
+    "query_prefix": {
+      "const": "Represent this sentence for searching relevant passages: ",
+      "default": "Represent this sentence for searching relevant passages: ",
+      "title": "Query Prefix",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 3,
+      "default": 3,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "source_region": {
+      "const": "local-cpu",
+      "default": "local-cpu",
+      "title": "Source Region",
+      "type": "string"
+    },
+    "tokenizers_version": {
+      "minLength": 1,
+      "title": "Tokenizers Version",
+      "type": "string"
+    },
+    "truncation": {
+      "const": false,
+      "default": false,
+      "title": "Truncation",
+      "type": "boolean"
+    },
+    "version": {
+      "const": "bge-onnx-cls-v1",
+      "default": "bge-onnx-cls-v1",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "input_recipe_version",
+    "artifact_manifest_sha256",
+    "onnxruntime_version",
+    "tokenizers_version",
+    "input_role"
+  ],
+  "title": "LocalBgeRecipe",
+  "type": "object"
+}

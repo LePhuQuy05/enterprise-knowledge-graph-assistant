@@ -1,0 +1,63 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "canonicalization_version": {
+      "minLength": 1,
+      "title": "Canonicalization Version",
+      "type": "string"
+    },
+    "chunk_id": {
+      "minLength": 1,
+      "title": "Chunk Id",
+      "type": "string"
+    },
+    "document_version_id": {
+      "minLength": 1,
+      "title": "Document Version Id",
+      "type": "string"
+    },
+    "end_char": {
+      "exclusiveMinimum": 0,
+      "title": "End Char",
+      "type": "integer"
+    },
+    "entity_id": {
+      "minLength": 1,
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "mention_id": {
+      "minLength": 1,
+      "title": "Mention Id",
+      "type": "string"
+    },
+    "quote": {
+      "minLength": 1,
+      "title": "Quote",
+      "type": "string"
+    },
+    "start_char": {
+      "minimum": 0,
+      "title": "Start Char",
+      "type": "integer"
+    },
+    "tenant_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$",
+      "title": "Tenant Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "mention_id",
+    "tenant_id",
+    "entity_id",
+    "chunk_id",
+    "document_version_id",
+    "start_char",
+    "end_char",
+    "quote",
+    "canonicalization_version"
+  ],
+  "title": "Mention",
+  "type": "object"
+}

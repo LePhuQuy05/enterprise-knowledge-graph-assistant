@@ -1,0 +1,9 @@
+{
+  "version": "funding-v1",
+  "source": "Example funding policy; verify model access and credit eligibility in your own account.",
+  "bedrock_services_listed": true,
+  "anthropic_credit_coverage": "UNCONFIRMED",
+  "personal_budget_for_initial_smoke_micro_usd": 100000,
+  "personal_budget_authorization": "Configure your own funding before explicitly executing paid commands.",
+  "note": "The legacy initial-smoke command reserves at most USD 0.10 across its durable run. Current generation uses the separately configured external provider."
+}
