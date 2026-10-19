@@ -52,7 +52,7 @@ Open `http://127.0.0.1:8765/`. The preview is explicitly labeled and does not au
 ```sh
 npm ci --ignore-scripts
 uv run python -m app.cli prepare-tokenizer
-uv run pytest -q
+uv run python -m pytest -q
 uv run ruff check app infra scripts tests
 npm run ui:test
 ```

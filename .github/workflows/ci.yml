@@ -36,7 +36,7 @@ jobs:
       - name: Prepare public tokenizer
         run: uv run python -m app.cli prepare-tokenizer
       - name: Python tests
-        run: uv run pytest -q
+        run: uv run python -m pytest -q
       - name: Lint
         run: uv run ruff check app infra scripts tests
       - name: Frontend tests

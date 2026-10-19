@@ -8,7 +8,7 @@ Use Python 3.12, Node.js 22 or 24, Git and uv. Python dependencies are pinned in
 uv sync --frozen
 npm ci --ignore-scripts
 uv run python -m app.cli prepare-tokenizer
-uv run pytest -q
+uv run python -m pytest -q
 uv run ruff check app infra scripts tests
 npm run ui:test
 npm run infra:synth
