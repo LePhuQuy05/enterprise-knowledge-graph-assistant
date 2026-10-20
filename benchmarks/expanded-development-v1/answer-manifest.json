@@ -1,0 +1,55 @@
+{
+  "plan": {
+    "recipe": {
+      "version": "deepseek-grounded-answer-v9",
+      "model_id": "deepseek-flash",
+      "invocation_id": "deepseek-flash",
+      "source_region": "external-default",
+      "model_metadata_sha256": "0d0bac43d197ce1290285a274c31fc1ef6fd54d52f254417de47e6988df78bee",
+      "prompt_version": "grounded-claims-task-scoped-spans-multilingual-v7",
+      "output_schema_version": "generated-answer-spans-v3",
+      "temperature": 0,
+      "max_output_tokens": 800,
+      "thinking": "disabled",
+      "citation_quote_limit": 600,
+      "max_claims": 4,
+      "context_proxy_tokens": 4096,
+      "official_evidence_version": "aws-knowledge-search-excerpts-v2",
+      "span_recipe": "contiguous-480-char-titled-spans-v2",
+      "task_scope_policy": "aws-narrow-feature-exclusion-v1",
+      "max_evidence_per_claim": 2
+    },
+    "recipe_sha256": "4102c9edf24f00a90ccf7f61864da29d25bb0ec28c94d090f88b691cc6529f20",
+    "price_sha256": "25785565fff510e82872c6a1e4634bb280cf67910912cd76b64f15887e638b45",
+    "code_sha256": {
+      "app/generation.py": "7cd12a94c902268778c0636060044255358b9f1cbc637d77525886aa48a872eb",
+      "app/context.py": "33a36a49b361b035e37fb647c63ca30bc4352562bff77c34c8631092e9d31286",
+      "app/external_gateway.py": "bff1ff7c480d026f583be6ff6c6c7306060eeacc2a9207828a510589dba4f742",
+      "app/release_experiment.py": "41010af6d29f217a37c8704713865e457d285c39c190e709c0dc98dd65a356c2",
+      "scripts/evaluate_expanded_answers.py": "0da55205f2fb88b8de7fbe234c3a8cc0c8cc505baa36d4211cc378776bfedba3"
+    },
+    "max_operations": 100,
+    "output_tokens_per_call": 800,
+    "batch_stop_micro_usd": 250000,
+    "obligation_cap_micro_usd": 750000,
+    "managed_run_cap_micro_usd": 500000,
+    "shared_external_funding_cap_micro_usd": 2000000,
+    "scope": "FIXED_ENGLISH_HYBRID_CONTEXT_PAIRED_LANGUAGE_GENERATION_NOT_END_TO_END_LIVE_SEARCH",
+    "human_semantic_review": "PENDING",
+    "labels": "AI_DRAFT_NOT_HOLDOUT",
+    "created_at": "2026-10-20T04:16:14.339750+00:00",
+    "dataset_sha256": {
+      "en": "dc4cf31ee6111fe5cf0b6efda0865e33be9274e36c95873d70a4266441e63fe2",
+      "vi": "675553de7dd6a4a9f39c7af3e38ee926bd8aafecbb105a857b4c118548172e46"
+    },
+    "retrieval_sha256": "30601dc77a2e5f00417360058654904dab5d301806f2f87c3460ef16f7662c4c",
+    "graph_manifest_sha256": "a24bab418b4ce86081f97a75c09db0dfdce5dc6e4c65ebadbad2c799400b00d0",
+    "inputs_sha256": "f2cc1fe540115251071d5b86e64dcc4c18827e43a5609861aad36ad7a7f85efc",
+    "managed_run_id": "expanded-eval-d1329d5adf549f521bf3",
+    "planned_inputs": 100,
+    "unique_scenarios": 50
+  },
+  "answers_sha256": "e26966e00ede680950199152dfd8c8fba098936ad95c14f54f50340321be2356",
+  "report_sha256": "9bb2e7340f15be5885d878080f44dd5c3650da808e0e2c574f0ba516f38572f6",
+  "scope": "Public documentation claims/citations only; no prompts, keys or private user history. Semantic review pending."
+}

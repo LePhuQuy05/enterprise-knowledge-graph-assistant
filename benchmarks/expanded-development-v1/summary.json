@@ -1,0 +1,1195 @@
+{
+  "languages": {
+    "en": {
+      "category_counts": {
+        "FACTUAL": 22,
+        "ENTITY_RELATION": 10,
+        "MULTI_HOP": 8,
+        "UNANSWERABLE": 10
+      },
+      "systems": {
+        "B0_BM25": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.8875,
+            "complete_evidence_at_k": 0.85,
+            "mrr_overlap_at_k": 0.7320833333333334,
+            "context_complete": 0.9,
+            "complete_evidence_count": 34
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.9391304347826087,
+          "graph_used_questions": 0,
+          "graph_empty_fallbacks": 0,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 50,
+          "retrieval_ms_p50_p95": [
+            30.999999988125637,
+            86.24999998719427
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.725,
+              "context_complete": 1.0
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.8537878787878789,
+              "context_complete": 1.0
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.4375,
+              "complete_evidence_at_k": 0.25,
+              "mrr_overlap_at_k": 0.40625,
+              "context_complete": 0.5
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 0,
+            "losses": 3,
+            "ties": 37,
+            "delta_percentage_points": -7.5,
+            "cluster_bootstrap_percentile95_pp": [
+              -16.666666666666668,
+              0.0
+            ],
+            "changed_question_ids": [
+              "dev-09",
+              "dev-12",
+              "devx-40"
+            ],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        },
+        "B1_VECTOR": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.8625,
+            "complete_evidence_at_k": 0.825,
+            "mrr_overlap_at_k": 0.7604166666666667,
+            "context_complete": 0.875,
+            "complete_evidence_count": 33
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.898550724637681,
+          "graph_used_questions": 0,
+          "graph_empty_fallbacks": 0,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 50,
+          "retrieval_ms_p50_p95": [
+            0.0,
+            0.0
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.8,
+              "complete_evidence_at_k": 0.8,
+              "mrr_overlap_at_k": 0.5583333333333333,
+              "context_complete": 0.9
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.9431818181818182,
+              "context_complete": 1.0
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.5625,
+              "complete_evidence_at_k": 0.375,
+              "mrr_overlap_at_k": 0.5104166666666666,
+              "context_complete": 0.5
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 0,
+            "losses": 4,
+            "ties": 36,
+            "delta_percentage_points": -10.0,
+            "cluster_bootstrap_percentile95_pp": [
+              -19.357078853046595,
+              0.0
+            ],
+            "changed_question_ids": [
+              "dev-06",
+              "dev-12",
+              "devx-37",
+              "devx-41"
+            ],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        },
+        "B2_HYBRID": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.95,
+            "complete_evidence_at_k": 0.925,
+            "mrr_overlap_at_k": 0.8404166666666667,
+            "context_complete": 0.925,
+            "complete_evidence_count": 37
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.9710144927536233,
+          "graph_used_questions": 0,
+          "graph_empty_fallbacks": 0,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 0,
+          "retrieval_ms_p50_p95": [
+            30.999999988125637,
+            103.85000000387649
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.7583333333333333,
+              "context_complete": 1.0
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.9545454545454546,
+              "context_complete": 1.0
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.75,
+              "complete_evidence_at_k": 0.625,
+              "mrr_overlap_at_k": 0.6291666666666667,
+              "context_complete": 0.625
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          }
+        },
+        "G1_DRAFT": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.95,
+            "complete_evidence_at_k": 0.925,
+            "mrr_overlap_at_k": 0.7904166666666667,
+            "context_complete": 0.925,
+            "complete_evidence_count": 37
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.9710144927536233,
+          "graph_used_questions": 12,
+          "graph_empty_fallbacks": 38,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 7,
+          "retrieval_ms_p50_p95": [
+            31.000000017229468,
+            133.25000000768335
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.7583333333333333,
+              "context_complete": 1.0
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.856060606060606,
+              "context_complete": 1.0
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.75,
+              "complete_evidence_at_k": 0.625,
+              "mrr_overlap_at_k": 0.65,
+              "context_complete": 0.625
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 0,
+            "losses": 0,
+            "ties": 40,
+            "delta_percentage_points": 0.0,
+            "cluster_bootstrap_percentile95_pp": [
+              0.0,
+              0.0
+            ],
+            "changed_question_ids": [],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        },
+        "G2_DRAFT": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.95,
+            "complete_evidence_at_k": 0.925,
+            "mrr_overlap_at_k": 0.7904166666666667,
+            "context_complete": 0.925,
+            "complete_evidence_count": 37
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.9710144927536233,
+          "graph_used_questions": 12,
+          "graph_empty_fallbacks": 38,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 7,
+          "retrieval_ms_p50_p95": [
+            30.999999988125637,
+            78.55000000272412
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.7583333333333333,
+              "context_complete": 1.0
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 1.0,
+              "complete_evidence_at_k": 1.0,
+              "mrr_overlap_at_k": 0.856060606060606,
+              "context_complete": 1.0
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.75,
+              "complete_evidence_at_k": 0.625,
+              "mrr_overlap_at_k": 0.65,
+              "context_complete": 0.625
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 0,
+            "losses": 0,
+            "ties": 40,
+            "delta_percentage_points": 0.0,
+            "cluster_bootstrap_percentile95_pp": [
+              0.0,
+              0.0
+            ],
+            "changed_question_ids": [],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        }
+      }
+    },
+    "vi": {
+      "category_counts": {
+        "FACTUAL": 22,
+        "ENTITY_RELATION": 10,
+        "MULTI_HOP": 8,
+        "UNANSWERABLE": 10
+      },
+      "systems": {
+        "B0_BM25": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.4875,
+            "complete_evidence_at_k": 0.425,
+            "mrr_overlap_at_k": 0.38625,
+            "context_complete": 0.575,
+            "complete_evidence_count": 17
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.532608695652174,
+          "graph_used_questions": 0,
+          "graph_empty_fallbacks": 0,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 50,
+          "retrieval_ms_p50_p95": [
+            30.999999988125637,
+            86.250000000291
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.55,
+              "complete_evidence_at_k": 0.5,
+              "mrr_overlap_at_k": 0.3416666666666667,
+              "context_complete": 0.6
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.5454545454545454,
+              "complete_evidence_at_k": 0.5454545454545454,
+              "mrr_overlap_at_k": 0.4636363636363636,
+              "context_complete": 0.7272727272727273
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.25,
+              "complete_evidence_at_k": 0.0,
+              "mrr_overlap_at_k": 0.22916666666666666,
+              "context_complete": 0.125
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 0,
+            "losses": 8,
+            "ties": 32,
+            "delta_percentage_points": -20.0,
+            "cluster_bootstrap_percentile95_pp": [
+              -30.0,
+              -9.090909090909092
+            ],
+            "changed_question_ids": [
+              "dev-03-vi",
+              "dev-04-vi",
+              "devx-16-vi",
+              "devx-18-vi",
+              "devx-34-vi",
+              "devx-35-vi",
+              "devx-38-vi",
+              "devx-42-vi"
+            ],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        },
+        "B1_VECTOR": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.575,
+            "complete_evidence_at_k": 0.525,
+            "mrr_overlap_at_k": 0.41208333333333336,
+            "context_complete": 0.625,
+            "complete_evidence_count": 21
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.5978260869565217,
+          "graph_used_questions": 0,
+          "graph_empty_fallbacks": 0,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 50,
+          "retrieval_ms_p50_p95": [
+            0.0,
+            0.0
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.65,
+              "complete_evidence_at_k": 0.6,
+              "mrr_overlap_at_k": 0.47000000000000003,
+              "context_complete": 0.7
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.6363636363636364,
+              "complete_evidence_at_k": 0.6363636363636364,
+              "mrr_overlap_at_k": 0.4143939393939394,
+              "context_complete": 0.7272727272727273
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.3125,
+              "complete_evidence_at_k": 0.125,
+              "mrr_overlap_at_k": 0.3333333333333333,
+              "context_complete": 0.25
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 2,
+            "losses": 6,
+            "ties": 32,
+            "delta_percentage_points": -10.0,
+            "cluster_bootstrap_percentile95_pp": [
+              -22.22222222222222,
+              3.3362068965517087
+            ],
+            "changed_question_ids": [
+              "dev-04-vi",
+              "dev-05-vi",
+              "devx-18-vi",
+              "devx-20-vi",
+              "devx-22-vi",
+              "devx-23-vi",
+              "devx-24-vi",
+              "devx-38-vi"
+            ],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        },
+        "B2_HYBRID": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.6625,
+            "complete_evidence_at_k": 0.625,
+            "mrr_overlap_at_k": 0.5266666666666666,
+            "context_complete": 0.7,
+            "complete_evidence_count": 25
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.6789855072463769,
+          "graph_used_questions": 0,
+          "graph_empty_fallbacks": 0,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 0,
+          "retrieval_ms_p50_p95": [
+            30.999999988125637,
+            55.25000001216536
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.8,
+              "complete_evidence_at_k": 0.8,
+              "mrr_overlap_at_k": 0.5083333333333333,
+              "context_complete": 0.9
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.7272727272727273,
+              "complete_evidence_at_k": 0.7272727272727273,
+              "mrr_overlap_at_k": 0.5674242424242424,
+              "context_complete": 0.7727272727272727
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.3125,
+              "complete_evidence_at_k": 0.125,
+              "mrr_overlap_at_k": 0.4375,
+              "context_complete": 0.25
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          }
+        },
+        "G1_DRAFT": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.6375,
+            "complete_evidence_at_k": 0.6,
+            "mrr_overlap_at_k": 0.46749999999999997,
+            "context_complete": 0.7,
+            "complete_evidence_count": 24
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.6355072463768117,
+          "graph_used_questions": 17,
+          "graph_empty_fallbacks": 33,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 15,
+          "retrieval_ms_p50_p95": [
+            31.000000017229468,
+            62.999999994644895
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.8,
+              "complete_evidence_at_k": 0.8,
+              "mrr_overlap_at_k": 0.4083333333333333,
+              "context_complete": 0.9
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.6818181818181818,
+              "complete_evidence_at_k": 0.6818181818181818,
+              "mrr_overlap_at_k": 0.5053030303030304,
+              "context_complete": 0.7727272727272727
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.3125,
+              "complete_evidence_at_k": 0.125,
+              "mrr_overlap_at_k": 0.4375,
+              "context_complete": 0.25
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 0,
+            "losses": 1,
+            "ties": 39,
+            "delta_percentage_points": -2.5,
+            "cluster_bootstrap_percentile95_pp": [
+              -9.090909090909092,
+              0.0
+            ],
+            "changed_question_ids": [
+              "devx-22-vi"
+            ],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        },
+        "G2_DRAFT": {
+          "provisional_ai_draft": {
+            "answerable_denominator": 40,
+            "intent_groups": 23,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": 0.6375,
+            "complete_evidence_at_k": 0.6,
+            "mrr_overlap_at_k": 0.46749999999999997,
+            "context_complete": 0.7,
+            "complete_evidence_count": 24
+          },
+          "human_approved_only": {
+            "answerable_denominator": 0,
+            "intent_groups": 0,
+            "review_counts": {
+              "AI_DRAFT": 50
+            },
+            "unanswerable_excluded": 10,
+            "recall_at_k": null,
+            "complete_evidence_at_k": null,
+            "mrr_overlap_at_k": null,
+            "context_complete": null
+          },
+          "intent_group_macro_complete_evidence_at5": 0.6355072463768117,
+          "graph_used_questions": 17,
+          "graph_empty_fallbacks": 33,
+          "graph_timeout_fallbacks": 0,
+          "ranking_changed_vs_hybrid": 15,
+          "retrieval_ms_p50_p95": [
+            30.999999988125637,
+            173.05000001069848
+          ],
+          "by_category_provisional": {
+            "ENTITY_RELATION": {
+              "answerable_denominator": 10,
+              "intent_groups": 7,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.8,
+              "complete_evidence_at_k": 0.8,
+              "mrr_overlap_at_k": 0.4083333333333333,
+              "context_complete": 0.9
+            },
+            "FACTUAL": {
+              "answerable_denominator": 22,
+              "intent_groups": 19,
+              "review_counts": {
+                "AI_DRAFT": 22
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.6818181818181818,
+              "complete_evidence_at_k": 0.6818181818181818,
+              "mrr_overlap_at_k": 0.5053030303030304,
+              "context_complete": 0.7727272727272727
+            },
+            "MULTI_HOP": {
+              "answerable_denominator": 8,
+              "intent_groups": 5,
+              "review_counts": {
+                "AI_DRAFT": 8
+              },
+              "unanswerable_excluded": 0,
+              "recall_at_k": 0.3125,
+              "complete_evidence_at_k": 0.125,
+              "mrr_overlap_at_k": 0.4375,
+              "context_complete": 0.25
+            },
+            "UNANSWERABLE": {
+              "answerable_denominator": 0,
+              "intent_groups": 0,
+              "review_counts": {
+                "AI_DRAFT": 10
+              },
+              "unanswerable_excluded": 10,
+              "recall_at_k": null,
+              "complete_evidence_at_k": null,
+              "mrr_overlap_at_k": null,
+              "context_complete": null
+            }
+          },
+          "paired_vs_hybrid": {
+            "answerable_questions": 40,
+            "intent_groups": 23,
+            "wins": 0,
+            "losses": 1,
+            "ties": 39,
+            "delta_percentage_points": -2.5,
+            "cluster_bootstrap_percentile95_pp": [
+              -9.090909090909092,
+              0.0
+            ],
+            "changed_question_ids": [
+              "devx-22-vi"
+            ],
+            "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+          }
+        }
+      }
+    }
+  },
+  "paired_language_diagnostics": {
+    "B0_BM25": {
+      "answerable_questions": 40,
+      "intent_groups": 23,
+      "wins": 0,
+      "losses": 17,
+      "ties": 23,
+      "delta_percentage_points": -42.5,
+      "cluster_bootstrap_percentile95_pp": [
+        -56.41509433962264,
+        -27.272727272727273
+      ],
+      "changed_question_ids": [
+        "dev-01",
+        "dev-03",
+        "dev-04",
+        "dev-06",
+        "devx-16",
+        "devx-18",
+        "devx-19",
+        "devx-21",
+        "devx-23",
+        "devx-24",
+        "devx-26",
+        "devx-34",
+        "devx-35",
+        "devx-37",
+        "devx-38",
+        "devx-41",
+        "devx-43"
+      ],
+      "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+    },
+    "B1_VECTOR": {
+      "answerable_questions": 40,
+      "intent_groups": 23,
+      "wins": 1,
+      "losses": 13,
+      "ties": 26,
+      "delta_percentage_points": -30.0,
+      "cluster_bootstrap_percentile95_pp": [
+        -54.285714285714285,
+        -6.896551724137931
+      ],
+      "changed_question_ids": [
+        "dev-01",
+        "dev-04",
+        "dev-05",
+        "dev-09",
+        "devx-18",
+        "devx-19",
+        "devx-20",
+        "devx-21",
+        "devx-22",
+        "devx-26",
+        "devx-38",
+        "devx-40",
+        "devx-42",
+        "devx-43"
+      ],
+      "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+    },
+    "B2_HYBRID": {
+      "answerable_questions": 40,
+      "intent_groups": 23,
+      "wins": 1,
+      "losses": 13,
+      "ties": 26,
+      "delta_percentage_points": -30.0,
+      "cluster_bootstrap_percentile95_pp": [
+        -48.57142857142857,
+        -11.11111111111111
+      ],
+      "changed_question_ids": [
+        "dev-01",
+        "dev-06",
+        "dev-09",
+        "dev-12",
+        "devx-19",
+        "devx-21",
+        "devx-23",
+        "devx-24",
+        "devx-26",
+        "devx-37",
+        "devx-40",
+        "devx-41",
+        "devx-42",
+        "devx-43"
+      ],
+      "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+    },
+    "G1_DRAFT": {
+      "answerable_questions": 40,
+      "intent_groups": 23,
+      "wins": 1,
+      "losses": 14,
+      "ties": 25,
+      "delta_percentage_points": -32.5,
+      "cluster_bootstrap_percentile95_pp": [
+        -51.61290322580645,
+        -13.333333333333334
+      ],
+      "changed_question_ids": [
+        "dev-01",
+        "dev-06",
+        "dev-09",
+        "dev-12",
+        "devx-19",
+        "devx-21",
+        "devx-22",
+        "devx-23",
+        "devx-24",
+        "devx-26",
+        "devx-37",
+        "devx-40",
+        "devx-41",
+        "devx-42",
+        "devx-43"
+      ],
+      "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+    },
+    "G2_DRAFT": {
+      "answerable_questions": 40,
+      "intent_groups": 23,
+      "wins": 1,
+      "losses": 14,
+      "ties": 25,
+      "delta_percentage_points": -32.5,
+      "cluster_bootstrap_percentile95_pp": [
+        -51.61290322580645,
+        -13.333333333333334
+      ],
+      "changed_question_ids": [
+        "dev-01",
+        "dev-06",
+        "dev-09",
+        "dev-12",
+        "devx-19",
+        "devx-21",
+        "devx-22",
+        "devx-23",
+        "devx-24",
+        "devx-26",
+        "devx-37",
+        "devx-40",
+        "devx-41",
+        "devx-42",
+        "devx-43"
+      ],
+      "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+    }
+  },
+  "systems": [
+    "B0_BM25",
+    "B1_VECTOR",
+    "B2_HYBRID",
+    "G1_DRAFT",
+    "G2_DRAFT"
+  ],
+  "unique_scenarios": 50,
+  "language_inputs": 100,
+  "all_intent_groups": 31,
+  "answerable_intent_groups": 23,
+  "quality_verdict": "PROVISIONAL_AI_DRAFT_NOT_HUMAN_GOLD_OR_HOLDOUT",
+  "bootstrap_seed": 20261020,
+  "bootstrap_samples": 2000,
+  "production_default_changed": false,
+  "holdout": "NOT_AUTHORED_NOT_RUN"
+}

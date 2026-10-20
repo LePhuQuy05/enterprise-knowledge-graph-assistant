@@ -1,0 +1,34 @@
+{
+  "status": "COMPLETE_STRUCTURAL_REVIEW_PENDING",
+  "plan_sha256": "d857649be3abec05a6a80953c4da26e5c1f8e96c63dca28e8cd76dec32bf34b0",
+  "attempted": 100,
+  "planned": 100,
+  "unique_scenarios_attempted": 50,
+  "languages": {
+    "en": {
+      "attempted": 50,
+      "planned": 50,
+      "structural_pass": 50,
+      "structural_fail": 0,
+      "unanswerable_attempted": 10,
+      "unanswerable_returned_abstained": 10,
+      "semantic_correctness": null,
+      "citation_entailment": null
+    },
+    "vi": {
+      "attempted": 50,
+      "planned": 50,
+      "structural_pass": 48,
+      "structural_fail": 2,
+      "unanswerable_attempted": 10,
+      "unanswerable_returned_abstained": 9,
+      "semantic_correctness": null,
+      "citation_entailment": null
+    }
+  },
+  "settled_published_peak_cost_upper_bound_micro_usd": 124880,
+  "scope": "FIXED_ENGLISH_HYBRID_CONTEXT_PAIRED_LANGUAGE_GENERATION_NOT_END_TO_END_LIVE_SEARCH",
+  "quality_verdict": "HUMAN_SEMANTIC_REVIEW_PENDING_NOT_AN_ACCURACY_SCORE",
+  "replay_new_model_operations": 0,
+  "recorded_generation_receipts": 100
+}

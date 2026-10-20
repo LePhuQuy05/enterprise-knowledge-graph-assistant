@@ -185,7 +185,10 @@
       "type": "string"
     },
     "language": {
-      "const": "en",
+      "enum": [
+        "en",
+        "vi"
+      ],
       "title": "Language",
       "type": "string"
     },

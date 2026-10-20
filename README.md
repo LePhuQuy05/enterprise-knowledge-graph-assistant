@@ -63,14 +63,22 @@ Dependency and tokenizer preparation download public assets. Tests use fixtures 
 
 The serving pilot contains 20 official documents and 236 chunks. A separate live-search path expands coverage without claiming that all AWS documentation has been downloaded or indexed.
 
-| Recorded experiment | CompleteEvidence@5 | Scope |
-|---|---:|---|
-| Vector | 8/12 | Development questions with AI-draft evidence labels |
-| Hybrid | 10/12 | Same corpus and retrieval budget |
-| Draft graph expansion | 10/12 | No demonstrated improvement over hybrid |
-| Mention-only graph ablation | 8/12 | Not selected for serving |
+The expanded development set has 50 scenarios, each in English and Vietnamese: 40 answerable and 10 corpus-unanswerable per language. Translations share intent groups; 100 language inputs are not 100 independent scenarios. Evidence labels remain AI drafts pending human review.
 
-These are retrieval diagnostics, not answer-accuracy scores. Graph answering remains gated, and the broader release quality gate has not been met. [Evaluation](docs/evaluation.md) explains the experiment design, known failure modes and remaining work.
+| Retrieval configuration | English CompleteEvidence@5 | Vietnamese CompleteEvidence@5 |
+|---|---:|---:|
+| BM25 | 34/40 | 17/40 |
+| Vector | 33/40 | 21/40 |
+| Hybrid | 37/40 | 25/40 |
+| Mixed graph, 1 / 2 hops | 37/40 each | 24/40 each |
+| Mention-only ablation | 37/40 | 24/40 |
+| Relation-only ablation, 1 / 2 hops | 37/40 each | 24/40 each |
+
+All eight configurations share the frozen corpus, vectors and resource limits. Vietnamese here means raw Vietnamese retrieval against English sources, without query rewriting; the live-search workflow is different. Graph has not demonstrated a benefit over hybrid. These are provisional retrieval diagnostics, not answer accuracy or a held-out benchmark. Historical 8/12 vector and 10/12 hybrid results are retained separately.
+
+The [public receipts](benchmarks/expanded-development-v1/summary.json) include 800 recorded retrieval rows and a model-free range audit. [Evaluation](docs/evaluation.md) explains controls, source provenance, bilingual answer experiments, review requirements and limitations.
+
+A separate 100-response paired-language experiment passed strict schema/source checks on 98 attempts; two failures are retained. Correctness and citation entailment still require human review. This is not a 98% answer-accuracy claim.
 
 The implementation includes owner-scoped history, conditional account enrollment, durable idempotency, bounded token usage, and shared cost admission. Application limits do not cap every AWS charge. No automatic provider retry follows an ambiguous completion.
 

@@ -1,0 +1,40 @@
+{
+  "dataset_sha256": {
+    "en": "dc4cf31ee6111fe5cf0b6efda0865e33be9274e36c95873d70a4266441e63fe2",
+    "vi": "675553de7dd6a4a9f39c7af3e38ee926bd8aafecbb105a857b4c118548172e46"
+  },
+  "graph_manifest_sha256": "a24bab418b4ce86081f97a75c09db0dfdce5dc6e4c65ebadbad2c799400b00d0",
+  "prior_control_sha256": "30601dc77a2e5f00417360058654904dab5d301806f2f87c3460ef16f7662c4c",
+  "systems": [
+    "A1_MENTIONS_ONLY",
+    "A2_RELATIONS_1HOP",
+    "A3_RELATIONS_2HOP"
+  ],
+  "k": 5,
+  "graph_limits": {
+    "seed_chunks": 5,
+    "max_seed_entities": 8,
+    "max_assertions_per_entity": 20,
+    "max_assertion_visits": 200,
+    "max_visited_entities": 80,
+    "max_graph_candidate_chunks": 80,
+    "max_mention_chunks_per_entity": 5,
+    "time_budget_ms": 300
+  },
+  "pipeline_sha256": {
+    "scripts/evaluate_graph_components.py": "5874eb24224cf0eb0a7ac15b344ae09b5a6613f7183246e23605efef74b0cd3a",
+    "app/graph_retrieval.py": "34296e03b12b9efd7330b0b84ffba719cdc2af880d7b107e4ce207b7317bce44",
+    "app/context.py": "33a36a49b361b035e37fb647c63ca30bc4352562bff77c34c8631092e9d31286",
+    "app/evaluation.py": "94865df77cf58df1809755a78f9e5611022c1f9bba6d1bf24c24d9cbdee3a7dc"
+  },
+  "started_at": "2026-10-20T04:20:28.871941+00:00",
+  "status": "COMPLETE_DIAGNOSTIC_ONLY",
+  "rationale": "Predeclared follow-up after mixed graph produced zero packed assertions; no per-question changes or search over weights.",
+  "policy": "Same seeds/vectors/corpus/fusion/context/limits; disable adjacency for mentions, disable mention expansion for relations. No gold in ranking.",
+  "rows": 300,
+  "retrieval_sha256": "1060b386fa2018851682ec37f6cb4e6bc448d383f67e1215d8b6efd8457581b2",
+  "summary_sha256": "479df23c177203ddc932afce3614206e72415b0fda36a6f3acd2c59b52ffe66d",
+  "local_onnx_forwards": 0,
+  "model_api_calls": 0,
+  "aws_calls": 0
+}

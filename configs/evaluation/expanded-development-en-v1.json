@@ -1,0 +1,1337 @@
+{
+  "schema_version": 1,
+  "dataset_id": "aws-r72-expanded-development-en-v1",
+  "split": "DEVELOPMENT",
+  "language": "en",
+  "source_snapshot_version": "snap_d71f93932e435b1cff5c1e43269ec736d16ab02e499bdc33db548cee5cdb4edd",
+  "source_manifest_sha256": "8765e8bd7ef8b0e03b9d76feb2153de67b0e64e6881e437103313d124a4cf9cf",
+  "annotation_policy": "SOURCE_FIRST_AI_DRAFT_REQUIRES_HUMAN_REVIEW_V1",
+  "items": [
+    {
+      "question_id": "dev-01",
+      "intent_group_id": "async-delivery-retries",
+      "category": "FACTUAL",
+      "question": "What is the default retry schedule when an asynchronously invoked Lambda function returns an error?",
+      "answerable": true,
+      "reference_answer": "Lambda makes two additional attempts by default, waiting one minute between the first two attempts and two minutes between the second and third.",
+      "evidence_groups": [
+        {
+          "group_id": "retry-schedule",
+          "required_fact": "Default function-error retries are two additional attempts with waits of one and two minutes.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 68,
+              "end_char": 487,
+              "quote": "Lambda manages your function's asynchronous event queue and attempts to retry on errors. If the function returns an error, by default Lambda attempts to run it two more times, with a one-minute wait between the first two attempts, and two minutes between the second and third attempts. Event Function errors include errors returned by the function's code and errors returned by the function's runtime, such as timeouts."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-02",
+      "intent_group_id": "region-placement",
+      "category": "FACTUAL",
+      "question": "For SSE-KMS encryption of an S3 bucket, where must its KMS key be located?",
+      "answerable": true,
+      "reference_answer": "The KMS key must be in the same AWS Region as the S3 bucket.",
+      "evidence_groups": [
+        {
+          "group_id": "key-region",
+          "required_fact": "The SSE-KMS key and bucket must share a Region.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2235,
+              "end_char": 2344,
+              "quote": "When you use SSE-KMS encryption with an S3 bucket, the AWS KMS keys must be in the same Region as the bucket."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-03",
+      "intent_group_id": "ownership-sharing",
+      "category": "FACTUAL",
+      "question": "Under S3 Bucket owner enforced Object Ownership, do ACLs still grant access to objects?",
+      "answerable": true,
+      "reference_answer": "ACLs are disabled and no longer affect access; the bucket uses policies for access control.",
+      "evidence_groups": [
+        {
+          "group_id": "acl-disabled",
+          "required_fact": "Bucket owner enforced disables ACL-based permissions and uses policies.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_2d3b13e4e6df29795eaca0e8b2b901d730aa477517b988931eaedda40ef509bb",
+              "start_char": 1026,
+              "end_char": 1283,
+              "quote": "Bucket owner enforced (default) – ACLs are disabled, and the bucket owner automatically owns and has full control over every object in the bucket. ACLs no longer affect permissions to data in the S3 bucket. The bucket uses policies to define access control."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-04",
+      "intent_group_id": "permission-layers",
+      "category": "FACTUAL",
+      "question": "Which KMS permission is required to download an S3 object encrypted with an AWS KMS key?",
+      "answerable": true,
+      "reference_answer": "The caller needs kms:Decrypt permission on the key; this is not a claim that this permission alone grants all S3 access.",
+      "evidence_groups": [
+        {
+          "group_id": "decrypt",
+          "required_fact": "Downloading an SSE-KMS object needs kms:Decrypt permission on its key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2929,
+              "end_char": 3027,
+              "quote": "To download an object encrypted with an AWS KMS key, you need kms:Decrypt permissions for the key."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-05",
+      "intent_group_id": "execution-role-trust",
+      "category": "ENTITY_RELATION",
+      "question": "Which service principal must the trust policy of a Lambda execution role trust, and why?",
+      "answerable": true,
+      "reference_answer": "It must trust lambda.amazonaws.com so that Lambda can assume the execution role.",
+      "evidence_groups": [
+        {
+          "group_id": "lambda-trust",
+          "required_fact": "The role trust policy must trust the Lambda service principal for role assumption.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_ae92acca2a733b0bf58971836c1c5bddba3c79d188fed1c4bf3b0b5831575fe5",
+              "start_char": 924,
+              "end_char": 1094,
+              "quote": "In order for Lambda to properly assume your execution role, the role's trust policy must specify the Lambda service principal (lambda.amazonaws.com) as a trusted service."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-06",
+      "intent_group_id": "permission-layers",
+      "category": "ENTITY_RELATION",
+      "question": "Is a KMS key policy alone enough to permit cross-account use of a KMS key?",
+      "answerable": true,
+      "reference_answer": "No. Cross-account use requires both the key policy and an IAM policy; neither policy alone is sufficient.",
+      "evidence_groups": [
+        {
+          "group_id": "two-policies",
+          "required_fact": "Cross-account KMS use needs permissions in both key and IAM policies.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+              "start_char": 2192,
+              "end_char": 2400,
+              "quote": "The key policy determines who can have access to the KMS key. The IAM policy determines who does have access to the KMS key. Neither the key policy nor the IAM policy alone is sufficient—you must change both."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-07",
+      "intent_group_id": "permission-layers",
+      "category": "ENTITY_RELATION",
+      "question": "For an S3-triggered Lambda function, where are permissions to invoke the function and permissions for its SDK calls to S3 configured?",
+      "answerable": true,
+      "reference_answer": "S3 invocation is permitted by the function resource-based policy; SDK access to S3 needs S3 permissions in the function execution role.",
+      "evidence_groups": [
+        {
+          "group_id": "invoke-policy",
+          "required_fact": "S3 needs invocation permission in the Lambda resource-based policy.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2177,
+              "end_char": 2271,
+              "quote": "To invoke your function, Amazon S3 needs permission from the function's resource-based policy."
+            }
+          ]
+        },
+        {
+          "group_id": "s3-role",
+          "required_fact": "Function SDK access to S3 needs S3 permissions in its execution role.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2677,
+              "end_char": 2800,
+              "quote": "If your function uses the AWS SDK to manage Amazon S3 resources, it also needs Amazon S3 permissions in its execution role."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-08",
+      "intent_group_id": "permission-layers",
+      "category": "ENTITY_RELATION",
+      "question": "What must a KMS key policy enable before IAM policies can control access to that key?",
+      "answerable": true,
+      "reference_answer": "The key policy must give the account permission to use IAM policies, through the statement that enables IAM policies.",
+      "evidence_groups": [
+        {
+          "group_id": "iam-enabled",
+          "required_fact": "The key policy must enable account use of IAM policies for the key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_3393a1dd297598d763435372edabd5cd5e9b24b0004ac1a03c6bd13a3e9728b8",
+              "start_char": 558,
+              "end_char": 849,
+              "quote": "All KMS keys must have a key policy. IAM policies are optional. To use an IAM policy to control access to a KMS key, the key policy for the KMS key must give the account permission to use IAM policies. Specifically, the key policy must include the policy statement that enables IAM policies."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-09",
+      "intent_group_id": "async-delivery-retries",
+      "category": "MULTI_HOP",
+      "question": "How does S3 deliver an object notification to Lambda, and what default retry schedule applies if the function returns an error?",
+      "answerable": true,
+      "reference_answer": "S3 invokes Lambda asynchronously. For a function error, Lambda retries two more times by default, with waits of one minute and two minutes.",
+      "evidence_groups": [
+        {
+          "group_id": "delivery",
+          "required_fact": "S3 invokes the function asynchronously.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 796,
+              "end_char": 1006,
+              "quote": "Amazon S3 invokes your function asynchronously with an event that contains details about the object. The following example shows an event that Amazon S3 sent when a deployment package was uploaded to Amazon S3."
+            }
+          ]
+        },
+        {
+          "group_id": "retry",
+          "required_fact": "Asynchronous function errors have two additional default attempts with one-minute and two-minute waits.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 68,
+              "end_char": 487,
+              "quote": "Lambda manages your function's asynchronous event queue and attempts to retry on errors. If the function returns an error, by default Lambda attempts to run it two more times, with a one-minute wait between the first two attempts, and two minutes between the second and third attempts. Event Function errors include errors returned by the function's code and errors returned by the function's runtime, such as timeouts."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "The S3 integration source establishes asynchronous invocation; the asynchronous error-handling source supplies the retry schedule. Both facts are needed. Human review must verify no single document suffices and confirm this deserves the multi-hop label.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-10",
+      "intent_group_id": "permission-layers",
+      "category": "MULTI_HOP",
+      "question": "Why does successful S3 invocation of Lambda not by itself prove the function can read an SSE-KMS object using a KMS key from another account?",
+      "answerable": true,
+      "reference_answer": "Invocation permission is in the Lambda resource policy. Function SDK access needs S3 execution-role permissions; encrypted-object download also needs kms:Decrypt. Cross-account KMS use requires both key and IAM policy permission. These are necessary layers, not a complete real-account policy diagnosis.",
+      "evidence_groups": [
+        {
+          "group_id": "invoke",
+          "required_fact": "S3 invocation requires the function resource-based permission.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2177,
+              "end_char": 2271,
+              "quote": "To invoke your function, Amazon S3 needs permission from the function's resource-based policy."
+            }
+          ]
+        },
+        {
+          "group_id": "runtime",
+          "required_fact": "SDK access to S3 requires S3 execution-role permissions.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 2677,
+              "end_char": 2800,
+              "quote": "If your function uses the AWS SDK to manage Amazon S3 resources, it also needs Amazon S3 permissions in its execution role."
+            }
+          ]
+        },
+        {
+          "group_id": "decrypt",
+          "required_fact": "SSE-KMS download needs kms:Decrypt on the key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2929,
+              "end_char": 3027,
+              "quote": "To download an object encrypted with an AWS KMS key, you need kms:Decrypt permissions for the key."
+            }
+          ]
+        },
+        {
+          "group_id": "cross-key",
+          "required_fact": "Cross-account key use needs key-policy and IAM-policy permission.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+              "start_char": 2192,
+              "end_char": 2400,
+              "quote": "The key policy determines who can have access to the KMS key. The IAM policy determines who does have access to the KMS key. Neither the key policy nor the IAM policy alone is sufficient—you must change both."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "This combines the S3/Lambda invocation-vs-runtime distinction with SSE-KMS decryption and cross-account key permissions from three source documents. Granting invocation permission does not grant those other permissions. It does not establish all bucket/SCP/session/KMS conditions.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-11",
+      "intent_group_id": "ownership-sharing",
+      "category": "MULTI_HOP",
+      "question": "For a Bucket owner enforced S3 bucket sharing SSE-KMS objects across accounts, should access depend on object ACLs, and which KMS key type supports the sharing?",
+      "answerable": true,
+      "reference_answer": "Bucket owner enforced disables ACL permissions, so use policies for S3 access. AWS-managed SSE-KMS keys cannot share the encrypted objects cross-account; use a customer managed KMS key and appropriate permissions.",
+      "evidence_groups": [
+        {
+          "group_id": "policy-access",
+          "required_fact": "Bucket owner enforced uses policies with ACLs disabled.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_2d3b13e4e6df29795eaca0e8b2b901d730aa477517b988931eaedda40ef509bb",
+              "start_char": 1026,
+              "end_char": 1283,
+              "quote": "Bucket owner enforced (default) – ACLs are disabled, and the bucket owner automatically owns and has full control over every object in the bucket. ACLs no longer affect permissions to data in the S3 bucket. The bucket uses policies to define access control."
+            }
+          ]
+        },
+        {
+          "group_id": "cmk-sharing",
+          "required_fact": "Cross-account sharing of SSE-KMS objects requires a customer managed key rather than an AWS managed key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 4729,
+              "end_char": 4912,
+              "quote": "Objects encrypted using SSE-KMS with AWS managed keys can't be shared cross-account. If you need to share SSE-KMS data cross-account, you must use a customer managed key from AWS KMS."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "Ownership documentation establishes the ACL/policy mechanism; SSE-KMS documentation establishes the key-type restriction. Both are necessary to describe the proposed sharing configuration; human necessity/alternative-source review is pending.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-12",
+      "intent_group_id": "region-placement",
+      "category": "MULTI_HOP",
+      "question": "For direct S3 event notifications to Lambda with objects protected by SSE-KMS, what Region constraints apply to the Lambda function and the encryption key?",
+      "answerable": true,
+      "reference_answer": "For the direct notification destination, the Lambda function must be in the bucket Region. For SSE-KMS, the KMS key must also be in the bucket Region.",
+      "evidence_groups": [
+        {
+          "group_id": "function-region",
+          "required_fact": "The direct Lambda notification destination must share the bucket Region.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_9a4a2f1a526ff7ba126602e8160527dbfc0cf0d7177e2dba9dbde1b358853339",
+              "start_char": 4444,
+              "end_char": 4509,
+              "quote": "The Lambda function must be in the same Region as your S3 bucket."
+            }
+          ]
+        },
+        {
+          "group_id": "key-region",
+          "required_fact": "The SSE-KMS key must share the bucket Region.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2235,
+              "end_char": 2344,
+              "quote": "When you use SSE-KMS encryption with an S3 bucket, the AWS KMS keys must be in the same Region as the bucket."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": "The notification-destination source and SSE-KMS source supply distinct constraints on the function and key, joined through the same bucket. Neither approved source span states the other constraint. Human review must check wider alternatives and semantic necessity.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "dev-13",
+      "intent_group_id": "private-runtime-records",
+      "category": "UNANSWERABLE",
+      "question": "What is the actual production customer-managed KMS key ID used by this portfolio project?",
+      "answerable": false,
+      "reference_answer": "The public-document corpus cannot identify this private project value. Do not substitute an example key ID.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The fixed corpus contains public AWS manuals, not private project configuration, request logs or billing records. Example values in manuals cannot identify the actual project value."
+    },
+    {
+      "question_id": "dev-14",
+      "intent_group_id": "private-runtime-records",
+      "category": "UNANSWERABLE",
+      "question": "What was the request ID of the most recent failed invocation of my production Lambda function?",
+      "answerable": false,
+      "reference_answer": "The corpus does not contain the production invocation logs needed to identify that request ID.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The fixed corpus contains public AWS manuals, not private project configuration, request logs or billing records. Example values in manuals cannot identify the actual project value."
+    },
+    {
+      "question_id": "dev-15",
+      "intent_group_id": "private-runtime-records",
+      "category": "UNANSWERABLE",
+      "question": "What is the actual finalized AWS bill for this portfolio project this month?",
+      "answerable": false,
+      "reference_answer": "The corpus has AWS documentation, not this project account invoice. It cannot supply the actual finalized bill.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first AI draft. Exact quote/span checked mechanically; fact support, alternatives and label require human review. Not holdout or final gold.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The fixed corpus contains public AWS manuals, not private project configuration, request logs or billing records. Example values in manuals cannot identify the actual project value."
+    },
+    {
+      "question_id": "devx-16",
+      "intent_group_id": "kms-key-policy-cardinality",
+      "category": "FACTUAL",
+      "question": "How many key policies must an AWS KMS key have?",
+      "answerable": true,
+      "reference_answer": "Every KMS key must have exactly one key policy.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Each KMS key requires exactly one key policy.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_184c5cc0f7c351a484ebfdbe39ee82d11b9c996441031b4a9d50f2253f0b018e",
+              "start_char": 25,
+              "end_char": 413,
+              "quote": "A key policy is a resource policy for an AWS KMS key. Key policies are the primary way to control access to KMS keys. Every KMS key must have exactly one key policy. The statements in the key policy determine who has permission to use the KMS key and how they can use it. You can also use IAM policies and grants to control access to the KMS key, but every KMS key must have a key policy."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-17",
+      "intent_group_id": "region-placement",
+      "category": "FACTUAL",
+      "question": "Are KMS key policies global like IAM policies, or scoped to a Region?",
+      "answerable": true,
+      "reference_answer": "Key policies are Regional and affect only a KMS key in that Region; IAM policies are global.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "KMS key policies are Regional, unlike global IAM policies.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_184c5cc0f7c351a484ebfdbe39ee82d11b9c996441031b4a9d50f2253f0b018e",
+              "start_char": 1088,
+              "end_char": 1267,
+              "quote": "Unlike IAM policies, which are global, key policies are Regional. A key policy controls access only to a KMS key in the same Region. It has no effect on KMS keys in other Regions."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-18",
+      "intent_group_id": "async-delivery-retries",
+      "category": "FACTUAL",
+      "question": "How long does Lambda retry asynchronous throttling and system errors by default?",
+      "answerable": true,
+      "reference_answer": "For 429 throttling and 500-series system errors, Lambda retries from its queue for up to six hours by default, with exponential intervals.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Throttle/system errors use up to six hours of default queue retries, with exponential spacing.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 489,
+              "end_char": 1019,
+              "quote": "If the Event Function doesn't have enough concurrency available to process all events, additional requests are throttled. For throttling errors (429) and system errors (500-series), Lambda returns the event to the queue and attempts to run the function again for up to 6 hours by default. The retry interval increases exponentially from 1 second after the first attempt to a maximum of 5 minutes. If the queue contains many entries, Lambda increases the retry interval and reduces the rate at which it reads events from the queue."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-19",
+      "intent_group_id": "async-delivery-retries",
+      "category": "FACTUAL",
+      "question": "Can Lambda deliver an asynchronous event more than once even if the function succeeds?",
+      "answerable": true,
+      "reference_answer": "Yes. Its eventually consistent queue can deliver duplicates even when the function returns no error; handlers should handle duplicate events.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Duplicate asynchronous events are possible without function errors.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 1021,
+              "end_char": 1472,
+              "quote": "Even if your Event Function doesn't return an error, it's possible for it to receive the same event from Lambda multiple times because the queue itself is eventually consistent. If the function can't keep up with incoming events, events might also be deleted from the queue without being sent to the function. Ensure that your function code gracefully handles duplicate events, and that you have enough concurrency available to handle all invocations."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-20",
+      "intent_group_id": "async-failure-capture",
+      "category": "FACTUAL",
+      "question": "How can discarded asynchronous events and records of failed Lambda invocations be captured?",
+      "answerable": true,
+      "reference_answer": "A dead-letter queue captures discarded events; an on-failure destination captures records of failed invocations.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Dead-letter queues capture discarded events and on-failure destinations capture failed invocation records.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 1474,
+              "end_char": 2013,
+              "quote": "When the queue is very long, new events might age out before Lambda has a chance to send them to your Event Function. When an event expires or fails all processing attempts, Lambda discards it. You can configure error handling for an Event Function to reduce the number of retries that Lambda performs, or to discard unprocessed events more quickly. To capture discarded events, configure a dead-letter queue for the function. To capture records of failed invocations (such as timeouts or runtime errors), create an on-failure destination."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-21",
+      "intent_group_id": "s3-recursive-events",
+      "category": "FACTUAL",
+      "question": "How can an S3-triggered Lambda function avoid triggering itself when it writes output?",
+      "answerable": true,
+      "reference_answer": "Use two buckets or restrict the trigger to an incoming-object prefix that excludes outputs.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Separate buckets or input-only prefixes prevent recursive self-triggering.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 394,
+              "end_char": 794,
+              "quote": "If your Lambda Event Function uses the same bucket that triggers it, it could cause the function to run in a loop. For example, if the bucket triggers a function each time an object is uploaded, and the function uploads an object to the bucket, then the function indirectly triggers itself. To avoid this, use two buckets, or configure the trigger to only apply to a prefix used for incoming objects."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-22",
+      "intent_group_id": "s3-delivery-semantics",
+      "category": "FACTUAL",
+      "question": "Does S3 event notification delivery guarantee exactly once and event order?",
+      "answerable": true,
+      "reference_answer": "No. Delivery is designed for at least once, may be duplicated and is not guaranteed in event order.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "S3 notifications may be duplicated or arrive out of order.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_9a4a2f1a526ff7ba126602e8160527dbfc0cf0d7177e2dba9dbde1b358853339",
+              "start_char": 13389,
+              "end_char": 13835,
+              "quote": "Amazon S3 Event Notifications is designed to deliver notifications at least once, but they aren't guaranteed to arrive in the same order that the events occurred. On rare occasions, Amazon S3's retry mechanism might cause duplicate S3 Event Notifications for the same object event. For more about handling duplicate or out of order events, see Manage event ordering and duplicate events with Amazon S3 Event Notifications on the AWS Storage Blog."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-23",
+      "intent_group_id": "iam-condition-case",
+      "category": "FACTUAL",
+      "question": "Are IAM condition key names and their values both always case-sensitive?",
+      "answerable": true,
+      "reference_answer": "Condition key names are not case-sensitive. Value case-sensitivity depends on the operator.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Key names are case-insensitive; value comparison depends on the operator.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_4d7dc3122bbf3607372a9e324b5f07974d1d07fcf5eec81a99d2d2810dd3a522",
+              "start_char": 1026,
+              "end_char": 1409,
+              "quote": "Context key names are not case-sensitive. For example, including the aws:SourceIP context key is equivalent to testing for AWS:SourceIp. Case-sensitivity of context key values depends on the condition operator that you use. For example, the following condition includes the StringEquals operator to make sure that only requests made by john match. Users named John are denied access."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-24",
+      "intent_group_id": "iam-condition-key-namespace",
+      "category": "FACTUAL",
+      "question": "How do global condition-key prefixes differ from service-specific condition keys?",
+      "answerable": true,
+      "reference_answer": "Global condition keys use aws:, while service-specific keys use the service prefix, such as ec2:InstanceType.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Global keys use aws: and service-specific keys use the service prefix.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_4d7dc3122bbf3607372a9e324b5f07974d1d07fcf5eec81a99d2d2810dd3a522",
+              "start_char": 556,
+              "end_char": 1024,
+              "quote": "The context key that you specify in a policy condition can be a global condition context key or a service-specific context key. Global condition context keys have the aws: prefix. Service-specific context keys have the service's prefix. For example, Amazon EC2 lets you write a condition using the ec2:InstanceType context key, which is unique to that service. To view service-specific IAM context keys with the iam: prefix, see IAM and AWS STS condition context keys."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-25",
+      "intent_group_id": "kms-key-manager",
+      "category": "FACTUAL",
+      "question": "Which DescribeKey response field identifies a customer managed KMS key?",
+      "answerable": true,
+      "reference_answer": "KeyManager is CUSTOMER for a customer managed key.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "DescribeKey identifies customer managed keys through KeyManager=CUSTOMER.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_b2acaf1119f99828730dd98451fbfd602ff50ad60415edd966f5ab18cbcd6279",
+              "start_char": 5699,
+              "end_char": 5986,
+              "quote": "Customer managed keys appear on the Customer managed keys page of the AWS Management Console for AWS KMS. To definitively identify a customer managed key, use the DescribeKey operation. For customer managed keys, the value of the KeyManager field of the DescribeKey response is CUSTOMER."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-26",
+      "intent_group_id": "s3-encryption-default",
+      "category": "FACTUAL",
+      "question": "Which S3 encryption scheme is used for new objects unless another option is specified?",
+      "answerable": true,
+      "reference_answer": "SSE-S3 with Amazon S3 managed keys is the default, while SSE-KMS is an optional configuration.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "SSE-S3 is default; SSE-KMS can be configured instead.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 919,
+              "end_char": 1223,
+              "quote": "Unless you specify otherwise, buckets use SSE-S3 by default to encrypt objects. However, you can choose to configure buckets to use server-side encryption with AWS Key Management Service (AWS KMS) keys (SSE-KMS) instead. For more information, see Specifying server-side encryption with AWS KMS (SSE-KMS)."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-27",
+      "intent_group_id": "sse-kms-upload-permissions",
+      "category": "FACTUAL",
+      "question": "Which KMS permissions are required for an SSE-KMS multipart upload?",
+      "answerable": true,
+      "reference_answer": "Both kms:GenerateDataKey and kms:Decrypt are required for SSE-KMS multipart upload.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "SSE-KMS multipart upload requires GenerateDataKey and Decrypt.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 2780,
+              "end_char": 3178,
+              "quote": "To successfully make a PutObject request to encrypt an object with an AWS KMS key to Amazon S3, you need kms:GenerateDataKey permissions on the key. To download an object encrypted with an AWS KMS key, you need kms:Decrypt permissions for the key. To perform a multipart upload to encrypt an object with an AWS KMS key, you must have the kms:GenerateDataKey and kms:Decrypt permissions for the key."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-28",
+      "intent_group_id": "sse-kms-key-type",
+      "category": "FACTUAL",
+      "question": "What type of customer managed KMS key should be created for SSE-KMS?",
+      "answerable": true,
+      "reference_answer": "Create a symmetric encryption customer managed key before configuring SSE-KMS.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "SSE-KMS customer managed keys are symmetric encryption keys.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 4914,
+              "end_char": 5280,
+              "quote": "If you want to use a customer managed key for SSE-KMS, create a symmetric encryption customer managed key before you configure SSE-KMS. Then, when you configure SSE-KMS for your bucket, specify the existing customer managed key. For more information about symmetric encryption key, see Symmetric encryption KMS keys in the AWS Key Management Service Developer Guide."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-29",
+      "intent_group_id": "s3-bucket-key-traffic",
+      "category": "FACTUAL",
+      "question": "How do S3 Bucket Keys reduce the number of KMS requests for SSE-KMS?",
+      "answerable": true,
+      "reference_answer": "A bucket-level key reduces request traffic from Amazon S3 to KMS, which can reduce KMS request costs; no account-specific saving is established.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "A bucket-level key decreases traffic from S3 to KMS.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+              "start_char": 9942,
+              "end_char": 10230,
+              "quote": "When you configure server-side encryption using AWS KMS (SSE-KMS), you can configure your buckets to use S3 Bucket Keys for SSE-KMS. Using a bucket-level key for SSE-KMS can reduce your AWS KMS request costs by up to 99 percent by decreasing the request traffic from Amazon S3 to AWS KMS."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-30",
+      "intent_group_id": "iam-policy-attachment-kind",
+      "category": "FACTUAL",
+      "question": "Can a resource-based IAM policy be managed, or is it inline only?",
+      "answerable": true,
+      "reference_answer": "Resource-based policies are inline only, not managed.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Resource-based policies are inline only.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_b97ffa29593215f7c3e04a1813b673bc81412d9b90815f50e3063dc9c4814680",
+              "start_char": 1184,
+              "end_char": 1527,
+              "quote": "With resource-based policies, you can specify who has access to the resource and what actions they can perform on it. To learn whether principals in accounts outside of your zone of trust (trusted organization or account) have access to assume your roles, see What is IAM Access Analyzer?. Resource-based policies are inline only, not managed."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-31",
+      "intent_group_id": "iam-resource-principal",
+      "category": "FACTUAL",
+      "question": "What is the purpose of the Principal element in a resource-based policy?",
+      "answerable": true,
+      "reference_answer": "It identifies the principal that the resource-based policy allows or denies access.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Principal identifies who is allowed or denied access.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_803f575dd63944d70a555b96d402e2518c795ef5ae9daca1098a51436024636d",
+              "start_char": 37,
+              "end_char": 167,
+              "quote": "Use the Principal element in a resource-based JSON policy to specify the principal that is allowed or denied access to a resource."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-32",
+      "intent_group_id": "kms-create-key-authorization",
+      "category": "FACTUAL",
+      "question": "Why is an IAM policy useful for a KMS CreateKey operation?",
+      "answerable": true,
+      "reference_answer": "CreateKey does not involve an existing particular KMS key, so it cannot be controlled by that key policy; IAM policies can grant KMS operation permissions.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "IAM policies can control CreateKey, which involves no existing particular key.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_3393a1dd297598d763435372edabd5cd5e9b24b0004ac1a03c6bd13a3e9728b8",
+              "start_char": 851,
+              "end_char": 1248,
+              "quote": "IAM policies can control access to any AWS KMS operation. Unlike key policies, IAM policies can control access to multiple KMS keys and provide permissions for the operations of several related AWS services. But IAM policies are particularly useful for controlling access to operations, such as CreateKey, that can't be controlled by a key policy because they don't involve any particular KMS key."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-33",
+      "intent_group_id": "kms-condition-application",
+      "category": "FACTUAL",
+      "question": "When does a conditional KMS policy statement take effect?",
+      "answerable": true,
+      "reference_answer": "It is effective only when its conditions are true; KMS uses condition keys and IAM condition operators.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "A conditional policy statement applies only if its conditions are true.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_fd1f7f76a5a6336404ef8eca058e257049d751fbb6e71067eb0b8d541c675b87",
+              "start_char": 28,
+              "end_char": 402,
+              "quote": "You can specify conditions in the key policies and IAM policies that control access to AWS KMS resources. The policy statement is effective only when the conditions are true. For example, you might want a policy statement to take effect only after a specific date. Or, you might want a policy statement to control access only when a specific value appears in an API request."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-34",
+      "intent_group_id": "iam-policy-attachment-kind",
+      "category": "ENTITY_RELATION",
+      "question": "How do identity-based and resource-based policies attach to IAM entities and resources?",
+      "answerable": true,
+      "reference_answer": "Identity-based policies attach to an IAM user, group or role; resource-based policies attach to resources such as S3 buckets or KMS keys.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Identity policies attach to a user/group/role.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_b97ffa29593215f7c3e04a1813b673bc81412d9b90815f50e3063dc9c4814680",
+              "start_char": 301,
+              "end_char": 816,
+              "quote": "Identity-based policies are attached to an IAM user, group, or role. These policies let you specify what that identity can do (its permissions). For example, you can attach the policy to the IAM user named John, stating that he is allowed to perform the Amazon EC2 RunInstances action. The policy could further state that John is allowed to get items from an Amazon DynamoDB table named MyCompany. You can also allow John to manage his own IAM security credentials. Identity-based policies can be managed or inline."
+            }
+          ]
+        },
+        {
+          "group_id": "g2",
+          "required_fact": "Resource policies attach directly to a resource.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_b97ffa29593215f7c3e04a1813b673bc81412d9b90815f50e3063dc9c4814680",
+              "start_char": 818,
+              "end_char": 1182,
+              "quote": "Resource-based policies are attached to a resource. For example, you can attach resource-based policies to Amazon S3 buckets, Amazon SQS queues, VPC endpoints, AWS Key Management Service encryption keys, Amazon DynamoDB tables and streams, and AWS Sign-In resources. For a list of services that support resource-based policies, see AWS services that work with IAM."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-35",
+      "intent_group_id": "iam-policy-combination",
+      "category": "ENTITY_RELATION",
+      "question": "For the documented same-account IAM allow/deny comparison, how are identity and resource policy permissions combined?",
+      "answerable": true,
+      "reference_answer": "The documented same-account comparison takes the union of allows, with an explicit deny overriding an allow; other applicable policy types may add constraints.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "The documented same-account identity/resource comparison combines allows by union, subject to explicit deny.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_966aac416d91e57a5eb8321f760ddf2f3a0658f780b2c012b9b5011090e543b4",
+              "start_char": 975,
+              "end_char": 1543,
+              "quote": "Identity-based policies and resource-based policies grant permissions to the identities or resources to which they are attached. When an IAM entity (user or role) requests access to a resource within the same account, AWS evaluates all the permissions granted by the identity-based and resource-based policies. The resulting permissions are the union of the permissions of the two types. If an action is allowed by an identity-based policy, a resource-based policy, or both, then AWS allows the action. An explicit deny in either of these policies overrides the allow."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-36",
+      "intent_group_id": "iam-policy-combination",
+      "category": "ENTITY_RELATION",
+      "question": "Does an identity-based allow override a permissions boundary that excludes the action?",
+      "answerable": true,
+      "reference_answer": "No. Effective permissions are the intersection of identity policies and the permissions boundary; explicit deny overrides allow.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "A permissions boundary constrains identity-based permissions by intersection.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_966aac416d91e57a5eb8321f760ddf2f3a0658f780b2c012b9b5011090e543b4",
+              "start_char": 1609,
+              "end_char": 2247,
+              "quote": "When AWS evaluates the identity-based policies and permissions boundary for a user, the resulting permissions are the intersection of the two categories. That means that when you add a permissions boundary to a user with existing identity-based policies, you might reduce the actions that the user can perform. Alternatively, when you remove a permissions boundary from a user, you might increase the actions they can perform. An explicit deny in either of these policies overrides the allow. To view information about how other policy types are evaluated with permissions boundaries, see Evaluating effective permissions with boundaries."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-37",
+      "intent_group_id": "s3-source-account-binding",
+      "category": "ENTITY_RELATION",
+      "question": "Why restrict an S3-to-Lambda invocation permission with SourceAccount as well as a source bucket?",
+      "answerable": true,
+      "reference_answer": "A bucket ARN has no account ID and its name could be reused by another account; SourceAccount restricts which account may invoke through that source.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "SourceAccount prevents another account with a reused bucket name from inheriting the permission.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_e5626604515f0e9785a61225b2876d886f4783c49f8be79bfde68c323d9cbd00",
+              "start_char": 2778,
+              "end_char": 3074,
+              "quote": "For Amazon S3, the source is a bucket whose ARN doesn't include an account ID. It's possible that you could delete a bucket and another account could create a bucket with the same name. Use the aws:SourceAccount condition key to ensure that only resources in your account can invoke the function:"
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-38",
+      "intent_group_id": "s3-notification-destination-policy",
+      "category": "ENTITY_RELATION",
+      "question": "Where should S3 permission to publish notifications to SNS or SQS be granted?",
+      "answerable": true,
+      "reference_answer": "Grant the S3 principal permission for the relevant publish/send API through the destination topic or queue policy.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "S3 needs permission to invoke the relevant destination API.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_8bfd77e81ca669d7397b619321e4758adc01fa4b3f45d09cd4c65bbf5c56f8fc",
+              "start_char": 78,
+              "end_char": 324,
+              "quote": "You must grant the Amazon S3 principal the necessary permissions to call the relevant API to publish messages to an SNS topic, an SQS queue, or a Lambda function. This is so that Amazon S3 can publish event notification messages to a destination."
+            }
+          ]
+        },
+        {
+          "group_id": "g2",
+          "required_fact": "Attach the required permission policy to the destination SNS topic or SQS queue.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_8bfd77e81ca669d7397b619321e4758adc01fa4b3f45d09cd4c65bbf5c56f8fc",
+              "start_char": 1324,
+              "end_char": 1506,
+              "quote": "To grant Amazon S3 permissions to publish messages to the SNS topic or SQS queue, attach an AWS Identity and Access Management (IAM) policy to the destination SNS topic or SQS queue."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-39",
+      "intent_group_id": "ownership-sharing",
+      "category": "ENTITY_RELATION",
+      "question": "Under Bucket owner preferred, who owns cross-account uploads with bucket-owner-full-control?",
+      "answerable": true,
+      "reference_answer": "The bucket owner owns and has full control over those new objects.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "Bucket owner preferred transfers ownership for uploads using bucket-owner-full-control.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_2d3b13e4e6df29795eaca0e8b2b901d730aa477517b988931eaedda40ef509bb",
+              "start_char": 1299,
+              "end_char": 1470,
+              "quote": "Bucket owner preferred – The bucket owner owns and has full control over new objects that other accounts write to the bucket with the bucket-owner-full-control canned ACL."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-40",
+      "intent_group_id": "async-delivery-retries",
+      "category": "MULTI_HOP",
+      "question": "For an S3-triggered Lambda workflow, why should a successful handler tolerate duplicate events?",
+      "answerable": true,
+      "reference_answer": "S3 invokes Lambda asynchronously; Lambda asynchronous delivery can duplicate events even when the handler returns no error, so the handler should tolerate duplicates.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "S3 uses asynchronous invocation.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_715a4a918ab2cc2685ad07fc391f45572d302601d22d5cfc446f28d58ac3fcc5",
+              "start_char": 796,
+              "end_char": 1006,
+              "quote": "Amazon S3 invokes your function asynchronously with an event that contains details about the object. The following example shows an event that Amazon S3 sent when a deployment package was uploaded to Amazon S3."
+            }
+          ]
+        },
+        {
+          "group_id": "g2",
+          "required_fact": "Lambda asynchronous events can be duplicated without a function error.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_5b17ef2e2383c6b51a7b1cb5df461bdde2a6aaa3f26aeea96e48e7fea4db914b",
+              "start_char": 1021,
+              "end_char": 1472,
+              "quote": "Even if your Event Function doesn't return an error, it's possible for it to receive the same event from Lambda multiple times because the queue itself is eventually consistent. If the function can't keep up with incoming events, events might also be deleted from the queue without being sent to the function. Ensure that your function code gracefully handles duplicate events, and that you have enough concurrency available to handle all invocations."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": "Candidate chain: identify S3 invocation mode, then apply Lambda asynchronous-delivery duplicate semantics. Verify no alternative single source covers the entire task.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-41",
+      "intent_group_id": "permission-layers",
+      "category": "MULTI_HOP",
+      "question": "If a KMS key policy enables IAM permissions, does an identity allow bypass a permissions boundary excluding the KMS action?",
+      "answerable": true,
+      "reference_answer": "Enabling IAM permissions in the key policy permits IAM-based grants to be considered; a permissions boundary still intersects with identity permissions and can prevent the action.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "KMS key policy must enable IAM-based access.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_184c5cc0f7c351a484ebfdbe39ee82d11b9c996441031b4a9d50f2253f0b018e",
+              "start_char": 608,
+              "end_char": 1086,
+              "quote": "Unless the key policy explicitly allows it, you cannot use IAM policies to allow access to a KMS key. Without permission from the key policy, IAM policies that allow permissions have no effect. (You can use an IAM policy to deny a permission to a KMS key without permission from a key policy.) The default key policy enables IAM policies. To enable IAM policies in your key policy, add the policy statement described in Allows access to the AWS account and enables IAM policies."
+            }
+          ]
+        },
+        {
+          "group_id": "g2",
+          "required_fact": "A permissions boundary still constrains identity permissions.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_966aac416d91e57a5eb8321f760ddf2f3a0658f780b2c012b9b5011090e543b4",
+              "start_char": 1609,
+              "end_char": 2247,
+              "quote": "When AWS evaluates the identity-based policies and permissions boundary for a user, the resulting permissions are the intersection of the two categories. That means that when you add a permissions boundary to a user with existing identity-based policies, you might reduce the actions that the user can perform. Alternatively, when you remove a permissions boundary from a user, you might increase the actions they can perform. An explicit deny in either of these policies overrides the allow. To view information about how other policy types are evaluated with permissions boundaries, see Evaluating effective permissions with boundaries."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": "Candidate chain links KMS delegation to IAM with the separate IAM permissions-boundary evaluation. Human review must verify necessity and qualifiers.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-42",
+      "intent_group_id": "ownership-sharing",
+      "category": "MULTI_HOP",
+      "question": "For a Bucket owner preferred bucket, what separates object ownership from authorization to use a KMS key across accounts?",
+      "answerable": true,
+      "reference_answer": "The bucket owner gets ownership of new uploads with bucket-owner-full-control; KMS cross-account use still requires authorization through the key-owner policy and the caller account IAM policy.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "The canned ACL condition determines bucket-owner ownership.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_2d3b13e4e6df29795eaca0e8b2b901d730aa477517b988931eaedda40ef509bb",
+              "start_char": 1299,
+              "end_char": 1470,
+              "quote": "Bucket owner preferred – The bucket owner owns and has full control over new objects that other accounts write to the bucket with the bucket-owner-full-control canned ACL."
+            }
+          ]
+        },
+        {
+          "group_id": "g2",
+          "required_fact": "Cross-account KMS use needs owning-key policy and external-account IAM authorization.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+              "start_char": 51,
+              "end_char": 267,
+              "quote": "You can allow users or roles in a different AWS account to use a KMS key in your account. Cross-account access requires permission in the key policy of the KMS key and in an IAM policy in the external user's account."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": "Candidate chain joins S3 ownership conditions to independent cross-account KMS authorization. Source necessity and minimal support require human review.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-43",
+      "intent_group_id": "s3-notification-destination-policy",
+      "category": "MULTI_HOP",
+      "question": "For direct S3 notifications to an encrypted SNS destination, which topic type and extra KMS authorization must be checked?",
+      "answerable": true,
+      "reference_answer": "Direct S3 notifications support a Standard SNS destination rather than SNS FIFO; for a customer-managed-key encrypted destination, the key policy must grant the S3 service principal permission to use the encrypted destination.",
+      "evidence_groups": [
+        {
+          "group_id": "g1",
+          "required_fact": "S3 direct SNS notifications require a Standard rather than FIFO topic.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_9a4a2f1a526ff7ba126602e8160527dbfc0cf0d7177e2dba9dbde1b358853339",
+              "start_char": 1072,
+              "end_char": 1410,
+              "quote": "Amazon SNS is a flexible, fully managed push messaging service. You can use this service to push messages to mobile devices or distributed services. With SNS, you can publish a message once, and deliver it one or more times. Currently, Standard SNS is only allowed as an S3 event notification destination, whereas SNS FIFO is not allowed."
+            }
+          ]
+        },
+        {
+          "group_id": "g2",
+          "required_fact": "The customer managed KMS key policy must grant the S3 service principal access.",
+          "alternatives": [
+            {
+              "document_version_id": "docv_8bfd77e81ca669d7397b619321e4758adc01fa4b3f45d09cd4c65bbf5c56f8fc",
+              "start_char": 4906,
+              "end_char": 5248,
+              "quote": "If the SQS queue or SNS topics are encrypted with an AWS Key Management Service (AWS KMS) customer managed key, you must grant the Amazon S3 service principal permission to work with the encrypted topics or queue. To grant the Amazon S3 service principal permission, add the following statement to the key policy for the customer managed key."
+            }
+          ]
+        }
+      ],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": "Candidate chain connects the notification destination-type restriction with encrypted-destination KMS authorization. Review alternatives and exact key operations before gold approval.",
+      "unanswerable_reason": null
+    },
+    {
+      "question_id": "devx-44",
+      "intent_group_id": "expansion-fact-44",
+      "category": "UNANSWERABLE",
+      "question": "Which exact policy statement in my AWS account denied my request today, without supplying any policies or logs?",
+      "answerable": false,
+      "reference_answer": "The supplied frozen corpus does not provide the requested evidence; do not invent the answer.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "Account-specific policies and authorization logs are absent."
+    },
+    {
+      "question_id": "devx-45",
+      "intent_group_id": "expansion-fact-45",
+      "category": "UNANSWERABLE",
+      "question": "Does an RDS Multi-AZ DB instance standby serve read traffic, using only this frozen S3/Lambda/IAM/KMS corpus?",
+      "answerable": false,
+      "reference_answer": "The supplied frozen corpus does not provide the requested evidence; do not invent the answer.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The frozen pilot corpus contains no RDS documentation. This is corpus-unanswerable, not necessarily unanswerable in AWS official live search."
+    },
+    {
+      "question_id": "devx-46",
+      "intent_group_id": "expansion-fact-46",
+      "category": "UNANSWERABLE",
+      "question": "How do DynamoDB partition and sort keys identify an item, using only this frozen pilot corpus?",
+      "answerable": false,
+      "reference_answer": "The supplied frozen corpus does not provide the requested evidence; do not invent the answer.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The frozen pilot corpus lacks the required DynamoDB key documentation; live search is a different evidence scope."
+    },
+    {
+      "question_id": "devx-47",
+      "intent_group_id": "expansion-fact-47",
+      "category": "UNANSWERABLE",
+      "question": "What is the actual execution-role ARN configured on my deployed Lambda, with no account configuration supplied?",
+      "answerable": false,
+      "reference_answer": "The supplied frozen corpus does not provide the requested evidence; do not invent the answer.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "Account configuration is not provided by public service documentation."
+    },
+    {
+      "question_id": "devx-48",
+      "intent_group_id": "expansion-fact-48",
+      "category": "UNANSWERABLE",
+      "question": "What plaintext is stored in my private S3 object if no object contents have been provided?",
+      "answerable": false,
+      "reference_answer": "The supplied frozen corpus does not provide the requested evidence; do not invent the answer.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "Private object contents are absent from the corpus."
+    },
+    {
+      "question_id": "devx-49",
+      "intent_group_id": "expansion-fact-49",
+      "category": "UNANSWERABLE",
+      "question": "Which KMS key ARN is currently configured as the default encryption key on my bucket?",
+      "answerable": false,
+      "reference_answer": "The supplied frozen corpus does not provide the requested evidence; do not invent the answer.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "The corpus has no account-specific bucket-encryption configuration."
+    },
+    {
+      "question_id": "devx-50",
+      "intent_group_id": "expansion-fact-50",
+      "category": "UNANSWERABLE",
+      "question": "How many messages are currently waiting in my Lambda asynchronous event queue?",
+      "answerable": false,
+      "reference_answer": "The supplied frozen corpus does not provide the requested evidence; do not invent the answer.",
+      "evidence_groups": [],
+      "review_status": "AI_DRAFT",
+      "review_note": "Source-first development expansion. Whole supporting paragraph offsets are mechanically checked. Human semantic/alternative/translation/group review pending. Not holdout; no rankings used to select or shorten anchors.",
+      "multi_hop_rationale": null,
+      "unanswerable_reason": "No account telemetry or queue metrics have been supplied."
+    }
+  ]
+}

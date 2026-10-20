@@ -71,7 +71,7 @@ class DevelopmentDataset(Record):
     schema_version: Literal[1]
     dataset_id: Nonempty
     split: Literal["DEVELOPMENT"]
-    language: Literal["en"]
+    language: Literal["en", "vi"]
     source_snapshot_version: Nonempty
     source_manifest_sha256: Sha256
     annotation_policy: Literal["SOURCE_FIRST_AI_DRAFT_REQUIRES_HUMAN_REVIEW_V1"]

@@ -1,0 +1,287 @@
+{
+  "languages": {
+    "en": {
+      "A1_MENTIONS_ONLY": {
+        "provisional_ai_draft": {
+          "answerable_denominator": 40,
+          "intent_groups": 23,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": 0.95,
+          "complete_evidence_at_k": 0.925,
+          "mrr_overlap_at_k": 0.7904166666666667,
+          "context_complete": 0.925,
+          "complete_evidence_count": 37
+        },
+        "human_approved_only": {
+          "answerable_denominator": 0,
+          "intent_groups": 0,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": null,
+          "complete_evidence_at_k": null,
+          "mrr_overlap_at_k": null,
+          "context_complete": null
+        },
+        "graph_used_questions": 12,
+        "contexts_with_assertions": 0,
+        "positive_hop_candidates": 0,
+        "graph_empty_fallbacks": 38,
+        "paired_vs_hybrid": {
+          "answerable_questions": 40,
+          "intent_groups": 23,
+          "wins": 0,
+          "losses": 0,
+          "ties": 40,
+          "delta_percentage_points": 0.0,
+          "cluster_bootstrap_percentile95_pp": [
+            0.0,
+            0.0
+          ],
+          "changed_question_ids": [],
+          "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+        }
+      },
+      "A2_RELATIONS_1HOP": {
+        "provisional_ai_draft": {
+          "answerable_denominator": 40,
+          "intent_groups": 23,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": 0.95,
+          "complete_evidence_at_k": 0.925,
+          "mrr_overlap_at_k": 0.7904166666666667,
+          "context_complete": 0.925,
+          "complete_evidence_count": 37
+        },
+        "human_approved_only": {
+          "answerable_denominator": 0,
+          "intent_groups": 0,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": null,
+          "complete_evidence_at_k": null,
+          "mrr_overlap_at_k": null,
+          "context_complete": null
+        },
+        "graph_used_questions": 12,
+        "contexts_with_assertions": 12,
+        "positive_hop_candidates": 16,
+        "graph_empty_fallbacks": 38,
+        "paired_vs_hybrid": {
+          "answerable_questions": 40,
+          "intent_groups": 23,
+          "wins": 0,
+          "losses": 0,
+          "ties": 40,
+          "delta_percentage_points": 0.0,
+          "cluster_bootstrap_percentile95_pp": [
+            0.0,
+            0.0
+          ],
+          "changed_question_ids": [],
+          "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+        }
+      },
+      "A3_RELATIONS_2HOP": {
+        "provisional_ai_draft": {
+          "answerable_denominator": 40,
+          "intent_groups": 23,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": 0.95,
+          "complete_evidence_at_k": 0.925,
+          "mrr_overlap_at_k": 0.7904166666666667,
+          "context_complete": 0.925,
+          "complete_evidence_count": 37
+        },
+        "human_approved_only": {
+          "answerable_denominator": 0,
+          "intent_groups": 0,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": null,
+          "complete_evidence_at_k": null,
+          "mrr_overlap_at_k": null,
+          "context_complete": null
+        },
+        "graph_used_questions": 12,
+        "contexts_with_assertions": 12,
+        "positive_hop_candidates": 16,
+        "graph_empty_fallbacks": 38,
+        "paired_vs_hybrid": {
+          "answerable_questions": 40,
+          "intent_groups": 23,
+          "wins": 0,
+          "losses": 0,
+          "ties": 40,
+          "delta_percentage_points": 0.0,
+          "cluster_bootstrap_percentile95_pp": [
+            0.0,
+            0.0
+          ],
+          "changed_question_ids": [],
+          "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+        }
+      }
+    },
+    "vi": {
+      "A1_MENTIONS_ONLY": {
+        "provisional_ai_draft": {
+          "answerable_denominator": 40,
+          "intent_groups": 23,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": 0.6375,
+          "complete_evidence_at_k": 0.6,
+          "mrr_overlap_at_k": 0.46749999999999997,
+          "context_complete": 0.7,
+          "complete_evidence_count": 24
+        },
+        "human_approved_only": {
+          "answerable_denominator": 0,
+          "intent_groups": 0,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": null,
+          "complete_evidence_at_k": null,
+          "mrr_overlap_at_k": null,
+          "context_complete": null
+        },
+        "graph_used_questions": 17,
+        "contexts_with_assertions": 0,
+        "positive_hop_candidates": 0,
+        "graph_empty_fallbacks": 33,
+        "paired_vs_hybrid": {
+          "answerable_questions": 40,
+          "intent_groups": 23,
+          "wins": 0,
+          "losses": 1,
+          "ties": 39,
+          "delta_percentage_points": -2.5,
+          "cluster_bootstrap_percentile95_pp": [
+            -9.090909090909092,
+            0.0
+          ],
+          "changed_question_ids": [
+            "devx-22-vi"
+          ],
+          "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+        }
+      },
+      "A2_RELATIONS_1HOP": {
+        "provisional_ai_draft": {
+          "answerable_denominator": 40,
+          "intent_groups": 23,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": 0.6375,
+          "complete_evidence_at_k": 0.6,
+          "mrr_overlap_at_k": 0.4716666666666667,
+          "context_complete": 0.7,
+          "complete_evidence_count": 24
+        },
+        "human_approved_only": {
+          "answerable_denominator": 0,
+          "intent_groups": 0,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": null,
+          "complete_evidence_at_k": null,
+          "mrr_overlap_at_k": null,
+          "context_complete": null
+        },
+        "graph_used_questions": 17,
+        "contexts_with_assertions": 17,
+        "positive_hop_candidates": 27,
+        "graph_empty_fallbacks": 33,
+        "paired_vs_hybrid": {
+          "answerable_questions": 40,
+          "intent_groups": 23,
+          "wins": 0,
+          "losses": 1,
+          "ties": 39,
+          "delta_percentage_points": -2.5,
+          "cluster_bootstrap_percentile95_pp": [
+            -9.090909090909092,
+            0.0
+          ],
+          "changed_question_ids": [
+            "devx-22-vi"
+          ],
+          "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+        }
+      },
+      "A3_RELATIONS_2HOP": {
+        "provisional_ai_draft": {
+          "answerable_denominator": 40,
+          "intent_groups": 23,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": 0.6375,
+          "complete_evidence_at_k": 0.6,
+          "mrr_overlap_at_k": 0.4716666666666667,
+          "context_complete": 0.7,
+          "complete_evidence_count": 24
+        },
+        "human_approved_only": {
+          "answerable_denominator": 0,
+          "intent_groups": 0,
+          "review_counts": {
+            "AI_DRAFT": 50
+          },
+          "unanswerable_excluded": 10,
+          "recall_at_k": null,
+          "complete_evidence_at_k": null,
+          "mrr_overlap_at_k": null,
+          "context_complete": null
+        },
+        "graph_used_questions": 17,
+        "contexts_with_assertions": 17,
+        "positive_hop_candidates": 27,
+        "graph_empty_fallbacks": 33,
+        "paired_vs_hybrid": {
+          "answerable_questions": 40,
+          "intent_groups": 23,
+          "wins": 0,
+          "losses": 1,
+          "ties": 39,
+          "delta_percentage_points": -2.5,
+          "cluster_bootstrap_percentile95_pp": [
+            -9.090909090909092,
+            0.0
+          ],
+          "changed_question_ids": [
+            "devx-22-vi"
+          ],
+          "interval_scope": "Conditional descriptive diagnostic on AI-draft labels; not population or holdout evidence."
+        }
+      }
+    }
+  },
+  "scope": "FOLLOWUP_DEVELOPMENT_NOT_INDEPENDENT_CONFIRMATION",
+  "labels": "AI_DRAFT",
+  "production_default_changed": false
+}
