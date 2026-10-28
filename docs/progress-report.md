@@ -80,7 +80,7 @@ Graph coverage hiện chỉ là một tập con có nguồn chứng minh; không
 
 Receipt public của lần đọc mới: [public-readback.json](../benchmarks/release-status-2026-10-28.json). Nó chứa HTTP status và SHA-256 của assets, không chứa token, tài khoản, nguồn riêng tư hoặc câu trả lời của người dùng. Các receipts vận hành chi tiết và nhật ký học giữ local; bảng này tóm tắt phạm vi kiểm, không giả rằng chúng đều đã được đưa lên GitHub.
 
-**Phạm vi cập nhật GitHub lần này:** README, báo cáo tiến độ, receipt public và quy tắc cho phép file báo cáo. Không đẩy toàn bộ code local chưa review, corpus, weights, credentials, raw results hoặc nhật ký cá nhân. Không deploy lại AWS trong lượt báo cáo này.
+**Phạm vi cập nhật GitHub lần này:** README, báo cáo tiến độ, receipt public và quy tắc cho phép file báo cáo. Sau push, CI phát hiện bốn test lịch sử phụ thuộc ngày thực tế khi bảng giá fixture hết hạn; bản sửa giới hạn ở hai module tests, cố định clock và giữ kiểm tra chặn giá chưa có hiệu lực/đã hết hạn. Không sửa runtime hoặc kéo dài thời hạn bảng giá để làm tests đạt. Không đẩy toàn bộ code local chưa review, corpus, weights, credentials, raw results hoặc nhật ký cá nhân. Không deploy lại AWS trong lượt báo cáo này.
 
 ## 7. Thứ tự demo để báo cáo với giảng viên — khoảng 5–7 phút
 

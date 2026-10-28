@@ -481,6 +481,14 @@ def test_cli_extraction_plan_is_offline(tmp_path, monkeypatch, capsys):
     from app.cli import main
     from app.corpus import LocalCorpus
 
+    class PlanningDateTime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            # Pin the historical price fixture's clock; production validation
+            # must continue to reject that same sheet after its real expiry.
+            return NOW.astimezone(tz) if tz is not None else NOW.replace(tzinfo=None)
+
+    monkeypatch.setattr("app.cli.datetime", PlanningDateTime)
     doc, chunk = source()
     local = LocalCorpus("synthetic-corpus", "demo", (doc,), (chunk,), {})
     monkeypatch.setattr("app.corpus.load_corpus", lambda *a, **k: local)
