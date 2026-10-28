@@ -41,6 +41,7 @@ Thumbs.db
 !/docs/development.md
 !/docs/evaluation.md
 !/docs/security-overview.md
+
 !/docs/api/
 *.md
 !/README.md
@@ -58,3 +59,6 @@ Thumbs.db
 /scripts/build_chatbot_recruiter_packet.py
 /scripts/audit_release.py
 /configs/security/release-scan-triage-v1.json
+
+# Curated progress report; local plans and learning journals stay private
+!/docs/progress-report.md

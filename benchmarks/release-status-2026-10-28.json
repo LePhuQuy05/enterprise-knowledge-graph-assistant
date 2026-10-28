@@ -1,0 +1,125 @@
+{
+  "observed_at": "2026-10-28T02:11:08.639326+00:00",
+  "scope": "PUBLIC_STATIC_AND_UNAUTHENTICATED_STATUS_ONLY",
+  "url": "https://cyg0uvml94.execute-api.us-east-1.amazonaws.com/",
+  "assets": [
+    {
+      "route": "/",
+      "status": 200,
+      "bytes": 25175,
+      "sha256": "a2fed93f3ddd1b692f853b335e1c14651f3f246a3f1bb52ec874ec8f00ea8744",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/app.js",
+      "status": 200,
+      "bytes": 50,
+      "sha256": "a8ef169199213e63ce7f49f63e479571d6a356258da6c7f1468b495b94a12f57",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/auth.mjs",
+      "status": 200,
+      "bytes": 12413,
+      "sha256": "a1e796688638caeb2ea233e21a9b439adff9639ba9b53932a7021f981ddfeab6",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/brief.mjs",
+      "status": 200,
+      "bytes": 4646,
+      "sha256": "31795958664b63f8362933375982befd10d19559594e4a35f3479d3dc6721901",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/client.mjs",
+      "status": 200,
+      "bytes": 4103,
+      "sha256": "a1549a1835c4f9183502957d4780f96656c63e1ef983d2a1f4e640ed75751795",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/compare.mjs",
+      "status": 200,
+      "bytes": 16890,
+      "sha256": "72597a5dc4241c80352358b65a3aedc8ab27bc9463e05773d60e6cccbe62d098",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/dashboard-data.json",
+      "status": 200,
+      "bytes": 183825,
+      "sha256": "c57d75ea90fc7258d3e35be38a0e6a9c5ba86927c3392d0b01627c1d0aafe2e1",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/dashboard.mjs",
+      "status": 200,
+      "bytes": 18817,
+      "sha256": "d607b4edc43b3d11620d77067d1d3573824ebdea62da813831700da6ac4c657d",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/evidence.mjs",
+      "status": 200,
+      "bytes": 7337,
+      "sha256": "9036e5e09e3105ed74fe1db4257595f171611354208d86071e24010175c78358",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/investigation.mjs",
+      "status": 200,
+      "bytes": 5426,
+      "sha256": "d36aecf8bd988046fe4c8033f3978776bbffa73ccd64fbbe05e26cf616aed251",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/onboarding.mjs",
+      "status": 200,
+      "bytes": 8309,
+      "sha256": "41f3ad0852207775cdf8d41c6c506209ec2afb38cfd15012d5b2839f01b29e1e",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/style.css",
+      "status": 200,
+      "bytes": 37408,
+      "sha256": "f1475e41b8c50312cbb0879303866682799ee8832c294b00f5a3dd8f9a5b695e",
+      "matches_2026_10_25_release": true
+    },
+    {
+      "route": "/assets/ui.mjs",
+      "status": 200,
+      "bytes": 28385,
+      "sha256": "7e0faf03a6b668c09716a9a56119e205c085cca018316a23cc2adfb07aa2ec5c",
+      "matches_2026_10_25_release": true
+    }
+  ],
+  "assets_matching": 13,
+  "assets_total": 13,
+  "unauthenticated_status_http": 401,
+  "signed_in_workflows_tested_this_turn": false,
+  "model_calls": 0,
+  "aws_control_plane_calls": 0,
+  "deployment_changes": 0,
+  "reference_release_date": "2026-10-25",
+  "browser_observation": {
+    "tool": "Chrome DevTools MCP",
+    "authenticated": false,
+    "page_title": "AWS Workflow Evidence Lab",
+    "navigation_dom_labels": [
+      "Overview",
+      "Investigate",
+      "Knowledge Explorer",
+      "Retrieval Lab",
+      "Live Compare"
+    ],
+    "live_method_dom_labels": [
+      "BM25",
+      "Vector",
+      "Hybrid",
+      "Hybrid + reranker"
+    ],
+    "note": "Signed-out DOM/control presence only; not a signed-in functional walkthrough."
+  }
+}

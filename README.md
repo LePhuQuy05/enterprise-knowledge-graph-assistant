@@ -4,11 +4,20 @@ A source-grounded AWS documentation assistant with Vietnamese and English answer
 
 [Live AWS demo](https://cyg0uvml94.execute-api.us-east-1.amazonaws.com/) · [Architecture](docs/architecture.md) · [Development](docs/development.md) · [Evaluation](docs/evaluation.md) · [Security](docs/security-overview.md)
 
+## Delivery status — 28 October 2026
+
+The deployed application includes verified-email accounts, Vietnamese/English AWS documentation answers, source inspection, private question history, investigation exports, and guided onboarding. **Live Compare** also runs BM25, vector, hybrid and hybrid + reranker retrieval on a separate **316-document / 2,978-chunk** collection, with saved runs, traces and JSON export. Live Compare does not generate answers on that collection.
+
+The recorded pilot remains **20 documents / 236 chunks**. The **319-document / 3,024-chunk** candidate, new Graph/Q/QB workflows and eight detailed method pages are local work and have not been released to AWS. Graph in the existing recorded lab is an experimental recorded result, not live graph answering.
+
+See the [Vietnamese progress report and presentation walkthrough](docs/progress-report.md) for the feature checklist, evidence levels and remaining work. A fresh public readback matched all 13 deployed assets and confirmed that the status API rejects unauthenticated access; authenticated workflows were not rerun in that check.
+
 ## What you can do
 
 - Investigate AWS workflows using official live documentation search or a versioned pilot snapshot.
 - Inspect the source passage behind each statement, revisit your own questions, and export an investigation brief.
 - Explore indexed documents and compare recorded vector, hybrid, and graph retrieval results in the dashboard.
+- Run a retrieval comparison on the separate 316-document collection using four live methods, then inspect sources, saved traces and exported results.
 - Create an account with a username, email and website password; verify email before accessing the workspace.
 
 The owner has confirmed registration, email verification, account access, and a Vietnamese question returning an answer, sources and history. These are user-reported functional checks; broader answer quality remains under evaluation.
@@ -61,7 +70,7 @@ Dependency and tokenizer preparation download public assets. Tests use fixtures 
 
 ## Results and limits
 
-The serving pilot contains 20 official documents and 236 chunks. A separate live-search path expands coverage without claiming that all AWS documentation has been downloaded or indexed.
+The serving pilot contains 20 official documents and 236 chunks. Live Compare uses a separate 316-document / 2,978-chunk collection for retrieval only. A separate live-search answer path expands coverage without claiming that all AWS documentation has been downloaded or indexed. These scopes must not be combined into one reported corpus or benchmark.
 
 The expanded development set has 50 scenarios, each in English and Vietnamese: 40 answerable and 10 corpus-unanswerable per language. Translations share intent groups; 100 language inputs are not 100 independent scenarios. Evidence labels remain AI drafts pending human review.
 
