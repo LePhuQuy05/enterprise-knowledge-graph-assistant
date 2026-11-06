@@ -47,7 +47,7 @@ Keep vector and graph experiments tied to the same snapshot, embedding recipe an
 
 ## Optional providers and AWS
 
-DeepSeek credentials are supplied by the operator. Never commit keys, credential files, bearer tokens, Cognito passwords or model receipts. Local key setup and cloud Secrets Manager configuration are separate from the fixture path. Paid scripts require explicit execution and initialized durable budget state.
+DeepSeek credentials are supplied by the operator. Never commit keys, credential files, bearer tokens, Cognito passwords or private provider receipts. Local key setup and cloud Secrets Manager configuration are separate from the fixture path. Paid scripts require explicit execution and initialized durable budget state.
 
 Cloud code uses the project profile `kg-dev` in `us-east-1` and deliberately rejects unexpected deployment identities. Configure a non-root identity in your own account before any cloud operation. The included IAM preflight policy grants metadata reads; it is not a deployment administrator policy.
 

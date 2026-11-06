@@ -36,4 +36,4 @@ Repo cung cấp source V2, public fixture preview và các bước kiểm tra tr
 1. Review nhãn/nguồn và đánh giá chất lượng câu trả lời Việt–Anh trên recipe 319 hiện tại. Benchmark 100 tình huống trên 316 là diagnostic cũ có failures/fallback, không dùng để khẳng định Graph/Q/QB hiện tại tốt hơn Hybrid.
 2. Cập nhật báo cáo/video/CV theo cùng release, rehearsal và kiểm hạn mức/giá trước buổi demo.
 
-Dependencies được pin trong uv.lock và package-lock.json. Raw corpus, model weights, private history, receipts, credentials và tài liệu học nội bộ không nằm trên GitHub. Public fixture preview mô phỏng identity/provider, có nhãn và không gọi API trả phí; xem [development](development.md).
+Dependencies được pin trong uv.lock và package-lock.json. Raw corpus, model weights, private history, private provider receipts, credentials và tài liệu học nội bộ không nằm trên GitHub. Các benchmark records đã được chọn lọc công khai vẫn được giữ riêng. Public fixture preview mô phỏng identity/provider, có nhãn và không gọi API trả phí; xem [development](development.md).
