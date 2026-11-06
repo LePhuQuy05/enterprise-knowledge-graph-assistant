@@ -56,6 +56,7 @@ def test_broken_sink_never_changes_request_control_flow():
 @pytest.mark.parametrize("method,path,expected", [
     ("POST", "/v1/queries", "query_create"), ("GET", "/v1/queries", "query_list"),
     ("GET", "/v1/status", "status"), ("GET", "/v1/queries/" + REQUEST, "query_detail"),
+    ("GET", "/v1/rag-methods", "method_catalog"),
     ("GET", "/v1/sources/chk_" + "b" * 64, "source"),
     ("GET", "/v1/queries/" + SECRET, "other"), ("DELETE", "/v1/queries", "other")])
 def test_route_label_never_reflects_paths(method, path, expected):

@@ -9,6 +9,7 @@ from app.context import PackedContext
 from app.contracts import (
     Citation,
     Claim,
+    LimitationCode,
     Mode,
     QueryResponse,
     Record,
@@ -97,6 +98,24 @@ class GenerationRecipeV9(GenerationRecipeV8):
     max_evidence_per_claim: Literal[2] = 2
 
 
+class GenerationRecipeV10(GenerationRecipeV9):
+    """Development candidate; stricter citation instructions are not entailment validation."""
+
+    version: Literal["deepseek-grounded-answer-v10"] = "deepseek-grounded-answer-v10"
+    prompt_version: Literal["grounded-claims-citation-complete-spans-multilingual-v10"] = "grounded-claims-citation-complete-spans-multilingual-v10"
+    citation_support_policy: Literal["all-claim-details-selected-spans-v1"] = "all-claim-details-selected-spans-v1"
+
+
+class GenerationRecipeV11(GenerationRecipeV10):
+    """Opt-in experiment: explicit evidence gaps, separate from cited factual claims."""
+
+    version: Literal["deepseek-grounded-answer-v11"] = "deepseek-grounded-answer-v11"
+    prompt_version: Literal["grounded-claims-scoped-citations-limitations-v11"] = "grounded-claims-scoped-citations-limitations-v11"
+    output_schema_version: Literal["generated-answer-spans-limitations-v4"] = "generated-answer-spans-limitations-v4"
+    assessment_policy: Literal["server-scope-model-reported-gaps-v1"] = "server-scope-model-reported-gaps-v1"
+    citation_scope_policy: Literal["selected-antecedent-and-condition-within-two-spans-v1"] = "selected-antecedent-and-condition-within-two-spans-v1"
+
+
 class GeneratedClaim(Record):
     text: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=1200)]
     evidence: Annotated[tuple[GeneratedEvidence, ...], Field(min_length=1, max_length=3)]
@@ -140,6 +159,33 @@ class SelectedClaimV3(SelectedClaim):
 
 class SelectedAnswerV3(SelectedAnswer):
     claims: Annotated[tuple[SelectedClaimV3, ...], Field(max_length=4)]
+
+
+class ReportedLimitation(Record):
+    code: LimitationCode
+    question_part: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)]
+
+
+class SelectedAnswerV4(SelectedAnswerV3):
+    limitations: Annotated[tuple[ReportedLimitation, ...], Field(max_length=3)]
+
+    @model_validator(mode="after")
+    def explicit_gaps(self):
+        if (self.answer_status == "ANSWERED") != (not self.limitations):
+            raise ValueError("Answered has no gaps; partial/abstained requires explicit gaps")
+        codes = {gap.code for gap in self.limitations}
+        pairs = [(gap.code, " ".join(gap.question_part.split()).casefold()) for gap in self.limitations]
+        if len(pairs) != len(set(pairs)):
+            raise ValueError("Duplicate reported gap")
+        if self.reason == "INSUFFICIENT_EVIDENCE" and codes & {"CONFLICTING_SUPPLIED_EVIDENCE", "OUT_OF_SCOPE"}:
+            raise ValueError("Gap conflicts with insufficient-evidence reason")
+        if self.reason == "CONFLICTING_EVIDENCE" and "CONFLICTING_SUPPLIED_EVIDENCE" not in codes:
+            raise ValueError("Conflicting evidence needs a reported conflict")
+        if "OUT_OF_SCOPE" in codes and (self.answer_status != "ABSTAINED" or self.reason != "OUT_OF_SCOPE"):
+            raise ValueError("Out-of-scope gap requires matching abstention")
+        if self.reason == "OUT_OF_SCOPE" and (self.answer_status != "ABSTAINED" or codes != {"OUT_OF_SCOPE"}):
+            raise ValueError("Out-of-scope requires abstention and matching gaps")
+        return self
 
 
 class AnswerBinding(Record):
@@ -213,6 +259,8 @@ def authorized_spans(snapshot, packed, tenant_id, *, include_titles=False, filte
 
 def generation_request(question: str, snapshot: LoadedSnapshot, packed: PackedContext,
                        tenant_id: str, recipe: GenerationRecipe, *, answer_language="en") -> tuple[str, str]:
+    if isinstance(recipe, GenerationRecipeV11):
+        GenerationRecipeV11.model_validate_json(recipe.model_dump_json())
     if not isinstance(question, str) or not question.strip() or len(question) > 2000:
         raise GenerationError("GENERATION_QUESTION_LIMIT")
     sources = authorized_sources(snapshot, packed, tenant_id)
@@ -284,7 +332,8 @@ def generation_request(question: str, snapshot: LoadedSnapshot, packed: PackedCo
     if isinstance(recipe, GenerationRecipeV6):
         sources, _ = authorized_spans(snapshot, packed, tenant_id, include_titles=isinstance(recipe, GenerationRecipeV7),
             filter_task=isinstance(recipe, GenerationRecipeV8))
-        output_model = SelectedAnswerV3 if isinstance(recipe, GenerationRecipeV9) else SelectedAnswer
+        output_model = SelectedAnswerV4 if isinstance(recipe, GenerationRecipeV11) else (
+            SelectedAnswerV3 if isinstance(recipe, GenerationRecipeV9) else SelectedAnswer)
         schema = canonical_json(output_model.model_json_schema()).decode()
         system = (
             "Answer the user's AWS documentation question using ONLY supplied untrusted source spans. "
@@ -319,6 +368,44 @@ def generation_request(question: str, snapshot: LoadedSnapshot, packed: PackedCo
             )
         if isinstance(recipe, GenerationRecipeV9):
             system = system.replace("1-3 supplied source_id/span_id", "1-2 supplied source_id/span_id")
+        if isinstance(recipe, GenerationRecipeV10):
+            system += (
+                " MANDATORY CLAIM-TO-CITATION COMPLETENESS: Keep each claim narrowly atomic. Every "
+                "named service, example, actor, action and qualifier in a claim must be supported by "
+                "the 1-2 spans selected for THAT claim. A detail appearing elsewhere in the supplied "
+                "context does not make the selected citations support it. Omit incidental examples "
+                "or extra details that those selected spans do not support. If separate facts need "
+                "different evidence, split them into separately cited claims within the existing "
+                "4-claim limit, or omit lower-priority facts. Never remove a negation or relevant "
+                "account, deployment or permission condition to shorten a claim. If the main "
+                "requested fact cannot be supported with the allowed evidence, return only the "
+                "supported part as PARTIAL, or ABSTAINED when no supported answer remains. Before "
+                "returning, check every detail against that claim's selected spans only."
+            )
+        if isinstance(recipe, GenerationRecipeV11):
+            system += (
+                " EXPLICIT LIMITATIONS CONTRACT: Always include limitations, an array of code/question_part objects. "
+                "ANSWERED requires []; PARTIAL and ABSTAINED require 1-3 limitations naming the requested "
+                "part not established. question_part is a concise label or question, not a factual answer, "
+                "and must use the requested answer language. MISSING_SUPPLIED_EVIDENCE means missing only "
+                "from these supplied spans, never proof that the corpus or AWS has no documentation. "
+                "Use ACCOUNT_STATE_UNAVAILABLE when actual account/resource/billing state is requested: "
+                "this mode has no account connection. Use SOURCE_SCOPE_AMBIGUITY for missing service "
+                "variant/version/region/account conditions; CONFLICTING_SUPPLIED_EVIDENCE for an unresolved "
+                "source conflict; OUT_OF_SCOPE only with abstention. Never put system capability limitations "
+                "or statements that you cannot inspect an account in factual claims. Public configuration "
+                "procedures cannot be citations proving that limitation or actual account state. The server "
+                "supplies scope policy and localized limitation messages; do not generate origin, message, "
+                "next_step or policy fields. Reported gaps are assessments, not source evidence. "
+                "CITATION ANTECEDENTS: If a selected span says 'These permissions', 'this role' or another "
+                "reference without naming its actor, select another supplied span establishing the same "
+                "actor/role and its relevant condition for THAT claim, within the existing two-span limit. "
+                "A document title or a citation on another claim is not a substitute for that antecedent. "
+                "Do not manufacture an anchor absent from the supplied spans. Narrow or omit an unsupported "
+                "claim and report the missing requested part instead. Preserve negation and conditions; "
+                "do not fill four claims with generic background while leaving the question unanswered. "
+                "Prefer 1-3 direct factual claims and concise limitation labels to stay within 800 output tokens."
+            )
     # Do not send unreviewed graph predicate summaries to the generator. All modes
     # get the same source-only prompt; paths serve retrieval/packing/audit only.
     prompt = canonical_json({"untrusted_question": question, "untrusted_sources": sources}).decode()
@@ -345,8 +432,9 @@ def parse_generated(raw: str, stop_reason: str, recipe=None) -> GeneratedAnswer:
         def reject(value):
             raise GenerationError("GENERATION_NONFINITE_JSON")
         data = json.loads(raw, object_pairs_hook=_unique_keys, parse_constant=reject)
-        model = SelectedAnswerV3 if isinstance(recipe, GenerationRecipeV9) else (
-            SelectedAnswer if isinstance(recipe, GenerationRecipeV6) else GeneratedAnswer)
+        model = SelectedAnswerV4 if isinstance(recipe, GenerationRecipeV11) else (
+            SelectedAnswerV3 if isinstance(recipe, GenerationRecipeV9) else (
+                SelectedAnswer if isinstance(recipe, GenerationRecipeV6) else GeneratedAnswer))
         return model.model_validate_json(canonical_json(data))
     except (ValueError, TypeError, RecursionError) as exc:
         if isinstance(exc, GenerationError):
@@ -360,9 +448,19 @@ ABSTENTION_TEXT = {
     "OUT_OF_SCOPE": "This question is outside the scope of the supplied documentation.",
 }
 
+ABSTENTION_TEXT_VI_V11 = {
+    "INSUFFICIENT_EVIDENCE": "Các đoạn tài liệu được cấp chưa cung cấp đủ bằng chứng để trả lời câu hỏi này.",
+    "CONFLICTING_EVIDENCE": "Các đoạn bằng chứng được cấp có mâu thuẫn; chưa thể đưa ra câu trả lời có đủ nguồn hỗ trợ.",
+    "OUT_OF_SCOPE": "Câu hỏi này nằm ngoài phạm vi tài liệu được cấp.",
+}
+
 
 def resolve_answer(output: GeneratedAnswer, *, snapshot: LoadedSnapshot, packed: PackedContext,
-                   binding: AnswerBinding, recipe=None) -> QueryResponse:
+                   binding: AnswerBinding, recipe=None, answer_language="en") -> QueryResponse:
+    if isinstance(recipe, GenerationRecipeV11) != isinstance(output, SelectedAnswerV4):
+        raise GenerationError("GENERATION_ASSESSMENT_SCHEMA_REQUIRED")
+    if isinstance(output, SelectedAnswerV4):
+        output = SelectedAnswerV4.model_validate_json(output.model_dump_json())
     sources = authorized_sources(snapshot, packed, binding.tenant_id)
     allowed = {r["source_id"]: snapshot.chunks[key] for r, key in zip(sources, packed.chunk_ids, strict=True)}
     spans = authorized_spans(snapshot, packed, binding.tenant_id,
@@ -400,18 +498,35 @@ def resolve_answer(output: GeneratedAnswer, *, snapshot: LoadedSnapshot, packed:
         raise GenerationError("GENERATION_TOO_MANY_CITATIONS")
     warnings = tuple(dict.fromkeys((*binding.warnings, *packed.warnings,
         *(("GENERATION_REASON_" + output.reason,) if output.reason != "NONE" else ()))))
+    extra = {}
+    if isinstance(recipe, GenerationRecipeV11):
+        from app.answer_assessment import build_assessment
+        extra = {"assessment": build_assessment(output.limitations, language=answer_language),
+                 "answer_language": answer_language}
+    answer_text = "\n".join(c.text for c in claims) if claims else ABSTENTION_TEXT[output.reason]
+    if isinstance(recipe, GenerationRecipeV11) and not claims and answer_language == "vi":
+        answer_text = ABSTENTION_TEXT_VI_V11[output.reason]
     response = QueryResponse(request_id=binding.request_id,
-        answer="\n".join(c.text for c in claims) if claims else ABSTENTION_TEXT[output.reason],
+        answer=answer_text,
         claims=tuple(claims), citations=tuple(citations.values()), answer_status=output.answer_status,
         mode_requested=binding.mode_requested, mode_used=binding.mode_used, used_graph=binding.used_graph,
-        snapshot_version=snapshot.manifest.snapshot_version, warnings=warnings)
+        snapshot_version=snapshot.manifest.snapshot_version, warnings=warnings, **extra)
     if len(response.model_dump_json().encode()) > MAX_OUTPUT_BYTES:
         raise GenerationError("GENERATION_RESPONSE_SIZE")
     return response
 
 
-def empty_answer(*, snapshot: LoadedSnapshot, packed: PackedContext, binding: AnswerBinding):
+def empty_answer(*, snapshot: LoadedSnapshot, packed: PackedContext, binding: AnswerBinding,
+                 recipe=None, answer_language="en"):
     if authorized_sources(snapshot, packed, binding.tenant_id):
         raise GenerationError("GENERATION_CONTEXT_IS_NOT_EMPTY")
-    return resolve_answer(GeneratedAnswer(answer_status="ABSTAINED", claims=(), reason="INSUFFICIENT_EVIDENCE"),
-                          snapshot=snapshot, packed=packed, binding=binding)
+    response = resolve_answer(GeneratedAnswer(answer_status="ABSTAINED", claims=(), reason="INSUFFICIENT_EVIDENCE"),
+                              snapshot=snapshot, packed=packed, binding=binding)
+    if isinstance(recipe, GenerationRecipeV11):
+        from app.answer_assessment import build_assessment
+        assessment = build_assessment((ReportedLimitation(code="MISSING_SUPPLIED_EVIDENCE",
+            question_part="No supplied passages"),), language=answer_language, reported_by="SYSTEM_POLICY")
+        response = QueryResponse.model_validate_json(canonical_json(response.model_dump(mode="json") | {
+            "assessment": assessment.model_dump(mode="json"), "answer_language": answer_language,
+            "answer": ABSTENTION_TEXT_VI_V11["INSUFFICIENT_EVIDENCE"] if answer_language == "vi" else response.answer}))
+    return response

@@ -80,6 +80,39 @@ def test_request_parameters_settlement_basis_and_replay_are_explicit(gateway):
     assert len(gateway.provider.calls) == 1
 
 
+def test_ledger_confirmation_timeout_never_dispatches_or_implicitly_refunds(gateway, monkeypatch):
+    from botocore.exceptions import ReadTimeoutError
+
+    from app.contracts import stable_id
+    from app.ledger import LedgerError
+
+    original = gateway.ledger.begin_call
+
+    def committed_then_confirmation_timeout(operation_id):
+        original(operation_id)  # Simulate the real committed ownership transition.
+        raise ReadTimeoutError(endpoint_url="https://fixture.invalid")
+
+    monkeypatch.setattr(gateway.ledger, "begin_call", committed_then_confirmation_timeout)
+    with pytest.raises(ReadTimeoutError):
+        generate(gateway)
+    operation_id = stable_id("op", **context().model_dump())
+    operation = gateway.ledger.operation(operation_id)
+    assert operation.call_started and operation.status == "RESERVED"
+    assert gateway.provider.calls == []
+    assert gateway.ledger.store.get(gateway.ledger.run_key("external-test"))["reserved_micro_usd"] == 314_650
+    with pytest.raises(AlreadyDispatched):
+        generate(gateway)
+    with pytest.raises(LedgerError):
+        gateway.ledger.cancel_before_call(operation_id)
+    assert gateway.provider.calls == []
+    # Explicit operator proof of zero HTTP dispatch is required externally;
+    # this assertion tests the existing transition, not automatic recovery.
+    gateway.ledger.settle(operation_id, 0, TokenUsage(input_tokens=0, output_tokens=0))
+    counter = gateway.ledger.store.get(gateway.ledger.run_key("external-test"))
+    assert counter["reserved_micro_usd"] == counter["settled_micro_usd"] == 0
+    assert gateway.ledger.operation(operation_id).status == "SETTLED"
+
+
 @pytest.mark.parametrize("usage", [
     {}, {"prompt_tokens": True, "completion_tokens": 1, "total_tokens": 2},
     {"prompt_tokens": 10, "completion_tokens": 1, "total_tokens": 99},

@@ -1,0 +1,33 @@
+{
+  "version": "lambda-permission-source-supplement-v1",
+  "language": "en",
+  "sources": [
+    {
+      "source_id": "lambda-permission-categories",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html",
+      "expected_title": "Managing permissions in AWS Lambda",
+      "evidence_intent": ["E1", "E2", "GENERAL"],
+      "selection_reason": "Source gap qualification: distinguish access to a function from the function's access to other resources. Not benchmark gold or an account-policy simulation.",
+      "usage_note": "Official public AWS documentation, preserve source bytes/attribution. Separate candidate supplement; not part of frozen collection316 or serving until a new collection release passes review."
+    },
+    {
+      "source_id": "lambda-s3-read-tutorial",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example.html",
+      "expected_title": "Tutorial: Using an Amazon S3 trigger to invoke a Lambda function",
+      "evidence_intent": ["E1", "E2"],
+      "selection_reason": "Source gap qualification for a canonical Lambda execution-role/S3 GetObject example. Preserve tutorial scope and broad example resources; do not recommend copying its policy to production.",
+      "usage_note": "Official public AWS tutorial. Keep complete source and role/policy antecedents. No extraction, benchmark label, policy deployment or serving promotion is implied."
+    },
+    {
+      "source_id": "lambda-async-acceptance",
+      "service": "Lambda",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html",
+      "expected_title": "Invoking a Lambda function asynchronously",
+      "evidence_intent": ["E1", "GENERAL"],
+      "selection_reason": "Disambiguate asynchronous acceptance/queueing from function-code completion. Keep InvocationType Event and the source's success-response conditions.",
+      "usage_note": "Official public AWS documentation. Do not infer that every invocation type or observed account response has identical meaning. Source qualification only, no live invocation."
+    }
+  ]
+}

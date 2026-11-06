@@ -55,8 +55,8 @@ export function createBriefDownloader({ document, urlAPI = URL, BlobType = Blob,
     if (!active.has(url)) return;
     cancel(active.get(url)); active.delete(url); urlAPI.revokeObjectURL(url);
   }
-  function download(markdown, filename) {
-    const url = urlAPI.createObjectURL(new BlobType([markdown], { type: "text/markdown;charset=utf-8" }));
+  function download(markdown, filename, contentType = "text/markdown;charset=utf-8") {
+    const url = urlAPI.createObjectURL(new BlobType([markdown], { type: contentType }));
     active.set(url, null);
     const link = document.createElement("a"); link.href = url; link.download = filename;
     try { document.body.append(link); link.click(); active.set(url, schedule(() => revoke(url), 30000)); }

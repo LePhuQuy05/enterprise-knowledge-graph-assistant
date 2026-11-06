@@ -8,7 +8,9 @@ export class ApiFailure extends Error {
 }
 
 export async function apiRequest(path, token, { body, key, fetcher = fetch, timeoutMs = 32000 } = {}) {
-  if (!token || !path.startsWith("/v1/") || path.includes("://") || path.includes("..")) {
+  const supported = typeof path === "string" && (path.startsWith("/v1/") || path === "/v2/scoped-run-capabilities" ||
+    path === "/v2/scoped-runs" || path.startsWith("/v2/scoped-runs/") || path.startsWith("/v2/scoped-runs?"));
+  if (!token || !supported || path.includes("://") || path.includes("..")) {
     throw new ApiFailure("INVALID_CLIENT_REQUEST");
   }
   const controller = new AbortController();

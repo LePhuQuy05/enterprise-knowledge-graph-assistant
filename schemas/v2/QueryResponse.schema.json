@@ -1,16 +1,116 @@
 {
   "$defs": {
+    "AnswerAssessment": {
+      "additionalProperties": false,
+      "description": "Public-source workflow boundary; reported limitations are not verified facts.",
+      "properties": {
+        "account_state_access": {
+          "const": "NOT_CONNECTED",
+          "default": "NOT_CONNECTED",
+          "title": "Account State Access",
+          "type": "string"
+        },
+        "limitations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/AnswerLimitation"
+          },
+          "maxItems": 3,
+          "title": "Limitations",
+          "type": "array"
+        },
+        "policy_origin": {
+          "const": "SYSTEM_POLICY",
+          "default": "SYSTEM_POLICY",
+          "title": "Policy Origin",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_scope": {
+          "const": "SUPPLIED_DOCUMENTATION_ONLY",
+          "default": "SUPPLIED_DOCUMENTATION_ONLY",
+          "title": "Source Scope",
+          "type": "string"
+        }
+      },
+      "title": "AnswerAssessment",
+      "type": "object"
+    },
+    "AnswerLimitation": {
+      "additionalProperties": false,
+      "description": "Reported uncertainty or a system boundary, separate from cited AWS facts.",
+      "properties": {
+        "code": {
+          "enum": [
+            "MISSING_SUPPLIED_EVIDENCE",
+            "ACCOUNT_STATE_UNAVAILABLE",
+            "SOURCE_SCOPE_AMBIGUITY",
+            "CONFLICTING_SUPPLIED_EVIDENCE",
+            "OUT_OF_SCOPE"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 400,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "next_step": {
+          "maxLength": 400,
+          "minLength": 1,
+          "title": "Next Step",
+          "type": "string"
+        },
+        "question_part": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Part"
+        },
+        "reported_by": {
+          "enum": [
+            "MODEL_REPORTED",
+            "SYSTEM_POLICY"
+          ],
+          "title": "Reported By",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "reported_by",
+        "message",
+        "next_step"
+      ],
+      "title": "AnswerLimitation",
+      "type": "object"
+    },
     "Citation": {
       "additionalProperties": false,
       "properties": {
-        "citation_id": {
-          "minLength": 1,
-          "title": "Citation Id",
-          "type": "string"
-        },
         "chunk_id": {
           "minLength": 1,
           "title": "Chunk Id",
+          "type": "string"
+        },
+        "citation_id": {
+          "minLength": 1,
+          "title": "Citation Id",
           "type": "string"
         },
         "document_version_id": {
@@ -18,14 +118,10 @@
           "title": "Document Version Id",
           "type": "string"
         },
-        "title": {
+        "quote": {
+          "maxLength": 600,
           "minLength": 1,
-          "title": "Title",
-          "type": "string"
-        },
-        "source_uri": {
-          "minLength": 1,
-          "title": "Source Uri",
+          "title": "Quote",
           "type": "string"
         },
         "section_path": {
@@ -36,10 +132,14 @@
           "title": "Section Path",
           "type": "array"
         },
-        "quote": {
-          "maxLength": 600,
+        "source_uri": {
           "minLength": 1,
-          "title": "Quote",
+          "title": "Source Uri",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
           "type": "string"
         }
       },
@@ -58,16 +158,6 @@
     "Claim": {
       "additionalProperties": false,
       "properties": {
-        "claim_id": {
-          "minLength": 1,
-          "title": "Claim Id",
-          "type": "string"
-        },
-        "text": {
-          "minLength": 1,
-          "title": "Text",
-          "type": "string"
-        },
         "citation_ids": {
           "items": {
             "minLength": 1,
@@ -77,6 +167,16 @@
           "minItems": 1,
           "title": "Citation Ids",
           "type": "array"
+        },
+        "claim_id": {
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
         }
       },
       "required": [
@@ -90,29 +190,19 @@
   },
   "additionalProperties": false,
   "properties": {
-    "request_id": {
-      "minLength": 1,
-      "title": "Request Id",
-      "type": "string"
-    },
     "answer": {
       "minLength": 1,
       "title": "Answer",
       "type": "string"
     },
-    "claims": {
-      "items": {
-        "$ref": "#/$defs/Claim"
-      },
-      "title": "Claims",
-      "type": "array"
-    },
-    "citations": {
-      "items": {
-        "$ref": "#/$defs/Citation"
-      },
-      "title": "Citations",
-      "type": "array"
+    "answer_language": {
+      "default": "en",
+      "enum": [
+        "en",
+        "vi"
+      ],
+      "title": "Answer Language",
+      "type": "string"
     },
     "answer_status": {
       "enum": [
@@ -123,61 +213,30 @@
       "title": "Answer Status",
       "type": "string"
     },
-    "mode_requested": {
-      "enum": [
-        "vector",
-        "hybrid",
-        "graph_1hop",
-        "graph_2hop"
+    "assessment": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AnswerAssessment"
+        },
+        {
+          "type": "null"
+        }
       ],
-      "title": "Mode Requested",
-      "type": "string"
+      "default": null
     },
-    "mode_used": {
-      "enum": [
-        "vector",
-        "hybrid",
-        "graph_1hop",
-        "graph_2hop"
-      ],
-      "title": "Mode Used",
-      "type": "string"
-    },
-    "used_graph": {
-      "title": "Used Graph",
-      "type": "boolean"
-    },
-    "retrieval_backend": {
-      "default": "snapshot_numpy_adjacency",
-      "enum": [
-        "snapshot_numpy_adjacency",
-        "aws_knowledge_mcp"
-      ],
-      "title": "Retrieval Backend",
-      "type": "string"
-    },
-    "snapshot_version": {
-      "minLength": 1,
-      "title": "Snapshot Version",
-      "type": "string"
-    },
-    "warnings": {
-      "default": [],
+    "citations": {
       "items": {
-        "minLength": 1,
-        "type": "string"
+        "$ref": "#/$defs/Citation"
       },
-      "title": "Warnings",
+      "title": "Citations",
       "type": "array"
     },
-    "answer_language": {
-      "default": "en",
-      "enum": [
-        "en",
-        "vi"
-      ],
-      "title": "Answer Language",
-      "type": "string"
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "title": "Claims",
+      "type": "array"
     },
     "evidence_bundle_sha256": {
       "anyOf": [
@@ -193,6 +252,67 @@
       ],
       "default": null,
       "title": "Evidence Bundle Sha256"
+    },
+    "mode_requested": {
+      "enum": [
+        "bm25",
+        "vector",
+        "hybrid",
+        "hybrid_reranked",
+        "hybrid_multi_query",
+        "hybrid_multi_query_balanced",
+        "graph_1hop",
+        "graph_2hop"
+      ],
+      "title": "Mode Requested",
+      "type": "string"
+    },
+    "mode_used": {
+      "enum": [
+        "bm25",
+        "vector",
+        "hybrid",
+        "hybrid_reranked",
+        "hybrid_multi_query",
+        "hybrid_multi_query_balanced",
+        "graph_1hop",
+        "graph_2hop"
+      ],
+      "title": "Mode Used",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "retrieval_backend": {
+      "default": "snapshot_numpy_adjacency",
+      "enum": [
+        "snapshot_numpy_adjacency",
+        "aws_knowledge_mcp",
+        "collection_numpy_global_bm25"
+      ],
+      "title": "Retrieval Backend",
+      "type": "string"
+    },
+    "snapshot_version": {
+      "minLength": 1,
+      "title": "Snapshot Version",
+      "type": "string"
+    },
+    "used_graph": {
+      "title": "Used Graph",
+      "type": "boolean"
+    },
+    "warnings": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
     }
   },
   "required": [

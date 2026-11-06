@@ -15,6 +15,7 @@ from app.cloud_assets import load_s3_snapshot, read_deepseek_secret
 from app.contracts import sha256_bytes
 from app.external_gateway import ExternalModelGateway, ExternalPriceSheet, ExternalRoutes
 from app.external_http import OfficialHttpsTransport
+from app.funding_policy import LEGACY_PROFILE, FundingPolicyError, validate_external_funding
 from app.generation import GenerationRecipeV9
 from app.ledger import DynamoLedgerStore, Ledger
 from app.query_api import QueryApi
@@ -67,12 +68,16 @@ def gateway(timeout, *, deadline_monotonic=None):
     if os.environ.get("MODEL_ENABLED") != "true":
         raise ApiError(503, "MODEL_DISABLED")
     ledger = Ledger(DynamoLedgerStore(clients()["dynamodb"], "kg-r72-query-state"))
-    for key, cap in ((ledger.run_key(RUN), 500_000), (ledger.external_funding_key("kg-r72"), 2_000_000)):
+    for key, cap in ((ledger.run_key(RUN), 500_000),):
         row = ledger.store.get(key)
         if not row or row.get("cap_micro_usd") != cap or row.get("halted"):
             raise ApiError(429, "BUDGET_LIMIT")
+    try:
+        validate_external_funding(ledger, profile=os.environ.get("KG_FUNDING_POLICY", LEGACY_PROFILE))
+    except FundingPolicyError:
+        raise ApiError(429, "BUDGET_LIMIT") from None
     routes = ExternalRoutes.model_validate_json((ROOT / "configs/models/external-direct-v1.json").read_bytes())
-    prices = ExternalPriceSheet.model_validate_json((ROOT / "configs/prices/external-direct-2026-10-17.json").read_bytes())
+    prices = ExternalPriceSheet.model_validate_json((ROOT / "configs/prices/external-direct-2026-10-24.json").read_bytes())
     key = read_deepseek_secret(clients()["secretsmanager"], secret_arn=os.environ["KG_DEEPSEEK_SECRET_ARN"])
     transport = OfficialHttpsTransport({"DEEPSEEK": key}, timeout_seconds=timeout,
                                        deadline_monotonic=deadline_monotonic)

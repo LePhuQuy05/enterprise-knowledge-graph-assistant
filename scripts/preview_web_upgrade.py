@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ("style.css", "app.js", "auth.mjs", "client.mjs", "ui.mjs", "investigation.mjs", "evidence.mjs", "brief.mjs",
-          "dashboard.mjs", "onboarding.mjs", "dashboard-data.json")
+          "dashboard.mjs", "onboarding.mjs", "compare.mjs", "scoped-runs.mjs", "dashboard-data.json", "methods.mjs", "methods-data.json", "collection-answer.mjs", "benchmark316.mjs", "benchmark316-summary.json")
 
 
 def build_preview(target: Path):
@@ -19,6 +19,9 @@ def build_preview(target: Path):
     files = {"index.html": (ROOT / "frontend/tracer/index.html").read_text(encoding="utf-8").replace(
         'src="/assets/app.js"', 'src="/preview.mjs"')}
     files.update({"assets/" + name: (ROOT / "frontend/tracer" / name).read_text(encoding="utf-8") for name in ASSETS})
+    files.update({f"assets/benchmark316-cases/aws100-{n:03}.json":
+                  (ROOT / f"frontend/tracer/benchmark316-cases/aws100-{n:03}.json").read_text(encoding="utf-8")
+                  for n in range(1, 101)})
     files.update({name: (ROOT / "tests/fixtures/web_upgrade" / source).read_text(encoding="utf-8")
                   for name, source in (("fixtures.mjs", "records.mjs"), ("preview.mjs", "preview.mjs"))})
     if target.exists():
@@ -30,7 +33,7 @@ def build_preview(target: Path):
         if not path.resolve().is_relative_to(target):
             raise ValueError("UNSAFE_PREVIEW_PATH")
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8")
+        path.write_text(content, encoding="utf-8", newline="")
     return {"status": "SYNTHETIC_PREVIEW_BUILT", "directory": target.relative_to(ROOT).as_posix(),
             "files": sorted(files), "aws_calls": 0, "model_calls": 0}
 

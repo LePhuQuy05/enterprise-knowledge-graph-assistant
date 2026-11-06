@@ -46,7 +46,7 @@ def main():
         shutil.copyfile(path, target)
         approved_paths.append(target)
     for name in ("configs/models/bge-small-en-v1.5-onnx.json", "configs/models/external-direct-v1.json",
-                 "configs/prices/external-direct-2026-10-17.json"):
+                 "configs/prices/external-direct-2026-10-24.json"):
         shutil.copyfile(ROOT / name, stage / name)
         approved_paths.append(stage / name)
     static_paths = {"/": ("index.html", "text/html; charset=utf-8"),
@@ -60,7 +60,17 @@ def main():
         "/assets/brief.mjs": ("brief.mjs", "text/javascript; charset=utf-8"),
         "/assets/dashboard.mjs": ("dashboard.mjs", "text/javascript; charset=utf-8"),
         "/assets/onboarding.mjs": ("onboarding.mjs", "text/javascript; charset=utf-8"),
-        "/assets/dashboard-data.json": ("dashboard-data.json", "application/json; charset=utf-8")}
+        "/assets/compare.mjs": ("compare.mjs", "text/javascript; charset=utf-8"),
+        "/assets/scoped-runs.mjs": ("scoped-runs.mjs", "text/javascript; charset=utf-8"),
+        "/assets/dashboard-data.json": ("dashboard-data.json", "application/json; charset=utf-8"),
+        "/assets/methods.mjs": ("methods.mjs", "text/javascript; charset=utf-8"),
+        "/assets/collection-answer.mjs": ("collection-answer.mjs", "text/javascript; charset=utf-8"),
+        "/assets/methods-data.json": ("methods-data.json", "application/json; charset=utf-8"),
+        "/assets/benchmark316.mjs": ("benchmark316.mjs", "text/javascript; charset=utf-8"),
+        "/assets/benchmark316-summary.json": ("benchmark316-summary.json", "application/json; charset=utf-8")}
+    for n in range(1, 101):
+        name = f"benchmark316-cases/aws100-{n:03}.json"
+        static_paths["/assets/" + name] = (name, "application/json; charset=utf-8")
     assets = {route: {"body": (ROOT / "frontend/tracer" / name).read_text(encoding="utf-8"), "content_type": mime}
               for route, (name, mime) in static_paths.items()}
     static_target = stage / "configs/frontend-static.json"

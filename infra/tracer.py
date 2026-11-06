@@ -41,7 +41,10 @@ def handler_source() -> str:
 
 
 class TracerStack(Stack):
-    def __init__(self, scope: Construct, construct_id=STACK_NAME, *, runtime=None, registration_enabled=False):
+    def __init__(self, scope: Construct, construct_id=STACK_NAME, *, runtime=None, registration_enabled=False,
+                 method_catalog_enabled=False):
+        if type(method_catalog_enabled) is not bool or (method_catalog_enabled and runtime is None):
+            raise ValueError("METHOD_CATALOG_REQUIRES_EXPLICIT_RUNTIME_OPT_IN")
         if registration_enabled and runtime is None:
             raise ValueError("Registration requires the query runtime enrollment handler")
         super().__init__(scope, construct_id, stack_name=STACK_NAME,
@@ -194,6 +197,9 @@ class TracerStack(Stack):
             ):
                 routes.append(api.CfnRoute(self, logical, api_id=http.ref, route_key=route_key,
                     authorization_type="JWT", authorizer_id=authorizer.ref, authorization_scopes=[scope], target=target))
+        if method_catalog_enabled:
+            routes.append(api.CfnRoute(self, "PrivateRagMethods", api_id=http.ref, route_key="GET /v1/rag-methods",
+                authorization_type="JWT", authorizer_id=authorizer.ref, authorization_scopes=["kg/read"], target=target))
         stage = api.CfnStage(self, "DefaultStage", api_id=http.ref, stage_name="$default", auto_deploy=True,
                      default_route_settings=api.CfnStage.RouteSettingsProperty(
                          throttling_burst_limit=2, throttling_rate_limit=1),
@@ -208,6 +214,9 @@ class TracerStack(Stack):
             stage.route_settings = {route: {"ThrottlingBurstLimit": 10, "ThrottlingRateLimit": 5}
                 for route in ("GET /", "GET /assets/{proxy+}", "GET /auth/callback", "GET /config.json",
                               "GET /v1/status", "GET /v1/queries", "GET /v1/queries/{request_id}", "GET /v1/sources/{chunk_id}")}
+        if method_catalog_enabled:
+            stage.route_settings = {**stage.route_settings,
+                "GET /v1/rag-methods": {"ThrottlingBurstLimit": 10, "ThrottlingRateLimit": 5}}
         lambda_.CfnPermission(self, "ApiInvoke", action="lambda:InvokeFunction",
                               function_name=function.ref, principal="apigateway.amazonaws.com",
                               source_account=Aws.ACCOUNT_ID,

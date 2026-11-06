@@ -74,7 +74,10 @@ export function createOnboarding({ document, navigate, getPage, canStart, storag
     get("tour-title").focus({ preventScroll: true });
   }
   function close({ remember = "dismissed", restore = true } = {}) {
-    if (!dialog.open) return;
+    if (!dialog.open) {
+      clearHighlight(); document.body.classList.remove("tour-open"); origin = null;
+      return;
+    }
     if (remember) preference.remember(remember);
     dialog.close(); clearHighlight(); document.body.classList.remove("tour-open");
     if (restore && active && origin) {
@@ -102,6 +105,9 @@ export function createOnboarding({ document, navigate, getPage, canStart, storag
     else { index++; render(); }
   });
   dialog.addEventListener("cancel", event => { event.preventDefault(); close(); });
+  // Native close() (also used by local previews) must release the page scroll lock.
+  // A queued close event from an older tour must not unlock a newly opened tour.
+  dialog.addEventListener("close", () => { if (!dialog.open) close({ remember: null, restore: false }); });
   function syncAvailability() { replay.disabled = !active || !canStart(); }
   return {
     open, syncAvailability,

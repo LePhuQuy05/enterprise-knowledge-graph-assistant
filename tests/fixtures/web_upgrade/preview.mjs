@@ -1,7 +1,8 @@
 import { createWorkspace } from "/assets/ui.mjs";
-import { ApiFailure } from "/assets/client.mjs";
+import { ApiFailure, apiRequest } from "/assets/client.mjs";
 import { createBriefDownloader } from "/assets/brief.mjs";
 import { fixtureRecord, fixtureSource } from "/fixtures.mjs";
+import { loadBenchmark316, loadBenchmark316Case } from "/assets/benchmark316.mjs";
 
 // Isolated test support: never packaged or imported by the production entry point.
 const exampleQuestions = [
@@ -20,6 +21,10 @@ const realDownloader = createBriefDownloader({ document });
 const harness = { records, calls, downloads, overrides, realDownload: true, ui: null };
 async function request(path, options = {}) {
   calls.push({ path, method: options.body === undefined ? "GET" : "POST", body: options.body, key: options.key });
+  if (overrides.scopedRuns && (path.startsWith("/v2/scoped-runs") || path === "/v2/scoped-run-capabilities")) return overrides.scopedRuns(path, options);
+  if (path.startsWith("/v2/scoped-runs") || path === "/v2/scoped-run-capabilities") throw new ApiFailure("NOT_FOUND", 404);
+  if (overrides.runs && (path.startsWith("/v1/runs") || path === "/v1/run-capabilities")) return overrides.runs(path, options);
+  if (path.startsWith("/v1/runs") || path === "/v1/run-capabilities") throw new ApiFailure("NOT_FOUND", 404);
   const kind = path.startsWith("/v1/sources/") ? "source" : options.body ? "submit" : path.startsWith("/v1/queries/") ? "detail" : "history";
   if (overrides[kind]) return overrides[kind](path, options);
   if (kind === "history") return { items: records.map(({ request_id, question, created_at, status }) => ({ request_id, question, created_at, status })), next_cursor: null };
@@ -34,13 +39,33 @@ async function request(path, options = {}) {
   return fixtureSource(record, citation);
 }
 const setSignedIn = signedIn => { document.getElementById("login").hidden = signedIn; document.getElementById("logout").hidden = !signedIn; };
-const ui = createWorkspace({ document, request, confirmReplace: () => true, onSessionExpired: () => { setSignedIn(false); document.getElementById("status").textContent = "SYNTHETIC session ended"; },
+// Keep the actual production transport in the browser test path. Only its
+// fetch boundary is mocked, so endpoint-family guards cannot be bypassed.
+const transportRequest = (path, options = {}) => apiRequest(path, "synthetic-local-access", { ...options,
+  fetcher: async (url, init) => {
+    try {
+      const data = await request(url, { ...options, body: init.body === undefined ? undefined : JSON.parse(init.body),
+        key: init.headers["Idempotency-Key"] });
+      return { ok: true, status: 200, text: async () => JSON.stringify(data) };
+    } catch (error) {
+      if (!Number.isInteger(error?.status) || error.status < 400) throw error;
+      return { ok: false, status: error.status, text: async () => JSON.stringify({ error: { code: error.code || "FIXTURE_HTTP_ERROR" } }) };
+    }
+  } });
+const ui = createWorkspace({ document, request: transportRequest, confirmReplace: () => true, scopedEnabled: () => globalThis.__scopedPreviewEnabled === true,
+  loadBenchmarkResults: () => loadBenchmark316(fetchStatic), loadBenchmarkCase: c => loadBenchmark316Case(c, fetchStatic),
+  onSessionExpired: () => { setSignedIn(false); document.getElementById("status").textContent = "SYNTHETIC session ended"; },
   loadDashboard: async () => {
     if (overrides.dashboard) return overrides.dashboard();
     const response = await fetchStatic("/assets/dashboard-data.json"); if (!response.ok) throw new Error("NO_DASHBOARD");
     harness.dashboardData = await response.json(); return harness.dashboardData;
   },
-  downloader: { clear: () => realDownloader.clear(), download: (text, filename) => { downloads.push({ text, filename }); if (harness.realDownload) realDownloader.download(text, filename); } } });
+  loadMethodExamples: async () => {
+    if (overrides.methods) return overrides.methods();
+    const response = await fetchStatic("/assets/methods-data.json"); if (!response.ok) throw new Error("NO_BENCHMARK");
+    return response.json();
+  },
+  downloader: { clear: () => realDownloader.clear(), download: (text, filename, contentType) => { downloads.push({ text, filename, contentType }); if (harness.realDownload) realDownloader.download(text, filename, contentType); } } });
 harness.ui = ui; globalThis.__preview = harness;
 globalThis.fetch = async () => { throw new Error("Network fetch is disabled in the synthetic preview."); };
 const banner = document.createElement("div"); banner.className = "preview-banner";

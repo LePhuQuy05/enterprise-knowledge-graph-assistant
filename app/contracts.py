@@ -15,6 +15,7 @@ from pydantic import (
     JsonValue,
     StringConstraints,
     field_validator,
+    model_serializer,
     model_validator,
 )
 
@@ -27,7 +28,7 @@ Sha256 = Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{64}$", min_length=
 Nonnegative = Annotated[int, Field(ge=0)]
 EntityType = Literal["AWS_SERVICE", "FEATURE", "PROTOCOL", "RESOURCE", "CONCEPT"]
 Predicate = Literal["INTEGRATES_WITH", "DEPENDS_ON", "PART_OF", "SUPPORTS", "USES", "REPLACES"]
-Mode = Literal["vector", "hybrid", "graph_1hop", "graph_2hop"]
+Mode = Literal["bm25", "vector", "hybrid", "hybrid_reranked", "hybrid_multi_query", "hybrid_multi_query_balanced", "graph_1hop", "graph_2hop"]
 DATA_FILES = (
     "assertions.jsonl",
     "chunks.jsonl",
@@ -512,6 +513,49 @@ class Claim(Record):
     citation_ids: Annotated[tuple[Nonempty, ...], Field(min_length=1, max_length=8)]
 
 
+LimitationCode = Literal[
+    "MISSING_SUPPLIED_EVIDENCE",
+    "ACCOUNT_STATE_UNAVAILABLE",
+    "SOURCE_SCOPE_AMBIGUITY",
+    "CONFLICTING_SUPPLIED_EVIDENCE",
+    "OUT_OF_SCOPE",
+]
+
+
+class AnswerLimitation(Record):
+    """Reported uncertainty or a system boundary, separate from cited AWS facts."""
+
+    code: LimitationCode
+    reported_by: Literal["MODEL_REPORTED", "SYSTEM_POLICY"]
+    question_part: Annotated[
+        str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)
+    ] | None = None
+    message: Annotated[
+        str, StringConstraints(strip_whitespace=True, min_length=1, max_length=400)
+    ]
+    next_step: Annotated[
+        str, StringConstraints(strip_whitespace=True, min_length=1, max_length=400)
+    ]
+
+    @model_validator(mode="after")
+    def reported_scope(self) -> Self:
+        if self.reported_by == "MODEL_REPORTED" and self.question_part is None:
+            raise ValueError("Model-reported limitations need a question part")
+        if self.reported_by == "SYSTEM_POLICY" and self.question_part is not None:
+            raise ValueError("System policy cannot claim a model-assessed question part")
+        return self
+
+
+class AnswerAssessment(Record):
+    """Public-source workflow boundary; reported limitations are not verified facts."""
+
+    schema_version: Literal[1] = 1
+    policy_origin: Literal["SYSTEM_POLICY"] = "SYSTEM_POLICY"
+    source_scope: Literal["SUPPLIED_DOCUMENTATION_ONLY"] = "SUPPLIED_DOCUMENTATION_ONLY"
+    account_state_access: Literal["NOT_CONNECTED"] = "NOT_CONNECTED"
+    limitations: Annotated[tuple[AnswerLimitation, ...], Field(max_length=3)] = ()
+
+
 class QueryResponse(Record):
     request_id: Nonempty
     answer: Nonempty
@@ -521,11 +565,19 @@ class QueryResponse(Record):
     mode_requested: Mode
     mode_used: Mode
     used_graph: bool
-    retrieval_backend: Literal["snapshot_numpy_adjacency", "aws_knowledge_mcp"] = "snapshot_numpy_adjacency"
+    retrieval_backend: Literal["snapshot_numpy_adjacency", "aws_knowledge_mcp", "collection_numpy_global_bm25"] = "snapshot_numpy_adjacency"
     snapshot_version: Nonempty
     warnings: tuple[Nonempty, ...] = ()
     answer_language: Literal["en", "vi"] = "en"
     evidence_bundle_sha256: Sha256 | None = None
+    assessment: AnswerAssessment | None = None
+
+    @model_serializer(mode="wrap")
+    def preserve_historical_shape(self, handler):
+        result = handler(self)
+        if self.assessment is None:
+            result.pop("assessment", None)
+        return result
 
     @model_validator(mode="after")
     def integrity(self) -> Self:
@@ -543,6 +595,11 @@ class QueryResponse(Record):
             raise ValueError("Answer must be rendered from cited claims")
         if self.used_graph and self.mode_used not in {"graph_1hop", "graph_2hop"}:
             raise ValueError("Graph contribution conflicts with effective mode")
+        if self.assessment is not None:
+            if self.answer_status == "ANSWERED" and self.assessment.limitations:
+                raise ValueError("Answered cannot report unanswered limitations")
+            if self.answer_status != "ANSWERED" and not self.assessment.limitations:
+                raise ValueError("Partial and abstained assessments need a limitation")
         return self
 
 

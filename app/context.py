@@ -21,12 +21,20 @@ class PackedContext:
 
 
 def pack_context(snapshot: LoadedSnapshot, result: GraphRetrievalResult, *, max_chunks: int = 8,
-                 proxy_token_budget: int = 4096) -> PackedContext:
+                 proxy_token_budget: int = 4096, graph_records=None) -> PackedContext:
     if type(max_chunks) is not int or not 1 <= max_chunks <= 8 or type(proxy_token_budget) is not int or not 1 <= proxy_token_budget <= 4096:
         raise ValueError("CONTEXT_BOUND_OUT_OF_RANGE")
     tokenizer = ProxyTokenizer()  # Hash-verified local asset; never an implicit download.
     graph = {c.chunk_id: c for c in result.graph_candidates}
     assertions = {a.assertion_id: a for a in snapshot.content.assertions}
+    # Typed source actions remain a separate record kind. Only a validated local
+    # adapter supplies these; old snapshot/RelationAssertion callers are unchanged.
+    extra = {} if graph_records is None else graph_records
+    if len(extra) > 20000 or assertions.keys() & extra.keys():
+        raise ValueError("CONTEXT_TYPED_RECORD_COLLISION_OR_BOUND")
+
+    def source_chunk(key):
+        return extra[key]["chunk_id"] if key in extra else assertions[key].chunk_id
     selected, used_assertions = [], []
     warnings = set()
 
@@ -41,6 +49,14 @@ def pack_context(snapshot: LoadedSnapshot, result: GraphRetrievalResult, *, max_
                 "start_char": chunk.start_char, "end_char": chunk.end_char, "untrusted_text": chunk.text})
         paths = []
         for key in assertion_ids:
+            if key in extra:
+                record = extra[key]
+                chunk_id = record["chunk_id"]
+                if (record["assertion_id"] != key or chunk_id not in ids
+                        or record["untrusted_evidence_quote"] != snapshot.chunks[chunk_id].text):
+                    raise ValueError("CONTEXT_TYPED_RECORD_SOURCE_BINDING")
+                paths.append(record | {"source_id": ids[chunk_id]})
+                continue
             assertion = assertions[key]
             if assertion.chunk_id not in ids:
                 raise ValueError("CONTEXT_PATH_EVIDENCE_MISSING")
@@ -57,9 +73,9 @@ def pack_context(snapshot: LoadedSnapshot, result: GraphRetrievalResult, *, max_
         candidate = graph.get(key)
         path = () if candidate is None else candidate.assertion_path
         for assertion_id in path:
-            if assertion_id not in assertions:
+            if assertion_id not in assertions and assertion_id not in extra:
                 raise ValueError("CONTEXT_UNKNOWN_ASSERTION")
-        support = tuple(dict.fromkeys(assertions[a].chunk_id for a in path))
+        support = tuple(dict.fromkeys(source_chunk(a) for a in path))
         if candidate is not None and support != candidate.supporting_chunk_ids:
             raise ValueError("CONTEXT_PATH_SUPPORT_MISMATCH")
         proposal = list(dict.fromkeys([*selected, key, *support]))

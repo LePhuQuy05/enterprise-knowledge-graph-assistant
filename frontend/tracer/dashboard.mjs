@@ -1,3 +1,4 @@
+import { METHOD_GUIDES } from "./methods.mjs";
 import { officialSourceLink } from "./client.mjs";
 
 export const METHODS = Object.freeze({ B1_VECTOR: "Vector", B2_HYBRID: "Hybrid", G1_DRAFT: "Graph 1-hop · experimental", G2_DRAFT: "Graph 2-hop · experimental" });
@@ -68,22 +69,24 @@ export async function loadDashboardData(fetcher = fetch) {
   } finally { clearTimeout(timer); }
 }
 
-export function createDashboard({ document, loadData = loadDashboardData, onQuestion, onOpenRecord, onScenario }) {
+export function createDashboard({ document, loadData = loadDashboardData, onQuestion, onOpenRecord, onScenario, onPageChanged = () => {} }) {
   const get = id => document.getElementById(id);
   const el = (tag, value, className) => { const n = document.createElement(tag); if (value !== undefined) n.textContent = value; if (className) n.className = className; return n; };
   const button = (label, action, style = "secondary small") => { const n = el("button", label, style); n.type = "button"; n.addEventListener("click", action); return n; };
   const link = (url, title = "Read official AWS page ↗") => { const n = el("a", title); n.href = officialSourceLink(url); n.target = "_blank"; n.rel = "noopener noreferrer"; return n; };
   let active = false, epoch = 0, data = null, page = "overview", questionId = "dev-11", selectedMethod = "B1_VECTOR";
   function show(next, focus = false) {
-    if (!active || !["overview", "investigate", "knowledge", "lab"].includes(next)) return;
+    if (!active || !["overview", "investigate", "knowledge", "lab", "compare", "benchmark316", ...Object.keys(METHOD_GUIDES).map(id => "method-" + id)].includes(next)) return;
     page = next;
-    get("current-view").textContent = ({ overview: "Overview", investigate: "Investigate", knowledge: "Knowledge Explorer", lab: "Retrieval Lab" })[page];
+    if (page.startsWith("method-")) get("methods-navigation").open = true;
+    get("current-view").textContent = ({ overview: "Overview", investigate: "Investigate", knowledge: "Knowledge Explorer", lab: "Retrieval Lab", compare: "Live Compare", benchmark316: "Benchmarks", ...Object.fromEntries(Object.entries(METHOD_GUIDES).map(([id, g]) => ["method-" + id, g.label])) })[page];
     for (const view of document.querySelectorAll("[data-view]")) view.hidden = view.dataset.view !== page;
     for (const nav of document.querySelectorAll("[data-page]")) { if (nav.dataset.page === page) nav.setAttribute("aria-current", "page"); else nav.removeAttribute("aria-current"); }
     if (focus) {
-      const heading = get(({ overview: "overview-title", investigate: "investigation-title", knowledge: "knowledge-title", lab: "lab-title" })[page]);
+      const heading = get(({ overview: "overview-title", investigate: "investigation-title", knowledge: "knowledge-title", lab: "lab-title", compare: "compare-title", benchmark316: "benchmark316-title", ...Object.fromEntries(Object.keys(METHOD_GUIDES).map(id => ["method-" + id, "method-" + id + "-title"])) })[page]);
       heading.tabIndex = -1; heading.focus({ preventScroll: true }); heading.scrollIntoView({ behavior: "auto", block: "start" });
     }
+    onPageChanged(page);
   }
   for (const nav of document.querySelectorAll("[data-page]")) nav.addEventListener("click", () => show(nav.dataset.page, true));
   get("overview-investigate").addEventListener("click", () => { if (active) { show("investigate"); onScenario("s3-lambda-read"); } });
@@ -92,8 +95,8 @@ export function createDashboard({ document, loadData = loadDashboardData, onQues
   function metric(title, value, note) { const n = el("article", undefined, "metric-card"); n.append(el("p", title, "eyebrow"), el("strong", value), el("p", note, "muted")); return n; }
   function renderOverview() {
     get("overview-metrics").replaceChildren(
-      metric("Indexed corpus", `${data.snapshot.documents} documents`, `${data.snapshot.chunks} chunks · recorded snapshot`),
-      metric("Serving retrieval", "Hybrid + Vector", "Graph answering is not enabled"),
+      metric("Recorded pilot corpus", `${data.snapshot.documents} documents`, `${data.snapshot.chunks} chunks · frozen pilot snapshot`),
+      metric("Pilot answering", "Hybrid + Vector", "Graph answering is not enabled"),
       metric("Development dataset", `${data.cases.length} questions`, "AI_DRAFT · not an independent holdout"),
       metric("Human-approved quality", "Not measured", "0 approved labels · no accuracy claim"));
     const release = get("overview-release"); release.replaceChildren();

@@ -72,7 +72,7 @@ class OperationSpec(Record):
     tenant_id: TenantId
     run_id: Identifier
     request_id: Identifier
-    stage: Literal["EMBED", "EXTRACT", "GENERATE", "EVALUATE", "SMOKE", "REWRITE"]
+    stage: Literal["EMBED", "EXTRACT", "GENERATE", "EVALUATE", "SMOKE", "REWRITE", "PLAN_QUERY"]
     attempt: Annotated[int, Field(ge=1, le=10)]
     input_sha256: Sha256
     model_id: Nonempty

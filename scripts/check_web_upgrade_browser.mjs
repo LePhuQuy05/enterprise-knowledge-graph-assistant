@@ -17,7 +17,8 @@ async function freePort() {
   const port = server.address().port; await new Promise(resolve => server.close(resolve)); return port;
 }
 const port = await freePort(), debugPort = await freePort();
-const server = spawn(path.join(root, ".venv", "Scripts", "python.exe"), ["-m", "scripts.preview_web_upgrade", "--serve", "--port", String(port)], { cwd: root, windowsHide: true, stdio: "ignore" });
+const server = spawn(path.join(root, ".venv", "Scripts", "python.exe"), ["-m", "scripts.preview_web_upgrade", "--serve", "--port", String(port),
+  "--output", path.join(root, "data/build", "web-upgrade-regression-" + stamp)], { cwd: root, windowsHide: true, stdio: "ignore" });
 const profile = path.join(root, "data/build", `web-upgrade-browser-${stamp}`);
 const browser = spawn("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe", ["--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check", "--disable-extensions", "--disable-background-networking", "--disable-component-update", "--disable-sync", `--remote-debugging-port=${debugPort}`, "--remote-debugging-address=127.0.0.1", `--user-data-dir=${profile}`, "about:blank"], { windowsHide: true, stdio: "ignore" });
 let socket, nextId = 0;

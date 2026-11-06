@@ -1,0 +1,166 @@
+{
+  "$defs": {
+    "PublicMethod": {
+      "additionalProperties": false,
+      "properties": {
+        "method_id": {
+          "enum": [
+            "bm25",
+            "vector",
+            "hybrid",
+            "hybrid_reranked",
+            "hybrid_multi_query",
+            "hybrid_multi_query_balanced",
+            "graph_1hop",
+            "graph_2hop"
+          ],
+          "title": "Method Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "available_scopes": {
+          "items": {
+            "enum": [
+              "snapshot",
+              "aws_official"
+            ],
+            "type": "string"
+          },
+          "title": "Available Scopes",
+          "type": "array"
+        },
+        "planned_scopes": {
+          "items": {
+            "enum": [
+              "snapshot",
+              "local_collection"
+            ],
+            "type": "string"
+          },
+          "title": "Planned Scopes",
+          "type": "array"
+        },
+        "state": {
+          "enum": [
+            "AVAILABLE",
+            "NOT_SERVED"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "unavailable_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "COLLECTION_SERVING_NOT_ENABLED",
+                "GRAPH_ANSWER_GATE_CLOSED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unavailable Reason"
+        },
+        "execution_endpoint": {
+          "anyOf": [
+            {
+              "const": "/v1/queries",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Execution Endpoint"
+        },
+        "run_kinds": {
+          "items": {
+            "const": "answer",
+            "type": "string"
+          },
+          "title": "Run Kinds",
+          "type": "array"
+        },
+        "quality_metrics": {
+          "default": null,
+          "title": "Quality Metrics",
+          "type": "null"
+        }
+      },
+      "required": [
+        "method_id",
+        "label",
+        "description",
+        "available_scopes",
+        "planned_scopes",
+        "state",
+        "unavailable_reason",
+        "execution_endpoint",
+        "run_kinds"
+      ],
+      "title": "PublicMethod",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "catalog_version": {
+      "const": "deployment-method-catalog-v1",
+      "default": "deployment-method-catalog-v1",
+      "title": "Catalog Version",
+      "type": "string"
+    },
+    "active_snapshot_version": {
+      "maxLength": 160,
+      "minLength": 1,
+      "title": "Active Snapshot Version",
+      "type": "string"
+    },
+    "collection_serving_enabled": {
+      "const": false,
+      "default": false,
+      "title": "Collection Serving Enabled",
+      "type": "boolean"
+    },
+    "async_runs_enabled": {
+      "const": false,
+      "default": false,
+      "title": "Async Runs Enabled",
+      "type": "boolean"
+    },
+    "methods": {
+      "items": {
+        "$ref": "#/$defs/PublicMethod"
+      },
+      "maxItems": 8,
+      "minItems": 8,
+      "title": "Methods",
+      "type": "array"
+    }
+  },
+  "required": [
+    "active_snapshot_version",
+    "methods"
+  ],
+  "title": "PublicMethodCatalog",
+  "type": "object"
+}

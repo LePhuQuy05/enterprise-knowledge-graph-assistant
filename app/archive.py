@@ -487,17 +487,31 @@ class Archive:
                         (document_hash, row["url"]))
 
     def run(self, kind: Literal["SITEMAP", "PAGE"], *, max_resources=25, max_seconds=600,
-            progress=None, cached_only=False):
+            progress=None, cached_only=False, selected_urls: tuple[str, ...] | None = None):
         if self.read_only or kind not in {"SITEMAP", "PAGE"}:
             raise ValueError("ARCHIVE_WRITE_MODE_REQUIRED")
         if type(max_resources) is not int or max_resources < 0 or type(max_seconds) is not int or max_seconds < 1:
             raise ValueError("ARCHIVE_RUN_LIMIT_INVALID")
+        if selected_urls is not None:
+            if (kind != "PAGE" or not isinstance(selected_urls, tuple)
+                    or not 1 <= len(selected_urls) <= 1000
+                    or any(not isinstance(url, str) for url in selected_urls)
+                    or len(set(selected_urls)) != len(selected_urls)):
+                raise ValueError("ARCHIVE_SELECTION_INVALID")
+            for url in selected_urls:
+                if not isinstance(url, str) or archive_url(url) != url:
+                    raise ValueError("ARCHIVE_SELECTION_INVALID")
+                if self.db.execute(
+                    "SELECT 1 FROM resources WHERE kind='PAGE' AND url=?", (url,),
+                ).fetchone() is None:
+                    raise ValueError("ARCHIVE_SELECTION_NOT_IN_INVENTORY")
+        selected = deque(selected_urls or ())
         started, processed, cache_hits = time.monotonic(), 0, 0
         request_start = self.collector.request_count
         cached_clause = " AND raw_sha256 IS NOT NULL" if cached_only else ""
         families = deque(r[0] for r in self.db.execute(
             "SELECT DISTINCT family FROM resources WHERE kind='PAGE' AND state='QUEUED'" + cached_clause + " ORDER BY family"))
-        stop = "QUEUE_DRAINED"
+        stop = "SELECTION_DRAINED" if selected_urls is not None else "QUEUE_DRAINED"
         while True:
             if (self.root / "STOP").exists():
                 stop = "USER_STOP_REQUESTED"
@@ -508,7 +522,14 @@ class Archive:
             if time.monotonic() - started >= max_seconds:
                 stop = "RUN_TIME_LIMIT"
                 break
-            if kind == "PAGE":
+            if selected_urls is not None:
+                row = None
+                while selected and row is None:
+                    row = self.db.execute(
+                        "SELECT rowid,* FROM resources WHERE kind='PAGE' AND state='QUEUED' "
+                        "AND url=?" + cached_clause, (selected.popleft(),),
+                    ).fetchone()
+            elif kind == "PAGE":
                 # Catalogs have priority, but ordinary content retains family fairness.
                 row = self.db.execute("SELECT rowid,* FROM resources WHERE kind='PAGE' AND state='QUEUED' "
                     "AND priority=-100" + cached_clause + " ORDER BY url LIMIT 1").fetchone()
@@ -564,7 +585,12 @@ class Archive:
             if progress is not None:
                 progress({"kind": kind, "processed": processed,
                           "requests": self.collector.request_count - request_start})
-        return {**self.status(), "run_kind": kind, "processed_this_run": processed,
+        selection = {} if selected_urls is None else {
+            "selection_recipe": "explicit-inventory-urls-v1",
+            "selection_sha256": sha256_bytes(canonical_json(selected_urls)),
+            "selected_urls": len(selected_urls),
+        }
+        return {**self.status(), **selection, "run_kind": kind, "processed_this_run": processed,
                 "cached_only": cached_only,
                 "cache_hits_this_run": cache_hits, "stop_reason": stop,
                 "http_requests_this_run": self.collector.request_count - request_start,

@@ -12,6 +12,7 @@ from app.answer_pipeline import answer_prepared, prepare_answer
 from app.embeddings import EmbeddingCache, query_embedding_input
 from app.external_gateway import ExternalModelGateway, ExternalPriceSheet, ExternalRoutes
 from app.external_http import OfficialHttpsTransport, load_private_key
+from app.funding_policy import LEGACY_PROFILE, validate_external_funding
 from app.generation import GenerationError, GenerationRecipe
 from app.ledger import DynamoLedgerStore, Ledger
 from app.local_bge import BgeEncoder
@@ -22,20 +23,24 @@ ROOT = Path(__file__).resolve().parents[1]
 RUN = "external-pilot10-r72-v1"  # One existing 0.50 USD run, shared 2 USD funding.
 
 
-def managed_gateway():
+def managed_gateway(*, prices_path: Path | None = None, funding_profile=LEGACY_PROFILE):
     session = boto3.Session(profile_name="kg-dev", region_name="us-east-1")
-    cfg = Config(retries={"total_max_attempts": 1}, connect_timeout=3, read_timeout=10)
+    # Local operator workflow has no API response deadline. A slow ledger read
+    # after a committed dispatch claim must not cause an unnecessary ambiguity.
+    # Keep a single SDK attempt and all model no-retry/ledger guards unchanged.
+    cfg = Config(retries={"total_max_attempts": 1}, connect_timeout=5, read_timeout=30)
     if not session.client("sts", config=cfg).get_caller_identity()["Arn"].endswith(":user/kg-dev"):
         raise GatewayError("Known developer identity required")
     ledger = Ledger(DynamoLedgerStore(session.client("dynamodb", config=cfg), "kg-r72-query-state"))
     run = ledger.store.get(ledger.run_key(RUN))
-    funding = ledger.store.get(ledger.external_funding_key("kg-r72"))
     if not run or run["cap_micro_usd"] != 500_000 or run["halted"]:
         raise GatewayError("Existing pilot run must be present and not halted; never reset")
-    if not funding or funding["cap_micro_usd"] != 2_000_000 or funding["halted"]:
-        raise GatewayError("Existing funding must be present and not halted; never reset")
+    validate_external_funding(ledger, profile=funding_profile)
     routes = ExternalRoutes.model_validate_json((ROOT / "configs/models/external-direct-v1.json").read_bytes())
-    prices = ExternalPriceSheet.model_validate_json((ROOT / "configs/prices/external-direct-2026-10-17.json").read_bytes())
+    # Historical callers retain their pinned sheet; new experiments select a
+    # separately verified sheet explicitly instead of extending an old expiry.
+    selected_prices = prices_path or ROOT / "configs/prices/external-direct-2026-10-17.json"
+    prices = ExternalPriceSheet.model_validate_json(selected_prices.read_bytes())
     transport = OfficialHttpsTransport({"DEEPSEEK": load_private_key(ROOT, "DEEPSEEK")})
     gateway = ExternalModelGateway(ledger, transport, routes.model_copy(update={
         "live_inference_enabled": True, "live_inference_gate": "EXPLICIT_LOCAL_ANSWER_CACHE_MISS_ONLY",

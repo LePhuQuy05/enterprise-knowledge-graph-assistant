@@ -1,0 +1,7 @@
+{
+  "version": "local-reviewed-source-runtime-selection-v1",
+  "release_path": "results/source-syntax-reviewed-v1/runtime-release-v1.json",
+  "release_sha256": "c1e3bbd36f2bf796cc1b1341cf5394af09dacccfa679dc9a5f92613efc1918c6",
+  "serving_published": false,
+  "experimental_opt_in_required": true
+}

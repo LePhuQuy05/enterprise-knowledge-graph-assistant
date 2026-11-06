@@ -1,0 +1,301 @@
+{
+  "collection_version": "collection_91f03f4557015a69c9d46eeabd4d02e037f18ecc3b2c52068b87e94b366421c3",
+  "config_sha256": "caa41f3bf54a07cb79b24df6ee564b6bd2dc4edb1cdfa32c025966bc7bf603f6",
+  "context_chunk_ids": [
+    "chk_bb30de52b450742d5d47b5bb3fb2e16845157357f99b23614fc1b034b81a35e4",
+    "chk_812a375db0b7ac51bc163858725c7116259451301b2d380c096f7db9934f9c88",
+    "chk_d189571f9d1619c71dab935e2990ef04f241d0139e6a9c8ed753f784dea3e0d0",
+    "chk_c4b785009fe7cfa429fcdc1f7b33e87b783dd338f08bf85112a589693c6d6e2d",
+    "chk_57c9709a4d429fd7138189e69e8179c2ac0ca56e114ea344f65d4960c3a94afc",
+    "chk_2a07d56b77ee9315a42da1c0a269beb297f729b3ea134fac43d04a2ec421ba50",
+    "chk_21a69a80fd52df31e82fde640e2ce4030b40dc075b53628d1730c9a89d8e53b9",
+    "chk_8967c7ab47817109b8c68a62b0afcff586f0a9605d93e8437ee98525541bc961"
+  ],
+  "context_proxy_tokens": 3840,
+  "context_sources": [
+    {
+      "chunk_id": "chk_bb30de52b450742d5d47b5bb3fb2e16845157357f99b23614fc1b034b81a35e4",
+      "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+      "end_char": 5242,
+      "section_path": [
+        "Allowing users in other accounts to use a KMS key",
+        "Step 1: Add a key policy statement in the local account"
+      ],
+      "shard_id": "snap_a35fe683851c96d6d25492dfef75dbbf0d86b215dcdaf98b068fd166d1297a14",
+      "shard_manifest_sha256": "c85e62c63fcbdc6a65742a4242ce0b11ba7039d131bc7822be76a4606277ad43",
+      "source_id": "s1",
+      "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+      "start_char": 3428,
+      "text_sha256": "3d26840b9f9c3fc3c57364697848481acdeb40f53d45322182898048952c2a7c",
+      "title": "Allowing users in other accounts to use a KMS key"
+    },
+    {
+      "chunk_id": "chk_812a375db0b7ac51bc163858725c7116259451301b2d380c096f7db9934f9c88",
+      "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+      "end_char": 1117,
+      "section_path": [
+        "Allowing users in other accounts to use a KMS key"
+      ],
+      "shard_id": "snap_a35fe683851c96d6d25492dfef75dbbf0d86b215dcdaf98b068fd166d1297a14",
+      "shard_manifest_sha256": "c85e62c63fcbdc6a65742a4242ce0b11ba7039d131bc7822be76a4606277ad43",
+      "source_id": "s2",
+      "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+      "start_char": 0,
+      "text_sha256": "854a09421a509d0fe0b8f626974a4725115e243ad20d461262ede3a3a6a94a88",
+      "title": "Allowing users in other accounts to use a KMS key"
+    },
+    {
+      "chunk_id": "chk_d189571f9d1619c71dab935e2990ef04f241d0139e6a9c8ed753f784dea3e0d0",
+      "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+      "end_char": 3052,
+      "section_path": [
+        "Allowing users in other accounts to use a KMS key",
+        "Warning"
+      ],
+      "shard_id": "snap_a35fe683851c96d6d25492dfef75dbbf0d86b215dcdaf98b068fd166d1297a14",
+      "shard_manifest_sha256": "c85e62c63fcbdc6a65742a4242ce0b11ba7039d131bc7822be76a4606277ad43",
+      "source_id": "s3",
+      "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+      "start_char": 1117,
+      "text_sha256": "7064a09def247a5ae8c7397e8058adb33c03ecdf5959b4f3a8df2e93a171d20a",
+      "title": "Allowing users in other accounts to use a KMS key"
+    },
+    {
+      "chunk_id": "chk_c4b785009fe7cfa429fcdc1f7b33e87b783dd338f08bf85112a589693c6d6e2d",
+      "document_version_id": "docv_184c5cc0f7c351a484ebfdbe39ee82d11b9c996441031b4a9d50f2253f0b018e",
+      "end_char": 1267,
+      "section_path": [
+        "Key policies in AWS KMS"
+      ],
+      "shard_id": "snap_50a7a95c052b26d66f77f3272924ff0300b22f833b68e8f5faf43865a1be3e81",
+      "shard_manifest_sha256": "9f047f07459bacb7b8fb4bcb30a2cd27bb209f2866e9c8fa54532a127897d66b",
+      "source_id": "s4",
+      "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html",
+      "start_char": 0,
+      "text_sha256": "1d88df6da86069586a1f466238c1411a2e48f3118c75e9633ff5f84a64e78518",
+      "title": "Key policies in AWS KMS"
+    },
+    {
+      "chunk_id": "chk_57c9709a4d429fd7138189e69e8179c2ac0ca56e114ea344f65d4960c3a94afc",
+      "document_version_id": "docv_c68b3d4ae83949b5838cc38e022083e23052a6bd9bd91b97836e2bc94a9faa65",
+      "end_char": 7580,
+      "section_path": [
+        "Using server-side encryption with AWS KMS keys (SSE-KMS)",
+        "AWS KMS keys",
+        "Using SSE-KMS encryption for cross-account operations"
+      ],
+      "shard_id": "snap_50a7a95c052b26d66f77f3272924ff0300b22f833b68e8f5faf43865a1be3e81",
+      "shard_manifest_sha256": "9f047f07459bacb7b8fb4bcb30a2cd27bb209f2866e9c8fa54532a127897d66b",
+      "source_id": "s5",
+      "source_uri": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
+      "start_char": 6079,
+      "text_sha256": "a0539b6d676c7503f46d70839272b38b0e600e8fc3c6f1e56d34ae874b5db3c3",
+      "title": "Using server-side encryption with AWS KMS keys (SSE-KMS)"
+    },
+    {
+      "chunk_id": "chk_2a07d56b77ee9315a42da1c0a269beb297f729b3ea134fac43d04a2ec421ba50",
+      "document_version_id": "docv_a6280de475da7722f6f63301ce66943ad656d5923f36afd3536c454b5a8901cc",
+      "end_char": 1196,
+      "section_path": [
+        "Examining the key policy"
+      ],
+      "shard_id": "snap_0a96b6ac4178eb777d2ebd06ec9091964a5ada3f6ba26ec034ed782a300b1e40",
+      "shard_manifest_sha256": "e42c2055bcc605a154ac64fad049a3036fda84f799744ef9176cc0ea783dd2ac",
+      "source_id": "s6",
+      "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/determining-access-key-policy.html",
+      "start_char": 0,
+      "text_sha256": "20eb425d9a5e89ffbbe0091b44af5699b6b1f9ee235844d9e902668d48e380c0",
+      "title": "Examining the key policy"
+    },
+    {
+      "chunk_id": "chk_21a69a80fd52df31e82fde640e2ce4030b40dc075b53628d1730c9a89d8e53b9",
+      "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+      "end_char": 6573,
+      "section_path": [
+        "Allowing users in other accounts to use a KMS key",
+        "Step 1: Add a key policy statement in the local account",
+        "Note"
+      ],
+      "shard_id": "snap_a35fe683851c96d6d25492dfef75dbbf0d86b215dcdaf98b068fd166d1297a14",
+      "shard_manifest_sha256": "c85e62c63fcbdc6a65742a4242ce0b11ba7039d131bc7822be76a4606277ad43",
+      "source_id": "s7",
+      "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+      "start_char": 5242,
+      "text_sha256": "635a15607006127f65fe5f55fbe6295fc6187db0df5ec4340d05e72b738b97fe",
+      "title": "Allowing users in other accounts to use a KMS key"
+    },
+    {
+      "chunk_id": "chk_8967c7ab47817109b8c68a62b0afcff586f0a9605d93e8437ee98525541bc961",
+      "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+      "end_char": 12450,
+      "section_path": [
+        "Allowing users in other accounts to use a KMS key",
+        "Step 2: Add IAM policies in the external account",
+        "Note"
+      ],
+      "shard_id": "snap_a35fe683851c96d6d25492dfef75dbbf0d86b215dcdaf98b068fd166d1297a14",
+      "shard_manifest_sha256": "c85e62c63fcbdc6a65742a4242ce0b11ba7039d131bc7822be76a4606277ad43",
+      "source_id": "s8",
+      "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+      "start_char": 11040,
+      "text_sha256": "c384ada4dca26b914886be9f3ea4b128f24f4b0f6fe478c4875510e7e2df49bc",
+      "title": "Allowing users in other accounts to use a KMS key"
+    }
+  ],
+  "method_id": "hybrid",
+  "new_cost_micro_usd": 1681,
+  "quality_metrics": null,
+  "ranked_chunk_ids": [
+    "chk_bb30de52b450742d5d47b5bb3fb2e16845157357f99b23614fc1b034b81a35e4",
+    "chk_812a375db0b7ac51bc163858725c7116259451301b2d380c096f7db9934f9c88",
+    "chk_d189571f9d1619c71dab935e2990ef04f241d0139e6a9c8ed753f784dea3e0d0",
+    "chk_c4b785009fe7cfa429fcdc1f7b33e87b783dd338f08bf85112a589693c6d6e2d",
+    "chk_57c9709a4d429fd7138189e69e8179c2ac0ca56e114ea344f65d4960c3a94afc",
+    "chk_2a07d56b77ee9315a42da1c0a269beb297f729b3ea134fac43d04a2ec421ba50",
+    "chk_21a69a80fd52df31e82fde640e2ce4030b40dc075b53628d1730c9a89d8e53b9",
+    "chk_8967c7ab47817109b8c68a62b0afcff586f0a9605d93e8437ee98525541bc961",
+    "chk_b82cf14b56334ccc82631e8ca30cc3bd663755142266a51aedfd4276bc4f0bcf",
+    "chk_1163c630b0c2b87294190215e02d2921eb97b926689c20a94ae356f7179b39f0",
+    "chk_8245b2f37f626605fb1ff138897bbd2acf16428aa52d7c04dc4b2e7f5417cd57",
+    "chk_f93c728a9bf61b52ff71157cd15295436a97a3d12920402a24f0a9fcf68cf631",
+    "chk_846baf45e144d5306455f2d58fb3e2386b3ae85f8ce19719463f3da289eb1b0f",
+    "chk_c29a06c1bed867777c09f0722850e33f419d98aefe719d7e7249234bbe3d237c",
+    "chk_d125163c6795091e21b075acde8c8ec8c130b8e1aba0ad07fe06d83244052b65",
+    "chk_c8a45474a504810e291138ff6f78c4bce7e5e5ac7357f005ce2907c38cc7efc7",
+    "chk_b8ae4bd3c0738425bf1eb3fd3edac3e6ba1986307a6ea29f444d3a1da1fba4de",
+    "chk_2fd42ec4a4f46a25c4cba1f1a1e5f06ec4a5c989af320bef8f667c5814faae73",
+    "chk_511440d602cf1fb9a3a75b75ae2167266d496dbf1005c0a052e3b93d38fd2e07",
+    "chk_5f820c0424c0aee47ce941e078286e7070caadb6f70b1498992403bc0fe8d345",
+    "chk_cf55038253e6946bfe8bb1ced359217a66185a8a6b75244e96306ac0b5a5c06e",
+    "chk_81443bf62262c298f17d52c8bd20bd2dc5d094f0abca5195b5e10138a77aa1b7",
+    "chk_7c042893c680f1d3351c5754d6b470a642a4cd6ee8f481111f1fe11021128a91",
+    "chk_dc371fe86a6db90217237c6bc566eb9987bb45ee2149225a34a1d37bd2712f38",
+    "chk_519bd0daafe8bd82b1bddb1ece8c316e26585cc78a1a1c0ff57ba20d7b8b868b",
+    "chk_cc70cd25179c7109bd24941fa6c19244a329a3cf899309abc8b9edff9a2f94d6",
+    "chk_5f0941bd01eaf95e8e2f72b2d50c9d911b11828563e30a8c03db7d9c48203f3b",
+    "chk_c670dc8647ec49318d11225f9fdf52b7d408c0f5074912f94729b2562abaf813"
+  ],
+  "response": {
+    "answer": "Cross-account use of a KMS key requires permission in two policy types: the key policy of the KMS key (in the account that owns the key) must give the external account or its users and roles permission to use the KMS key, and IAM policies in the external account must delegate those key policy permissions to its users and roles; neither policy alone is sufficient.\nThe key policy for the KMS key must give the external account (or users and roles in the external account) permission to use the KMS key, and IAM administrators in the external account can then use IAM policies to delegate those permissions to users and roles in that account.\nCross-account permission is effective only for the following operations: cryptographic operations, CreateGrant, DescribeKey, GetKeyRotationStatus, GetPublicKey, ListGrants, RetireGrant, and RevokeGrant; permissions for other operations given to a user in a different account have no effect.\nPermissions given to the external account and its principals are effective only if the external account is enabled in the Region that hosts the KMS key and its key policy.",
+    "answer_language": "en",
+    "answer_status": "ANSWERED",
+    "citations": [
+      {
+        "chunk_id": "chk_d189571f9d1619c71dab935e2990ef04f241d0139e6a9c8ed753f784dea3e0d0",
+        "citation_id": "cite_75bdce830802de77deabf60938df1592ad66a3fbffd59a2be3763e62350f38e1",
+        "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+        "quote": "For information about using policies to protect the resources in your account, see Best practices for IAM policies.\n\nTo give permission to use a KMS key to users and roles in another account, you must use two different types of policies:\n\nThe key policy for the KMS key must give the external account (or users and roles in the external account) permission to use the KMS key. The key policy is in the account that owns the KMS key.\n\n",
+        "section_path": [
+          "Allowing users in other accounts to use a KMS key",
+          "Warning"
+        ],
+        "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+        "title": "Allowing users in other accounts to use a KMS key"
+      },
+      {
+        "chunk_id": "chk_d189571f9d1619c71dab935e2990ef04f241d0139e6a9c8ed753f784dea3e0d0",
+        "citation_id": "cite_b9747e18a5468079450243a1d3bb447c8f89d34f8df6008a4e254f7debc6af54",
+        "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+        "quote": "IAM policies in the external account must delegate the key policy permissions to its users and roles. These policies are set in the external account and give permissions to users and roles in that account.\n\nThe key policy determines who can have access to the KMS key. The IAM policy determines who does have access to the KMS key. Neither the key policy nor the IAM policy alone is sufficient—you must change both.\n\n",
+        "section_path": [
+          "Allowing users in other accounts to use a KMS key",
+          "Warning"
+        ],
+        "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+        "title": "Allowing users in other accounts to use a KMS key"
+      },
+      {
+        "chunk_id": "chk_bb30de52b450742d5d47b5bb3fb2e16845157357f99b23614fc1b034b81a35e4",
+        "citation_id": "cite_a63dc241411e8a125b28cb615f5d601cc8837b4d5e6fbecd33bf9afad64135f7",
+        "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+        "quote": " When providing cross-account permission, the key policy for the KMS key must give the external account (or users and roles in the external account) permission to use the KMS key.\n\nTo give an external account permission to use the KMS key, add a statement to the key policy that specifies the external account. In the Principal element of the key policy, enter the Amazon Resource Name (ARN) of the external account.\n\n",
+        "section_path": [
+          "Allowing users in other accounts to use a KMS key",
+          "Step 1: Add a key policy statement in the local account"
+        ],
+        "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+        "title": "Allowing users in other accounts to use a KMS key"
+      },
+      {
+        "chunk_id": "chk_bb30de52b450742d5d47b5bb3fb2e16845157357f99b23614fc1b034b81a35e4",
+        "citation_id": "cite_ff031336f57cf9d876e19112a37181ded2306871a217f868feb4a41b0614e8a6",
+        "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+        "quote": "When you specify an external account in a key policy, IAM administrators in the external account can use IAM policies to delegate those permissions to any users and roles in the external account. They can also decide which of the actions specified in the key policy the users and roles can perform.\n\nPermissions given to the external account and its principals are effective only if the external account is enabled in the Region that hosts the KMS key and its key policy.",
+        "section_path": [
+          "Allowing users in other accounts to use a KMS key",
+          "Step 1: Add a key policy statement in the local account"
+        ],
+        "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+        "title": "Allowing users in other accounts to use a KMS key"
+      },
+      {
+        "chunk_id": "chk_812a375db0b7ac51bc163858725c7116259451301b2d380c096f7db9934f9c88",
+        "citation_id": "cite_c112c5b085877718c059c1d720f9e750772227d23ab239905d3db0763c95251d",
+        "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+        "quote": "Allowing users in other accounts to use a KMS key\n\nYou can allow users or roles in a different AWS account to use a KMS key in your account. Cross-account access requires permission in the key policy of the KMS key and in an IAM policy in the external user's account.\n\nCross-account permission is effective only for the following operations:\n\nCryptographic operations\n\nCreateGrant\n\nDescribeKey\n\nGetKeyRotationStatus\n\nGetPublicKey\n\nListGrants\n\nRetireGrant\n\nRevokeGrant\n\n",
+        "section_path": [
+          "Allowing users in other accounts to use a KMS key"
+        ],
+        "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+        "title": "Allowing users in other accounts to use a KMS key"
+      },
+      {
+        "chunk_id": "chk_812a375db0b7ac51bc163858725c7116259451301b2d380c096f7db9934f9c88",
+        "citation_id": "cite_5693ef1023d4dc2b2997b4dd297131710877a44c36c972343bb3f5b1fa5bde6e",
+        "document_version_id": "docv_a0280190c4346e0f91dce33071f5e72235d6e0a5184cf85c9b8a04e9ca97c21e",
+        "quote": "If you give a user in a different account permission for other operations, those permissions have no effect. For example, if you give a principal in a different account kms:ListKeys permission in an IAM policy, or kms:ScheduleKeyDeletion permission on a KMS key in a key policy, the user's attempts to call those operations on your resources still fail.\n\n",
+        "section_path": [
+          "Allowing users in other accounts to use a KMS key"
+        ],
+        "source_uri": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+        "title": "Allowing users in other accounts to use a KMS key"
+      }
+    ],
+    "claims": [
+      {
+        "citation_ids": [
+          "cite_75bdce830802de77deabf60938df1592ad66a3fbffd59a2be3763e62350f38e1",
+          "cite_b9747e18a5468079450243a1d3bb447c8f89d34f8df6008a4e254f7debc6af54"
+        ],
+        "claim_id": "c1",
+        "text": "Cross-account use of a KMS key requires permission in two policy types: the key policy of the KMS key (in the account that owns the key) must give the external account or its users and roles permission to use the KMS key, and IAM policies in the external account must delegate those key policy permissions to its users and roles; neither policy alone is sufficient."
+      },
+      {
+        "citation_ids": [
+          "cite_a63dc241411e8a125b28cb615f5d601cc8837b4d5e6fbecd33bf9afad64135f7",
+          "cite_ff031336f57cf9d876e19112a37181ded2306871a217f868feb4a41b0614e8a6"
+        ],
+        "claim_id": "c2",
+        "text": "The key policy for the KMS key must give the external account (or users and roles in the external account) permission to use the KMS key, and IAM administrators in the external account can then use IAM policies to delegate those permissions to users and roles in that account."
+      },
+      {
+        "citation_ids": [
+          "cite_c112c5b085877718c059c1d720f9e750772227d23ab239905d3db0763c95251d",
+          "cite_5693ef1023d4dc2b2997b4dd297131710877a44c36c972343bb3f5b1fa5bde6e"
+        ],
+        "claim_id": "c3",
+        "text": "Cross-account permission is effective only for the following operations: cryptographic operations, CreateGrant, DescribeKey, GetKeyRotationStatus, GetPublicKey, ListGrants, RetireGrant, and RevokeGrant; permissions for other operations given to a user in a different account have no effect."
+      },
+      {
+        "citation_ids": [
+          "cite_ff031336f57cf9d876e19112a37181ded2306871a217f868feb4a41b0614e8a6"
+        ],
+        "claim_id": "c4",
+        "text": "Permissions given to the external account and its principals are effective only if the external account is enabled in the Region that hosts the KMS key and its key policy."
+      }
+    ],
+    "evidence_bundle_sha256": null,
+    "mode_requested": "hybrid",
+    "mode_used": "hybrid",
+    "request_id": "astage_2222222222222222222222222222222222222222222222222222222222222222",
+    "retrieval_backend": "collection_numpy_global_bm25",
+    "snapshot_version": "collection_91f03f4557015a69c9d46eeabd4d02e037f18ecc3b2c52068b87e94b366421c3",
+    "used_graph": false,
+    "warnings": [
+      "CONTEXT_BUNDLE_SKIPPED"
+    ]
+  },
+  "semantic_review": "NOT_REVIEWED",
+  "status": "COMPLETED",
+  "run_id": "run_1111111111111111111111111111111111111111111111111111111111111111"
+}

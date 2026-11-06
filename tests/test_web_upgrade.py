@@ -40,13 +40,22 @@ def test_preview_is_closed_public_copy_and_does_not_bootstrap_production(tmp_pat
     frontend.mkdir(parents=True)
     for name in (*preview_web_upgrade.ASSETS, "index.html"):
         (frontend / name).write_bytes((ROOT / "frontend/tracer" / name).read_bytes())
+    (frontend / "benchmark316-cases").mkdir()
+    for n in range(1, 101):
+        name = f"benchmark316-cases/aws100-{n:03}.json"
+        (frontend / name).write_bytes((ROOT / "frontend/tracer" / name).read_bytes())
     fixture = tmp_path / "tests/fixtures/web_upgrade"
     fixture.mkdir(parents=True)
     for name in ("records.mjs", "preview.mjs"):
         (fixture / name).write_bytes((ROOT / "tests/fixtures/web_upgrade" / name).read_bytes())
     target = tmp_path / "data/build/preview"
     report = preview_web_upgrade.build_preview(target)
-    assert len(report["files"]) == 14
+    assert len(report["files"]) == 121
+    assert "assets/scoped-runs.mjs" in report["files"]
+    # Byte-pinned public JSON must survive Windows newline conversion unchanged.
+    for n in (1, 68, 100):
+        name = f"assets/benchmark316-cases/aws100-{n:03}.json"
+        assert (target / name).read_bytes() == (ROOT / "frontend/tracer" / name.removeprefix("assets/")).read_bytes()
     assert 'src="/assets/app.js"' not in (target / "index.html").read_text(encoding="utf-8")
     assert 'src="/preview.mjs"' in (target / "index.html").read_text(encoding="utf-8")
     with pytest.raises(ValueError, match="DEDICATED_BUILD"):

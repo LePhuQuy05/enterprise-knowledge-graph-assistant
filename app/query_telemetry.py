@@ -10,7 +10,7 @@ from datetime import UTC, datetime
 STAGES = frozenset({"authorize", "authorization_refresh", "release_read", "admission", "runtime_load", "query_embedding",
     "retrieval_context", "gateway_setup", "model_call", "receipt_write", "answer_validation",
     "final_write", "detail_read", "history_read", "source_read", "status_read", "query_rewrite", "official_search"})
-ROUTES = frozenset({"query_create", "query_list", "query_detail", "source", "status", "other"})
+ROUTES = frozenset({"query_create", "query_list", "query_detail", "source", "status", "method_catalog", "other"})
 ERRORS = frozenset({"NOT_FOUND", "INVALID_REQUEST", "MODE_UNAVAILABLE", "ACCESS_TOKEN_REQUIRED",
     "SCOPE_REQUIRED", "AUTHORIZATION_UNAVAILABLE", "ACTIVE_MEMBERSHIP_REQUIRED", "ACCESS_DENIED",
     "INVALID_IDEMPOTENCY_KEY", "IDEMPOTENCY_KEY_EXPIRED", "IDEMPOTENCY_CONFLICT", "QUERY_QUOTA_EXCEEDED",
@@ -38,6 +38,8 @@ def route_label(event):
     if method == "POST" and path == "/v1/queries":
         return "query_create"
     if method == "GET":
+        if path == "/v1/rag-methods":
+            return "method_catalog"
         if path in {"/v1/status", "/v1/queries"}:
             return "status" if path == "/v1/status" else "query_list"
         if type(path) is str and re.fullmatch(r"/v1/queries/q_[0-9a-f]{64}", path):

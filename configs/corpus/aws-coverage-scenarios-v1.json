@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "version": "aws-coverage-development-scope-v1",
+  "purpose": "DEVELOPMENT_WORKFLOW_FIXTURES_NOT_GOLD_OR_HOLDOUT",
+  "semantic_review": "NOT_REVIEWED",
+  "quality_metrics_available": false,
+  "cases": [
+    {
+      "id": "coverage-dev-01",
+      "kind": "cross_service",
+      "services": ["S3", "Lambda", "KMS", "IAM"],
+      "en": "Why can S3 invoke Lambda while the function cannot read a cross-account SSE-KMS object?",
+      "vi": "Vì sao S3 gọi được Lambda nhưng hàm không đọc được object SSE-KMS ở tài khoản khác?"
+    },
+    {
+      "id": "coverage-dev-02",
+      "kind": "comparison",
+      "services": ["RDS"],
+      "en": "Does an RDS Multi-AZ DB instance standby serve reads? How does it differ from a Multi-AZ DB cluster and a Read Replica?",
+      "vi": "Standby của RDS Multi-AZ DB instance có phục vụ đọc không? Phân biệt với Multi-AZ DB cluster và Read Replica."
+    },
+    {
+      "id": "coverage-dev-03",
+      "kind": "reliability",
+      "services": ["SQS", "Lambda"],
+      "en": "How do Lambda timeout, SQS visibility timeout, retries and a dead-letter queue interact?",
+      "vi": "Lambda timeout, SQS visibility timeout, retry và dead-letter queue liên quan với nhau như thế nào?"
+    },
+    {
+      "id": "coverage-dev-04",
+      "kind": "permission_boundary",
+      "services": ["ECS", "ECR", "IAM"],
+      "en": "What is the difference between an ECS task execution role and a task role when pulling an ECR image and calling AWS APIs?",
+      "vi": "ECS task execution role và task role khác nhau thế nào khi tải image ECR và gọi AWS API?"
+    },
+    {
+      "id": "coverage-dev-05",
+      "kind": "networking",
+      "services": ["Lambda", "VPC"],
+      "en": "Does attaching Lambda to a public subnet give it public internet access? Explain the routing conditions.",
+      "vi": "Gắn Lambda vào public subnet có giúp hàm truy cập internet công khai không? Giải thích điều kiện định tuyến."
+    },
+    {
+      "id": "coverage-dev-06",
+      "kind": "cross_account",
+      "services": ["IAM", "KMS"],
+      "en": "Which policy layers must allow cross-account use of a customer-managed KMS key?",
+      "vi": "Những lớp policy nào phải cho phép sử dụng customer-managed KMS key giữa hai tài khoản?"
+    },
+    {
+      "id": "coverage-dev-07",
+      "kind": "comparison",
+      "services": ["CloudWatch", "CloudTrail"],
+      "en": "How do CloudTrail API events differ from application logs in CloudWatch Logs?",
+      "vi": "Sự kiện API của CloudTrail khác application logs trong CloudWatch Logs như thế nào?"
+    },
+    {
+      "id": "coverage-dev-08",
+      "kind": "cross_service",
+      "services": ["EventBridge", "SQS"],
+      "en": "How should EventBridge target delivery failures and an SQS consumer failure be distinguished?",
+      "vi": "Phân biệt lỗi EventBridge giao sự kiện tới target với lỗi consumer xử lý message SQS như thế nào?"
+    },
+    {
+      "id": "coverage-dev-09",
+      "kind": "authentication",
+      "services": ["APIGateway", "Cognito"],
+      "en": "What does an API Gateway HTTP API JWT authorizer validate, and what application authorization is still needed?",
+      "vi": "JWT authorizer của API Gateway HTTP API kiểm tra gì, và ứng dụng còn cần kiểm tra quyền truy cập nào?"
+    },
+    {
+      "id": "coverage-dev-10",
+      "kind": "workflow",
+      "services": ["CloudFormation"],
+      "en": "What does an UPDATE_ROLLBACK_FAILED state mean, and which documented recovery choices require care?",
+      "vi": "Trạng thái UPDATE_ROLLBACK_FAILED nghĩa là gì, và những cách khôi phục nào cần thận trọng theo tài liệu?"
+    },
+    {
+      "id": "coverage-dev-11",
+      "kind": "private_account_unavailable",
+      "services": ["Lambda"],
+      "en": "What is the applied Lambda concurrency quota and remaining monthly budget in my AWS account right now?",
+      "vi": "Quota concurrency Lambda đang áp dụng và ngân sách tháng còn lại trong tài khoản AWS của tôi hiện là bao nhiêu?"
+    },
+    {
+      "id": "coverage-dev-12",
+      "kind": "needs_clarification",
+      "services": ["RDS"],
+      "en": "Can my Multi-AZ setup serve reads from the standby?",
+      "vi": "Cấu hình Multi-AZ của tôi có đọc được từ standby không?"
+    }
+  ],
+  "notice": "These are previously discussed development scenarios for scope and execution checks. They contain no approved answers or evidence labels, are not independent final evaluation, and must not be counted as gold/holdout. No corpus or model has been shown to answer them correctly."
+}

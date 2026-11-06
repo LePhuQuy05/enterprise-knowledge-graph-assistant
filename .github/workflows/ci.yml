@@ -41,5 +41,9 @@ jobs:
         run: uv run ruff check app infra scripts tests
       - name: Frontend tests
         run: npm run ui:test
+      - name: Verify served V2 source pins
+        run: uv run python -m scripts.check_served_source
+      - name: Build public V2 fixture preview
+        run: uv run python -m scripts.preview_scoped319 --fixture tests/fixtures/scoped_runs/wire.json --output data/build/ci-scoped-preview
       - name: Synthesize infrastructure without deployment
         run: npm run infra:synth

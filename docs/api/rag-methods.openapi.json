@@ -1,0 +1,71 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AWS Evidence Lab experimental method catalog",
+    "version": "1.0.0-local",
+    "description": "Unreleased additive contract. This file does not represent an enabled production route."
+  },
+  "paths": {
+    "/v1/rag-methods": {
+      "get": {
+        "summary": "Deployment capability catalog; requires kg/read and active membership",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Public-safe deployment capabilities. Cache-Control: no-store. Quality metrics remain null; availability is not a quality guarantee.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/v2/PublicMethodCatalog.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "401": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "403": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "404": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "409": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "429": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "502": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "503": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          },
+          "504": {
+            "description": "Typed error: error.code, error.message, retryable=false, request_id when available."
+          }
+        },
+        "description": "Local implementation, not deployed. Rejects query parameters. Reads current published release, reauthorizes before response, never enrolls users, admits queries or calls models. NOT_SERVED methods are informational and cannot execute.",
+        "x-release-state": "LOCAL_NOT_DEPLOYED",
+        "x-required-scope": "kg/read"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

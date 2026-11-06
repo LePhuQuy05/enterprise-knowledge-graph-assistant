@@ -1,18 +1,35 @@
 {
   "additionalProperties": false,
   "properties": {
-    "question": {
-      "maxLength": 2000,
-      "minLength": 1,
-      "title": "Question",
+    "answer_language": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "en",
+        "vi"
+      ],
+      "title": "Answer Language",
+      "type": "string"
+    },
+    "corpus_scope": {
+      "default": "snapshot",
+      "enum": [
+        "snapshot",
+        "aws_official"
+      ],
+      "title": "Corpus Scope",
       "type": "string"
     },
     "mode": {
       "anyOf": [
         {
           "enum": [
+            "bm25",
             "vector",
             "hybrid",
+            "hybrid_reranked",
+            "hybrid_multi_query",
+            "hybrid_multi_query_balanced",
             "graph_1hop",
             "graph_2hop"
           ],
@@ -25,23 +42,10 @@
       "default": null,
       "title": "Mode"
     },
-    "corpus_scope": {
-      "default": "snapshot",
-      "enum": [
-        "snapshot",
-        "aws_official"
-      ],
-      "title": "Corpus Scope",
-      "type": "string"
-    },
-    "answer_language": {
-      "default": "auto",
-      "enum": [
-        "auto",
-        "en",
-        "vi"
-      ],
-      "title": "Answer Language",
+    "question": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Question",
       "type": "string"
     }
   },

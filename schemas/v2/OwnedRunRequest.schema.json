@@ -1,0 +1,67 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "original_question": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Original Question",
+      "type": "string"
+    },
+    "language": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "en",
+        "vi"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "source_scope": {
+      "const": "local_collection",
+      "default": "local_collection",
+      "title": "Source Scope",
+      "type": "string"
+    },
+    "method_ids": {
+      "default": [
+        "hybrid"
+      ],
+      "items": {
+        "enum": [
+          "bm25",
+          "vector",
+          "hybrid",
+          "hybrid_reranked",
+          "hybrid_multi_query",
+          "hybrid_multi_query_balanced"
+        ],
+        "type": "string"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "title": "Method Ids",
+      "type": "array"
+    },
+    "run_kind": {
+      "default": "retrieval",
+      "enum": [
+        "retrieval",
+        "answer"
+      ],
+      "title": "Run Kind",
+      "type": "string"
+    }
+  },
+  "required": [
+    "original_question"
+  ],
+  "title": "OwnedRunRequestV1",
+  "type": "object"
+}

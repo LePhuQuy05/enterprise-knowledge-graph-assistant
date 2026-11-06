@@ -16,10 +16,27 @@ Raw documents, embeddings, local database volumes and model weights remain outsi
 
 The browser completes Cognito authorization code flow with PKCE. API Gateway validates the JWT; the application validates identity, scopes and active membership. Query requests cannot choose tenant, model endpoint, snapshot URI or arbitrary resource identifiers.
 
-Two evidence paths are available:
+The investigation workspace provides two evidence paths:
 
 - **Pilot snapshot:** NumPy vector search and BM25, combined using reciprocal rank fusion over a fixed corpus.
 - **AWS official live search:** bounded, allowlisted search and fetched evidence. Each answer pins the passages and hashes that support its citations.
+
+## Expanded collection V2
+
+Live Compare and the eight method pages use a separate versioned workflow over 319 documents / 3,024 chunks: BM25, vector, hybrid, reranking, graph 1/2-hop, multi-query and query-balanced retrieval. A Vietnamese input shares an English search rewrite; Q and QB share a validated query plan and candidate pool, then use different allocation rules. Graph traversal packs complete source-backed paths. Unsupported graph paths or plans remain NOT_READY rather than silently switching to Hybrid.
+
+```text
+Browser + verified Cognito session
+  → API Gateway JWT → scoped admission and atomic quota/reservation
+  → durable outbox → SQS → owned V2 worker
+  → pinned S3 corpus/index/graph + ONNX retrieval
+  → bounded external generation → source/display qualification
+  → private result/source/trace → owner-authorized history and export
+```
+
+API, worker and watchdog are separate Lambda roles. Only the worker can read the model secret. The watchdog checks bounded work slots rather than scanning the whole table; uncertain execution retains its financial reservation and is not automatically regenerated. The UI can inspect six execution stages and source-backed graph links from a saved run. Opening history does not start another model call.
+
+The runtime graph is experimental: 27 source-backed facts from 21 documents, not a graph covering every document. The pilot20 dashboard, legacy316 retrieval collection and expanded319 answer workflow retain separate identities and results. Neo4j is local; the cloud reads a validated exported graph, without a managed graph database.
 
 Generation receives bounded evidence and returns structured claims. Citation identifiers and trusted evidence spans are resolved by the server. Missing evidence produces partial or abstained answers; an exact quote alone does not establish that a claim is entailed.
 
@@ -42,7 +59,7 @@ S3 stores private, versioned artifacts. Lambda reuses model/snapshot state withi
 ## Deliberate scope
 
 - AWS hosts authentication, the frontend, query handling, state and artifacts; generation calls an external provider.
-- Neo4j and graph extraction are local experiments. Graph answering is gated by evaluation results.
+- Graph extraction and Neo4j remain local. Cloud V2 serves a validated graph snapshot with explicit coverage and readiness limits.
 - Web uploads, OCR, streaming, a managed graph database and a full AWS documentation archive are outside the current serving scope.
 - Infrastructure synthesis is safe without credentials. A full deployment additionally needs explicitly prepared artifacts, model access, secrets, budget controls and reviewed change sets.
 

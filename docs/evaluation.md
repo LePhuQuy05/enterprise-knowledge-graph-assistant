@@ -2,6 +2,14 @@
 
 The project measures retrieval, source grounding, failure handling and operational correctness separately. Passing tests does not establish answer accuracy or general attack resistance.
 
+## Current V2 serving and historical experiments
+
+The 6 November release serves 319 documents / 3,024 chunks with eight answer methods. Its AWS execution canary completed 16 answers (eight methods, English and Vietnamese) on one previously exposed KMS intent. Source-byte, citation-identity and graph-path checks passed with no hidden fallback in that canary. This demonstrates execution and provenance, not an independent answer-accuracy benchmark or a GraphRAG advantage. The graph contains 27 source-backed facts from 21 documents, with human review still pending.
+
+The frontend also retains a diagnostic experiment on 316 documents: 100 scenarios × two languages × eight methods, with 1,594 completed and six failed retrieval rows. Those labels are drafts, and the graph/planner mechanisms were subsequently corrected. These historical numbers must not be relabeled as results for the current 319-document workflow. An updated semantic evaluation and human label/citation review remain open.
+
+The pilot results below describe a separate 20-document snapshot. See [delivery status](progress-report.md) and [version pins](../configs/releases/collection319-v2.json) for the current serving scope.
+
 ## Expanded development experiment — 20 October 2026
 
 The expansion contains **50 scenarios with English/Vietnamese versions**, forming 100 language inputs: 22 factual, 10 entity/relation, 8 candidate multi-hop and 10 corpus-unanswerable scenarios. Forty answerable scenarios belong to 23 intent groups; all 50 belong to 31 groups. Translations and related questions share groups. The 800 question/system rows are repeated measurements, not 800 independent questions.

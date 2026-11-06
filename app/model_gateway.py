@@ -46,7 +46,7 @@ class CallContext(Record):
     tenant_id: Identifier
     run_id: Identifier
     request_id: Identifier
-    stage: Literal["EMBED", "EXTRACT", "GENERATE", "EVALUATE", "SMOKE", "REWRITE"]
+    stage: Literal["EMBED", "EXTRACT", "GENERATE", "EVALUATE", "SMOKE", "REWRITE", "PLAN_QUERY"]
     attempt: Annotated[int, Field(ge=1, le=10)] = 1
 
 

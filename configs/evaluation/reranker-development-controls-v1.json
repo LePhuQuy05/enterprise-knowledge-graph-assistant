@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "version": "reranker-development-controls-v1",
+  "purpose": "DEVELOPMENT_CONTROLS_NOT_GOLD_OR_HOLDOUT",
+  "human_reviewed": false,
+  "holdout": false,
+  "cases": [
+    {
+      "id": "rerank-dev-sqs-visibility-en",
+      "language": "en",
+      "question": "Does ChangeMessageVisibility with VisibilityTimeout=0 remove a received SQS message, or make it available to another consumer? What happens if the visibility timeout expires without calling DeleteMessage?",
+      "search_query": "Amazon SQS ChangeMessageVisibility VisibilityTimeout 0 DeleteMessage visibility timeout expires message visible again"
+    },
+    {
+      "id": "rerank-dev-s3-consistency-en",
+      "language": "en",
+      "question": "After S3 successfully acknowledges a PUT that overwrites an object, should an immediate GET or LIST return the new data? Does the same consistency guarantee mean a deleted bucket immediately disappears when listing all buckets?",
+      "search_query": "Amazon S3 successful PUT overwrite GET LIST strong read after write consistency bucket configurations delete bucket list all buckets eventual consistency"
+    },
+    {
+      "id": "rerank-dev-http-jwt-vi",
+      "language": "vi",
+      "question": "Khi JWT có cả aud và client_id, JWT authorizer của API Gateway HTTP API ưu tiên trường nào? Nếu route yêu cầu nhiều authorizationScopes thì token phải có tất cả scope hay chỉ cần một scope?",
+      "search_query": "API Gateway HTTP API JWT authorizer aud client_id both present authorizationScopes scope scp at least one"
+    },
+    {
+      "id": "rerank-dev-dynamodb-policy-vi",
+      "language": "vi",
+      "question": "Resource-based policy gắn vào bảng DynamoDB có thể quy định quyền truy cập cả bảng lẫn các index của bảng không? Cơ chế này có hỗ trợ cấp quyền cho IAM principal thuộc tài khoản AWS khác không?",
+      "search_query": "DynamoDB resource based policy attached table indexes cross account access IAM principals different AWS accounts"
+    }
+  ],
+  "notice": "Inputs only. These are development controls, not gold or holdout. Source-target hypotheses and review notes are stored separately and must never be passed to the retriever, reranker, generator, or prompt."
+}

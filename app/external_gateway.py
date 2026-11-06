@@ -131,7 +131,7 @@ class ExternalModelGateway:
     def generate(
         self, context: CallContext, *, system: str, prompt: str, max_output_tokens: int = 800,
     ) -> ExternalModelResult:
-        caps = {"SMOKE": 64, "GENERATE": 800, "EXTRACT": 2048, "EVALUATE": 800, "REWRITE": 256}
+        caps = {"SMOKE": 64, "GENERATE": 800, "EXTRACT": 2048, "EVALUATE": 800, "REWRITE": 256, "PLAN_QUERY": 256}
         if context.stage not in caps or type(max_output_tokens) is not int or not (
             1 <= max_output_tokens <= caps[context.stage]
         ) or not system.strip() or not prompt.strip():

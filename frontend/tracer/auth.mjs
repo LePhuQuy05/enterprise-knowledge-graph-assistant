@@ -8,7 +8,8 @@ export function validateConfig(config, origin) {
       domain.pathname !== "/" || domain.search || domain.hash || domain.port || domain.username || domain.password ||
       config.callback_url !== `${origin}/auth/callback` || config.logout_url !== `${origin}/` ||
       !/^[a-z0-9]+$/.test(config.client_id) ||
-      (config.registration_enabled !== undefined && typeof config.registration_enabled !== "boolean")) throw new Error("Invalid sign-in settings");
+      (config.registration_enabled !== undefined && typeof config.registration_enabled !== "boolean") ||
+      (config.scoped_runs_enabled !== undefined && typeof config.scoped_runs_enabled !== "boolean")) throw new Error("Invalid sign-in settings");
   return config;
 }
 

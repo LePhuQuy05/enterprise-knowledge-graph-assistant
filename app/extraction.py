@@ -127,6 +127,11 @@ def validate_output(raw: str, *, chunk: Chunk, document: DocumentVersion,
 
             evidence = EvidenceExtractionOutput.model_validate_json(canonical_json(parsed))
             parsed = json.loads(resolve_evidence(evidence, chunk.text))
+        if recipe is not None and recipe.version == "deepseek-anchored-v4":
+            from app.anchored_extraction import AnchoredExtractionOutput, resolve_anchored
+
+            anchored = AnchoredExtractionOutput.model_validate_json(canonical_json(parsed))
+            parsed = json.loads(resolve_anchored(anchored, chunk.text))
         output = ExtractionOutput.model_validate_json(canonical_json(parsed))
     except (ValueError, TypeError, RecursionError) as exc:
         if isinstance(exc, ExtractionError):
@@ -244,13 +249,22 @@ def deepseek_evidence_recipe(aliases: AliasDictionary, *, metadata_sha256: str) 
     }))
 
 
+def deepseek_anchored_recipe(aliases: AliasDictionary, *, metadata_sha256: str) -> ExtractionRecipe:
+    previous = deepseek_extraction_recipe(aliases, metadata_sha256=metadata_sha256)
+    return ExtractionRecipe(**(previous.model_dump() | {
+        "version": "deepseek-anchored-v4", "prompt_version": "grounded-explicit-occurrences-v4",
+        "output_schema_version": "extraction-anchored-v4",
+        "parameters": previous.parameters | {"span_resolver_version": "unique-evidence-explicit-occurrences-v1"},
+    }))
+
+
 def raw_recipe(recipe: ExtractionRecipe) -> dict:
     expected = {"version": "haiku-grounded-v1", "model_id": HAIKU,
                 "invocation_id": HAIKU_ROUTE, "source_region": "us-east-1",
                 "parameters": {"temperature": 0, "max_output_tokens": 2048},
                 "prompt_version": PROMPT_VERSION, "output_schema_version": SCHEMA_VERSION,
                 "ontology_version": ONTOLOGY_VERSION}
-    if recipe.version in {"deepseek-grounded-v1", "deepseek-quotes-v2", "deepseek-evidence-v3"}:
+    if recipe.version in {"deepseek-grounded-v1", "deepseek-quotes-v2", "deepseek-evidence-v3", "deepseek-anchored-v4"}:
         metadata = recipe.parameters.get("model_metadata_sha256")
         if type(metadata) is not str or len(metadata) != 64 or any(c not in "0123456789abcdef" for c in metadata):
             raise ExtractionError("EXTRACTION_MODEL_METADATA_HASH_REQUIRED")
@@ -270,6 +284,10 @@ def raw_recipe(recipe: ExtractionRecipe) -> dict:
             expected.update(version="deepseek-evidence-v3", prompt_version="grounded-evidence-first-v3",
                             output_schema_version="extraction-evidence-v3")
             expected["parameters"]["span_resolver_version"] = "inline-endpoints-strict-quotes-v1"
+        if recipe.version == "deepseek-anchored-v4":
+            expected.update(version="deepseek-anchored-v4", prompt_version="grounded-explicit-occurrences-v4",
+                            output_schema_version="extraction-anchored-v4")
+            expected["parameters"]["span_resolver_version"] = "unique-evidence-explicit-occurrences-v1"
     value = recipe.model_dump(mode="json", exclude={"canonicalization_version"})
     if canonical_json(value) != canonical_json(expected):
         raise ExtractionError("EXTRACTION_UNSUPPORTED_RECIPE")
@@ -280,6 +298,10 @@ def extraction_request(text: str, recipe: ExtractionRecipe) -> tuple[str, str]:
     raw_recipe(recipe)
     if not text.strip() or len(text) > 20_000:
         raise ExtractionError("EXTRACTION_INPUT_LIMIT")
+    if recipe.version == "deepseek-anchored-v4":
+        from app.anchored_extraction import anchored_request
+
+        return anchored_request(text)
     if recipe.version == "deepseek-evidence-v3":
         from app.evidence_extraction import evidence_request
 

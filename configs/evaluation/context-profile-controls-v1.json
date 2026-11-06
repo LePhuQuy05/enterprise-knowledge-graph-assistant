@@ -1,0 +1,29 @@
+{
+  "version": "context-profile-control-scope-v1",
+  "parent_rubric_sha256": "ef7811f81f6505a96385aed5d6f8e03d8e9c7d17c5b40ef47fb569460fc8079a",
+  "origin": "AI_AUTHORED_NONBLIND_DEVELOPMENT_REVIEW",
+  "human_reviewers": 0,
+  "freeze_stage": "Before first retrieval of the eight new control groups; existing two intents are exposed",
+  "language_track": "VI original question with author-supplied paired EN search reference; not native live rewrite evaluation",
+  "control_requirements": {
+    "control-01": ["S1", "S2", "S3", "C1_READ_SEPARATION"],
+    "control-02": ["S4"],
+    "control-03": ["S5"],
+    "control-04": ["K1", "K2"],
+    "control-05": ["K3", "K4"],
+    "control-06": ["C6_KEY_TYPE"],
+    "control-07": [],
+    "control-08": []
+  },
+  "scope_rationale": {
+    "control-01": "The question asks invocation versus object reading, not decryption. Replace broad S7 synthesis with premises S1/S2/S3 only.",
+    "control-02": "GetObject permission is a stated premise; the requested missing permission is Decrypt. Do not demand a Lambda execution-role tutorial to answer a generic SSE-KMS reader question.",
+    "control-06": "The question compares AWS-managed and customer-managed key sharing. Use the key-type paragraph alone; do not demand unrelated details of both cross-account KMS policies.",
+    "control-07": "Actual private production configuration cannot be verified from public sources; answer/abstention behavior is not measured by retrieval presence.",
+    "control-08": "Actual notification topology and policies are unknown; answer/clarification behavior is not measured by retrieval presence."
+  },
+  "additional_requirements": [
+    {"id": "C1_READ_SEPARATION", "intent": "control-01", "claim": "Successful S3 invocation does not by itself prove the function execution role can read the S3 object.", "actor": "S3 invoker versus Lambda execution role", "action": "InvokeFunction versus GetObject", "resource": "Function versus object", "condition": "Qualified synthesis of the distinct permissions, not a verdict on real account configuration", "kind": "QUALIFIED_INFERENCE", "requires": ["S1", "S2", "S3"]},
+    {"id": "C6_KEY_TYPE", "intent": "control-06", "claim": "SSE-KMS objects encrypted with AWS managed keys cannot be shared cross-account in this case; customer managed keys are required for such sharing.", "actor": "Identity accessing shared SSE-KMS data", "action": "Cross-account sharing", "resource": "SSE-KMS object and KMS key type", "condition": "Retain the AWS-managed versus customer-managed distinction; not proof that a customer-managed-key policy is already configured correctly", "kind": "EXPLICIT_SUPPORT"}
+  ]
+}

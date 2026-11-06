@@ -1,0 +1,31 @@
+{
+  "version": "aws-approved-aliases-v2",
+  "entries": [
+    {"canonical_key":"aws/s3","canonical_name":"Amazon S3","entity_type":"AWS_SERVICE","aliases":["Amazon S3","S3","Amazon Simple Storage Service"]},
+    {"canonical_key":"aws/lambda","canonical_name":"AWS Lambda","entity_type":"AWS_SERVICE","aliases":["AWS Lambda","Lambda"]},
+    {"canonical_key":"aws/iam","canonical_name":"AWS Identity and Access Management","entity_type":"AWS_SERVICE","aliases":["AWS Identity and Access Management","IAM","AWS IAM"]},
+    {"canonical_key":"aws/kms","canonical_name":"AWS Key Management Service","entity_type":"AWS_SERVICE","aliases":["AWS Key Management Service","AWS KMS","KMS"]},
+    {"canonical_key":"aws/bedrock","canonical_name":"Amazon Bedrock","entity_type":"AWS_SERVICE","aliases":["Amazon Bedrock","Bedrock"]},
+    {"canonical_key":"aws/dynamodb","canonical_name":"Amazon DynamoDB","entity_type":"AWS_SERVICE","aliases":["Amazon DynamoDB","DynamoDB"]},
+    {"canonical_key":"aws/ec2","canonical_name":"Amazon EC2","entity_type":"AWS_SERVICE","aliases":["Amazon EC2","EC2","Amazon Elastic Compute Cloud"]},
+    {"canonical_key":"aws/vpc","canonical_name":"Amazon VPC","entity_type":"AWS_SERVICE","aliases":["Amazon VPC","VPC","Amazon Virtual Private Cloud"]},
+    {"canonical_key":"aws/rds","canonical_name":"Amazon RDS","entity_type":"AWS_SERVICE","aliases":["Amazon RDS","RDS","Amazon Relational Database Service"]},
+    {"canonical_key":"aws/ecs","canonical_name":"Amazon ECS","entity_type":"AWS_SERVICE","aliases":["Amazon ECS","ECS","Amazon Elastic Container Service"]},
+    {"canonical_key":"aws/eks","canonical_name":"Amazon EKS","entity_type":"AWS_SERVICE","aliases":["Amazon EKS","EKS","Amazon Elastic Kubernetes Service"]},
+    {"canonical_key":"aws/sqs","canonical_name":"Amazon SQS","entity_type":"AWS_SERVICE","aliases":["Amazon SQS","SQS","Amazon Simple Queue Service"]},
+    {"canonical_key":"aws/sns","canonical_name":"Amazon SNS","entity_type":"AWS_SERVICE","aliases":["Amazon SNS","SNS","Amazon Simple Notification Service"]},
+    {"canonical_key":"aws/eventbridge","canonical_name":"Amazon EventBridge","entity_type":"AWS_SERVICE","aliases":["Amazon EventBridge","EventBridge"]},
+    {"canonical_key":"aws/step-functions","canonical_name":"AWS Step Functions","entity_type":"AWS_SERVICE","aliases":["AWS Step Functions","Step Functions"]},
+    {"canonical_key":"aws/api-gateway","canonical_name":"Amazon API Gateway","entity_type":"AWS_SERVICE","aliases":["Amazon API Gateway","API Gateway"]},
+    {"canonical_key":"aws/cloudformation","canonical_name":"AWS CloudFormation","entity_type":"AWS_SERVICE","aliases":["AWS CloudFormation","CloudFormation"]},
+    {"canonical_key":"aws/cloudwatch","canonical_name":"Amazon CloudWatch","entity_type":"AWS_SERVICE","aliases":["Amazon CloudWatch","CloudWatch"]},
+    {"canonical_key":"aws/cloudtrail","canonical_name":"AWS CloudTrail","entity_type":"AWS_SERVICE","aliases":["AWS CloudTrail","CloudTrail"]},
+    {"canonical_key":"aws/cloudfront","canonical_name":"Amazon CloudFront","entity_type":"AWS_SERVICE","aliases":["Amazon CloudFront","CloudFront"]},
+    {"canonical_key":"aws/route53","canonical_name":"Amazon Route 53","entity_type":"AWS_SERVICE","aliases":["Amazon Route 53","Route 53"]},
+    {"canonical_key":"aws/elastic-load-balancing","canonical_name":"Elastic Load Balancing","entity_type":"AWS_SERVICE","aliases":["Elastic Load Balancing","ELB"]},
+    {"canonical_key":"aws/organizations","canonical_name":"AWS Organizations","entity_type":"AWS_SERVICE","aliases":["AWS Organizations","Organizations"]},
+    {"canonical_key":"aws/secrets-manager","canonical_name":"AWS Secrets Manager","entity_type":"AWS_SERVICE","aliases":["AWS Secrets Manager","Secrets Manager"]},
+    {"canonical_key":"aws/resource-type/application-load-balancer","canonical_name":"Application Load Balancer","entity_type":"RESOURCE","aliases":["Application Load Balancer","ALB"]},
+    {"canonical_key":"aws/resource-type/network-load-balancer","canonical_name":"Network Load Balancer","entity_type":"RESOURCE","aliases":["Network Load Balancer","NLB"]}
+  ]
+}

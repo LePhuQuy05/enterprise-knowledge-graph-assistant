@@ -64,7 +64,7 @@ def summarize_latency(values):
             "max_ms": max(values), "scope": "Small read-only smoke sample, not a capacity or latency SLO."}
 
 
-def run(session, output):
+def run(session, output, *, expected_package_sha256=None):
     output.mkdir(parents=True, exist_ok=False)
 
     def save(data):
@@ -75,7 +75,10 @@ def run(session, output):
     db = session.client("dynamodb", config=cfg)
     store = DynamoLedgerStore(db, "kg-r72-query-state")
     config = client.get_function_configuration(FunctionName="kg-r72-query")
-    build = json.loads((ROOT / "results/query_package_build.json").read_bytes())
+    if expected_package_sha256 is not None and re.fullmatch(r"[0-9a-f]{64}", expected_package_sha256) is None:
+        raise ValueError("EXPECTED_VERIFIED_PACKAGE_SHA256")
+    build = ({"sha256": expected_package_sha256} if expected_package_sha256 is not None
+             else json.loads((ROOT / "results/query_package_build.json").read_bytes()))
     if base64.b64decode(config["CodeSha256"]).hex() != build["sha256"] or (
         config["Handler"] != "app.query_handler.handler" or config["State"] != "Active"
         or config["LastUpdateStatus"] != "Successful"

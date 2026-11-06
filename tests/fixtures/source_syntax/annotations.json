@@ -1,0 +1,5739 @@
+{
+  "controls": [
+    {
+      "control_id": "source-syntax-control_1f979b74fbda8db427d5caebf546ba5bb666923429be1fedb262d0f02a5b731d",
+      "expected_structural_case": "POSITIVE_DIRECT_ADVERB",
+      "synthetic_not_aws_fact": true,
+      "text": "S3 internally uses TLS."
+    },
+    {
+      "control_id": "source-syntax-control_ee9ddb840400a90a2d1b55879cf79d06f4269bc2260760e3716994890e7fd1e5",
+      "expected_structural_case": "NEGATIVE_FALSE_AGENT",
+      "synthetic_not_aws_fact": true,
+      "text": "To configure S3, you can use TLS."
+    },
+    {
+      "control_id": "source-syntax-control_8ee16993830e336afcd8b902a5721608a549ebf122657b4161cb0fc7434a4c9a",
+      "expected_structural_case": "NEGATIVE_SERVICE_SUBSTRING",
+      "synthetic_not_aws_fact": true,
+      "text": "S3 clients use TLS."
+    },
+    {
+      "control_id": "source-syntax-control_14c0ebaeb587dac5d95ad498dd0f1f2f74ac7f769360d6042adf354dcb9a49a5",
+      "expected_structural_case": "POSITIVE_COORDINATED_ACTOR",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail captures API calls and delivers log files to an S3 bucket."
+    },
+    {
+      "control_id": "source-syntax-control_0562a96f72d37777b8ed3a6c6b1088c2ccc939fc457f1fd6430d006cea3816fc",
+      "expected_structural_case": "NEGATIVE_DIFFERENT_COORDINATED_ACTOR",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail captures API calls and Lambda delivers log files to an S3 bucket."
+    },
+    {
+      "control_id": "source-syntax-control_3d3eb1f87d232606ff22aa9902a68fd4efc9e7551c65143144f0d329f40ad496",
+      "expected_structural_case": "NEGATIVE_OBLIGATION_NOT_ACTUAL_ACTION",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail needs permission to deliver log files to an S3 bucket."
+    },
+    {
+      "control_id": "source-syntax-control_258d2d4296a53815a80f60aa55e0faf3029d544c955887e2df14a96aa84e6869",
+      "expected_structural_case": "NEGATIVE_NECESSITY_SCOPE",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail does not need to deliver log files to an S3 bucket."
+    },
+    {
+      "control_id": "source-syntax-control_061ea7511fc4f60cfb5f8af60bd4e31c4e805ee6d1a95bfb252ac481ba5509ed",
+      "expected_structural_case": "POSITIVE_NEGATION_WITNESS",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail does not deliver log files to an S3 bucket."
+    },
+    {
+      "control_id": "source-syntax-control_eb0b15c3670940ee08300aa07fd3c0c5e46b3f239a10386dd5077293d445011f",
+      "expected_structural_case": "POSITIVE_ENABLED_ACTION",
+      "synthetic_not_aws_fact": true,
+      "text": "A trail enables CloudTrail to deliver log files to an S3 bucket."
+    },
+    {
+      "control_id": "source-syntax-control_33da809397e3f1a84575993d3de2d5a4661b359282ad5f979d25ba20f06519df",
+      "expected_structural_case": "POSITIVE_ASPECT_MODAL",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail can continue to send in-flight records to the data stream."
+    },
+    {
+      "control_id": "source-syntax-control_1adaf3f6ffe49b7bc9fa2870760175e40ee74dddb4165e2578227493cb3d56d4",
+      "expected_structural_case": "POSITIVE_QUANTIFIER_PRESERVATION",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail uses some or all of the cookies in viewer requests."
+    },
+    {
+      "control_id": "source-syntax-control_6d0447d5a08067f6fb6055d077759e971b2ee036059f96cd191780e7be110deb",
+      "expected_structural_case": "NEGATIVE_UNRESOLVED_COUNTED_REFERENCE",
+      "synthetic_not_aws_fact": true,
+      "text": "These two calls use taskToken."
+    },
+    {
+      "control_id": "source-syntax-control_172f49cbe248128a98e72e6c5baa913e1864bec224d072f46c8d7c612efb55bd",
+      "expected_structural_case": "POSITIVE_KEY_INSTRUMENT_NOT_DATA",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail encrypts logs with a KMS key."
+    },
+    {
+      "control_id": "source-syntax-control_600c07592bf8e0e92f547ccf04523f94f64c484201db4423f7fe4db2f9c3dbd7",
+      "expected_structural_case": "POSITIVE_RESOURCE_RESTRICTION",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail delivers log files to the bucket that you specify."
+    },
+    {
+      "control_id": "source-syntax-control_bc93062fbd3de5029bf72fb164843cffc3f56172cff6c8b1f3a49b45f8221dbc",
+      "expected_structural_case": "POSITIVE_ACCOUNT_SCOPE",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail delivers log files to the bucket in account A."
+    },
+    {
+      "control_id": "source-syntax-control_6390e0a1d09695b2a04785f5f865317cb76a8b183bbc9714a37da5a724d6b4af",
+      "expected_structural_case": "NEGATIVE_ACCOUNT_EQUIVALENCE",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail delivers log files to the bucket in account B."
+    },
+    {
+      "control_id": "source-syntax-control_c461f98dc5f6155c54f4f50a45e62883622687394b896ab2218c0c2b4e7b0677",
+      "expected_structural_case": "POSITIVE_TTL_EXCEPTION_SCOPE",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail uses a cached result for 60 seconds unless disabled."
+    },
+    {
+      "control_id": "source-syntax-control_3f40c6cbfe64271e23b9d2b81abd09719b8368782f4893ec0cf5d3fb787c5d73",
+      "expected_structural_case": "NEGATIVE_TTL_EQUIVALENCE",
+      "synthetic_not_aws_fact": true,
+      "text": "CloudTrail uses a cached result for 600 seconds unless disabled."
+    }
+  ],
+  "documents": [
+    {
+      "text": "A trail enables CloudTrail to deliver log files to an S3 bucket.",
+      "tokens": [
+        {
+          "dep": "det",
+          "end": 1,
+          "head": 1,
+          "i": 0,
+          "lemma": "a",
+          "pos": "DET",
+          "start": 0,
+          "tag": "DT",
+          "text": "A"
+        },
+        {
+          "dep": "nsubj",
+          "end": 7,
+          "head": 2,
+          "i": 1,
+          "lemma": "trail",
+          "pos": "NOUN",
+          "start": 2,
+          "tag": "NN",
+          "text": "trail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 15,
+          "head": 2,
+          "i": 2,
+          "lemma": "enable",
+          "pos": "VERB",
+          "start": 8,
+          "tag": "VBZ",
+          "text": "enables"
+        },
+        {
+          "dep": "dobj",
+          "end": 26,
+          "head": 2,
+          "i": 3,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 16,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "aux",
+          "end": 29,
+          "head": 5,
+          "i": 4,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 27,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "xcomp",
+          "end": 37,
+          "head": 2,
+          "i": 5,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 30,
+          "tag": "VB",
+          "text": "deliver"
+        },
+        {
+          "dep": "compound",
+          "end": 41,
+          "head": 7,
+          "i": 6,
+          "lemma": "log",
+          "pos": "NOUN",
+          "start": 38,
+          "tag": "NN",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 47,
+          "head": 5,
+          "i": 7,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 42,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 50,
+          "head": 5,
+          "i": 8,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 48,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 53,
+          "head": 11,
+          "i": 9,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 51,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 56,
+          "head": 11,
+          "i": 10,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 54,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "pobj",
+          "end": 63,
+          "head": 8,
+          "i": 11,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 57,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "punct",
+          "end": 64,
+          "head": 2,
+          "i": 12,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 63,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "After you disable the destination (by calling DisableKinesisStreamingDestination or disabling it from the console), DynamoDB can continue to send in-flight records to the data stream for a short time until the change fully propagates.",
+      "tokens": [
+        {
+          "dep": "mark",
+          "end": 5,
+          "head": 2,
+          "i": 0,
+          "lemma": "after",
+          "pos": "SCONJ",
+          "start": 0,
+          "tag": "IN",
+          "text": "After"
+        },
+        {
+          "dep": "nsubj",
+          "end": 9,
+          "head": 2,
+          "i": 1,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 6,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "advcl",
+          "end": 17,
+          "head": 19,
+          "i": 2,
+          "lemma": "disable",
+          "pos": "VERB",
+          "start": 10,
+          "tag": "VBP",
+          "text": "disable"
+        },
+        {
+          "dep": "det",
+          "end": 21,
+          "head": 4,
+          "i": 3,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 18,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "dobj",
+          "end": 33,
+          "head": 2,
+          "i": 4,
+          "lemma": "destination",
+          "pos": "NOUN",
+          "start": 22,
+          "tag": "NN",
+          "text": "destination"
+        },
+        {
+          "dep": "punct",
+          "end": 35,
+          "head": 2,
+          "i": 5,
+          "lemma": "(",
+          "pos": "PUNCT",
+          "start": 34,
+          "tag": "-LRB-",
+          "text": "("
+        },
+        {
+          "dep": "prep",
+          "end": 37,
+          "head": 19,
+          "i": 6,
+          "lemma": "by",
+          "pos": "ADP",
+          "start": 35,
+          "tag": "IN",
+          "text": "by"
+        },
+        {
+          "dep": "pcomp",
+          "end": 45,
+          "head": 6,
+          "i": 7,
+          "lemma": "call",
+          "pos": "VERB",
+          "start": 38,
+          "tag": "VBG",
+          "text": "calling"
+        },
+        {
+          "dep": "dobj",
+          "end": 80,
+          "head": 7,
+          "i": 8,
+          "lemma": "disablekinesisstreamingdestination",
+          "pos": "NUM",
+          "start": 46,
+          "tag": "CD",
+          "text": "DisableKinesisStreamingDestination"
+        },
+        {
+          "dep": "cc",
+          "end": 83,
+          "head": 7,
+          "i": 9,
+          "lemma": "or",
+          "pos": "CCONJ",
+          "start": 81,
+          "tag": "CC",
+          "text": "or"
+        },
+        {
+          "dep": "conj",
+          "end": 93,
+          "head": 7,
+          "i": 10,
+          "lemma": "disable",
+          "pos": "VERB",
+          "start": 84,
+          "tag": "VBG",
+          "text": "disabling"
+        },
+        {
+          "dep": "dobj",
+          "end": 96,
+          "head": 10,
+          "i": 11,
+          "lemma": "it",
+          "pos": "PRON",
+          "start": 94,
+          "tag": "PRP",
+          "text": "it"
+        },
+        {
+          "dep": "prep",
+          "end": 101,
+          "head": 10,
+          "i": 12,
+          "lemma": "from",
+          "pos": "ADP",
+          "start": 97,
+          "tag": "IN",
+          "text": "from"
+        },
+        {
+          "dep": "det",
+          "end": 105,
+          "head": 14,
+          "i": 13,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 102,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 113,
+          "head": 12,
+          "i": 14,
+          "lemma": "console",
+          "pos": "NOUN",
+          "start": 106,
+          "tag": "NN",
+          "text": "console"
+        },
+        {
+          "dep": "punct",
+          "end": 114,
+          "head": 6,
+          "i": 15,
+          "lemma": ")",
+          "pos": "PUNCT",
+          "start": 113,
+          "tag": "-RRB-",
+          "text": ")"
+        },
+        {
+          "dep": "punct",
+          "end": 115,
+          "head": 19,
+          "i": 16,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 114,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "nsubj",
+          "end": 124,
+          "head": 19,
+          "i": 17,
+          "lemma": "DynamoDB",
+          "pos": "PROPN",
+          "start": 116,
+          "tag": "NNP",
+          "text": "DynamoDB"
+        },
+        {
+          "dep": "aux",
+          "end": 128,
+          "head": 19,
+          "i": 18,
+          "lemma": "can",
+          "pos": "AUX",
+          "start": 125,
+          "tag": "MD",
+          "text": "can"
+        },
+        {
+          "dep": "ROOT",
+          "end": 137,
+          "head": 19,
+          "i": 19,
+          "lemma": "continue",
+          "pos": "VERB",
+          "start": 129,
+          "tag": "VB",
+          "text": "continue"
+        },
+        {
+          "dep": "aux",
+          "end": 140,
+          "head": 21,
+          "i": 20,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 138,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "xcomp",
+          "end": 145,
+          "head": 19,
+          "i": 21,
+          "lemma": "send",
+          "pos": "VERB",
+          "start": 141,
+          "tag": "VB",
+          "text": "send"
+        },
+        {
+          "dep": "nmod",
+          "end": 148,
+          "head": 25,
+          "i": 22,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 146,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "punct",
+          "end": 149,
+          "head": 22,
+          "i": 23,
+          "lemma": "-",
+          "pos": "PUNCT",
+          "start": 148,
+          "tag": "HYPH",
+          "text": "-"
+        },
+        {
+          "dep": "compound",
+          "end": 155,
+          "head": 25,
+          "i": 24,
+          "lemma": "flight",
+          "pos": "NOUN",
+          "start": 149,
+          "tag": "NN",
+          "text": "flight"
+        },
+        {
+          "dep": "dobj",
+          "end": 163,
+          "head": 21,
+          "i": 25,
+          "lemma": "record",
+          "pos": "NOUN",
+          "start": 156,
+          "tag": "NNS",
+          "text": "records"
+        },
+        {
+          "dep": "prep",
+          "end": 166,
+          "head": 21,
+          "i": 26,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 164,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 170,
+          "head": 29,
+          "i": 27,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 167,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 175,
+          "head": 29,
+          "i": 28,
+          "lemma": "data",
+          "pos": "NOUN",
+          "start": 171,
+          "tag": "NN",
+          "text": "data"
+        },
+        {
+          "dep": "pobj",
+          "end": 182,
+          "head": 26,
+          "i": 29,
+          "lemma": "stream",
+          "pos": "NOUN",
+          "start": 176,
+          "tag": "NN",
+          "text": "stream"
+        },
+        {
+          "dep": "prep",
+          "end": 186,
+          "head": 21,
+          "i": 30,
+          "lemma": "for",
+          "pos": "ADP",
+          "start": 183,
+          "tag": "IN",
+          "text": "for"
+        },
+        {
+          "dep": "det",
+          "end": 188,
+          "head": 33,
+          "i": 31,
+          "lemma": "a",
+          "pos": "DET",
+          "start": 187,
+          "tag": "DT",
+          "text": "a"
+        },
+        {
+          "dep": "amod",
+          "end": 194,
+          "head": 33,
+          "i": 32,
+          "lemma": "short",
+          "pos": "ADJ",
+          "start": 189,
+          "tag": "JJ",
+          "text": "short"
+        },
+        {
+          "dep": "pobj",
+          "end": 199,
+          "head": 30,
+          "i": 33,
+          "lemma": "time",
+          "pos": "NOUN",
+          "start": 195,
+          "tag": "NN",
+          "text": "time"
+        },
+        {
+          "dep": "prep",
+          "end": 205,
+          "head": 21,
+          "i": 34,
+          "lemma": "until",
+          "pos": "ADP",
+          "start": 200,
+          "tag": "IN",
+          "text": "until"
+        },
+        {
+          "dep": "det",
+          "end": 209,
+          "head": 36,
+          "i": 35,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 206,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 216,
+          "head": 34,
+          "i": 36,
+          "lemma": "change",
+          "pos": "NOUN",
+          "start": 210,
+          "tag": "NN",
+          "text": "change"
+        },
+        {
+          "dep": "advmod",
+          "end": 222,
+          "head": 38,
+          "i": 37,
+          "lemma": "fully",
+          "pos": "ADV",
+          "start": 217,
+          "tag": "RB",
+          "text": "fully"
+        },
+        {
+          "dep": "appos",
+          "end": 233,
+          "head": 36,
+          "i": 38,
+          "lemma": "propagate",
+          "pos": "NOUN",
+          "start": 223,
+          "tag": "NNS",
+          "text": "propagates"
+        },
+        {
+          "dep": "punct",
+          "end": 234,
+          "head": 19,
+          "i": 39,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 233,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "Amazon S3 internally uses last-writer-wins semantics to determine which write takes precedence.",
+      "tokens": [
+        {
+          "dep": "compound",
+          "end": 6,
+          "head": 1,
+          "i": 0,
+          "lemma": "Amazon",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "Amazon"
+        },
+        {
+          "dep": "nsubj",
+          "end": 9,
+          "head": 3,
+          "i": 1,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 7,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "advmod",
+          "end": 20,
+          "head": 3,
+          "i": 2,
+          "lemma": "internally",
+          "pos": "ADV",
+          "start": 10,
+          "tag": "RB",
+          "text": "internally"
+        },
+        {
+          "dep": "ROOT",
+          "end": 25,
+          "head": 3,
+          "i": 3,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 21,
+          "tag": "VBZ",
+          "text": "uses"
+        },
+        {
+          "dep": "amod",
+          "end": 30,
+          "head": 6,
+          "i": 4,
+          "lemma": "last",
+          "pos": "ADJ",
+          "start": 26,
+          "tag": "JJ",
+          "text": "last"
+        },
+        {
+          "dep": "punct",
+          "end": 31,
+          "head": 6,
+          "i": 5,
+          "lemma": "-",
+          "pos": "PUNCT",
+          "start": 30,
+          "tag": "HYPH",
+          "text": "-"
+        },
+        {
+          "dep": "compound",
+          "end": 37,
+          "head": 8,
+          "i": 6,
+          "lemma": "writer",
+          "pos": "NOUN",
+          "start": 31,
+          "tag": "NN",
+          "text": "writer"
+        },
+        {
+          "dep": "punct",
+          "end": 38,
+          "head": 8,
+          "i": 7,
+          "lemma": "-",
+          "pos": "PUNCT",
+          "start": 37,
+          "tag": "HYPH",
+          "text": "-"
+        },
+        {
+          "dep": "compound",
+          "end": 42,
+          "head": 9,
+          "i": 8,
+          "lemma": "win",
+          "pos": "NOUN",
+          "start": 38,
+          "tag": "NNS",
+          "text": "wins"
+        },
+        {
+          "dep": "dobj",
+          "end": 52,
+          "head": 3,
+          "i": 9,
+          "lemma": "semantic",
+          "pos": "NOUN",
+          "start": 43,
+          "tag": "NNS",
+          "text": "semantics"
+        },
+        {
+          "dep": "aux",
+          "end": 55,
+          "head": 11,
+          "i": 10,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 53,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "xcomp",
+          "end": 65,
+          "head": 3,
+          "i": 11,
+          "lemma": "determine",
+          "pos": "VERB",
+          "start": 56,
+          "tag": "VB",
+          "text": "determine"
+        },
+        {
+          "dep": "nsubj",
+          "end": 71,
+          "head": 13,
+          "i": 12,
+          "lemma": "which",
+          "pos": "PRON",
+          "start": 66,
+          "tag": "WDT",
+          "text": "which"
+        },
+        {
+          "dep": "ccomp",
+          "end": 77,
+          "head": 11,
+          "i": 13,
+          "lemma": "write",
+          "pos": "VERB",
+          "start": 72,
+          "tag": "VBP",
+          "text": "write"
+        },
+        {
+          "dep": "ccomp",
+          "end": 83,
+          "head": 11,
+          "i": 14,
+          "lemma": "take",
+          "pos": "VERB",
+          "start": 78,
+          "tag": "VBZ",
+          "text": "takes"
+        },
+        {
+          "dep": "dobj",
+          "end": 94,
+          "head": 14,
+          "i": 15,
+          "lemma": "precedence",
+          "pos": "NOUN",
+          "start": 84,
+          "tag": "NN",
+          "text": "precedence"
+        },
+        {
+          "dep": "punct",
+          "end": 95,
+          "head": 3,
+          "i": 16,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 94,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail can continue to send in-flight records to the data stream.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 2,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "aux",
+          "end": 14,
+          "head": 2,
+          "i": 1,
+          "lemma": "can",
+          "pos": "AUX",
+          "start": 11,
+          "tag": "MD",
+          "text": "can"
+        },
+        {
+          "dep": "ROOT",
+          "end": 23,
+          "head": 2,
+          "i": 2,
+          "lemma": "continue",
+          "pos": "VERB",
+          "start": 15,
+          "tag": "VB",
+          "text": "continue"
+        },
+        {
+          "dep": "aux",
+          "end": 26,
+          "head": 4,
+          "i": 3,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 24,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "xcomp",
+          "end": 31,
+          "head": 2,
+          "i": 4,
+          "lemma": "send",
+          "pos": "VERB",
+          "start": 27,
+          "tag": "VB",
+          "text": "send"
+        },
+        {
+          "dep": "nmod",
+          "end": 34,
+          "head": 8,
+          "i": 5,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 32,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "punct",
+          "end": 35,
+          "head": 5,
+          "i": 6,
+          "lemma": "-",
+          "pos": "PUNCT",
+          "start": 34,
+          "tag": "HYPH",
+          "text": "-"
+        },
+        {
+          "dep": "compound",
+          "end": 41,
+          "head": 8,
+          "i": 7,
+          "lemma": "flight",
+          "pos": "NOUN",
+          "start": 35,
+          "tag": "NN",
+          "text": "flight"
+        },
+        {
+          "dep": "dobj",
+          "end": 49,
+          "head": 4,
+          "i": 8,
+          "lemma": "record",
+          "pos": "NOUN",
+          "start": 42,
+          "tag": "NNS",
+          "text": "records"
+        },
+        {
+          "dep": "prep",
+          "end": 52,
+          "head": 4,
+          "i": 9,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 50,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 56,
+          "head": 12,
+          "i": 10,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 53,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 61,
+          "head": 12,
+          "i": 11,
+          "lemma": "data",
+          "pos": "NOUN",
+          "start": 57,
+          "tag": "NN",
+          "text": "data"
+        },
+        {
+          "dep": "pobj",
+          "end": 68,
+          "head": 9,
+          "i": 12,
+          "lemma": "stream",
+          "pos": "NOUN",
+          "start": 62,
+          "tag": "NN",
+          "text": "stream"
+        },
+        {
+          "dep": "punct",
+          "end": 69,
+          "head": 2,
+          "i": 13,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 68,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail captures API calls and Lambda delivers log files to an S3 bucket.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 19,
+          "head": 1,
+          "i": 1,
+          "lemma": "capture",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "captures"
+        },
+        {
+          "dep": "compound",
+          "end": 23,
+          "head": 3,
+          "i": 2,
+          "lemma": "api",
+          "pos": "NOUN",
+          "start": 20,
+          "tag": "NN",
+          "text": "API"
+        },
+        {
+          "dep": "dobj",
+          "end": 29,
+          "head": 1,
+          "i": 3,
+          "lemma": "call",
+          "pos": "NOUN",
+          "start": 24,
+          "tag": "NNS",
+          "text": "calls"
+        },
+        {
+          "dep": "cc",
+          "end": 33,
+          "head": 1,
+          "i": 4,
+          "lemma": "and",
+          "pos": "CCONJ",
+          "start": 30,
+          "tag": "CC",
+          "text": "and"
+        },
+        {
+          "dep": "nsubj",
+          "end": 40,
+          "head": 6,
+          "i": 5,
+          "lemma": "Lambda",
+          "pos": "PROPN",
+          "start": 34,
+          "tag": "NNP",
+          "text": "Lambda"
+        },
+        {
+          "dep": "conj",
+          "end": 49,
+          "head": 1,
+          "i": 6,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 41,
+          "tag": "VBZ",
+          "text": "delivers"
+        },
+        {
+          "dep": "xcomp",
+          "end": 53,
+          "head": 6,
+          "i": 7,
+          "lemma": "log",
+          "pos": "VERB",
+          "start": 50,
+          "tag": "VB",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 59,
+          "head": 7,
+          "i": 8,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 54,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 62,
+          "head": 7,
+          "i": 9,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 60,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 65,
+          "head": 12,
+          "i": 10,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 63,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 68,
+          "head": 12,
+          "i": 11,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 66,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "pobj",
+          "end": 75,
+          "head": 9,
+          "i": 12,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 69,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "punct",
+          "end": 76,
+          "head": 6,
+          "i": 13,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 75,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail captures API calls and delivers log files to an S3 bucket.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 19,
+          "head": 1,
+          "i": 1,
+          "lemma": "capture",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "captures"
+        },
+        {
+          "dep": "compound",
+          "end": 23,
+          "head": 3,
+          "i": 2,
+          "lemma": "api",
+          "pos": "NOUN",
+          "start": 20,
+          "tag": "NN",
+          "text": "API"
+        },
+        {
+          "dep": "dobj",
+          "end": 29,
+          "head": 1,
+          "i": 3,
+          "lemma": "call",
+          "pos": "NOUN",
+          "start": 24,
+          "tag": "NNS",
+          "text": "calls"
+        },
+        {
+          "dep": "cc",
+          "end": 33,
+          "head": 1,
+          "i": 4,
+          "lemma": "and",
+          "pos": "CCONJ",
+          "start": 30,
+          "tag": "CC",
+          "text": "and"
+        },
+        {
+          "dep": "conj",
+          "end": 42,
+          "head": 1,
+          "i": 5,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 34,
+          "tag": "VBZ",
+          "text": "delivers"
+        },
+        {
+          "dep": "xcomp",
+          "end": 46,
+          "head": 5,
+          "i": 6,
+          "lemma": "log",
+          "pos": "VERB",
+          "start": 43,
+          "tag": "VB",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 52,
+          "head": 6,
+          "i": 7,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 47,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 55,
+          "head": 6,
+          "i": 8,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 53,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 58,
+          "head": 11,
+          "i": 9,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 56,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 61,
+          "head": 11,
+          "i": 10,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 59,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "pobj",
+          "end": 68,
+          "head": 8,
+          "i": 11,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 62,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "punct",
+          "end": 69,
+          "head": 1,
+          "i": 12,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 68,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail delivers log files to the bucket in account A.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 19,
+          "head": 1,
+          "i": 1,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "delivers"
+        },
+        {
+          "dep": "xcomp",
+          "end": 23,
+          "head": 1,
+          "i": 2,
+          "lemma": "log",
+          "pos": "VERB",
+          "start": 20,
+          "tag": "VB",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 29,
+          "head": 2,
+          "i": 3,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 24,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 32,
+          "head": 2,
+          "i": 4,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 30,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 36,
+          "head": 6,
+          "i": 5,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 33,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 43,
+          "head": 4,
+          "i": 6,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 37,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "prep",
+          "end": 46,
+          "head": 2,
+          "i": 7,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 44,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "compound",
+          "end": 54,
+          "head": 9,
+          "i": 8,
+          "lemma": "account",
+          "pos": "NOUN",
+          "start": 47,
+          "tag": "NN",
+          "text": "account"
+        },
+        {
+          "dep": "pobj",
+          "end": 57,
+          "head": 7,
+          "i": 9,
+          "lemma": "a.",
+          "pos": "NOUN",
+          "start": 55,
+          "tag": "NN",
+          "text": "A."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail delivers log files to the bucket in account B.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 19,
+          "head": 1,
+          "i": 1,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "delivers"
+        },
+        {
+          "dep": "xcomp",
+          "end": 23,
+          "head": 1,
+          "i": 2,
+          "lemma": "log",
+          "pos": "VERB",
+          "start": 20,
+          "tag": "VB",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 29,
+          "head": 2,
+          "i": 3,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 24,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 32,
+          "head": 2,
+          "i": 4,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 30,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 36,
+          "head": 6,
+          "i": 5,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 33,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 43,
+          "head": 4,
+          "i": 6,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 37,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "prep",
+          "end": 46,
+          "head": 2,
+          "i": 7,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 44,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "pobj",
+          "end": 54,
+          "head": 7,
+          "i": 8,
+          "lemma": "account",
+          "pos": "NOUN",
+          "start": 47,
+          "tag": "NN",
+          "text": "account"
+        },
+        {
+          "dep": "npadvmod",
+          "end": 57,
+          "head": 1,
+          "i": 9,
+          "lemma": "B.",
+          "pos": "PROPN",
+          "start": 55,
+          "tag": "NNP",
+          "text": "B."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail delivers log files to the bucket that you specify.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 19,
+          "head": 1,
+          "i": 1,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "delivers"
+        },
+        {
+          "dep": "xcomp",
+          "end": 23,
+          "head": 1,
+          "i": 2,
+          "lemma": "log",
+          "pos": "VERB",
+          "start": 20,
+          "tag": "VB",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 29,
+          "head": 2,
+          "i": 3,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 24,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 32,
+          "head": 2,
+          "i": 4,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 30,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 36,
+          "head": 6,
+          "i": 5,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 33,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 43,
+          "head": 4,
+          "i": 6,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 37,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "dobj",
+          "end": 48,
+          "head": 9,
+          "i": 7,
+          "lemma": "that",
+          "pos": "PRON",
+          "start": 44,
+          "tag": "WDT",
+          "text": "that"
+        },
+        {
+          "dep": "nsubj",
+          "end": 52,
+          "head": 9,
+          "i": 8,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 49,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "relcl",
+          "end": 60,
+          "head": 6,
+          "i": 9,
+          "lemma": "specify",
+          "pos": "VERB",
+          "start": 53,
+          "tag": "VBP",
+          "text": "specify"
+        },
+        {
+          "dep": "punct",
+          "end": 61,
+          "head": 1,
+          "i": 10,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 60,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail does not deliver log files to an S3 bucket.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 3,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "aux",
+          "end": 15,
+          "head": 3,
+          "i": 1,
+          "lemma": "do",
+          "pos": "AUX",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "does"
+        },
+        {
+          "dep": "neg",
+          "end": 19,
+          "head": 3,
+          "i": 2,
+          "lemma": "not",
+          "pos": "PART",
+          "start": 16,
+          "tag": "RB",
+          "text": "not"
+        },
+        {
+          "dep": "ROOT",
+          "end": 27,
+          "head": 3,
+          "i": 3,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 20,
+          "tag": "VB",
+          "text": "deliver"
+        },
+        {
+          "dep": "compound",
+          "end": 31,
+          "head": 5,
+          "i": 4,
+          "lemma": "log",
+          "pos": "NOUN",
+          "start": 28,
+          "tag": "NN",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 37,
+          "head": 3,
+          "i": 5,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 32,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 40,
+          "head": 3,
+          "i": 6,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 38,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 43,
+          "head": 9,
+          "i": 7,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 41,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 46,
+          "head": 9,
+          "i": 8,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 44,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "pobj",
+          "end": 53,
+          "head": 6,
+          "i": 9,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 47,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "punct",
+          "end": 54,
+          "head": 3,
+          "i": 10,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 53,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail does not need to deliver log files to an S3 bucket.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 3,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "aux",
+          "end": 15,
+          "head": 3,
+          "i": 1,
+          "lemma": "do",
+          "pos": "AUX",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "does"
+        },
+        {
+          "dep": "neg",
+          "end": 19,
+          "head": 3,
+          "i": 2,
+          "lemma": "not",
+          "pos": "PART",
+          "start": 16,
+          "tag": "RB",
+          "text": "not"
+        },
+        {
+          "dep": "ROOT",
+          "end": 24,
+          "head": 3,
+          "i": 3,
+          "lemma": "need",
+          "pos": "VERB",
+          "start": 20,
+          "tag": "VB",
+          "text": "need"
+        },
+        {
+          "dep": "aux",
+          "end": 27,
+          "head": 5,
+          "i": 4,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 25,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "xcomp",
+          "end": 35,
+          "head": 3,
+          "i": 5,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 28,
+          "tag": "VB",
+          "text": "deliver"
+        },
+        {
+          "dep": "compound",
+          "end": 39,
+          "head": 7,
+          "i": 6,
+          "lemma": "log",
+          "pos": "NOUN",
+          "start": 36,
+          "tag": "NN",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 45,
+          "head": 5,
+          "i": 7,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 40,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 48,
+          "head": 5,
+          "i": 8,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 46,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 51,
+          "head": 11,
+          "i": 9,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 49,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 54,
+          "head": 11,
+          "i": 10,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 52,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "pobj",
+          "end": 61,
+          "head": 8,
+          "i": 11,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 55,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "punct",
+          "end": 62,
+          "head": 3,
+          "i": 12,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 61,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail encrypts logs with a KMS key.",
+      "tokens": [
+        {
+          "dep": "compound",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "nsubj",
+          "end": 19,
+          "head": 2,
+          "i": 1,
+          "lemma": "encrypt",
+          "pos": "NOUN",
+          "start": 11,
+          "tag": "NNS",
+          "text": "encrypts"
+        },
+        {
+          "dep": "ROOT",
+          "end": 24,
+          "head": 2,
+          "i": 2,
+          "lemma": "log",
+          "pos": "VERB",
+          "start": 20,
+          "tag": "VBZ",
+          "text": "logs"
+        },
+        {
+          "dep": "prep",
+          "end": 29,
+          "head": 2,
+          "i": 3,
+          "lemma": "with",
+          "pos": "ADP",
+          "start": 25,
+          "tag": "IN",
+          "text": "with"
+        },
+        {
+          "dep": "det",
+          "end": 31,
+          "head": 6,
+          "i": 4,
+          "lemma": "a",
+          "pos": "DET",
+          "start": 30,
+          "tag": "DT",
+          "text": "a"
+        },
+        {
+          "dep": "compound",
+          "end": 35,
+          "head": 6,
+          "i": 5,
+          "lemma": "KMS",
+          "pos": "PROPN",
+          "start": 32,
+          "tag": "NNP",
+          "text": "KMS"
+        },
+        {
+          "dep": "pobj",
+          "end": 39,
+          "head": 3,
+          "i": 6,
+          "lemma": "key",
+          "pos": "NOUN",
+          "start": 36,
+          "tag": "NN",
+          "text": "key"
+        },
+        {
+          "dep": "punct",
+          "end": 40,
+          "head": 2,
+          "i": 7,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 39,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail needs permission to deliver log files to an S3 bucket.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 16,
+          "head": 1,
+          "i": 1,
+          "lemma": "need",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "needs"
+        },
+        {
+          "dep": "dobj",
+          "end": 27,
+          "head": 1,
+          "i": 2,
+          "lemma": "permission",
+          "pos": "NOUN",
+          "start": 17,
+          "tag": "NN",
+          "text": "permission"
+        },
+        {
+          "dep": "aux",
+          "end": 30,
+          "head": 4,
+          "i": 3,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 28,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "acl",
+          "end": 38,
+          "head": 2,
+          "i": 4,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 31,
+          "tag": "VB",
+          "text": "deliver"
+        },
+        {
+          "dep": "compound",
+          "end": 42,
+          "head": 6,
+          "i": 5,
+          "lemma": "log",
+          "pos": "NOUN",
+          "start": 39,
+          "tag": "NN",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 48,
+          "head": 4,
+          "i": 6,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 43,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 51,
+          "head": 4,
+          "i": 7,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 49,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 54,
+          "head": 10,
+          "i": 8,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 52,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 57,
+          "head": 10,
+          "i": 9,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 55,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "pobj",
+          "end": 64,
+          "head": 7,
+          "i": 10,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 58,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "punct",
+          "end": 65,
+          "head": 1,
+          "i": 11,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 64,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail uses a cached result for 60 seconds unless disabled.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 15,
+          "head": 1,
+          "i": 1,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "uses"
+        },
+        {
+          "dep": "det",
+          "end": 17,
+          "head": 4,
+          "i": 2,
+          "lemma": "a",
+          "pos": "DET",
+          "start": 16,
+          "tag": "DT",
+          "text": "a"
+        },
+        {
+          "dep": "amod",
+          "end": 24,
+          "head": 4,
+          "i": 3,
+          "lemma": "cache",
+          "pos": "VERB",
+          "start": 18,
+          "tag": "VBN",
+          "text": "cached"
+        },
+        {
+          "dep": "dobj",
+          "end": 31,
+          "head": 1,
+          "i": 4,
+          "lemma": "result",
+          "pos": "NOUN",
+          "start": 25,
+          "tag": "NN",
+          "text": "result"
+        },
+        {
+          "dep": "prep",
+          "end": 35,
+          "head": 1,
+          "i": 5,
+          "lemma": "for",
+          "pos": "ADP",
+          "start": 32,
+          "tag": "IN",
+          "text": "for"
+        },
+        {
+          "dep": "nummod",
+          "end": 38,
+          "head": 7,
+          "i": 6,
+          "lemma": "60",
+          "pos": "NUM",
+          "start": 36,
+          "tag": "CD",
+          "text": "60"
+        },
+        {
+          "dep": "pobj",
+          "end": 46,
+          "head": 5,
+          "i": 7,
+          "lemma": "second",
+          "pos": "NOUN",
+          "start": 39,
+          "tag": "NNS",
+          "text": "seconds"
+        },
+        {
+          "dep": "mark",
+          "end": 53,
+          "head": 9,
+          "i": 8,
+          "lemma": "unless",
+          "pos": "SCONJ",
+          "start": 47,
+          "tag": "IN",
+          "text": "unless"
+        },
+        {
+          "dep": "advcl",
+          "end": 62,
+          "head": 1,
+          "i": 9,
+          "lemma": "disable",
+          "pos": "VERB",
+          "start": 54,
+          "tag": "VBN",
+          "text": "disabled"
+        },
+        {
+          "dep": "punct",
+          "end": 63,
+          "head": 1,
+          "i": 10,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 62,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail uses a cached result for 600 seconds unless disabled.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 15,
+          "head": 1,
+          "i": 1,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "uses"
+        },
+        {
+          "dep": "det",
+          "end": 17,
+          "head": 4,
+          "i": 2,
+          "lemma": "a",
+          "pos": "DET",
+          "start": 16,
+          "tag": "DT",
+          "text": "a"
+        },
+        {
+          "dep": "amod",
+          "end": 24,
+          "head": 4,
+          "i": 3,
+          "lemma": "cache",
+          "pos": "VERB",
+          "start": 18,
+          "tag": "VBN",
+          "text": "cached"
+        },
+        {
+          "dep": "dobj",
+          "end": 31,
+          "head": 1,
+          "i": 4,
+          "lemma": "result",
+          "pos": "NOUN",
+          "start": 25,
+          "tag": "NN",
+          "text": "result"
+        },
+        {
+          "dep": "prep",
+          "end": 35,
+          "head": 1,
+          "i": 5,
+          "lemma": "for",
+          "pos": "ADP",
+          "start": 32,
+          "tag": "IN",
+          "text": "for"
+        },
+        {
+          "dep": "nummod",
+          "end": 39,
+          "head": 7,
+          "i": 6,
+          "lemma": "600",
+          "pos": "NUM",
+          "start": 36,
+          "tag": "CD",
+          "text": "600"
+        },
+        {
+          "dep": "pobj",
+          "end": 47,
+          "head": 5,
+          "i": 7,
+          "lemma": "second",
+          "pos": "NOUN",
+          "start": 40,
+          "tag": "NNS",
+          "text": "seconds"
+        },
+        {
+          "dep": "mark",
+          "end": 54,
+          "head": 9,
+          "i": 8,
+          "lemma": "unless",
+          "pos": "SCONJ",
+          "start": 48,
+          "tag": "IN",
+          "text": "unless"
+        },
+        {
+          "dep": "advcl",
+          "end": 63,
+          "head": 1,
+          "i": 9,
+          "lemma": "disable",
+          "pos": "VERB",
+          "start": 55,
+          "tag": "VBN",
+          "text": "disabled"
+        },
+        {
+          "dep": "punct",
+          "end": 64,
+          "head": 1,
+          "i": 10,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 63,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "CloudTrail uses some or all of the cookies in viewer requests.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 1,
+          "i": 0,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 15,
+          "head": 1,
+          "i": 1,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBZ",
+          "text": "uses"
+        },
+        {
+          "dep": "dobj",
+          "end": 20,
+          "head": 1,
+          "i": 2,
+          "lemma": "some",
+          "pos": "PRON",
+          "start": 16,
+          "tag": "DT",
+          "text": "some"
+        },
+        {
+          "dep": "cc",
+          "end": 23,
+          "head": 2,
+          "i": 3,
+          "lemma": "or",
+          "pos": "CCONJ",
+          "start": 21,
+          "tag": "CC",
+          "text": "or"
+        },
+        {
+          "dep": "conj",
+          "end": 27,
+          "head": 2,
+          "i": 4,
+          "lemma": "all",
+          "pos": "PRON",
+          "start": 24,
+          "tag": "DT",
+          "text": "all"
+        },
+        {
+          "dep": "prep",
+          "end": 30,
+          "head": 2,
+          "i": 5,
+          "lemma": "of",
+          "pos": "ADP",
+          "start": 28,
+          "tag": "IN",
+          "text": "of"
+        },
+        {
+          "dep": "det",
+          "end": 34,
+          "head": 7,
+          "i": 6,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 31,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 42,
+          "head": 5,
+          "i": 7,
+          "lemma": "cooky",
+          "pos": "NOUN",
+          "start": 35,
+          "tag": "NNS",
+          "text": "cookies"
+        },
+        {
+          "dep": "prep",
+          "end": 45,
+          "head": 1,
+          "i": 8,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 43,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "compound",
+          "end": 52,
+          "head": 10,
+          "i": 9,
+          "lemma": "viewer",
+          "pos": "NOUN",
+          "start": 46,
+          "tag": "NN",
+          "text": "viewer"
+        },
+        {
+          "dep": "pobj",
+          "end": 61,
+          "head": 8,
+          "i": 10,
+          "lemma": "request",
+          "pos": "NOUN",
+          "start": 53,
+          "tag": "NNS",
+          "text": "requests"
+        },
+        {
+          "dep": "punct",
+          "end": 62,
+          "head": 1,
+          "i": 11,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 61,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "S3 clients use TLS.",
+      "tokens": [
+        {
+          "dep": "compound",
+          "end": 2,
+          "head": 1,
+          "i": 0,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 0,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "nsubj",
+          "end": 10,
+          "head": 2,
+          "i": 1,
+          "lemma": "client",
+          "pos": "NOUN",
+          "start": 3,
+          "tag": "NNS",
+          "text": "clients"
+        },
+        {
+          "dep": "ROOT",
+          "end": 14,
+          "head": 2,
+          "i": 2,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 11,
+          "tag": "VBP",
+          "text": "use"
+        },
+        {
+          "dep": "dobj",
+          "end": 18,
+          "head": 2,
+          "i": 3,
+          "lemma": "TLS",
+          "pos": "PROPN",
+          "start": 15,
+          "tag": "NNP",
+          "text": "TLS"
+        },
+        {
+          "dep": "punct",
+          "end": 19,
+          "head": 2,
+          "i": 4,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 18,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "S3 internally uses TLS.",
+      "tokens": [
+        {
+          "dep": "nsubj",
+          "end": 2,
+          "head": 2,
+          "i": 0,
+          "lemma": "S3",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "S3"
+        },
+        {
+          "dep": "advmod",
+          "end": 13,
+          "head": 2,
+          "i": 1,
+          "lemma": "internally",
+          "pos": "ADV",
+          "start": 3,
+          "tag": "RB",
+          "text": "internally"
+        },
+        {
+          "dep": "ROOT",
+          "end": 18,
+          "head": 2,
+          "i": 2,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 14,
+          "tag": "VBZ",
+          "text": "uses"
+        },
+        {
+          "dep": "dobj",
+          "end": 22,
+          "head": 2,
+          "i": 3,
+          "lemma": "TLS",
+          "pos": "PROPN",
+          "start": 19,
+          "tag": "NNP",
+          "text": "TLS"
+        },
+        {
+          "dep": "punct",
+          "end": 23,
+          "head": 2,
+          "i": 4,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 22,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "Secrets Manager also uses caching to improve performance, but in some cases this can add time.",
+      "tokens": [
+        {
+          "dep": "compound",
+          "end": 7,
+          "head": 1,
+          "i": 0,
+          "lemma": "Secrets",
+          "pos": "PROPN",
+          "start": 0,
+          "tag": "NNP",
+          "text": "Secrets"
+        },
+        {
+          "dep": "nsubj",
+          "end": 15,
+          "head": 3,
+          "i": 1,
+          "lemma": "Manager",
+          "pos": "PROPN",
+          "start": 8,
+          "tag": "NNP",
+          "text": "Manager"
+        },
+        {
+          "dep": "advmod",
+          "end": 20,
+          "head": 3,
+          "i": 2,
+          "lemma": "also",
+          "pos": "ADV",
+          "start": 16,
+          "tag": "RB",
+          "text": "also"
+        },
+        {
+          "dep": "ROOT",
+          "end": 25,
+          "head": 3,
+          "i": 3,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 21,
+          "tag": "VBZ",
+          "text": "uses"
+        },
+        {
+          "dep": "xcomp",
+          "end": 33,
+          "head": 3,
+          "i": 4,
+          "lemma": "cache",
+          "pos": "VERB",
+          "start": 26,
+          "tag": "VBG",
+          "text": "caching"
+        },
+        {
+          "dep": "aux",
+          "end": 36,
+          "head": 6,
+          "i": 5,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 34,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "xcomp",
+          "end": 44,
+          "head": 4,
+          "i": 6,
+          "lemma": "improve",
+          "pos": "VERB",
+          "start": 37,
+          "tag": "VB",
+          "text": "improve"
+        },
+        {
+          "dep": "dobj",
+          "end": 56,
+          "head": 6,
+          "i": 7,
+          "lemma": "performance",
+          "pos": "NOUN",
+          "start": 45,
+          "tag": "NN",
+          "text": "performance"
+        },
+        {
+          "dep": "punct",
+          "end": 57,
+          "head": 3,
+          "i": 8,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 56,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "cc",
+          "end": 61,
+          "head": 3,
+          "i": 9,
+          "lemma": "but",
+          "pos": "CCONJ",
+          "start": 58,
+          "tag": "CC",
+          "text": "but"
+        },
+        {
+          "dep": "prep",
+          "end": 64,
+          "head": 15,
+          "i": 10,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 62,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "det",
+          "end": 69,
+          "head": 12,
+          "i": 11,
+          "lemma": "some",
+          "pos": "DET",
+          "start": 65,
+          "tag": "DT",
+          "text": "some"
+        },
+        {
+          "dep": "pobj",
+          "end": 75,
+          "head": 10,
+          "i": 12,
+          "lemma": "case",
+          "pos": "NOUN",
+          "start": 70,
+          "tag": "NNS",
+          "text": "cases"
+        },
+        {
+          "dep": "nsubj",
+          "end": 80,
+          "head": 15,
+          "i": 13,
+          "lemma": "this",
+          "pos": "PRON",
+          "start": 76,
+          "tag": "DT",
+          "text": "this"
+        },
+        {
+          "dep": "aux",
+          "end": 84,
+          "head": 15,
+          "i": 14,
+          "lemma": "can",
+          "pos": "AUX",
+          "start": 81,
+          "tag": "MD",
+          "text": "can"
+        },
+        {
+          "dep": "conj",
+          "end": 88,
+          "head": 3,
+          "i": 15,
+          "lemma": "add",
+          "pos": "VERB",
+          "start": 85,
+          "tag": "VB",
+          "text": "add"
+        },
+        {
+          "dep": "dobj",
+          "end": 93,
+          "head": 15,
+          "i": 16,
+          "lemma": "time",
+          "pos": "NOUN",
+          "start": 89,
+          "tag": "NN",
+          "text": "time"
+        },
+        {
+          "dep": "punct",
+          "end": 94,
+          "head": 15,
+          "i": 17,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 93,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "These two calls use taskToken.",
+      "tokens": [
+        {
+          "dep": "det",
+          "end": 5,
+          "head": 2,
+          "i": 0,
+          "lemma": "these",
+          "pos": "DET",
+          "start": 0,
+          "tag": "DT",
+          "text": "These"
+        },
+        {
+          "dep": "nummod",
+          "end": 9,
+          "head": 2,
+          "i": 1,
+          "lemma": "two",
+          "pos": "NUM",
+          "start": 6,
+          "tag": "CD",
+          "text": "two"
+        },
+        {
+          "dep": "nsubj",
+          "end": 15,
+          "head": 3,
+          "i": 2,
+          "lemma": "call",
+          "pos": "NOUN",
+          "start": 10,
+          "tag": "NNS",
+          "text": "calls"
+        },
+        {
+          "dep": "ROOT",
+          "end": 19,
+          "head": 3,
+          "i": 3,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 16,
+          "tag": "VBP",
+          "text": "use"
+        },
+        {
+          "dep": "dobj",
+          "end": 29,
+          "head": 3,
+          "i": 4,
+          "lemma": "tasktoken",
+          "pos": "PRON",
+          "start": 20,
+          "tag": "PRP",
+          "text": "taskToken"
+        },
+        {
+          "dep": "punct",
+          "end": 30,
+          "head": 3,
+          "i": 5,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 29,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "To configure S3, you can use TLS.",
+      "tokens": [
+        {
+          "dep": "aux",
+          "end": 2,
+          "head": 1,
+          "i": 0,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 0,
+          "tag": "TO",
+          "text": "To"
+        },
+        {
+          "dep": "advcl",
+          "end": 12,
+          "head": 6,
+          "i": 1,
+          "lemma": "configure",
+          "pos": "VERB",
+          "start": 3,
+          "tag": "VB",
+          "text": "configure"
+        },
+        {
+          "dep": "dobj",
+          "end": 15,
+          "head": 1,
+          "i": 2,
+          "lemma": "S3",
+          "pos": "PROPN",
+          "start": 13,
+          "tag": "NNP",
+          "text": "S3"
+        },
+        {
+          "dep": "punct",
+          "end": 16,
+          "head": 6,
+          "i": 3,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 15,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "nsubj",
+          "end": 20,
+          "head": 6,
+          "i": 4,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 17,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "aux",
+          "end": 24,
+          "head": 6,
+          "i": 5,
+          "lemma": "can",
+          "pos": "AUX",
+          "start": 21,
+          "tag": "MD",
+          "text": "can"
+        },
+        {
+          "dep": "ROOT",
+          "end": 28,
+          "head": 6,
+          "i": 6,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 25,
+          "tag": "VB",
+          "text": "use"
+        },
+        {
+          "dep": "dobj",
+          "end": 32,
+          "head": 6,
+          "i": 7,
+          "lemma": "TLS",
+          "pos": "PROPN",
+          "start": 29,
+          "tag": "NNP",
+          "text": "TLS"
+        },
+        {
+          "dep": "punct",
+          "end": 33,
+          "head": 6,
+          "i": 8,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 32,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "When CloudTrail logging is turned on, CloudTrail captures API calls in your account and delivers the log files to the Amazon S3 bucket that you specify.",
+      "tokens": [
+        {
+          "dep": "advmod",
+          "end": 4,
+          "head": 4,
+          "i": 0,
+          "lemma": "when",
+          "pos": "SCONJ",
+          "start": 0,
+          "tag": "WRB",
+          "text": "When"
+        },
+        {
+          "dep": "nsubj",
+          "end": 15,
+          "head": 2,
+          "i": 1,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 5,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "nsubjpass",
+          "end": 23,
+          "head": 4,
+          "i": 2,
+          "lemma": "logging",
+          "pos": "NOUN",
+          "start": 16,
+          "tag": "NN",
+          "text": "logging"
+        },
+        {
+          "dep": "auxpass",
+          "end": 26,
+          "head": 4,
+          "i": 3,
+          "lemma": "be",
+          "pos": "AUX",
+          "start": 24,
+          "tag": "VBZ",
+          "text": "is"
+        },
+        {
+          "dep": "advcl",
+          "end": 33,
+          "head": 8,
+          "i": 4,
+          "lemma": "turn",
+          "pos": "VERB",
+          "start": 27,
+          "tag": "VBN",
+          "text": "turned"
+        },
+        {
+          "dep": "prt",
+          "end": 36,
+          "head": 4,
+          "i": 5,
+          "lemma": "on",
+          "pos": "ADP",
+          "start": 34,
+          "tag": "RP",
+          "text": "on"
+        },
+        {
+          "dep": "punct",
+          "end": 37,
+          "head": 8,
+          "i": 6,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 36,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "nsubj",
+          "end": 48,
+          "head": 8,
+          "i": 7,
+          "lemma": "CloudTrail",
+          "pos": "PROPN",
+          "start": 38,
+          "tag": "NNP",
+          "text": "CloudTrail"
+        },
+        {
+          "dep": "ROOT",
+          "end": 57,
+          "head": 8,
+          "i": 8,
+          "lemma": "capture",
+          "pos": "VERB",
+          "start": 49,
+          "tag": "VBZ",
+          "text": "captures"
+        },
+        {
+          "dep": "nsubj",
+          "end": 61,
+          "head": 10,
+          "i": 9,
+          "lemma": "api",
+          "pos": "NOUN",
+          "start": 58,
+          "tag": "NN",
+          "text": "API"
+        },
+        {
+          "dep": "dobj",
+          "end": 67,
+          "head": 8,
+          "i": 10,
+          "lemma": "call",
+          "pos": "VERB",
+          "start": 62,
+          "tag": "VBZ",
+          "text": "calls"
+        },
+        {
+          "dep": "prep",
+          "end": 70,
+          "head": 10,
+          "i": 11,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 68,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "poss",
+          "end": 75,
+          "head": 13,
+          "i": 12,
+          "lemma": "your",
+          "pos": "PRON",
+          "start": 71,
+          "tag": "PRP$",
+          "text": "your"
+        },
+        {
+          "dep": "pobj",
+          "end": 83,
+          "head": 11,
+          "i": 13,
+          "lemma": "account",
+          "pos": "NOUN",
+          "start": 76,
+          "tag": "NN",
+          "text": "account"
+        },
+        {
+          "dep": "cc",
+          "end": 87,
+          "head": 8,
+          "i": 14,
+          "lemma": "and",
+          "pos": "CCONJ",
+          "start": 84,
+          "tag": "CC",
+          "text": "and"
+        },
+        {
+          "dep": "conj",
+          "end": 96,
+          "head": 8,
+          "i": 15,
+          "lemma": "deliver",
+          "pos": "VERB",
+          "start": 88,
+          "tag": "VBZ",
+          "text": "delivers"
+        },
+        {
+          "dep": "det",
+          "end": 100,
+          "head": 18,
+          "i": 16,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 97,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 104,
+          "head": 18,
+          "i": 17,
+          "lemma": "log",
+          "pos": "NOUN",
+          "start": 101,
+          "tag": "NN",
+          "text": "log"
+        },
+        {
+          "dep": "dobj",
+          "end": 110,
+          "head": 15,
+          "i": 18,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 105,
+          "tag": "NNS",
+          "text": "files"
+        },
+        {
+          "dep": "prep",
+          "end": 113,
+          "head": 15,
+          "i": 19,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 111,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 117,
+          "head": 23,
+          "i": 20,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 114,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 124,
+          "head": 22,
+          "i": 21,
+          "lemma": "Amazon",
+          "pos": "PROPN",
+          "start": 118,
+          "tag": "NNP",
+          "text": "Amazon"
+        },
+        {
+          "dep": "compound",
+          "end": 127,
+          "head": 23,
+          "i": 22,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 125,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "pobj",
+          "end": 134,
+          "head": 19,
+          "i": 23,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 128,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "dobj",
+          "end": 139,
+          "head": 26,
+          "i": 24,
+          "lemma": "that",
+          "pos": "PRON",
+          "start": 135,
+          "tag": "WDT",
+          "text": "that"
+        },
+        {
+          "dep": "nsubj",
+          "end": 143,
+          "head": 26,
+          "i": 25,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 140,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "relcl",
+          "end": 151,
+          "head": 23,
+          "i": 26,
+          "lemma": "specify",
+          "pos": "VERB",
+          "start": 144,
+          "tag": "VBP",
+          "text": "specify"
+        },
+        {
+          "dep": "punct",
+          "end": 152,
+          "head": 8,
+          "i": 27,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 151,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "When you do this, CloudFront uses some or all of the cookies in viewer requests—whichever ones it’s configured to forward—to uniquely identify an object in the cache.",
+      "tokens": [
+        {
+          "dep": "advmod",
+          "end": 4,
+          "head": 2,
+          "i": 0,
+          "lemma": "when",
+          "pos": "SCONJ",
+          "start": 0,
+          "tag": "WRB",
+          "text": "When"
+        },
+        {
+          "dep": "nsubj",
+          "end": 8,
+          "head": 2,
+          "i": 1,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 5,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "advcl",
+          "end": 11,
+          "head": 6,
+          "i": 2,
+          "lemma": "do",
+          "pos": "VERB",
+          "start": 9,
+          "tag": "VBP",
+          "text": "do"
+        },
+        {
+          "dep": "dobj",
+          "end": 16,
+          "head": 2,
+          "i": 3,
+          "lemma": "this",
+          "pos": "PRON",
+          "start": 12,
+          "tag": "DT",
+          "text": "this"
+        },
+        {
+          "dep": "punct",
+          "end": 17,
+          "head": 6,
+          "i": 4,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 16,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "nsubj",
+          "end": 28,
+          "head": 6,
+          "i": 5,
+          "lemma": "CloudFront",
+          "pos": "PROPN",
+          "start": 18,
+          "tag": "NNP",
+          "text": "CloudFront"
+        },
+        {
+          "dep": "ROOT",
+          "end": 33,
+          "head": 6,
+          "i": 6,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 29,
+          "tag": "VBZ",
+          "text": "uses"
+        },
+        {
+          "dep": "dobj",
+          "end": 38,
+          "head": 6,
+          "i": 7,
+          "lemma": "some",
+          "pos": "PRON",
+          "start": 34,
+          "tag": "DT",
+          "text": "some"
+        },
+        {
+          "dep": "cc",
+          "end": 41,
+          "head": 7,
+          "i": 8,
+          "lemma": "or",
+          "pos": "CCONJ",
+          "start": 39,
+          "tag": "CC",
+          "text": "or"
+        },
+        {
+          "dep": "conj",
+          "end": 45,
+          "head": 7,
+          "i": 9,
+          "lemma": "all",
+          "pos": "PRON",
+          "start": 42,
+          "tag": "DT",
+          "text": "all"
+        },
+        {
+          "dep": "prep",
+          "end": 48,
+          "head": 7,
+          "i": 10,
+          "lemma": "of",
+          "pos": "ADP",
+          "start": 46,
+          "tag": "IN",
+          "text": "of"
+        },
+        {
+          "dep": "det",
+          "end": 52,
+          "head": 12,
+          "i": 11,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 49,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 60,
+          "head": 10,
+          "i": 12,
+          "lemma": "cooky",
+          "pos": "NOUN",
+          "start": 53,
+          "tag": "NNS",
+          "text": "cookies"
+        },
+        {
+          "dep": "prep",
+          "end": 63,
+          "head": 6,
+          "i": 13,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 61,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "compound",
+          "end": 70,
+          "head": 15,
+          "i": 14,
+          "lemma": "viewer",
+          "pos": "NOUN",
+          "start": 64,
+          "tag": "NN",
+          "text": "viewer"
+        },
+        {
+          "dep": "pobj",
+          "end": 79,
+          "head": 13,
+          "i": 15,
+          "lemma": "request",
+          "pos": "NOUN",
+          "start": 71,
+          "tag": "NNS",
+          "text": "requests"
+        },
+        {
+          "dep": "punct",
+          "end": 80,
+          "head": 15,
+          "i": 16,
+          "lemma": "—",
+          "pos": "PUNCT",
+          "start": 79,
+          "tag": ":",
+          "text": "—"
+        },
+        {
+          "dep": "det",
+          "end": 89,
+          "head": 18,
+          "i": 17,
+          "lemma": "whichever",
+          "pos": "DET",
+          "start": 80,
+          "tag": "WDT",
+          "text": "whichever"
+        },
+        {
+          "dep": "dobj",
+          "end": 94,
+          "head": 21,
+          "i": 18,
+          "lemma": "one",
+          "pos": "NOUN",
+          "start": 90,
+          "tag": "NNS",
+          "text": "ones"
+        },
+        {
+          "dep": "nsubjpass",
+          "end": 97,
+          "head": 21,
+          "i": 19,
+          "lemma": "it",
+          "pos": "PRON",
+          "start": 95,
+          "tag": "PRP",
+          "text": "it"
+        },
+        {
+          "dep": "auxpass",
+          "end": 99,
+          "head": 21,
+          "i": 20,
+          "lemma": "’s",
+          "pos": "AUX",
+          "start": 97,
+          "tag": "VBD",
+          "text": "’s"
+        },
+        {
+          "dep": "relcl",
+          "end": 110,
+          "head": 15,
+          "i": 21,
+          "lemma": "configure",
+          "pos": "VERB",
+          "start": 100,
+          "tag": "VBN",
+          "text": "configured"
+        },
+        {
+          "dep": "prep",
+          "end": 113,
+          "head": 21,
+          "i": 22,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 111,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "pobj",
+          "end": 121,
+          "head": 22,
+          "i": 23,
+          "lemma": "forward",
+          "pos": "ADV",
+          "start": 114,
+          "tag": "RB",
+          "text": "forward"
+        },
+        {
+          "dep": "punct",
+          "end": 122,
+          "head": 15,
+          "i": 24,
+          "lemma": "—",
+          "pos": "PUNCT",
+          "start": 121,
+          "tag": ":",
+          "text": "—"
+        },
+        {
+          "dep": "aux",
+          "end": 124,
+          "head": 27,
+          "i": 25,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 122,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "advmod",
+          "end": 133,
+          "head": 27,
+          "i": 26,
+          "lemma": "uniquely",
+          "pos": "ADV",
+          "start": 125,
+          "tag": "RB",
+          "text": "uniquely"
+        },
+        {
+          "dep": "xcomp",
+          "end": 142,
+          "head": 6,
+          "i": 27,
+          "lemma": "identify",
+          "pos": "VERB",
+          "start": 134,
+          "tag": "VB",
+          "text": "identify"
+        },
+        {
+          "dep": "det",
+          "end": 145,
+          "head": 29,
+          "i": 28,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 143,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "dobj",
+          "end": 152,
+          "head": 27,
+          "i": 29,
+          "lemma": "object",
+          "pos": "NOUN",
+          "start": 146,
+          "tag": "NN",
+          "text": "object"
+        },
+        {
+          "dep": "prep",
+          "end": 155,
+          "head": 27,
+          "i": 30,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 153,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "det",
+          "end": 159,
+          "head": 32,
+          "i": 31,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 156,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "pobj",
+          "end": 165,
+          "head": 30,
+          "i": 32,
+          "lemma": "cache",
+          "pos": "NOUN",
+          "start": 160,
+          "tag": "NN",
+          "text": "cache"
+        },
+        {
+          "dep": "punct",
+          "end": 166,
+          "head": 6,
+          "i": 33,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 165,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "When you configure an Amazon S3 trigger in the Lambda console, the console modifies the resource-based policy to allow Amazon S3 to invoke the function if the bucket name and account ID match.",
+      "tokens": [
+        {
+          "dep": "advmod",
+          "end": 4,
+          "head": 2,
+          "i": 0,
+          "lemma": "when",
+          "pos": "SCONJ",
+          "start": 0,
+          "tag": "WRB",
+          "text": "When"
+        },
+        {
+          "dep": "nsubj",
+          "end": 8,
+          "head": 2,
+          "i": 1,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 5,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "advcl",
+          "end": 18,
+          "head": 14,
+          "i": 2,
+          "lemma": "configure",
+          "pos": "VERB",
+          "start": 9,
+          "tag": "VBP",
+          "text": "configure"
+        },
+        {
+          "dep": "det",
+          "end": 21,
+          "head": 6,
+          "i": 3,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 19,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 28,
+          "head": 6,
+          "i": 4,
+          "lemma": "Amazon",
+          "pos": "PROPN",
+          "start": 22,
+          "tag": "NNP",
+          "text": "Amazon"
+        },
+        {
+          "dep": "compound",
+          "end": 31,
+          "head": 6,
+          "i": 5,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 29,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "dobj",
+          "end": 39,
+          "head": 2,
+          "i": 6,
+          "lemma": "trigger",
+          "pos": "NOUN",
+          "start": 32,
+          "tag": "NN",
+          "text": "trigger"
+        },
+        {
+          "dep": "prep",
+          "end": 42,
+          "head": 6,
+          "i": 7,
+          "lemma": "in",
+          "pos": "ADP",
+          "start": 40,
+          "tag": "IN",
+          "text": "in"
+        },
+        {
+          "dep": "det",
+          "end": 46,
+          "head": 10,
+          "i": 8,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 43,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 53,
+          "head": 10,
+          "i": 9,
+          "lemma": "Lambda",
+          "pos": "PROPN",
+          "start": 47,
+          "tag": "NNP",
+          "text": "Lambda"
+        },
+        {
+          "dep": "pobj",
+          "end": 61,
+          "head": 7,
+          "i": 10,
+          "lemma": "console",
+          "pos": "NOUN",
+          "start": 54,
+          "tag": "NN",
+          "text": "console"
+        },
+        {
+          "dep": "punct",
+          "end": 62,
+          "head": 14,
+          "i": 11,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 61,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "det",
+          "end": 66,
+          "head": 13,
+          "i": 12,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 63,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "nsubj",
+          "end": 74,
+          "head": 14,
+          "i": 13,
+          "lemma": "console",
+          "pos": "NOUN",
+          "start": 67,
+          "tag": "NN",
+          "text": "console"
+        },
+        {
+          "dep": "ROOT",
+          "end": 83,
+          "head": 14,
+          "i": 14,
+          "lemma": "modify",
+          "pos": "VERB",
+          "start": 75,
+          "tag": "VBZ",
+          "text": "modifies"
+        },
+        {
+          "dep": "det",
+          "end": 87,
+          "head": 19,
+          "i": 15,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 84,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "npadvmod",
+          "end": 96,
+          "head": 18,
+          "i": 16,
+          "lemma": "resource",
+          "pos": "NOUN",
+          "start": 88,
+          "tag": "NN",
+          "text": "resource"
+        },
+        {
+          "dep": "punct",
+          "end": 97,
+          "head": 18,
+          "i": 17,
+          "lemma": "-",
+          "pos": "PUNCT",
+          "start": 96,
+          "tag": "HYPH",
+          "text": "-"
+        },
+        {
+          "dep": "amod",
+          "end": 102,
+          "head": 19,
+          "i": 18,
+          "lemma": "base",
+          "pos": "VERB",
+          "start": 97,
+          "tag": "VBN",
+          "text": "based"
+        },
+        {
+          "dep": "dobj",
+          "end": 109,
+          "head": 14,
+          "i": 19,
+          "lemma": "policy",
+          "pos": "NOUN",
+          "start": 103,
+          "tag": "NN",
+          "text": "policy"
+        },
+        {
+          "dep": "aux",
+          "end": 112,
+          "head": 21,
+          "i": 20,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 110,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "advcl",
+          "end": 118,
+          "head": 14,
+          "i": 21,
+          "lemma": "allow",
+          "pos": "VERB",
+          "start": 113,
+          "tag": "VB",
+          "text": "allow"
+        },
+        {
+          "dep": "compound",
+          "end": 125,
+          "head": 23,
+          "i": 22,
+          "lemma": "Amazon",
+          "pos": "PROPN",
+          "start": 119,
+          "tag": "NNP",
+          "text": "Amazon"
+        },
+        {
+          "dep": "nsubj",
+          "end": 128,
+          "head": 25,
+          "i": 23,
+          "lemma": "s3",
+          "pos": "NOUN",
+          "start": 126,
+          "tag": "NN",
+          "text": "S3"
+        },
+        {
+          "dep": "aux",
+          "end": 131,
+          "head": 25,
+          "i": 24,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 129,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "ccomp",
+          "end": 138,
+          "head": 21,
+          "i": 25,
+          "lemma": "invoke",
+          "pos": "VERB",
+          "start": 132,
+          "tag": "VB",
+          "text": "invoke"
+        },
+        {
+          "dep": "det",
+          "end": 142,
+          "head": 27,
+          "i": 26,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 139,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "dobj",
+          "end": 151,
+          "head": 25,
+          "i": 27,
+          "lemma": "function",
+          "pos": "NOUN",
+          "start": 143,
+          "tag": "NN",
+          "text": "function"
+        },
+        {
+          "dep": "mark",
+          "end": 154,
+          "head": 31,
+          "i": 28,
+          "lemma": "if",
+          "pos": "SCONJ",
+          "start": 152,
+          "tag": "IN",
+          "text": "if"
+        },
+        {
+          "dep": "det",
+          "end": 158,
+          "head": 31,
+          "i": 29,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 155,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 165,
+          "head": 31,
+          "i": 30,
+          "lemma": "bucket",
+          "pos": "NOUN",
+          "start": 159,
+          "tag": "NN",
+          "text": "bucket"
+        },
+        {
+          "dep": "advcl",
+          "end": 170,
+          "head": 25,
+          "i": 31,
+          "lemma": "name",
+          "pos": "NOUN",
+          "start": 166,
+          "tag": "NN",
+          "text": "name"
+        },
+        {
+          "dep": "cc",
+          "end": 174,
+          "head": 31,
+          "i": 32,
+          "lemma": "and",
+          "pos": "CCONJ",
+          "start": 171,
+          "tag": "CC",
+          "text": "and"
+        },
+        {
+          "dep": "compound",
+          "end": 182,
+          "head": 35,
+          "i": 33,
+          "lemma": "account",
+          "pos": "NOUN",
+          "start": 175,
+          "tag": "NN",
+          "text": "account"
+        },
+        {
+          "dep": "compound",
+          "end": 185,
+          "head": 35,
+          "i": 34,
+          "lemma": "ID",
+          "pos": "PROPN",
+          "start": 183,
+          "tag": "NNP",
+          "text": "ID"
+        },
+        {
+          "dep": "conj",
+          "end": 191,
+          "head": 31,
+          "i": 35,
+          "lemma": "match",
+          "pos": "NOUN",
+          "start": 186,
+          "tag": "NN",
+          "text": "match"
+        },
+        {
+          "dep": "punct",
+          "end": 192,
+          "head": 14,
+          "i": 36,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 191,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "Cross-account event buses as targets\n\nSame account event buses as targets\n\nAWS services\n\nYou can have EventBridge send events to a number of AWS service resources.",
+      "tokens": [
+        {
+          "dep": "compound",
+          "end": 5,
+          "head": 4,
+          "i": 0,
+          "lemma": "cross",
+          "pos": "ADJ",
+          "start": 0,
+          "tag": "JJ",
+          "text": "Cross"
+        },
+        {
+          "dep": "amod",
+          "end": 6,
+          "head": 4,
+          "i": 1,
+          "lemma": "-",
+          "pos": "ADJ",
+          "start": 5,
+          "tag": "JJ",
+          "text": "-"
+        },
+        {
+          "dep": "amod",
+          "end": 13,
+          "head": 4,
+          "i": 2,
+          "lemma": "account",
+          "pos": "ADJ",
+          "start": 6,
+          "tag": "JJ",
+          "text": "account"
+        },
+        {
+          "dep": "compound",
+          "end": 19,
+          "head": 4,
+          "i": 3,
+          "lemma": "event",
+          "pos": "NOUN",
+          "start": 14,
+          "tag": "NN",
+          "text": "event"
+        },
+        {
+          "dep": "ROOT",
+          "end": 25,
+          "head": 4,
+          "i": 4,
+          "lemma": "bus",
+          "pos": "NOUN",
+          "start": 20,
+          "tag": "NNS",
+          "text": "buses"
+        },
+        {
+          "dep": "prep",
+          "end": 28,
+          "head": 4,
+          "i": 5,
+          "lemma": "as",
+          "pos": "ADP",
+          "start": 26,
+          "tag": "IN",
+          "text": "as"
+        },
+        {
+          "dep": "compound",
+          "end": 36,
+          "head": 11,
+          "i": 6,
+          "lemma": "target",
+          "pos": "NOUN",
+          "start": 29,
+          "tag": "NNS",
+          "text": "targets"
+        },
+        {
+          "dep": "dep",
+          "end": 38,
+          "head": 6,
+          "i": 7,
+          "lemma": "\n\n",
+          "pos": "SPACE",
+          "start": 36,
+          "tag": "_SP",
+          "text": "\n\n"
+        },
+        {
+          "dep": "amod",
+          "end": 42,
+          "head": 9,
+          "i": 8,
+          "lemma": "same",
+          "pos": "ADJ",
+          "start": 38,
+          "tag": "JJ",
+          "text": "Same"
+        },
+        {
+          "dep": "compound",
+          "end": 50,
+          "head": 11,
+          "i": 9,
+          "lemma": "account",
+          "pos": "NOUN",
+          "start": 43,
+          "tag": "NN",
+          "text": "account"
+        },
+        {
+          "dep": "compound",
+          "end": 56,
+          "head": 11,
+          "i": 10,
+          "lemma": "event",
+          "pos": "NOUN",
+          "start": 51,
+          "tag": "NN",
+          "text": "event"
+        },
+        {
+          "dep": "pobj",
+          "end": 62,
+          "head": 5,
+          "i": 11,
+          "lemma": "bus",
+          "pos": "NOUN",
+          "start": 57,
+          "tag": "NNS",
+          "text": "buses"
+        },
+        {
+          "dep": "prep",
+          "end": 65,
+          "head": 4,
+          "i": 12,
+          "lemma": "as",
+          "pos": "ADP",
+          "start": 63,
+          "tag": "IN",
+          "text": "as"
+        },
+        {
+          "dep": "compound",
+          "end": 73,
+          "head": 16,
+          "i": 13,
+          "lemma": "target",
+          "pos": "NOUN",
+          "start": 66,
+          "tag": "NNS",
+          "text": "targets"
+        },
+        {
+          "dep": "dep",
+          "end": 75,
+          "head": 13,
+          "i": 14,
+          "lemma": "\n\n",
+          "pos": "SPACE",
+          "start": 73,
+          "tag": "_SP",
+          "text": "\n\n"
+        },
+        {
+          "dep": "compound",
+          "end": 78,
+          "head": 16,
+          "i": 15,
+          "lemma": "AWS",
+          "pos": "ADJ",
+          "start": 75,
+          "tag": "JJR",
+          "text": "AWS"
+        },
+        {
+          "dep": "pobj",
+          "end": 87,
+          "head": 12,
+          "i": 16,
+          "lemma": "service",
+          "pos": "NOUN",
+          "start": 79,
+          "tag": "NNS",
+          "text": "services"
+        },
+        {
+          "dep": "dep",
+          "end": 89,
+          "head": 16,
+          "i": 17,
+          "lemma": "\n\n",
+          "pos": "SPACE",
+          "start": 87,
+          "tag": "_SP",
+          "text": "\n\n"
+        },
+        {
+          "dep": "nsubj",
+          "end": 92,
+          "head": 20,
+          "i": 18,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 89,
+          "tag": "PRP",
+          "text": "You"
+        },
+        {
+          "dep": "aux",
+          "end": 96,
+          "head": 20,
+          "i": 19,
+          "lemma": "can",
+          "pos": "AUX",
+          "start": 93,
+          "tag": "MD",
+          "text": "can"
+        },
+        {
+          "dep": "relcl",
+          "end": 101,
+          "head": 4,
+          "i": 20,
+          "lemma": "have",
+          "pos": "VERB",
+          "start": 97,
+          "tag": "VB",
+          "text": "have"
+        },
+        {
+          "dep": "nsubj",
+          "end": 113,
+          "head": 22,
+          "i": 21,
+          "lemma": "EventBridge",
+          "pos": "PROPN",
+          "start": 102,
+          "tag": "NNP",
+          "text": "EventBridge"
+        },
+        {
+          "dep": "ccomp",
+          "end": 118,
+          "head": 20,
+          "i": 22,
+          "lemma": "send",
+          "pos": "VERB",
+          "start": 114,
+          "tag": "VB",
+          "text": "send"
+        },
+        {
+          "dep": "dobj",
+          "end": 125,
+          "head": 22,
+          "i": 23,
+          "lemma": "event",
+          "pos": "NOUN",
+          "start": 119,
+          "tag": "NNS",
+          "text": "events"
+        },
+        {
+          "dep": "prep",
+          "end": 128,
+          "head": 22,
+          "i": 24,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 126,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 130,
+          "head": 26,
+          "i": 25,
+          "lemma": "a",
+          "pos": "DET",
+          "start": 129,
+          "tag": "DT",
+          "text": "a"
+        },
+        {
+          "dep": "pobj",
+          "end": 137,
+          "head": 24,
+          "i": 26,
+          "lemma": "number",
+          "pos": "NOUN",
+          "start": 131,
+          "tag": "NN",
+          "text": "number"
+        },
+        {
+          "dep": "prep",
+          "end": 140,
+          "head": 26,
+          "i": 27,
+          "lemma": "of",
+          "pos": "ADP",
+          "start": 138,
+          "tag": "IN",
+          "text": "of"
+        },
+        {
+          "dep": "compound",
+          "end": 144,
+          "head": 30,
+          "i": 28,
+          "lemma": "AWS",
+          "pos": "ADJ",
+          "start": 141,
+          "tag": "JJR",
+          "text": "AWS"
+        },
+        {
+          "dep": "compound",
+          "end": 152,
+          "head": 30,
+          "i": 29,
+          "lemma": "service",
+          "pos": "NOUN",
+          "start": 145,
+          "tag": "NN",
+          "text": "service"
+        },
+        {
+          "dep": "pobj",
+          "end": 162,
+          "head": 27,
+          "i": 30,
+          "lemma": "resource",
+          "pos": "NOUN",
+          "start": 153,
+          "tag": "NNS",
+          "text": "resources"
+        },
+        {
+          "dep": "punct",
+          "end": 163,
+          "head": 4,
+          "i": 31,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 162,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "If you set up the API without using the API Gateway console, such as when importing an API from an OpenAPI file, you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions.",
+      "tokens": [
+        {
+          "dep": "mark",
+          "end": 2,
+          "head": 2,
+          "i": 0,
+          "lemma": "if",
+          "pos": "SCONJ",
+          "start": 0,
+          "tag": "IN",
+          "text": "If"
+        },
+        {
+          "dep": "nsubj",
+          "end": 6,
+          "head": 2,
+          "i": 1,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 3,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "advcl",
+          "end": 10,
+          "head": 27,
+          "i": 2,
+          "lemma": "set",
+          "pos": "VERB",
+          "start": 7,
+          "tag": "VBP",
+          "text": "set"
+        },
+        {
+          "dep": "prt",
+          "end": 13,
+          "head": 2,
+          "i": 3,
+          "lemma": "up",
+          "pos": "ADP",
+          "start": 11,
+          "tag": "RP",
+          "text": "up"
+        },
+        {
+          "dep": "det",
+          "end": 17,
+          "head": 5,
+          "i": 4,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 14,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "dobj",
+          "end": 21,
+          "head": 2,
+          "i": 5,
+          "lemma": "api",
+          "pos": "NOUN",
+          "start": 18,
+          "tag": "NN",
+          "text": "API"
+        },
+        {
+          "dep": "prep",
+          "end": 29,
+          "head": 2,
+          "i": 6,
+          "lemma": "without",
+          "pos": "ADP",
+          "start": 22,
+          "tag": "IN",
+          "text": "without"
+        },
+        {
+          "dep": "pcomp",
+          "end": 35,
+          "head": 6,
+          "i": 7,
+          "lemma": "use",
+          "pos": "VERB",
+          "start": 30,
+          "tag": "VBG",
+          "text": "using"
+        },
+        {
+          "dep": "det",
+          "end": 39,
+          "head": 11,
+          "i": 8,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 36,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 43,
+          "head": 10,
+          "i": 9,
+          "lemma": "api",
+          "pos": "NOUN",
+          "start": 40,
+          "tag": "NN",
+          "text": "API"
+        },
+        {
+          "dep": "compound",
+          "end": 51,
+          "head": 11,
+          "i": 10,
+          "lemma": "Gateway",
+          "pos": "PROPN",
+          "start": 44,
+          "tag": "NNP",
+          "text": "Gateway"
+        },
+        {
+          "dep": "dobj",
+          "end": 59,
+          "head": 7,
+          "i": 11,
+          "lemma": "console",
+          "pos": "NOUN",
+          "start": 52,
+          "tag": "NN",
+          "text": "console"
+        },
+        {
+          "dep": "punct",
+          "end": 60,
+          "head": 11,
+          "i": 12,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 59,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "amod",
+          "end": 65,
+          "head": 14,
+          "i": 13,
+          "lemma": "such",
+          "pos": "ADJ",
+          "start": 61,
+          "tag": "JJ",
+          "text": "such"
+        },
+        {
+          "dep": "prep",
+          "end": 68,
+          "head": 11,
+          "i": 14,
+          "lemma": "as",
+          "pos": "ADP",
+          "start": 66,
+          "tag": "IN",
+          "text": "as"
+        },
+        {
+          "dep": "advmod",
+          "end": 73,
+          "head": 16,
+          "i": 15,
+          "lemma": "when",
+          "pos": "SCONJ",
+          "start": 69,
+          "tag": "WRB",
+          "text": "when"
+        },
+        {
+          "dep": "pcomp",
+          "end": 83,
+          "head": 14,
+          "i": 16,
+          "lemma": "import",
+          "pos": "VERB",
+          "start": 74,
+          "tag": "VBG",
+          "text": "importing"
+        },
+        {
+          "dep": "det",
+          "end": 86,
+          "head": 18,
+          "i": 17,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 84,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "dobj",
+          "end": 90,
+          "head": 16,
+          "i": 18,
+          "lemma": "api",
+          "pos": "NOUN",
+          "start": 87,
+          "tag": "NN",
+          "text": "API"
+        },
+        {
+          "dep": "prep",
+          "end": 95,
+          "head": 16,
+          "i": 19,
+          "lemma": "from",
+          "pos": "ADP",
+          "start": 91,
+          "tag": "IN",
+          "text": "from"
+        },
+        {
+          "dep": "det",
+          "end": 98,
+          "head": 22,
+          "i": 20,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 96,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 106,
+          "head": 22,
+          "i": 21,
+          "lemma": "openapi",
+          "pos": "ADJ",
+          "start": 99,
+          "tag": "JJ",
+          "text": "OpenAPI"
+        },
+        {
+          "dep": "pobj",
+          "end": 111,
+          "head": 19,
+          "i": 22,
+          "lemma": "file",
+          "pos": "NOUN",
+          "start": 107,
+          "tag": "NN",
+          "text": "file"
+        },
+        {
+          "dep": "punct",
+          "end": 112,
+          "head": 27,
+          "i": 23,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 111,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "nsubj",
+          "end": 116,
+          "head": 27,
+          "i": 24,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 113,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "aux",
+          "end": 121,
+          "head": 27,
+          "i": 25,
+          "lemma": "must",
+          "pos": "AUX",
+          "start": 117,
+          "tag": "MD",
+          "text": "must"
+        },
+        {
+          "dep": "advmod",
+          "end": 132,
+          "head": 27,
+          "i": 26,
+          "lemma": "explicitly",
+          "pos": "ADV",
+          "start": 122,
+          "tag": "RB",
+          "text": "explicitly"
+        },
+        {
+          "dep": "ROOT",
+          "end": 139,
+          "head": 27,
+          "i": 27,
+          "lemma": "create",
+          "pos": "VERB",
+          "start": 133,
+          "tag": "VB",
+          "text": "create"
+        },
+        {
+          "dep": "punct",
+          "end": 140,
+          "head": 27,
+          "i": 28,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 139,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "mark",
+          "end": 143,
+          "head": 30,
+          "i": 29,
+          "lemma": "if",
+          "pos": "SCONJ",
+          "start": 141,
+          "tag": "IN",
+          "text": "if"
+        },
+        {
+          "dep": "advcl",
+          "end": 153,
+          "head": 27,
+          "i": 30,
+          "lemma": "necessary",
+          "pos": "ADJ",
+          "start": 144,
+          "tag": "JJ",
+          "text": "necessary"
+        },
+        {
+          "dep": "punct",
+          "end": 154,
+          "head": 27,
+          "i": 31,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 153,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "cc",
+          "end": 158,
+          "head": 27,
+          "i": 32,
+          "lemma": "and",
+          "pos": "CCONJ",
+          "start": 155,
+          "tag": "CC",
+          "text": "and"
+        },
+        {
+          "dep": "conj",
+          "end": 162,
+          "head": 27,
+          "i": 33,
+          "lemma": "set",
+          "pos": "VERB",
+          "start": 159,
+          "tag": "VBD",
+          "text": "set"
+        },
+        {
+          "dep": "prt",
+          "end": 165,
+          "head": 33,
+          "i": 34,
+          "lemma": "up",
+          "pos": "ADP",
+          "start": 163,
+          "tag": "RP",
+          "text": "up"
+        },
+        {
+          "dep": "det",
+          "end": 168,
+          "head": 37,
+          "i": 35,
+          "lemma": "an",
+          "pos": "DET",
+          "start": 166,
+          "tag": "DT",
+          "text": "an"
+        },
+        {
+          "dep": "compound",
+          "end": 179,
+          "head": 37,
+          "i": 36,
+          "lemma": "invocation",
+          "pos": "NOUN",
+          "start": 169,
+          "tag": "NN",
+          "text": "invocation"
+        },
+        {
+          "dep": "dobj",
+          "end": 184,
+          "head": 33,
+          "i": 37,
+          "lemma": "role",
+          "pos": "NOUN",
+          "start": 180,
+          "tag": "NN",
+          "text": "role"
+        },
+        {
+          "dep": "cc",
+          "end": 188,
+          "head": 37,
+          "i": 38,
+          "lemma": "and",
+          "pos": "CCONJ",
+          "start": 185,
+          "tag": "CC",
+          "text": "and"
+        },
+        {
+          "dep": "conj",
+          "end": 195,
+          "head": 37,
+          "i": 39,
+          "lemma": "policy",
+          "pos": "NOUN",
+          "start": 189,
+          "tag": "NN",
+          "text": "policy"
+        },
+        {
+          "dep": "mark",
+          "end": 199,
+          "head": 44,
+          "i": 40,
+          "lemma": "for",
+          "pos": "SCONJ",
+          "start": 196,
+          "tag": "IN",
+          "text": "for"
+        },
+        {
+          "dep": "compound",
+          "end": 203,
+          "head": 42,
+          "i": 41,
+          "lemma": "api",
+          "pos": "NOUN",
+          "start": 200,
+          "tag": "NN",
+          "text": "API"
+        },
+        {
+          "dep": "nsubj",
+          "end": 211,
+          "head": 44,
+          "i": 42,
+          "lemma": "Gateway",
+          "pos": "PROPN",
+          "start": 204,
+          "tag": "NNP",
+          "text": "Gateway"
+        },
+        {
+          "dep": "aux",
+          "end": 214,
+          "head": 44,
+          "i": 43,
+          "lemma": "to",
+          "pos": "PART",
+          "start": 212,
+          "tag": "TO",
+          "text": "to"
+        },
+        {
+          "dep": "advcl",
+          "end": 221,
+          "head": 33,
+          "i": 44,
+          "lemma": "invoke",
+          "pos": "VERB",
+          "start": 215,
+          "tag": "VB",
+          "text": "invoke"
+        },
+        {
+          "dep": "det",
+          "end": 225,
+          "head": 47,
+          "i": 45,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 222,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "compound",
+          "end": 232,
+          "head": 47,
+          "i": 46,
+          "lemma": "Lambda",
+          "pos": "PROPN",
+          "start": 226,
+          "tag": "NNP",
+          "text": "Lambda"
+        },
+        {
+          "dep": "dobj",
+          "end": 242,
+          "head": 44,
+          "i": 47,
+          "lemma": "function",
+          "pos": "NOUN",
+          "start": 233,
+          "tag": "NNS",
+          "text": "functions"
+        },
+        {
+          "dep": "punct",
+          "end": 243,
+          "head": 27,
+          "i": 48,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 242,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "text": "If the request is more than your customer’s pre-approved credit limit, you can have Step Functions send your customer's request to a manager for sign-off.",
+      "tokens": [
+        {
+          "dep": "mark",
+          "end": 2,
+          "head": 3,
+          "i": 0,
+          "lemma": "if",
+          "pos": "SCONJ",
+          "start": 0,
+          "tag": "IN",
+          "text": "If"
+        },
+        {
+          "dep": "det",
+          "end": 6,
+          "head": 2,
+          "i": 1,
+          "lemma": "the",
+          "pos": "DET",
+          "start": 3,
+          "tag": "DT",
+          "text": "the"
+        },
+        {
+          "dep": "nsubj",
+          "end": 14,
+          "head": 3,
+          "i": 2,
+          "lemma": "request",
+          "pos": "NOUN",
+          "start": 7,
+          "tag": "NN",
+          "text": "request"
+        },
+        {
+          "dep": "advcl",
+          "end": 17,
+          "head": 17,
+          "i": 3,
+          "lemma": "be",
+          "pos": "AUX",
+          "start": 15,
+          "tag": "VBZ",
+          "text": "is"
+        },
+        {
+          "dep": "acomp",
+          "end": 22,
+          "head": 3,
+          "i": 4,
+          "lemma": "more",
+          "pos": "ADJ",
+          "start": 18,
+          "tag": "JJR",
+          "text": "more"
+        },
+        {
+          "dep": "prep",
+          "end": 27,
+          "head": 4,
+          "i": 5,
+          "lemma": "than",
+          "pos": "ADP",
+          "start": 23,
+          "tag": "IN",
+          "text": "than"
+        },
+        {
+          "dep": "poss",
+          "end": 32,
+          "head": 7,
+          "i": 6,
+          "lemma": "your",
+          "pos": "PRON",
+          "start": 28,
+          "tag": "PRP$",
+          "text": "your"
+        },
+        {
+          "dep": "poss",
+          "end": 41,
+          "head": 13,
+          "i": 7,
+          "lemma": "customer",
+          "pos": "NOUN",
+          "start": 33,
+          "tag": "NN",
+          "text": "customer"
+        },
+        {
+          "dep": "case",
+          "end": 43,
+          "head": 7,
+          "i": 8,
+          "lemma": "’s",
+          "pos": "PART",
+          "start": 41,
+          "tag": "POS",
+          "text": "’s"
+        },
+        {
+          "dep": "amod",
+          "end": 47,
+          "head": 13,
+          "i": 9,
+          "lemma": "pre",
+          "pos": "ADJ",
+          "start": 44,
+          "tag": "JJ",
+          "text": "pre"
+        },
+        {
+          "dep": "amod",
+          "end": 48,
+          "head": 13,
+          "i": 10,
+          "lemma": "-",
+          "pos": "ADJ",
+          "start": 47,
+          "tag": "JJ",
+          "text": "-"
+        },
+        {
+          "dep": "amod",
+          "end": 56,
+          "head": 13,
+          "i": 11,
+          "lemma": "approve",
+          "pos": "VERB",
+          "start": 48,
+          "tag": "VBN",
+          "text": "approved"
+        },
+        {
+          "dep": "compound",
+          "end": 63,
+          "head": 13,
+          "i": 12,
+          "lemma": "credit",
+          "pos": "NOUN",
+          "start": 57,
+          "tag": "NN",
+          "text": "credit"
+        },
+        {
+          "dep": "pobj",
+          "end": 69,
+          "head": 5,
+          "i": 13,
+          "lemma": "limit",
+          "pos": "NOUN",
+          "start": 64,
+          "tag": "NN",
+          "text": "limit"
+        },
+        {
+          "dep": "punct",
+          "end": 70,
+          "head": 17,
+          "i": 14,
+          "lemma": ",",
+          "pos": "PUNCT",
+          "start": 69,
+          "tag": ",",
+          "text": ","
+        },
+        {
+          "dep": "nsubj",
+          "end": 74,
+          "head": 17,
+          "i": 15,
+          "lemma": "you",
+          "pos": "PRON",
+          "start": 71,
+          "tag": "PRP",
+          "text": "you"
+        },
+        {
+          "dep": "aux",
+          "end": 78,
+          "head": 17,
+          "i": 16,
+          "lemma": "can",
+          "pos": "AUX",
+          "start": 75,
+          "tag": "MD",
+          "text": "can"
+        },
+        {
+          "dep": "ROOT",
+          "end": 83,
+          "head": 17,
+          "i": 17,
+          "lemma": "have",
+          "pos": "VERB",
+          "start": 79,
+          "tag": "VB",
+          "text": "have"
+        },
+        {
+          "dep": "compound",
+          "end": 88,
+          "head": 19,
+          "i": 18,
+          "lemma": "Step",
+          "pos": "PROPN",
+          "start": 84,
+          "tag": "NNP",
+          "text": "Step"
+        },
+        {
+          "dep": "nsubj",
+          "end": 98,
+          "head": 20,
+          "i": 19,
+          "lemma": "Functions",
+          "pos": "PROPN",
+          "start": 89,
+          "tag": "NNPS",
+          "text": "Functions"
+        },
+        {
+          "dep": "ccomp",
+          "end": 103,
+          "head": 17,
+          "i": 20,
+          "lemma": "send",
+          "pos": "VERB",
+          "start": 99,
+          "tag": "VB",
+          "text": "send"
+        },
+        {
+          "dep": "poss",
+          "end": 108,
+          "head": 22,
+          "i": 21,
+          "lemma": "your",
+          "pos": "PRON",
+          "start": 104,
+          "tag": "PRP$",
+          "text": "your"
+        },
+        {
+          "dep": "poss",
+          "end": 117,
+          "head": 24,
+          "i": 22,
+          "lemma": "customer",
+          "pos": "NOUN",
+          "start": 109,
+          "tag": "NN",
+          "text": "customer"
+        },
+        {
+          "dep": "case",
+          "end": 119,
+          "head": 22,
+          "i": 23,
+          "lemma": "'s",
+          "pos": "PART",
+          "start": 117,
+          "tag": "POS",
+          "text": "'s"
+        },
+        {
+          "dep": "dobj",
+          "end": 127,
+          "head": 20,
+          "i": 24,
+          "lemma": "request",
+          "pos": "NOUN",
+          "start": 120,
+          "tag": "NN",
+          "text": "request"
+        },
+        {
+          "dep": "prep",
+          "end": 130,
+          "head": 20,
+          "i": 25,
+          "lemma": "to",
+          "pos": "ADP",
+          "start": 128,
+          "tag": "IN",
+          "text": "to"
+        },
+        {
+          "dep": "det",
+          "end": 132,
+          "head": 27,
+          "i": 26,
+          "lemma": "a",
+          "pos": "DET",
+          "start": 131,
+          "tag": "DT",
+          "text": "a"
+        },
+        {
+          "dep": "pobj",
+          "end": 140,
+          "head": 25,
+          "i": 27,
+          "lemma": "manager",
+          "pos": "NOUN",
+          "start": 133,
+          "tag": "NN",
+          "text": "manager"
+        },
+        {
+          "dep": "prep",
+          "end": 144,
+          "head": 27,
+          "i": 28,
+          "lemma": "for",
+          "pos": "ADP",
+          "start": 141,
+          "tag": "IN",
+          "text": "for"
+        },
+        {
+          "dep": "compound",
+          "end": 149,
+          "head": 31,
+          "i": 29,
+          "lemma": "sign",
+          "pos": "NOUN",
+          "start": 145,
+          "tag": "NN",
+          "text": "sign"
+        },
+        {
+          "dep": "punct",
+          "end": 150,
+          "head": 31,
+          "i": 30,
+          "lemma": "-",
+          "pos": "PUNCT",
+          "start": 149,
+          "tag": "HYPH",
+          "text": "-"
+        },
+        {
+          "dep": "pobj",
+          "end": 153,
+          "head": 28,
+          "i": 31,
+          "lemma": "off",
+          "pos": "NOUN",
+          "start": 150,
+          "tag": "NN",
+          "text": "off"
+        },
+        {
+          "dep": "punct",
+          "end": 154,
+          "head": 17,
+          "i": 32,
+          "lemma": ".",
+          "pos": "PUNCT",
+          "start": 153,
+          "tag": ".",
+          "text": "."
+        }
+      ]
+    }
+  ],
+  "installation": {
+    "app_dependencies_changed": false,
+    "cloud_dependency_added": false,
+    "installed_requirements_sha256": "858c305a86c0c41cc6a06861f5d2300de8d5b062b34234a14047f5a6b23bcd7b",
+    "model": "en_core_web_sm",
+    "model_url": "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl",
+    "model_version": "3.8.0",
+    "model_wheel_sha256": "1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85",
+    "python": "data\\tools\\source-parser\\.venv\\Scripts\\python.exe",
+    "spacy_version": "3.8.18",
+    "upstream_release": "https://github.com/explosion/spacy-models/releases/tag/en_core_web_sm-3.8.0",
+    "version": "source-parser-isolated-v1"
+  },
+  "nonfinite_cases": [
+    {
+      "record": {
+        "action_family": "INVOKE",
+        "action_quote": "invoke",
+        "actor": {
+          "head_quote": "Amazon S3",
+          "name": "Amazon S3",
+          "occurrence": 2,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "clause_quote": "When you configure an Amazon S3 trigger in the Lambda console, the console modifies the resource-based policy to allow Amazon S3 to invoke the function if the bucket name and account ID match.",
+        "construction": "FINITE_ACTIVE",
+        "enabler": null,
+        "modality": "ASSERTED",
+        "payload_quote": null,
+        "polarity": "POSITIVE",
+        "target": {
+          "head_quote": "function",
+          "name": "the function",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "RESOURCE_TYPE"
+        },
+        "target_role": "CALLEE"
+      },
+      "source_text": "fc-f7b5-4305-8584-487c791949c1\",\n        \"bucket\": {\n          \"name\": \"amzn-s3-demo-bucket\",\n          \"ownerIdentity\": {\n            \"principalId\": \"A3I5XTEXAMAI3E\"\n          },\n          \"arn\": \"arn:aws:s3:::lambda-artifacts-deafc19498e3f2df\"\n        },\n        \"object\": {\n          \"key\": \"b21b84d653bb07b05b1e6b33684dc11b\",\n          \"size\": 1305107,\n          \"eTag\": \"b21b84d653bb07b05b1e6b33684dc11b\",\n          \"sequencer\": \"0C0F6F405D6ED209E1\"\n        }\n      }\n    }\n  ]\n}\n```\n\nTo invoke your function, Amazon S3 needs permission from the function's resource-based policy. When you configure an Amazon S3 trigger in the Lambda console, the console modifies the resource-based policy to allow Amazon S3 to invoke the function if the bucket name and account ID match. If you configure the notification in Amazon S3, you use the Lambda API to update the policy. You can also use the Lambda API to grant permission to another account, or restrict permission to a designated alias.\n\nIf your function uses the AWS SDK to manage Amazon S3 resources, it also needs Amazon S3 permissions in its execution role."
+    },
+    {
+      "record": {
+        "action_family": "DELIVER",
+        "action_quote": "send",
+        "actor": {
+          "head_quote": "EventBridge",
+          "name": "EventBridge",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "clause_quote": "Cross-account event buses as targets\n\nSame account event buses as targets\n\nAWS services\n\nYou can have EventBridge send events to a number of AWS service resources.",
+        "construction": "FINITE_ACTIVE",
+        "enabler": null,
+        "modality": "ASSERTED",
+        "payload_quote": "events",
+        "polarity": "POSITIVE",
+        "target": {
+          "head_quote": "number",
+          "name": "a number",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "CONCEPT"
+        },
+        "target_role": "DESTINATION"
+      },
+      "source_text": "Event bus targets available in the EventBridge console\n\nYou can configure the following target types for rules in the EventBridge console:\n\nAPI destinations\n\nAPI destinations are HTTPS endpoints that you can invoke as the target of an event bus rule. When you specify an API destination as a rule target, EventBridge invokes the HTTPS endpoint for any event that matches the event pattern specified in the rule, and then delivers the event information with the request. For more information, see API destinations. To create a rule that targets an API destination, see Creating rules with API destination targets.\n\nEvent buses\n\nYou can specify other event buses as targets for rules. This includes event buses in the same or different AWS accounts.\n\nCross-account event buses as targets\n\nSame account event buses as targets\n\nAWS services\n\nYou can have EventBridge send events to a number of AWS service resources. These include:\n\nAPI Gateway\n\nAWS AppSync\n\nBatch job queue\n\nCloudWatch log group\n\nCodeBuild project\n\nCodePipeline\n\nAmazon EBS CreateSnapshot API call\n\nEC2 Image Builder\n\nEC2 RebootInstances API call\n\nEC2 StopInstances API call\n\nEC2 TerminateInstances API call\n\nECS task\n\nFirehose delivery stream\n\nGlue workflow\n\nIncident Manager response plan\n\nKinesis stream\n\nLambda function (ASYNC)\n\nAmazon Redshift cluster data API queries\n\nAmazon Redshift Serverless workgroup data API queries\n\nSageMaker AI Pipeline\n\nAmazon SNS topic\n\nAmazon SQS standard, fair, and FIFO queues\n\nStep Functions state machine (ASYNC)\n\nSystems Manager Automation\n\nSystems Manager OpsItem\n\nSystems Manager Run Command\n\n"
+    },
+    {
+      "record": {
+        "action_family": "INVOKE",
+        "action_quote": "invoke",
+        "actor": {
+          "head_quote": "API Gateway",
+          "name": "API Gateway",
+          "occurrence": 2,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "clause_quote": "If you set up the API without using the API Gateway console, such as when importing an API from an OpenAPI file, you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions.",
+        "construction": "FINITE_ACTIVE",
+        "enabler": null,
+        "modality": "ASSERTED",
+        "payload_quote": null,
+        "polarity": "POSITIVE",
+        "target": {
+          "head_quote": "functions",
+          "name": "the Lambda functions",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "RESOURCE_TYPE"
+        },
+        "target_role": "CALLEE"
+      },
+      "source_text": " This is helpful for tracing calls when debugging the function. To allow the GetStartedLambdaIntegration function to log the call, set an IAM role with appropriate policies for the Lambda function to create the CloudWatch streams and add log entries to the streams. The Lambda console guides you through to create the required IAM roles and policies.\n\nIf you set up the API without using the API Gateway console, such as when importing an API from an OpenAPI file, you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions. For more information on how to set up Lambda invocation and execution roles for an API Gateway API, see Control access to a REST API with IAM permissions.\n\nCompared to GetStartedLambdaProxyIntegration, the Lambda function for the Lambda proxy integration, the GetStartedLambdaIntegration Lambda function for the Lambda custom integration only takes input from the API Gateway API integration request body. The function can return an output of any JSON object, a string, a number, a Boolean, or even a binary blob. The Lambda function for the Lambda proxy integration, in contrast, can take the input from any request data, but must return an output of a particular JSON object. The GetStartedLambdaIntegration function for the Lambda custom integration can have the API request parameters as input, provided that API Gateway maps the required API request parameters to the integration request body before forwarding the client request to the backend. For this to happen, the API developer must create a mapping template and configure it on the API method when creating the API.\n\nNow, create the GetStartedLambdaIntegration Lambda function.\n\n"
+    },
+    {
+      "record": {
+        "action_family": "DELIVER",
+        "action_quote": "send",
+        "actor": {
+          "head_quote": "Step Functions",
+          "name": "Step Functions",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "clause_quote": "If the request is more than your customer’s pre-approved credit limit, you can have Step Functions send your customer's request to a manager for sign-off.",
+        "construction": "FINITE_ACTIVE",
+        "enabler": null,
+        "modality": "ASSERTED",
+        "payload_quote": "your customer's request",
+        "polarity": "POSITIVE",
+        "target": {
+          "head_quote": "manager",
+          "name": "a manager",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "CONCEPT"
+        },
+        "target_role": "DESTINATION"
+      },
+      "source_text": "Example use cases for workflows\n\nStep Functions manages your application's components and logic, so you can write less code and focus on building and updating your application quickly. The following image shows six use cases for Step Functions workflows.\n\nOrchestrate tasks – You can create workflows that orchestrate a series of tasks, or steps, in a specific order. For example, Task A might be a Lambda function which provides inputs for another Lambda function in Task B. The last step in your workflow provides the final result.\n\nChoose tasks based on data – Using a Choice state, you can have Step Functions make decisions based on the state’s input. For example, imagine that a customer requests a credit limit increase. If the request is more than your customer’s pre-approved credit limit, you can have Step Functions send your customer's request to a manager for sign-off. If the request is less than your customer’s pre-approved credit limit, you can have Step Functions approve the request automatically.\n\nError handling (Retry / Catch) – You can retry failed tasks, or catch failed tasks and automatically run alternative steps.\n\nFor example, after a customer requests a username, perhaps the first call to your validation service fails, so your workflow may retry the request. When the second request is successful, the workflow can proceed.\n\nOr, perhaps the customer requested a username that is invalid or unavailable, a Catch statement could lead to a Step Functions workflow step that suggests an alternative username.\n\nFor examples of Retry and "
+    }
+  ],
+  "real_cases": [
+    {
+      "kind": "RELATION",
+      "record": {
+        "clause_quote": "When you do this, CloudFront uses some or all of the cookies in viewer requests—whichever ones it’s configured to forward—to uniquely identify an object in the cache.",
+        "modality": "ASSERTED",
+        "object": {
+          "head_quote": "cookies",
+          "name": "some or all of the cookies in viewer requests",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [
+            "in viewer requests"
+          ],
+          "semantic_type": "CONCEPT"
+        },
+        "polarity": "POSITIVE",
+        "predicate": "USES",
+        "subject": {
+          "head_quote": "CloudFront",
+          "name": "CloudFront",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "trigger_quote": "uses",
+        "voice": "ACTIVE"
+      },
+      "source_text": "Cache content based on cookies\n\nBy default, CloudFront doesn’t consider cookies when processing requests and responses, or when caching your objects in edge locations. If CloudFront receives two requests that are identical except for what’s in the Cookie header, then, by default, CloudFront treats the requests as identical and returns the same object for both requests.\n\nYou can configure CloudFront to forward to your origin some or all of the cookies in viewer requests, and to cache separate versions of your objects based on the cookie values that it forwards. When you do this, CloudFront uses some or all of the cookies in viewer requests—whichever ones it’s configured to forward—to uniquely identify an object in the cache.\n\nFor example, suppose that requests for locations.html contain a country cookie that has a value of either uk or fr. When you configure CloudFront to cache your objects based on the value of the country cookie, CloudFront forwards requests for locations.html to the origin and includes the country cookie and its value. Your origin returns locations.html, and CloudFront caches the object once for requests in which the value of the country cookie is uk and once for requests in which the value is fr.\n\n"
+    },
+    {
+      "kind": "ACTION",
+      "record": {
+        "action_family": "DELIVER",
+        "action_quote": "delivers",
+        "actor": {
+          "head_quote": "CloudTrail",
+          "name": "CloudTrail",
+          "occurrence": 2,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "clause_quote": "When CloudTrail logging is turned on, CloudTrail captures API calls in your account and delivers the log files to the Amazon S3 bucket that you specify.",
+        "construction": "FINITE_ACTIVE",
+        "enabler": null,
+        "modality": "ASSERTED",
+        "payload_quote": "the log files",
+        "polarity": "POSITIVE",
+        "target": {
+          "head_quote": "bucket",
+          "name": "Amazon S3 bucket that you specify",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "RESOURCE_TYPE"
+        },
+        "target_role": "DESTINATION"
+      },
+      "source_text": "Related AWS services\n\nThe following services are used in conjunction with CloudWatch Logs:\n\nAWS CloudTrail is a web service that enables you to monitor the calls made to the CloudWatch Logs API for your account, including calls made by the AWS Management Console, AWS Command Line Interface (AWS CLI), and other services. When CloudTrail logging is turned on, CloudTrail captures API calls in your account and delivers the log files to the Amazon S3 bucket that you specify. Each log file can contain one or more records, depending on how many actions must be performed to satisfy a request. For more information about AWS CloudTrail, see What Is AWS CloudTrail? in the AWS CloudTrail User Guide. For an example of the type of data that CloudWatch writes into CloudTrail log files, see Logging CloudWatch Logs API and console operations in AWS CloudTrail.\n\nAWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources for your users. Use IAM to control who can use your AWS resources (authentication) and what resources they can use in which ways (authorization). For more information, see What Is IAM? in the IAM User Guide.\n\nAmazon Kinesis Data Streams is a web service you can use for rapid and continuous data intake and aggregation. The type of data used includes IT infrastructure log data, application logs, social media, market data feeds, and web clickstream data. Because the response time for the data "
+    },
+    {
+      "kind": "RELATION",
+      "record": {
+        "clause_quote": "Amazon S3 internally uses last-writer-wins semantics to determine which write takes precedence.",
+        "modality": "ASSERTED",
+        "object": {
+          "head_quote": "semantics",
+          "name": "last-writer-wins semantics",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "CONCEPT"
+        },
+        "polarity": "POSITIVE",
+        "predicate": "USES",
+        "subject": {
+          "head_quote": "Amazon S3",
+          "name": "Amazon S3",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "trigger_quote": "uses",
+        "voice": "ACTIVE"
+      },
+      "source_text": "Concurrent applications\n\nThis section provides examples of behavior to be expected from Amazon S3 when multiple clients are writing to the same items.\n\nIn this example, both W1 (write 1) and W2 (write 2) finish before the start of R1 (read 1) and R2 (read 2). Because S3 is strongly consistent, R1 and R2 both return color = ruby.\n\nIn the next example, W2 does not finish before the start of R1. Therefore, R1 might return color = ruby or color = garnet. However, because W1 and W2 finish before the start of R2, R2 returns color = garnet.\n\nIn the last example, W2 begins before W1 has received an acknowledgment. Therefore, these writes are considered concurrent. Amazon S3 internally uses last-writer-wins semantics to determine which write takes precedence. However, the order in which Amazon S3 receives the requests and the order in which applications receive acknowledgments cannot be predicted because of various factors, such as network latency. For example, W2 might be initiated by an Amazon EC2 instance in the same Region, while W1 might be initiated by a host that is farther away. The best way to determine the final value is to perform a read after both writes have been acknowledged.\n\n"
+    },
+    {
+      "kind": "RELATION",
+      "record": {
+        "clause_quote": "Secrets Manager also uses caching to improve performance, but in some cases this can add time.",
+        "modality": "ASSERTED",
+        "object": {
+          "head_quote": "caching",
+          "name": "caching",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "CONCEPT"
+        },
+        "polarity": "POSITIVE",
+        "predicate": "USES",
+        "subject": {
+          "head_quote": "Secrets Manager",
+          "name": "Secrets Manager",
+          "occurrence": 1,
+          "restrictions": [],
+          "scope_qualifiers": [],
+          "semantic_type": "SERVICE_PRODUCT"
+        },
+        "trigger_quote": "uses",
+        "voice": "ACTIVE"
+      },
+      "source_text": "Changes I make aren't always immediately visible.\n\nSecrets Manager uses a distributed computing model called eventual consistency. Any change that you make in Secrets Manager (or other AWS services) takes time to become visible from all possible endpoints. Some of the delay results from the time it takes to send the data from server to server, from replication zone to replication zone, and from region to region around the world. Secrets Manager also uses caching to improve performance, but in some cases this can add time. The change might not be visible until the previously cached data times out.\n\nDesign your global applications to account for these potential delays. Also, ensure that they work as expected, even when a change made in one location isn't instantly visible at another.\n\nFor more information about how some other AWS services are affected by eventual consistency, see:\n\nManaging data consistency in the Amazon Redshift Database Developer Guide\n\nAmazon S3 Data Consistency Model in the Amazon Simple Storage Service User Guide\n\nEnsuring Consistency When Using Amazon S3 and Amazon EMR for ETL Workflows in the AWS Big Data Blog\n\nAmazon EC2 Eventual Consistency in the Amazon EC2 API Reference\n\n"
+    }
+  ]
+}

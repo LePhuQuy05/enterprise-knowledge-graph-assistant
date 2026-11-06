@@ -6,7 +6,7 @@
   "scripts": {
     "infra:synth": "cdk synth kg-r72-foundation kg-r72-tracer --quiet",
     "infra:version": "cdk --version",
-    "ui:test": "node --test frontend/tracer/auth.test.mjs frontend/tracer/client.test.mjs frontend/tracer/investigation.test.mjs frontend/tracer/evidence.test.mjs frontend/tracer/brief.test.mjs frontend/tracer/dashboard.test.mjs frontend/tracer/onboarding.test.mjs"
+    "ui:test": "node --test frontend/tracer/auth.test.mjs frontend/tracer/client.test.mjs frontend/tracer/investigation.test.mjs frontend/tracer/evidence.test.mjs frontend/tracer/brief.test.mjs frontend/tracer/dashboard.test.mjs frontend/tracer/onboarding.test.mjs frontend/tracer/compare.test.mjs frontend/tracer/benchmark.test.mjs frontend/tracer/benchmark316.test.mjs frontend/tracer/collection-answer.test.mjs frontend/tracer/methods.test.mjs frontend/tracer/scoped-runs.test.mjs"
   },
   "devDependencies": { "aws-cdk": "2.1145.0" }
 }

@@ -1,0 +1,52 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "tenant_id": {
+      "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "owner_id": {
+      "pattern": "^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$",
+      "title": "Owner Id",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^run_[0-9a-f]{64}$",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "method_id": {
+      "enum": [
+        "bm25",
+        "vector",
+        "hybrid",
+        "hybrid_reranked",
+        "hybrid_multi_query",
+        "hybrid_multi_query_balanced"
+      ],
+      "title": "Method Id",
+      "type": "string"
+    },
+    "admission_token": {
+      "pattern": "^[0-9a-f]{32}$",
+      "title": "Admission Token",
+      "type": "string"
+    }
+  },
+  "required": [
+    "tenant_id",
+    "owner_id",
+    "run_id",
+    "method_id",
+    "admission_token"
+  ],
+  "title": "RunMessageV1",
+  "type": "object"
+}

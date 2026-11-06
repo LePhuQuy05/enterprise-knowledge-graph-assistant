@@ -15,6 +15,8 @@ from app.generation import (
     AnswerBinding,
     GenerationError,
     GenerationRecipe,
+    GenerationRecipeV3,
+    GenerationRecipeV11,
     empty_answer,
     generation_request,
     parse_generated,
@@ -93,13 +95,29 @@ class AnswerCache:
         return receipt
 
     def resolve(self, context, *, question, snapshot, packed, binding: AnswerBinding,
-                recipe: GenerationRecipe, gateway=None) -> AnswerLookup:
+                recipe: GenerationRecipe, gateway=None, answer_language="en") -> AnswerLookup:
+        if not isinstance(answer_language, str) or answer_language not in {"en", "vi"}:
+            raise GenerationError("GENERATION_LANGUAGE_INVALID")
         if (context.stage != "GENERATE" or context.attempt != 1 or context.tenant_id != binding.tenant_id
                 or context.request_id != binding.request_id):
             raise GenerationError("GENERATION_CONTEXT_BINDING_MISMATCH")
-        system, prompt = generation_request(question, snapshot, packed, binding.tenant_id, recipe)
+        if answer_language == "vi" and packed.chunk_ids and not isinstance(recipe, GenerationRecipeV3):
+            # V1/V2 prompts are English-only and would otherwise share the EN
+            # cache identity while incorrectly labeling their answers Vietnamese.
+            raise GenerationError("GENERATION_RECIPE_LANGUAGE_UNSUPPORTED")
+        system, prompt = generation_request(question, snapshot, packed, binding.tenant_id, recipe,
+                                            answer_language=answer_language)
+
+        def localize(response):
+            changes = {"answer_language": answer_language}
+            if answer_language == "vi" and response.answer_status == "ABSTAINED" and not isinstance(recipe, GenerationRecipeV11):
+                changes["answer"] = "Tài liệu được tìm thấy chưa cung cấp đủ bằng chứng để trả lời câu hỏi này."
+            return response.model_copy(update=changes)
+
         if not packed.chunk_ids:
-            return AnswerLookup(empty_answer(snapshot=snapshot, packed=packed, binding=binding), None, False, True)
+            return AnswerLookup(localize(empty_answer(snapshot=snapshot, packed=packed, binding=binding,
+                                                      recipe=recipe, answer_language=answer_language)),
+                                None, False, True)
         binding_sha = sha256_bytes(canonical_json(binding.model_dump(mode="json")))
         key = stable_id("answer", context=context.model_dump(mode="json"), binding_sha=binding_sha,
             request_sha=sha256_bytes(canonical_json([system, prompt])), recipe=recipe.fingerprint,
@@ -110,8 +128,9 @@ class AnswerCache:
             if (receipt.recipe_sha256 != recipe.fingerprint or receipt.binding_sha256 != binding_sha
                     or receipt.operation_id != stable_id("op", **context.model_dump())):
                 raise GenerationError("ANSWER_RECEIPT_BINDING_MISMATCH")
-            return resolve_answer(parse_generated(receipt.raw_output, receipt.stop_reason),
-                                  snapshot=snapshot, packed=packed, binding=binding)
+            return localize(resolve_answer(parse_generated(receipt.raw_output, receipt.stop_reason, recipe),
+                                           snapshot=snapshot, packed=packed, binding=binding, recipe=recipe,
+                                           answer_language=answer_language))
 
         if receipt is not None:
             return AnswerLookup(validate(receipt), receipt, True)

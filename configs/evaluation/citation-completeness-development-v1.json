@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "purpose": "DEVELOPMENT_FIXED_CONTEXT_NOT_GOLD_OR_HOLDOUT",
+  "cases": [
+    {
+      "id": "original-ecs-vi",
+      "language": "vi",
+      "question": "ECS task execution role và task role khác nhau thế nào khi tải image ECR và gọi AWS API?",
+      "search_query": "ECS task execution role vs task role difference ECR image pull AWS API permissions",
+      "baseline_receipt": "results/collection-answering/ecs-vi-controlled-live.json",
+      "review_focus": ["full-claim support from selected citations", "preserve original failed semantic example without editing"]
+    },
+    {
+      "id": "citation-dev-ecs-en",
+      "language": "en",
+      "question": "In a basic Amazon ECS setup, how do the task execution role and task role differ when pulling a private ECR image and when application code calls AWS APIs? Are execution-role credentials directly accessible to the task's containers?",
+      "search_query": "Amazon ECS task execution IAM role task IAM role ECR private image application code temporary credentials containers",
+      "review_focus": ["actor and action boundaries", "negation", "basic implementation qualifier"]
+    },
+    {
+      "id": "citation-dev-kms-en",
+      "language": "en",
+      "question": "For a caller in account B using a customer-managed KMS key owned by account A, is an IAM policy in account B alone enough? Which account's policies must permit the use?",
+      "search_query": "KMS cross-account access key policy external account IAM policy neither alone sufficient",
+      "review_focus": ["account ownership", "negation and necessary versus sufficient conditions"]
+    },
+    {
+      "id": "citation-dev-rds-vi",
+      "language": "vi",
+      "question": "Standby của RDS Multi-AZ DB instance có thể nhận truy vấn đọc không? Trường hợp Multi-AZ DB cluster khác thế nào?",
+      "search_query": "RDS Multi-AZ DB instance standby read traffic Multi-AZ DB cluster",
+      "review_focus": ["deployment variant", "negation", "avoid generalizing every Multi-AZ standby"]
+    },
+    {
+      "id": "citation-dev-lambda-partial-vi",
+      "language": "vi",
+      "question": "Chỉ gắn Lambda vào public subnet có tự cấp public IP và internet không? Từ tài liệu công khai này, có thể xác nhận route và NAT gateway thực tế trong tài khoản của tôi đã đúng chưa?",
+      "search_query": "Lambda public subnet public IP internet access private subnet NAT gateway route table",
+      "review_focus": ["public versus private account evidence", "IPv4 versus IPv6 conditions", "partial answer when actual account configuration is absent"]
+    },
+    {
+      "id": "empty-source-control",
+      "language": "en",
+      "question": "What does the supplied documentation establish about qzxvplmunknown?",
+      "search_query": "qzxvplmunknown qzxvplmunknown2",
+      "mode": "bm25",
+      "review_focus": ["empty-context deterministic abstention", "zero model dispatch"]
+    }
+  ]
+}

@@ -5,19 +5,26 @@ import { EvidenceFailure, createEvidenceController, splitExactQuote, projectEvid
 import { createBriefDownloader, serializeBrief, briefFilename } from "./brief.mjs";
 import { createDashboard, loadDashboardData } from "./dashboard.mjs";
 import { createOnboarding } from "./onboarding.mjs";
+import { createCompare } from "./compare.mjs";
+import { createMethodPages, loadWalkthroughs } from "./methods.mjs";
+import { createBenchmark316, loadBenchmark316, loadBenchmark316Case } from "./benchmark316.mjs";
 
 export function createWorkspace({ document, request, downloader = createBriefDownloader({ document }),
-  uuid = () => crypto.randomUUID(), onSessionExpired = () => {}, confirmReplace = message => globalThis.confirm(message), loadDashboard = loadDashboardData, tourStorage }) {
+  uuid = () => crypto.randomUUID(), onSessionExpired = () => {}, confirmReplace = message => globalThis.confirm(message), loadDashboard = loadDashboardData, loadMethodExamples = loadWalkthroughs, loadBenchmarkResults = loadBenchmark316, loadBenchmarkCase = loadBenchmark316Case, scopedEnabled = () => false, tourStorage }) {
   const get = id => document.getElementById(id);
+  let sourceChoiceByUser = false;
   function syncSourceOptions() {
     const live = get("corpus-scope").value === "aws_official";
+    const collection = get("corpus-scope").value === "local_collection";
     get("pilot-method").hidden = live;
     if (live) get("mode").value = "hybrid";
-    get("source-scope-help").textContent = live
+    get("source-scope-help").textContent = collection
+      ? "Answer from the versioned collection in a background run. Vietnamese uses an English search rewrite. Saved answers, sources and history open in Live Compare."
+      : live
       ? "Search official AWS documentation beyond the pilot. Retrieved excerpts are saved with each answer; sources and coverage may be incomplete."
       : "Search only the frozen 20-document pilot. Knowledge Explorer and Retrieval Lab describe this recorded corpus.";
   }
-  get("corpus-scope").addEventListener("change", syncSourceOptions);
+  get("corpus-scope").addEventListener("change", () => { sourceChoiceByUser = true; syncSourceOptions(); });
   syncSourceOptions();
   const node = (tag, text, className) => {
     const element = document.createElement(tag);
@@ -30,7 +37,24 @@ export function createWorkspace({ document, request, downloader = createBriefDow
   const reads = new Set();
   const current = captured => active && session === captured;
   const mayReplace = () => !get("brief-notes").value.trim() || confirmReplace("Changing investigations will clear your session-only notes. Continue?");
-  const dashboard = createDashboard({ document, loadData: loadDashboard, onOpenRecord: id => openRecord(id),
+  let methods;
+  const compare = createCompare({ document, request, uuid, scopedEnabled, onSessionExpired: error => { clear(); onSessionExpired(error); },
+    onRunChanged: (row, results, openSource) => methods?.updateRun(row, results, openSource),
+    onInspectMethod: (row, result, openSource) => { methods?.inspectRun(row, result, openSource); dashboard.show(`method-${result.method_id}`, true); },
+    onSourceOpened: (source, quote, row) => methods?.showLiveSource(source, quote, row),
+    onCapabilities: data => {
+      methods?.setCapabilities(data);
+      const option = get("collection-answer-option");
+      option.disabled = data?.answering_enabled !== true; option.hidden = option.disabled;
+      if (!option.disabled) option.textContent = `Versioned collection · ${data.corpus.documents} documents · answering`;
+      if (!option.disabled && !sourceChoiceByUser) get("corpus-scope").value = "local_collection";
+      if (option.disabled && get("corpus-scope").value === "local_collection") get("corpus-scope").value = "aws_official";
+      syncSourceOptions();
+    },
+    download: (text, filename) => downloader.download(text, filename, "application/json;charset=utf-8") });
+  methods = createMethodPages({ document, loadData: loadMethodExamples, runMethod: (...args) => compare.startMethod(...args), refreshRun: () => compare.refresh(), openCompare: () => dashboard.show("compare", true) });
+  const benchmark316 = createBenchmark316({ document, loadData: loadBenchmarkResults, loadCase: loadBenchmarkCase, download: (...args) => downloader.download(...args) });
+  const dashboard = createDashboard({ document, loadData: loadDashboard, onPageChanged: page => { compare.pageChanged(); void methods.show(page); void benchmark316.show(page); }, onOpenRecord: id => openRecord(id),
     onScenario: id => chooseScenario(id), onQuestion: question => {
       if (!active || busy || !mayReplace()) return;
       pending = null; resetAnswer(); get("question").value = question; dashboard.show("investigate"); get("question").focus();
@@ -117,6 +141,7 @@ export function createWorkspace({ document, request, downloader = createBriefDow
     onboarding.deactivate();
     document.body.dataset.workspaceActive = "false";
     dashboard.clear();
+    compare.clear(); methods.clear(); benchmark316.clear();
     resetAnswer(); get("workspace").hidden = true; get("history").replaceChildren(); get("question").value = "";
     get("scenario-fields").replaceChildren(); get("scenario-title").textContent = ""; get("scenario-detail").hidden = true;
     get("scenario-library").open = false;
@@ -250,6 +275,14 @@ export function createWorkspace({ document, request, downloader = createBriefDow
     if (!body.question || body.question.length > 2000 || !["hybrid", "vector"].includes(body.mode)) return;
     const fingerprint = JSON.stringify(body);
     if (pending?.fingerprint === fingerprint) { get("query-status").textContent = "This question was already submitted. Check history, or choose New question to start another request."; return; }
+    if (body.corpus_scope === "local_collection") {
+      setBusy(true); dashboard.show("compare", true);
+      try {
+        if (await compare.startAnswer(body.question, body.answer_language, body.mode)) pending = { fingerprint };
+        else get("compare-status").textContent = "Collection answering is unavailable or a previous submission needs attention. Check the current run before submitting again.";
+      } finally { if (active) setBusy(false); }
+      return;
+    }
     const captured = session; pending = { fingerprint, key: uuid() }; resetAnswer(); const revision = view; setBusy(true);
     get("query-status").textContent = "Searching the documentation and checking citations… The first question may take longer.";
     try {
@@ -284,9 +317,10 @@ export function createWorkspace({ document, request, downloader = createBriefDow
   get("refresh-history").addEventListener("click", () => loadHistory());
   get("more-history").addEventListener("click", () => loadHistory(true));
   clear();
-  return { clear, renderRecord, openRecord, loadHistory, chooseScenario, evidence, dashboard, onboarding,
+  return { clear, renderRecord, openRecord, loadHistory, chooseScenario, evidence, dashboard, onboarding, compare,
     activate: async ({ load = true } = {}) => { clear(); active = true; get("workspace").hidden = false; document.body.dataset.workspaceActive = "true";
-      const captured = session, ready = dashboard.activate(); if (load) await loadHistory(); await ready;
+      methods.activate(); benchmark316.activate();
+      const captured = session, ready = dashboard.activate(), compareReady = compare.activate(); if (load) await loadHistory(); await ready; await compareReady;
       if (current(captured)) onboarding.activate(); } };
 }
 
@@ -303,7 +337,7 @@ export async function startApp({ document = globalThis.document, location = glob
     get("check-access").hidden = !signedIn || !pending; get("check-access").disabled = busy;
     get("account-security").hidden = signedIn;
   }
-  const workspace = makeWorkspace({ document, request: (path, options) => request(path, accessToken, options),
+  const workspace = makeWorkspace({ document, request: (path, options) => request(path, accessToken, options), scopedEnabled: () => config?.scoped_runs_enabled === true,
     onSessionExpired: error => { accessToken = null; revision++; controls(); get("status").textContent = errorMessage(error); } });
   async function loadAccess() {
     if (!accessToken || checking || departing) return;

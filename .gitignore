@@ -62,3 +62,7 @@ Thumbs.db
 
 # Curated progress report; local plans and learning journals stay private
 !/docs/progress-report.md
+
+# Owner approvals and live funding state are local operator records
+/configs/budgets/full-graph-allocation-application-state-v1.json
+/configs/budgets/full-graph-v2-allocation.json

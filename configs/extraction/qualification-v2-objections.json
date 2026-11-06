@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "review_kind": "AI_SOURCE_OBJECTIONS_NOT_INDEPENDENT_HUMAN_GOLD",
+  "coverage": "PARTIAL_ERRORS_ONLY_REMAINING_ASSERTIONS_PENDING",
+  "decisions_by_assertion_prefix": {
+    "ast_d12b7a065e8b": {"category": "WRONG_ACTOR", "reason_vi": "Nguồn nói một service khác dùng X-Ray SDK; S3 chuyển tiếp tracing headers. Không chứng minh S3 dùng SDK."},
+    "ast_b7ddcbca875e": {"category": "NEGATION_PREDICATE_MISMATCH", "reason_vi": "Mất access khi disable key không có nghĩa RDS không phụ thuộc key. NEGATIVE DEPENDS_ON diễn đạt sai phạm vi phủ định."},
+    "ast_43459c4a8c54": {"category": "UNRESOLVED_PRONOUN_ENTITY", "reason_vi": "You là người đọc chưa được định danh; không phải entity kỹ thuật đủ rõ để tạo node graph dùng chung."},
+    "ast_094f3f852e2b": {"category": "WRONG_OBJECT", "reason_vi": "CloudFormation dùng modified list để liên kết security groups; không phải phát biểu trực tiếp USES MyEC2Instance."},
+    "ast_d03ea666a426": {"category": "INFERRED_TRANSITIVE_INTEGRATION", "reason_vi": "CloudFront event kích hoạt Lambda rồi ghi logs; quote không nêu trực tiếp integration CloudWatch Logs–CloudFront như cạnh đã tạo."},
+    "ast_b0ca08db8f7b": {"category": "WRONG_ACTOR", "reason_vi": "Người dùng theo dõi rotation schedules qua CloudWatch. Rotation schedules không phải chủ thể sử dụng CloudWatch trong quote."},
+    "ast_f293d819ea9d": {"category": "INVERSE_DEPENDENCY", "reason_vi": "Yêu cầu bật trusted access cho EC2 không chứng minh trusted access phụ thuộc EC2; chiều dependency không được nguồn hỗ trợ."},
+    "ast_2ca1d4242591": {"category": "AUTHORIZATION_ONTOLOGY_TOO_COARSE", "reason_vi": "Nguồn yêu cầu execution role có quyền thực hiện action khi đọc S3. DEPENDS_ON bucket bỏ mất principal/action/permission và làm mờ yêu cầu cấp quyền."}
+  },
+  "full_batch_gate": "FAIL_REQUIRE_NEW_RECIPE_AND_SOURCE_REVIEW_BEFORE_EXPANSION",
+  "remaining_allocation_action": "KEEP_UNSPENT_NO_TOP_UP_REQUIRED"
+}

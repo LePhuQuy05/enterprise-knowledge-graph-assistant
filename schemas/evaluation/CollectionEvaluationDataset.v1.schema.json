@@ -1,0 +1,329 @@
+{
+  "$defs": {
+    "AnnotatedScenario": {
+      "additionalProperties": false,
+      "properties": {
+        "scenario_id": {
+          "minLength": 1,
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "intent_group_id": {
+          "minLength": 1,
+          "title": "Intent Group Id",
+          "type": "string"
+        },
+        "split": {
+          "enum": [
+            "UNASSIGNED",
+            "DEVELOPMENT",
+            "EVALUATION"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "troubleshooting",
+            "comparison",
+            "workflow",
+            "cross_service",
+            "account_unavailable",
+            "ambiguous",
+            "corpus_gap"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "services": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "title": "Services",
+          "type": "array"
+        },
+        "question_en": {
+          "maxLength": 2000,
+          "minLength": 5,
+          "title": "Question En",
+          "type": "string"
+        },
+        "question_vi": {
+          "maxLength": 2000,
+          "minLength": 5,
+          "title": "Question Vi",
+          "type": "string"
+        },
+        "annotation_status": {
+          "enum": [
+            "DRAFT_COMPLETE",
+            "NEEDS_EVIDENCE"
+          ],
+          "title": "Annotation Status",
+          "type": "string"
+        },
+        "review_status": {
+          "enum": [
+            "AI_DRAFT",
+            "HUMAN_APPROVED",
+            "REJECTED"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "reviewer_type": {
+          "enum": [
+            "AI",
+            "HUMAN"
+          ],
+          "title": "Reviewer Type",
+          "type": "string"
+        },
+        "human_review_reference": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Human Review Reference"
+        },
+        "review_note": {
+          "minLength": 1,
+          "title": "Review Note",
+          "type": "string"
+        },
+        "answerable": {
+          "title": "Answerable",
+          "type": "boolean"
+        },
+        "reference_answer_en": {
+          "minLength": 1,
+          "title": "Reference Answer En",
+          "type": "string"
+        },
+        "reference_answer_vi": {
+          "minLength": 1,
+          "title": "Reference Answer Vi",
+          "type": "string"
+        },
+        "evidence_groups": {
+          "items": {
+            "$ref": "#/$defs/PairedEvidenceGroup"
+          },
+          "maxItems": 12,
+          "title": "Evidence Groups",
+          "type": "array"
+        },
+        "control_reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Control Reason"
+        },
+        "control_scope_audit_sha256": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 64,
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Control Scope Audit Sha256"
+        },
+        "expected_behavior": {
+          "enum": [
+            "ANSWER_WITH_EVIDENCE",
+            "ACKNOWLEDGE_ACCOUNT_LIMITATION",
+            "CLARIFY_OR_CONDITIONAL",
+            "ABSTAIN_IF_NO_CORPUS_EVIDENCE"
+          ],
+          "title": "Expected Behavior",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "intent_group_id",
+        "split",
+        "kind",
+        "services",
+        "question_en",
+        "question_vi",
+        "annotation_status",
+        "review_status",
+        "reviewer_type",
+        "review_note",
+        "answerable",
+        "reference_answer_en",
+        "reference_answer_vi",
+        "evidence_groups",
+        "expected_behavior"
+      ],
+      "title": "AnnotatedScenario",
+      "type": "object"
+    },
+    "GoldSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "document_version_id": {
+          "minLength": 1,
+          "title": "Document Version Id",
+          "type": "string"
+        },
+        "start_char": {
+          "minimum": 0,
+          "title": "Start Char",
+          "type": "integer"
+        },
+        "end_char": {
+          "exclusiveMinimum": 0,
+          "title": "End Char",
+          "type": "integer"
+        },
+        "quote": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "document_version_id",
+        "start_char",
+        "end_char",
+        "quote"
+      ],
+      "title": "GoldSpan",
+      "type": "object"
+    },
+    "PairedEvidenceGroup": {
+      "additionalProperties": false,
+      "properties": {
+        "group_id": {
+          "minLength": 1,
+          "title": "Group Id",
+          "type": "string"
+        },
+        "required_fact": {
+          "minLength": 1,
+          "title": "Required Fact",
+          "type": "string"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/GoldSpan"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "required_fact_vi": {
+          "minLength": 1,
+          "title": "Required Fact Vi",
+          "type": "string"
+        }
+      },
+      "required": [
+        "group_id",
+        "required_fact",
+        "alternatives",
+        "required_fact_vi"
+      ],
+      "title": "PairedEvidenceGroup",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "dataset_id": {
+      "minLength": 1,
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "source_collection_version": {
+      "pattern": "^collection_[0-9a-f]{64}$",
+      "title": "Source Collection Version",
+      "type": "string"
+    },
+    "source_manifest_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Manifest Sha256",
+      "type": "string"
+    },
+    "scenario_set_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Scenario Set Sha256",
+      "type": "string"
+    },
+    "annotation_policy": {
+      "const": "SOURCE_FIRST_PAIRED_AI_DRAFT_V1",
+      "title": "Annotation Policy",
+      "type": "string"
+    },
+    "split_status": {
+      "enum": [
+        "UNASSIGNED",
+        "GROUPED_FROZEN"
+      ],
+      "title": "Split Status",
+      "type": "string"
+    },
+    "source_policy": {
+      "const": "PINNED_CORPUS_ONLY",
+      "title": "Source Policy",
+      "type": "string"
+    },
+    "scenarios": {
+      "items": {
+        "$ref": "#/$defs/AnnotatedScenario"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "title": "Scenarios",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "source_collection_version",
+    "source_manifest_sha256",
+    "scenario_set_sha256",
+    "annotation_policy",
+    "split_status",
+    "source_policy",
+    "scenarios"
+  ],
+  "title": "CollectionEvaluationDataset",
+  "type": "object"
+}

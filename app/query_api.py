@@ -4,6 +4,7 @@ import json
 import re
 
 from app.external_http import strict_json
+from app.method_catalog import deployment_method_catalog
 from app.query_auth import ApiError, authenticate, reauthorize
 from app.query_state import REQUEST_ID
 from app.query_telemetry import NullTelemetry
@@ -22,12 +23,12 @@ class QueryApi:
             path = event.get("rawPath", "")
             detail = re.fullmatch(r"/v1/queries/(" + REQUEST_ID + ")", path)
             source = re.fullmatch(r"/v1/sources/(chk_[0-9a-f]{64})", path)
-            if not ((method == "GET" and (path in {"/v1/status", "/v1/queries"} or detail or source)) or (
+            if not ((method == "GET" and (path in {"/v1/status", "/v1/queries", "/v1/rag-methods"} or detail or source)) or (
                 method == "POST" and path == "/v1/queries"
             )):
                 raise ApiError(404, "NOT_FOUND")
             required_scope = "kg/query" if method == "POST" else "kg/read"
-            if path == "/v1/status" and event.get("queryStringParameters"):
+            if path in {"/v1/status", "/v1/rag-methods"} and event.get("queryStringParameters"):
                 raise ApiError(400, "INVALID_REQUEST")
             with self.telemetry.stage("authorize"):
                 auth = authenticate(event, public_config=self.public_config, metadata_store=self.metadata_store,
@@ -49,6 +50,13 @@ class QueryApi:
                     raise ApiError(400, "INVALID_REQUEST") from None
                 data = self.service.submit(auth, payload, headers.get("idempotency-key"),
                                            remaining_seconds=self.remaining_seconds)
+            elif path == "/v1/rag-methods":
+                if params:
+                    raise ApiError(400, "INVALID_REQUEST")
+                with self.telemetry.stage("status_read"):
+                    release = self.service.releases.current(auth.tenant_id)
+                    data = deployment_method_catalog(release["snapshot_version"],
+                        official_search_available=self.service.knowledge_factory is not None)
             elif path == "/v1/status":
                 if params:
                     raise ApiError(400, "INVALID_REQUEST")

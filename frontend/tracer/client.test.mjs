@@ -2,6 +2,29 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { ApiFailure, apiRequest, errorMessage, officialSourceLink, queryPath, sourcePath } from "./client.mjs";
 
+test("production transport admits scoped V2 capabilities, history, detail, result, source and mutations", async () => {
+  const run = "run_" + "a".repeat(64), chunk = "chk_" + "b".repeat(64);
+  const paths = ["/v2/scoped-run-capabilities", "/v2/scoped-runs?limit=10", `/v2/scoped-runs/${run}`,
+    `/v2/scoped-runs/${run}/methods/graph_2hop`, `/v2/scoped-runs/${run}/methods/graph_2hop/sources/${chunk}`,
+    `/v2/scoped-runs/${run}/trace`];
+  let calls = 0;
+  const fetcher = async (path, options) => { calls++; assert.equal(options.headers.Authorization, "Bearer synthetic");
+    assert.equal(options.credentials, "omit"); assert.equal(options.redirect, "error"); return { ok: true, text: async () => '{}' }; };
+  for (const path of paths) await apiRequest(path, "synthetic", { fetcher });
+  const key = "11111111-1111-4111-8111-111111111111";
+  await apiRequest("/v2/scoped-runs", "synthetic", { fetcher, key, body: { method_ids: ["graph_2hop"] } });
+  await apiRequest(`/v2/scoped-runs/${run}/cancel`, "synthetic", { fetcher, key, body: {} });
+  assert.equal(calls, 8);
+});
+
+test("V2 transport remains restricted to the approved endpoint family and same-origin paths", async () => {
+  let calls = 0;
+  for (const path of ["/v2/admin", "/v2/scoped-runs-other", "https://other.example/v2/scoped-runs", "/v2/scoped-runs/../admin"]) {
+    await assert.rejects(apiRequest(path, "synthetic", { fetcher: async () => { calls++; } }), e => e.code === "INVALID_CLIENT_REQUEST");
+  }
+  assert.equal(calls, 0);
+});
+
 test("one submit carries its idempotency key, excludes cookies and forbids redirects", async () => {
   let calls = 0;
   const key = "11111111-1111-4111-8111-111111111111";

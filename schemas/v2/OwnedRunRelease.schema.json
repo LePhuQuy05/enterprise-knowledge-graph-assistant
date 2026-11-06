@@ -1,0 +1,52 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "collection_version": {
+      "pattern": "^collection_[0-9a-f]{64}$",
+      "title": "Collection Version",
+      "type": "string"
+    },
+    "collection_manifest_sha256": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Collection Manifest Sha256",
+      "type": "string"
+    },
+    "method_config_sha256": {
+      "additionalProperties": {
+        "maxLength": 64,
+        "minLength": 64,
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxProperties": 6,
+      "minProperties": 1,
+      "propertyNames": {
+        "enum": [
+          "bm25",
+          "vector",
+          "hybrid",
+          "hybrid_reranked",
+          "hybrid_multi_query",
+          "hybrid_multi_query_balanced"
+        ]
+      },
+      "title": "Method Config Sha256",
+      "type": "object"
+    }
+  },
+  "required": [
+    "collection_version",
+    "collection_manifest_sha256",
+    "method_config_sha256"
+  ],
+  "title": "OwnedRunReleaseV1",
+  "type": "object"
+}

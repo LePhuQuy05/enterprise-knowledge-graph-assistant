@@ -136,6 +136,13 @@ def test_query_receipt_replay_history_and_source_are_owner_bound(setup_api):
     assert "raw_output" not in json.dumps(data) and "receipt" not in json.dumps(data)
 
 
+@pytest.mark.parametrize("mode", ["bm25", "hybrid_reranked"])
+def test_local_method_contract_does_not_enable_unreleased_cloud_method(setup_api, mode):
+    status, data = call(setup_api, event(body={"question": "Service B", "mode": mode}))
+    assert status == 400 and "MODE_UNAVAILABLE" in json.dumps(data)
+    assert setup_api.gateway.calls == 0 and setup_api.repo.quota_remaining() == 300
+
+
 @pytest.mark.parametrize("bad", ["missing", "id_token", "issuer", "client", "expired", "scope", "membership", "foreign_tenant"])
 def test_auth_rejections_happen_before_admission_and_provider(setup_api, bad):
     s, request = setup_api, event()
